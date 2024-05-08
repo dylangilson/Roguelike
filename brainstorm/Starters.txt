@@ -1,0 +1,32 @@
+Gen 1:
+	- Fire: Charmander
+	- Fighting: Machop
+	- Water: Squirtle
+	- Flying: Pidgey
+	- Grass: Bulbasaur
+	- Poison: Bellsprout
+	- Electric: Pikachu (Perfect IVs && can't evolve && gets light ball)
+	- Ground: Nidoran (Can roll M / F)
+	- Psychic: Abra
+	- Rock: Geodude
+	- Bug: Caterpie / Weedle
+	- Dragon: Dratini
+	- Ghost: Gastly
+	- Dark: Oddish
+
+Gen 2:
+	- Normal: Teddiursa
+	- Fire: Cyndaquil
+	- Fighting: Tyrogue (After 5 Stage Clears: Learn Mega Punch -> If yes, evolve to Hitmonchan ; if no, Learn Mega kick -> If yes, evolve to Hitmonlee ; if no, evolve to Hitmontop)
+	- Water: Totodile
+	- Flying: Natu
+	- Grass: Chikorita
+	- Poison: Spinarak
+	- Electric: Mareep
+	- Ground: Phanpy
+	- Psychic: Hoothoot
+	- Rock: Larvitar
+	- Ice: Swinub
+	- Bug: Heracross
+	- Dark: Houndoor
+	- Steel: Pineco
