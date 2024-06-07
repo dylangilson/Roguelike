@@ -1,0 +1,9 @@
+PokeRogue:
+	- Turn Order:
+		- Move / Switch / Item / Run
+		- Move Effect (e.g. HP Regeneration)
+		- Death?
+		- XP?
+		- Level Up?
+		- Weather / Item Effects
+		- Switch based on new Opponent

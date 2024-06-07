@@ -1,5 +1,7 @@
 # folders
 .vscode/
+Roguelike/Library/
+Roguelike/Temp/
 
 # files
 *.o
