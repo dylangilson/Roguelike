@@ -136,7 +136,7 @@ public class Pokemon {
         if (moves.Count >= 4) {
             Debug.Log($"{name} cannot learn more than 4 moves. Please forget a move to learn {move.name}.");
             // TODO: forget move / cancel move learn (needs UI)
-        else {
+        } else {
             moves.Add(move);
             Debug.Log($"{name} learned {move.name}!");
         }
