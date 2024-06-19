@@ -20,8 +20,8 @@ public class GameManager : MonoBehaviour {
         List<Move> squirtleMoves = new List<Move> { tackle, waterGun };
 
         // Create example Pokémon
-        Pokemon charmander = new Pokemon("Charmander", Type.Fire, null, 39, charmanderMoves, null, 5, null, null, null);
-        Pokemon squirtle = new Pokemon("Squirtle", Type.Water, null, 44, squirtleMoves, null, 5, null, null, null);
+        Pokemon charmander = new Pokemon("Charmander", Type.Fire, null, 39, charmanderMoves, 5, null, null, null);
+        Pokemon squirtle = new Pokemon("Squirtle", Type.Water, null, 44, squirtleMoves, 5, null, null, null);
 
         // Create a trainer
         Trainer ash = new Trainer("Ash", null);

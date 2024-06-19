@@ -24,22 +24,22 @@ public enum Type {
 }
 
 [System.Serializable]
-public class Move {
-    public string name;
+public class Move : MonoBehaviour {
+    public string moveName;
     public Type type;
     public int power;
     public int accuracy;
     // TODO: public MoveEffect effect;
 
     public Move(string name, Type type, int power, int accuracy) {
-        this.name = name;
+        this.moveName = name;
         this.type = type;
         this.power = power;
         this.accuracy = accuracy;
     }
 }
 
-public class Stats {
+public class Stats : MonoBehaviour {
     public int hp;
     public int attack;
     public int specialAttack;
@@ -57,7 +57,7 @@ public class Stats {
     }
 }
 
-public class Learnset {
+public class Learnset : MonoBehaviour {
     // NOTE: both lists MUST have the same number of elements, where level[i] dictates at what level move[i] is learned
     public List<Move> moves;
     public List<int> levels;
@@ -94,27 +94,25 @@ public class Learnset {
     }
 }
 
-public class Pokemon {
-    public string name;
+public class Pokemon : MonoBehaviour {
+    public string pokemonName;
     public Type primaryType;
     public Type? secondaryType;
     public int maxHP;
     public int currentHP;
     public List<Move> moves;
-    public Sprite sprite;
     public int level;
     public Item heldItem;
     public Stats stats;
     public Learnset learnset;
 
-    public Pokemon(string name, Type primaryType, Type? secondaryType, int maxHP, List<Move> moves, Sprite sprite, int level, Item heldItem, Stats stats, Learnset learnset) {
-        this.name = name;
+    public Pokemon(string name, Type primaryType, Type? secondaryType, int maxHP, List<Move> moves, int level, Item heldItem, Stats stats, Learnset learnset) {
+        this.pokemonName = name;
         this.primaryType = primaryType;
         this.secondaryType = secondaryType;
         this.maxHP = maxHP;
         this.currentHP = maxHP;
         this.moves = moves;
-        this.sprite = sprite;
         this.level = level;
         this.heldItem = heldItem;
         this.stats = stats;
@@ -123,7 +121,7 @@ public class Pokemon {
 
     public void LevelUp() {
         level++;
-        Debug.Log($"{name} leveled up to level {level}!");
+        Debug.Log($"{pokemonName} leveled up to level {level}!");
 
         Move move = learnset.CheckMoveOnLevelUp(level);
 
@@ -134,22 +132,24 @@ public class Pokemon {
 
     public void LearnMove(Move move) {
         if (moves.Count >= 4) {
-            Debug.Log($"{name} cannot learn more than 4 moves. Please forget a move to learn {move.name}.");
+            Debug.Log($"{pokemonName} cannot learn more than 4 moves. Please forget a move to learn {move.moveName}.");
             // TODO: forget move / cancel move learn (needs UI)
         } else {
             moves.Add(move);
-            Debug.Log($"{name} learned {move.name}!");
+            Debug.Log($"{pokemonName} learned {move.moveName}!");
         }
     }
 
-    public void TakeDamage(int damage) {
+    public bool TakeDamage(int damage) {
         currentHP -= damage;
 
         if (currentHP < 0) {
             currentHP = 0;
         }
 
-        Debug.Log($"{name} took {damage} damage. Current HP: {currentHP}");
+        Debug.Log($"{pokemonName} took {damage} damage. Current HP: {currentHP}");
+
+        return currentHP == 0 ? true : false;
     }
 
     public void UseMove(int moveIndex, Pokemon target) {
@@ -159,19 +159,27 @@ public class Pokemon {
         }
 
         Move move = moves[moveIndex];
-        Debug.Log($"{name} used {move.name}!");
+        Debug.Log($"{pokemonName} used {move.moveName}!");
 
         // Calculate if the move hits based on its accuracy
         if (Random.Range(0, 100) < move.accuracy) {
-            Debug.Log($"{move.name} hits!");
+            Debug.Log($"{move.moveName} hits!");
             target.TakeDamage(move.power);
         }
         else {
-            Debug.Log($"{move.name} missed!");
+            Debug.Log($"{move.moveName} missed!");
         }
     }
 
     public void DisplayStatus() {
-        Debug.Log($"Name: {name}, Type: {primaryType}{(secondaryType.HasValue ? $"/{secondaryType.Value}" : "")}, HP: {currentHP}/{maxHP}");
+        Debug.Log($"Name: {pokemonName}, Type: {primaryType}{(secondaryType.HasValue ? $"/{secondaryType.Value}" : "")}, HP: {currentHP}/{maxHP}");
     }
+
+    public void Heal(int amount) {
+		currentHP += amount;
+
+		if (currentHP > maxHP) {
+			currentHP = maxHP;
+        }
+	}
 }
