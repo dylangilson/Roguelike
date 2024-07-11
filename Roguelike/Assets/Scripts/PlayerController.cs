@@ -5,10 +5,12 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
     public float movementSpeed;
     public LayerMask solidObjectsLayer;
+    public LayerMask grassLayer;
     
     private bool isMoving;
     private Vector2 input;
     private Animator animator;
+
 
     private void Awake() {
         animator = GetComponent<Animator>();
@@ -54,9 +56,19 @@ public class PlayerController : MonoBehaviour {
         transform.position = targetPosition;
 
         isMoving = false;
+
+        CheckForEncounters();
     }
 
     private bool IsWalkable(Vector3 targetPosition) {
         return Physics2D.OverlapCircle(targetPosition, 0.3f, solidObjectsLayer) == null;
+    }
+ 
+    private void CheckForEncounters() {
+        if (Physics2D.OverlapCircle(transform.position, 0.2f, grassLayer) != null) {
+            if (Random.Range(1, 101) <= 10) {
+                Debug.Log("Encountered a wild pokemon");
+            }
+        }
     }
 }
