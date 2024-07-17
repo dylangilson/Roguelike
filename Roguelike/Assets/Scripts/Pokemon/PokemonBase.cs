@@ -2,31 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Pokemon", menuName = "Pokemon/Create new pokemon")]
+[CreateAssetMenu(fileName = "Pokemon", menuName = "Pokemon/Create New Pokemon")]
 
 public class PokemonBase : ScriptableObject {
-    [SerializeField] string name;
+    [SerializeField] string pokemonName;
 
     [TextArea]
     [SerializeField] string description;
     
     [SerializeField] Sprite frontSprite;
     [SerializeField] Sprite backSprite;
+    [SerializeField] Type typeA;
+    [SerializeField] Type typeB;
+    [SerializeField] List<LearnableMove> learnableMoves;
 
-    [SerializeField] PokemonType type1;
-    [SerializeField] PokemonType type2;
-
-    // Base Stats
-    [SerializeField] int maxHP;
+    // base stats
+    [SerializeField] int maxHitpoints;
     [SerializeField] int attack;
     [SerializeField] int defence;
     [SerializeField] int specialAttack;
     [SerializeField] int specialDefence;
-    [SerializeField] int speed;
+    [SerializeField] int speed;    
 
-    [SerializeField] List<LearnableMove> learnableMoves;
-    public string GetName() {
-        return name;
+    public string GetPokemonName() {
+        return pokemonName;
     }
 
     public string GetDescription() {
@@ -41,16 +40,20 @@ public class PokemonBase : ScriptableObject {
         return backSprite;
     }
 
-    public PokemonType GetType1() {
-        return type1;
+    public Type GetTypeA() {
+        return typeA;
     }
 
-    public PokemonType GetType2() {
-        return type2;
+    public Type GetTypeB() {
+        return typeB;
     }
 
-    public int GetMaxHP() {
-        return maxHP;
+    public List<LearnableMove> GetLearnableMoves() {
+        return learnableMoves;
+    }
+
+    public int GetMaxHitpoints() {
+        return maxHitpoints;
     }
 
     public int GetAttack() {
@@ -72,10 +75,6 @@ public class PokemonBase : ScriptableObject {
     public int GetSpeed() {
         return speed;
     }
-
-    public List<LearnableMove> GetLearnableMoves() {
-        return learnableMoves;
-    }
 }
 
 [System.Serializable]
@@ -92,7 +91,7 @@ public class LearnableMove {
     }    
 }
 
-public enum PokemonType {
+public enum Type {
     None,
     Normal,
     Fire,

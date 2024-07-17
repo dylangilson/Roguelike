@@ -2,23 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pokemon
-{
-    PokemonBase _base;
-    int level;
-
-    public int HP { get; set; }
-
+public class Pokemon {
+    public PokemonBase Blueprint { get; set; }
+    public int Level { get; set; }
+    public int CurrentHitpoints { get; set; }
     public List<Move> Moves { get; set; }
-    public Pokemon(PokemonBase pokemonBase, int pokemonLevel) {
-        _base = pokemonBase;
-        level = pokemonLevel;
-        HP = _base.GetMaxHP();
 
-        // Generate Moves
+    public Pokemon(PokemonBase pokemonBase, int pokemonLevel) {
+        Blueprint = pokemonBase;
+        Level = pokemonLevel;
+        CurrentHitpoints = GetMaxHitpoints();
+
+        // generate Moves
         Moves = new List<Move>();
-        foreach (var move in _base.GetLearnableMoves()) {
-            if (move.GetLevel() <= level){
+
+        // TODO: delete this if our solution works
+        // foreach (var move in Blueprint.GetLearnableMoves()) {
+        //     if (move.GetLevel() <= Level) {
+        //         Moves.Add(new Move(move.GetBase()));
+        //     }
+
+        //     if (Moves.Count >= 4) {
+        //         break;
+        //     }
+        // }
+
+        for (int i = Blueprint.GetLearnableMoves().Count - 1; i > 0; i--) {
+            var move = Blueprint.GetLearnableMoves()[i];
+            if (move.GetLevel() <= Level) {
                 Moves.Add(new Move(move.GetBase()));
             }
 
@@ -28,27 +39,27 @@ public class Pokemon
         }
     }
 
-    public int GetMaxHP() {
-        return Mathf.FloorToInt((_base.GetMaxHP() * level) / 100f) + 10;
+    public int GetMaxHitpoints() {
+        return Mathf.FloorToInt((Blueprint.GetMaxHitpoints() * Level) / 100.0f) + 10;
     }
 
     public int GetAttack() {
-        return Mathf.FloorToInt((_base.GetAttack() * level) / 100f) + 5;
+        return Mathf.FloorToInt((Blueprint.GetAttack() * Level) / 100.0f) + 5;
     }
 
     public int GetDefence() {
-        return Mathf.FloorToInt((_base.GetDefence() * level) / 100f) + 5;
+        return Mathf.FloorToInt((Blueprint.GetDefence() * Level) / 100.0f) + 5;
     }
 
     public int GetSpecialAttack() {
-        return Mathf.FloorToInt((_base.GetSpecialAttack() * level) / 100f) + 5;
+        return Mathf.FloorToInt((Blueprint.GetSpecialAttack() * Level) / 100.0f) + 5;
     }
 
     public int GetSpecialDefence() {
-        return Mathf.FloorToInt((_base.GetSpecialDefence() * level) / 100f) + 5;
+        return Mathf.FloorToInt((Blueprint.GetSpecialDefence() * Level) / 100.0f) + 5;
     }
 
     public int GetSpeed() {
-        return Mathf.FloorToInt((_base.GetSpeed() * level) / 100f) + 5;
+        return Mathf.FloorToInt((Blueprint.GetSpeed() * Level) / 100.0f) + 5;
     }
 }

@@ -2,39 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Move", menuName = "Pokemon/Create new move")]
+[CreateAssetMenu(fileName = "Move", menuName = "Pokemon/Create New Move")]
 public class MoveBase : ScriptableObject {
-    [SerializeField] string name;
+    [SerializeField] string moveName;
+    [SerializeField] Type moveType;
+    [SerializeField] int power;
+    [SerializeField] int accuracy;
+    [SerializeField] int powerPoints;
 
     [TextArea]
     [SerializeField] string description;
 
-    [SerializeField] PokemonType type;
-    [SerializeField] int power;
-    [SerializeField] int accuracy;
-    [SerializeField] int PP;
+    public string GetMoveName() {
+        return moveName;
+    }
 
-    public string getName() {
-        return name;
+    public Type GetMoveType() {
+        return moveType;
+    }
+
+    public int GetPower() {
+        return power;
+    }
+
+    public int GetAccuracy() {
+        return accuracy;
+    }
+
+    public int GetPowerPoints() {
+        return powerPoints;
     }
 
     public string GetDescription() {
         return description;
-    }
-
-    public PokemonType getType() {
-        return type;
-    }
-
-    public int getPower() {
-        return power;
-    }
-
-    public int getAccuracy() {
-        return accuracy;
-    }
-
-    public int getPP() {
-        return PP;
     }
 }

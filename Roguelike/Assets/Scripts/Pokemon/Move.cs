@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Move {
-    public MoveBase Base { get; set; }
-    public int PP { get; set; }
+    public MoveBase blueprint { get; set; }
+    public int powerPoints { get; set; }
 
     public Move(MoveBase pokemonBase) {
-        Base = pokemonBase;
-        PP = pokemonBase.getPP();
+        blueprint = pokemonBase;
+        powerPoints = pokemonBase.GetPowerPoints();
     }
 }
