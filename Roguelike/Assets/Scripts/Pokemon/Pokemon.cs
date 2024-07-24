@@ -27,7 +27,7 @@ public class Pokemon {
         //     }
         // }
 
-        for (int i = Blueprint.GetLearnableMoves().Count - 1; i > 0; i--) {
+        for (int i = Blueprint.GetLearnableMoves().Count - 1; i >= 0; i--) {
             var move = Blueprint.GetLearnableMoves()[i];
             if (move.GetLevel() <= Level) {
                 Moves.Add(new Move(move.GetBase()));

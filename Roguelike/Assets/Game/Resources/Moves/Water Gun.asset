@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 117573f7344ece54589ddc5380196d24, type: 3}
-  m_Name: Ember
+  m_Name: Water Gun
   m_EditorClassIdentifier: 
-  moveName: Ember
-  moveType: 2
+  moveName: Water Gun
+  moveType: 3
   power: 40
   accuracy: 100
   powerPoints: 25
