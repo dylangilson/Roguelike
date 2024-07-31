@@ -8,4 +8,16 @@ public class HitpointsBar : MonoBehaviour {
     public void SetHitpoints(float normalizedHitpoints) {
         hitpoints.transform.localScale = new Vector3(normalizedHitpoints, 1.0f);
     }
+
+    public IEnumerator SetHitpointsSmooth(float newHitpoints) {
+        float currentHitpoints = hitpoints.transform.localScale.x;
+        float changeAmount = currentHitpoints - newHitpoints;
+
+        while (currentHitpoints - newHitpoints > Mathf.Epsilon) {
+            currentHitpoints -= changeAmount * Time.deltaTime; 
+            hitpoints.transform.localScale = new Vector3(currentHitpoints, 1.0f);
+            yield return null;
+        }
+        hitpoints.transform.localScale = new Vector3(newHitpoints, 1.0f);
+    }
 }

@@ -62,4 +62,24 @@ public class Pokemon {
     public int GetSpeed() {
         return Mathf.FloorToInt((Blueprint.GetSpeed() * Level) / 100.0f) + 5;
     }
+
+    public bool TakeDamage(Move move, Pokemon attacker) {
+        float modifiers = Random.Range (0.85f, 1.0f);
+        float attackModifier = (2 * attacker.Level + 10) / 250.0f;
+        float defenseModifier = attackModifier * move.Blueprint.GetPower() * ((float) attacker.GetAttack() / GetDefence()) + 2;
+        int damage = Mathf.FloorToInt(defenseModifier * modifiers);
+
+        CurrentHitpoints -= damage;
+        if (!(CurrentHitpoints > 0)) {
+            CurrentHitpoints = 0;
+            return true;
+        }
+
+        return false;
+    }
+
+    public Move GetRandomMove() {
+        int r = Random.Range(0, Moves.Count);
+        return Moves[r];
+    }
 }

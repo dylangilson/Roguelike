@@ -47,6 +47,41 @@ public class BattleSystem : MonoBehaviour {
         dialogueBox.EnableMoveSelector(true);
     }
 
+    IEnumerator PerformPlayerMove() {
+        state = BattleState.Busy;
+
+        var move = playerUnit.Pokemon.Moves[currentMove];
+        yield return dialogueBox.TypeDialogue($"{playerUnit.Pokemon.Blueprint.GetPokemonName()} used {move.Blueprint.GetMoveName()}");
+        
+        yield return new WaitForSeconds(1.0f);
+
+        bool isFainted = enemyUnit.Pokemon.TakeDamage(move, playerUnit.Pokemon);
+        yield return enemyHUD.UpdateHitpoints();
+
+        if (isFainted) {
+            yield return dialogueBox.TypeDialogue($"{enemyUnit.Pokemon.Blueprint.GetPokemonName()} fainted");
+        } else {
+            StartCoroutine(EnemyMove());
+        }
+    }
+
+    IEnumerator EnemyMove() {
+        state = BattleState.EnemyMove;
+
+        var move = enemyUnit.Pokemon.GetRandomMove();
+        yield return dialogueBox.TypeDialogue($"{enemyUnit.Pokemon.Blueprint.GetPokemonName()} used {move.Blueprint.GetMoveName()}");
+        
+        yield return new WaitForSeconds(1.0f);
+
+        bool isFainted = playerUnit.Pokemon.TakeDamage(move, enemyUnit.Pokemon);
+        yield return playerHUD.UpdateHitpoints();
+        if (isFainted) {
+            yield return dialogueBox.TypeDialogue($"{playerUnit.Pokemon.Blueprint.GetPokemonName()} fainted");
+        } else {
+            PlayerAction();
+        }
+    }
+
     private void Update() {
         if (state == BattleState.PlayerAction) {
             handleActionSelection();
@@ -68,7 +103,7 @@ public class BattleSystem : MonoBehaviour {
 
         dialogueBox.UpdateActionSelection(currentAction);
 
-        if (Input.GetKeyDown(KeyCode.Z)) {
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Space)) {
             if (currentAction == 0) {
                 PlayerMove();
             } else if (currentAction == 1) {
@@ -98,6 +133,12 @@ public class BattleSystem : MonoBehaviour {
             }
         }
 
-        dialogueBox.UpdateMoveSelection(currentMove, playerUnit.Pokemon.Moves[currentMove]);  
+        dialogueBox.UpdateMoveSelection(currentMove, playerUnit.Pokemon.Moves[currentMove]);
+
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Space)) {
+            dialogueBox.EnableMoveSelector(false);
+            dialogueBox.EnableDialogueText(true);
+            StartCoroutine(PerformPlayerMove());
+        }
     }
 }
