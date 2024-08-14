@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f72bffefd2f67e4f9be79cc6dd915ae, type: 3}
-  m_Name: Bulbasaur
+  m_Name: 001-Bulbasaur
   m_EditorClassIdentifier: 
   pokemonName: Bulbasaur
   description: 
@@ -25,9 +25,9 @@ MonoBehaviour:
     level: 4
   - moveBase: {fileID: 11400000, guid: 665efafd613966f49a53cc37403671a3, type: 2}
     level: 7
-  maxHitpoints: 45
-  attack: 49
-  defence: 49
-  specialAttack: 65
+  hitpoints: 60
+  attack: 55
+  defence: 65
+  specialAttack: 75
   specialDefence: 65
-  speed: 45
+  speed: 40

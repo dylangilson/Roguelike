@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f72bffefd2f67e4f9be79cc6dd915ae, type: 3}
-  m_Name: Charmander
+  m_Name: 004-Charmander
   m_EditorClassIdentifier: 
   pokemonName: Charmander
   description: 
   frontSprite: {fileID: 21300000, guid: cd259d9d4f8ba2749a16d1cc64d46bec, type: 3}
   backSprite: {fileID: 21300000, guid: ed8e1d9976a1fd94d961840d8f6e7764, type: 3}
   typeA: 2
-  typeB: 0
+  typeB: 15
   learnableMoves:
   - moveBase: {fileID: 11400000, guid: b6d1bf8986413aa4a9be821a77856ebb, type: 2}
     level: 1
@@ -25,9 +25,9 @@ MonoBehaviour:
     level: 4
   - moveBase: {fileID: 11400000, guid: c543c09a8f29e7445837dc51056be02b, type: 2}
     level: 7
-  maxHitpoints: 39
-  attack: 52
-  defence: 43
-  specialAttack: 60
-  specialDefence: 50
+  hitpoints: 60
+  attack: 60
+  defence: 55
+  specialAttack: 75
+  specialDefence: 55
   speed: 65

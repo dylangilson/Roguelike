@@ -26,6 +26,9 @@ public class BattleDialogueBox : MonoBehaviour {
             dialogueText.text += letter;
             yield return new WaitForSeconds(1.0f / lettersPerSecond);
         }
+
+        
+        yield return new WaitForSeconds(1.0f);
     }
 
     public void EnableDialogueText(bool enabled) {

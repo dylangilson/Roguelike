@@ -11,7 +11,7 @@ public class Pokemon {
     public Pokemon(PokemonBase pokemonBase, int pokemonLevel) {
         Blueprint = pokemonBase;
         Level = pokemonLevel;
-        CurrentHitpoints = GetMaxHitpoints();
+        CurrentHitpoints = GetHitpoints();
 
         // generate Moves
         Moves = new List<Move>();
@@ -39,8 +39,8 @@ public class Pokemon {
         }
     }
 
-    public int GetMaxHitpoints() {
-        return Mathf.FloorToInt((Blueprint.GetMaxHitpoints() * Level) / 100.0f) + 10;
+    public int GetHitpoints() {
+        return Mathf.FloorToInt((Blueprint.GetHitpoints() * Level) / 100.0f) + 10;
     }
 
     public int GetAttack() {
@@ -63,8 +63,21 @@ public class Pokemon {
         return Mathf.FloorToInt((Blueprint.GetSpeed() * Level) / 100.0f) + 5;
     }
 
-    public bool TakeDamage(Move move, Pokemon attacker) {
-        float modifiers = Random.Range (0.85f, 1.0f);
+    public DamageDetails TakeDamage(Move move, Pokemon attacker) {
+        float critical = 1.0f;
+        if (Random.value * 100.0f <= 6.25f) {
+            critical = 2.0f;
+        }
+        float typeAModifier = TypeChart.GetEffectiveness(move.Blueprint.GetMoveType(), this.Blueprint.GetTypeA());
+        float typeBModifier = TypeChart.GetEffectiveness(move.Blueprint.GetMoveType(), this.Blueprint.GetTypeB());
+        float typeModifier =  typeAModifier * typeBModifier;
+
+        var damageDetails = new DamageDetails() {
+            Effectiveness = typeModifier,
+            Critical = critical,
+            Fainted = false
+        };
+        float modifiers = Random.Range (0.85f, 1.0f) * typeModifier * critical;
         float attackModifier = (2 * attacker.Level + 10) / 250.0f;
         float defenseModifier = attackModifier * move.Blueprint.GetPower() * ((float) attacker.GetAttack() / GetDefence()) + 2;
         int damage = Mathf.FloorToInt(defenseModifier * modifiers);
@@ -72,14 +85,22 @@ public class Pokemon {
         CurrentHitpoints -= damage;
         if (!(CurrentHitpoints > 0)) {
             CurrentHitpoints = 0;
-            return true;
+            damageDetails.Fainted = true;
         }
 
-        return false;
+        return damageDetails;
     }
 
     public Move GetRandomMove() {
         int r = Random.Range(0, Moves.Count);
         return Moves[r];
     }
+}
+
+public class DamageDetails {
+    public bool Fainted { get; set; }
+
+    public float Critical { get; set; }
+
+    public float Effectiveness { get; set; }
 }

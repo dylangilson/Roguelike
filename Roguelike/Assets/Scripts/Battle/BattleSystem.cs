@@ -29,7 +29,6 @@ public class BattleSystem : MonoBehaviour {
         dialogueBox.SetMoveNames(playerUnit.Pokemon.Moves);
 
         yield return dialogueBox.TypeDialogue($"A wild {enemyUnit.Pokemon.Blueprint.GetPokemonName()} has appeared!");
-        yield return new WaitForSeconds(1.0f);
 
         PlayerAction();
     }
@@ -51,15 +50,14 @@ public class BattleSystem : MonoBehaviour {
         state = BattleState.Busy;
 
         var move = playerUnit.Pokemon.Moves[currentMove];
-        yield return dialogueBox.TypeDialogue($"{playerUnit.Pokemon.Blueprint.GetPokemonName()} used {move.Blueprint.GetMoveName()}");
-        
-        yield return new WaitForSeconds(1.0f);
+        yield return dialogueBox.TypeDialogue($"{playerUnit.Pokemon.Blueprint.GetPokemonName()} used {move.Blueprint.GetMoveName()}!");
 
-        bool isFainted = enemyUnit.Pokemon.TakeDamage(move, playerUnit.Pokemon);
+        var damageDetails = enemyUnit.Pokemon.TakeDamage(move, playerUnit.Pokemon);
         yield return enemyHUD.UpdateHitpoints();
+        yield return ShowDamageDetails(damageDetails);
 
-        if (isFainted) {
-            yield return dialogueBox.TypeDialogue($"{enemyUnit.Pokemon.Blueprint.GetPokemonName()} fainted");
+        if (damageDetails.Fainted) {
+            yield return dialogueBox.TypeDialogue($"{enemyUnit.Pokemon.Blueprint.GetPokemonName()} fainted!");
         } else {
             StartCoroutine(EnemyMove());
         }
@@ -69,16 +67,27 @@ public class BattleSystem : MonoBehaviour {
         state = BattleState.EnemyMove;
 
         var move = enemyUnit.Pokemon.GetRandomMove();
-        yield return dialogueBox.TypeDialogue($"{enemyUnit.Pokemon.Blueprint.GetPokemonName()} used {move.Blueprint.GetMoveName()}");
-        
-        yield return new WaitForSeconds(1.0f);
+        yield return dialogueBox.TypeDialogue($"{enemyUnit.Pokemon.Blueprint.GetPokemonName()} used {move.Blueprint.GetMoveName()}!");
 
-        bool isFainted = playerUnit.Pokemon.TakeDamage(move, enemyUnit.Pokemon);
+        var damageDetails = playerUnit.Pokemon.TakeDamage(move, enemyUnit.Pokemon);
         yield return playerHUD.UpdateHitpoints();
-        if (isFainted) {
-            yield return dialogueBox.TypeDialogue($"{playerUnit.Pokemon.Blueprint.GetPokemonName()} fainted");
+        yield return ShowDamageDetails(damageDetails);
+        if (damageDetails.Fainted) {
+            yield return dialogueBox.TypeDialogue($"{playerUnit.Pokemon.Blueprint.GetPokemonName()} fainted!");
         } else {
             PlayerAction();
+        }
+    }
+
+    IEnumerator ShowDamageDetails(DamageDetails damageDetails) {
+        if (damageDetails.Critical == 2.0f) {
+            yield return dialogueBox.TypeDialogue("A critical hit!");
+        }
+
+        if (damageDetails.Effectiveness > 1.0f) {
+            yield return dialogueBox.TypeDialogue("It's super effective!");
+        }else if (damageDetails.Effectiveness < 1.0f) {
+            yield return dialogueBox.TypeDialogue("It's not very effective!");
         }
     }
 

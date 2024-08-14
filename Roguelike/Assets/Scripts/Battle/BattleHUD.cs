@@ -14,10 +14,10 @@ public class BattleHUD : MonoBehaviour {
         currentPokemon = pokemon;
         nameText.text = pokemon.Blueprint.GetPokemonName();
         levelText.text = "Lvl: " + pokemon.Level;
-        hitpointsBar.SetHitpoints((float)(pokemon.CurrentHitpoints / pokemon.GetMaxHitpoints()));
+        hitpointsBar.SetHitpoints((float)(pokemon.CurrentHitpoints / pokemon.GetHitpoints()));
     }
     
     public IEnumerator UpdateHitpoints() {
-        yield return hitpointsBar.SetHitpointsSmooth((float) currentPokemon.CurrentHitpoints / currentPokemon.GetMaxHitpoints());
+        yield return hitpointsBar.SetHitpointsSmooth((float) currentPokemon.CurrentHitpoints / currentPokemon.GetHitpoints());
     }
 }

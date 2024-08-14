@@ -1,0 +1,343 @@
+Using pre-set license
+Built from '2022.3/staging' branch; Version is '2022.3.27f1 (73effa14754f) revision 7598074'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 10  (10.0.19045) 64bit Core' Language: 'en' Physical Memory: 16305 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2022.3.27f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker2
+-projectPath
+C:/Users/Cole/Documents/Unity/Roguelike/Roguelike
+-logFile
+Logs/AssetImportWorker2.log
+-srvPort
+63189
+Successfully changed project path to: C:/Users/Cole/Documents/Unity/Roguelike/Roguelike
+C:/Users/Cole/Documents/Unity/Roguelike/Roguelike
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [19520] Host "[IP] 192.168.1.74 [Port] 0 [Flags] 2 [Guid] 2044632103 [EditorId] 2044632103 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-PG0S2J2) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+
+Player connection [19520] Host "[IP] 192.168.1.74 [Port] 0 [Flags] 2 [Guid] 2044632103 [EditorId] 2044632103 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-PG0S2J2) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+
+[Physics::Module] Initialized MultithreadedJobDispatcher with 11 workers.
+Refreshing native plugins compatible for Editor in 15.09 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2022.3.27f1 (73effa14754f)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2022.3.27f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/Cole/Documents/Unity/Roguelike/Roguelike/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 3070 (ID=0x2484)
+    Vendor:   NVIDIA
+    VRAM:     8032 MB
+    Driver:   31.0.15.4601
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2022.3.27f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2022.3.27f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2022.3.27f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56904
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.3.27f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.3.27f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.008953 seconds.
+- Loaded All Assemblies, in  0.294 seconds
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.207 seconds
+Domain Reload Profiling: 500ms
+	BeginReloadAssembly (97ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (1ms)
+	RebuildCommonClasses (27ms)
+	RebuildNativeTypeToScriptingClass (10ms)
+	initialDomainReloadingComplete (49ms)
+	LoadAllAssembliesAndSetupDomain (110ms)
+		LoadAssemblies (95ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (108ms)
+			TypeCache.Refresh (107ms)
+				TypeCache.ScanAssembly (96ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (0ms)
+	FinalizeReload (207ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (163ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (9ms)
+			SetLoadedEditorAssemblies (4ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (2ms)
+			ProcessInitializeOnLoadAttributes (113ms)
+			ProcessInitializeOnLoadMethodAttributes (36ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+========================================================================
+Worker process is ready to serve import requests
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.526 seconds
+Refreshing native plugins compatible for Editor in 4.26 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Package Manager log level set to [2]
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.496 seconds
+Domain Reload Profiling: 1019ms
+	BeginReloadAssembly (127ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (4ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (18ms)
+	RebuildCommonClasses (24ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (34ms)
+	LoadAllAssembliesAndSetupDomain (330ms)
+		LoadAssemblies (276ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (130ms)
+			TypeCache.Refresh (109ms)
+				TypeCache.ScanAssembly (95ms)
+			ScanForSourceGeneratedMonoScriptInfo (16ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (497ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (374ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (6ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (60ms)
+			ProcessInitializeOnLoadAttributes (271ms)
+			ProcessInitializeOnLoadMethodAttributes (27ms)
+			AfterProcessingInitializeOnLoad (6ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (5ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.03 seconds
+Refreshing native plugins compatible for Editor in 5.79 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 4044 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 65 unused Assets / (61.6 KB). Loaded Objects now: 4506.
+Memory consumption went from 143.9 MB to 143.9 MB.
+Total: 3.098400 ms (FindLiveObjects: 0.277900 ms CreateObjectMapping: 0.191500 ms MarkObjects: 2.518300 ms  DeleteObjects: 0.110200 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 1217374.782476 seconds.
+  path: Assets/Game/Resources/Pokemon/155-Cyndaquil.asset
+  artifactKey: Guid(50830c46b18829b48970c594dee33429) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game/Resources/Pokemon/155-Cyndaquil.asset using Guid(50830c46b18829b48970c594dee33429) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dd190b35a93014b3cbe5dc0d89116150') in 0.009121 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 64.322391 seconds.
+  path: Assets/Game/Resources/Pokemon/158-Totadile.asset
+  artifactKey: Guid(ddd4617a6c2ca8849895a9d85befb4d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game/Resources/Pokemon/158-Totadile.asset using Guid(ddd4617a6c2ca8849895a9d85befb4d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1c4b63ce6d9f3fcf0f4447943ce25efb') in 0.000944 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 26.842361 seconds.
+  path: Assets/Game/Resources/Pokemon/160-Feraligatr.asset
+  artifactKey: Guid(da2e0860c6f8ab048acc74f4ab2a7895) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game/Resources/Pokemon/160-Feraligatr.asset using Guid(da2e0860c6f8ab048acc74f4ab2a7895) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5b8340f015412b98ebe1b0933fca8317') in 0.000889 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 252.807917 seconds.
+  path: Assets/Game/Resources/Pokemon/Pokemon.asset
+  artifactKey: Guid(e8c8ed070f3c173499a8817aaf90a895) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game/Resources/Pokemon/Pokemon.asset using Guid(e8c8ed070f3c173499a8817aaf90a895) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a7dc7d45bbd38e4a2f2631937ce3bed3') in 0.000957 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 12.456927 seconds.
+  path: Assets/Game/Resources/Pokemon/159-Croconaw.asset
+  artifactKey: Guid(e8c8ed070f3c173499a8817aaf90a895) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game/Resources/Pokemon/159-Croconaw.asset using Guid(e8c8ed070f3c173499a8817aaf90a895) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '97be2d7e9224b0a25ab9ecd57de323a1') in 0.000989 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 235.304311 seconds.
+  path: Assets/Game/Resources/Pokemon/Pokemon.asset
+  artifactKey: Guid(a36e418d2b33f6349ac41c7b74cf92d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game/Resources/Pokemon/Pokemon.asset using Guid(a36e418d2b33f6349ac41c7b74cf92d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0fd0ed6fc1c7285fe4ee518ad816ff9a') in 0.001005 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 99.931937 seconds.
+  path: Assets/Game/Resources/Pokemon/385-Jirachi.asset
+  artifactKey: Guid(a36e418d2b33f6349ac41c7b74cf92d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game/Resources/Pokemon/385-Jirachi.asset using Guid(a36e418d2b33f6349ac41c7b74cf92d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5ccc02d811fd9ba994aa6cf589e9cfff') in 0.000887 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 178.589568 seconds.
+  path: Assets/Game/Resources/Pokemon/Pokemon.asset
+  artifactKey: Guid(23ef461f1bd3b8b449a44ce7cb9f5ecc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game/Resources/Pokemon/Pokemon.asset using Guid(23ef461f1bd3b8b449a44ce7cb9f5ecc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '33d4e324526c62771b9b2154948f32d7') in 0.000946 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 63.890262 seconds.
+  path: Assets/Game/Resources/Pokemon/Celebi.asset
+  artifactKey: Guid(23ef461f1bd3b8b449a44ce7cb9f5ecc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game/Resources/Pokemon/Celebi.asset using Guid(23ef461f1bd3b8b449a44ce7cb9f5ecc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ed687a8803e2869e8b7a292012c6a87a') in 0.000884 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 95.844924 seconds.
+  path: Assets/Game/Resources/Pokemon/Pokemon.asset
+  artifactKey: Guid(15e85a3d04c0e0f4bbf99cc9474235f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game/Resources/Pokemon/Pokemon.asset using Guid(15e85a3d04c0e0f4bbf99cc9474235f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '26fcb6a6810341ab7e421b7d50313507') in 0.001000 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 23.886248 seconds.
+  path: Assets/Game/Resources/Pokemon/250-Ho-Oh.asset
+  artifactKey: Guid(15e85a3d04c0e0f4bbf99cc9474235f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game/Resources/Pokemon/250-Ho-Oh.asset using Guid(15e85a3d04c0e0f4bbf99cc9474235f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ae56e3b21d8e965599e9d58fa75ac5c8') in 0.000912 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 192.242780 seconds.
+  path: Assets/Game/Resources/Pokemon/249-lUGIA.asset
+  artifactKey: Guid(b2100fd2175bdb24e9b84f536300b9e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game/Resources/Pokemon/249-lUGIA.asset using Guid(b2100fd2175bdb24e9b84f536300b9e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ab2f5834c251d784ffe3ead4d9bddb04') in 0.000873 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 12.668163 seconds.
+  path: Assets/Game/Resources/Pokemon/249-Lugia.asset
+  artifactKey: Guid(b2100fd2175bdb24e9b84f536300b9e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game/Resources/Pokemon/249-Lugia.asset using Guid(b2100fd2175bdb24e9b84f536300b9e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8758afc7eb0e326d34e43df1ed80f221') in 0.000865 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 291.048411 seconds.
+  path: Assets/Game/Resources/Pokemon/244-Entei.asset
+  artifactKey: Guid(d9191b82703e90843aa8bbe655ab687b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game/Resources/Pokemon/244-Entei.asset using Guid(d9191b82703e90843aa8bbe655ab687b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7f255deb384a25842e1f88fcc88cb118') in 0.001008 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 129.805291 seconds.
+  path: Assets/Game/Resources/Pokemon/245-Suicune.asset
+  artifactKey: Guid(4bdb6d8d34a47bc4e8a3488a8dd4f319) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game/Resources/Pokemon/245-Suicune.asset using Guid(4bdb6d8d34a47bc4e8a3488a8dd4f319) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7aa18fdfaa7a84ff3e63f09baa6636f3') in 0.000919 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 208.702323 seconds.
+  path: Assets/Game/Resources/Pokemon/243-Raikou.asset
+  artifactKey: Guid(3f4c3c9e29cd2fe45aed443d1d3a1155) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game/Resources/Pokemon/243-Raikou.asset using Guid(3f4c3c9e29cd2fe45aed443d1d3a1155) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a53ee447dc800ddc18db11b4f293df16') in 0.000931 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 191.092520 seconds.
+  path: Assets/Game/Resources/Pokemon/Pokemon.asset
+  artifactKey: Guid(433fb0b972d73a7439329eda092e9889) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game/Resources/Pokemon/Pokemon.asset using Guid(433fb0b972d73a7439329eda092e9889) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '73caa10d75df0586f0c0ae56ab525dd8') in 0.000961 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 26.595564 seconds.
+  path: Assets/Game/Resources/Pokemon/382-Kyogre.asset
+  artifactKey: Guid(433fb0b972d73a7439329eda092e9889) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game/Resources/Pokemon/382-Kyogre.asset using Guid(433fb0b972d73a7439329eda092e9889) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bd3f89c9e8ece520ffee01d1c575eb59') in 0.001023 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 344.238522 seconds.
+  path: Assets/Game/Resources/Pokemon/383-Groudon.asset
+  artifactKey: Guid(8a0f00384ea196b4a94c5dbe1ad93327) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game/Resources/Pokemon/383-Groudon.asset using Guid(8a0f00384ea196b4a94c5dbe1ad93327) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b24f4ee8b7cff302fd21be47f2d540d4') in 0.001625 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 197.488821 seconds.
+  path: Assets/Game/Resources/Pokemon/384-Rayquaza.asset
+  artifactKey: Guid(a6c60c52cdc6db847bcfd06c1014e5ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game/Resources/Pokemon/384-Rayquaza.asset using Guid(a6c60c52cdc6db847bcfd06c1014e5ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd527f4bfdd59c1642ec379091385d4df') in 0.001356 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
