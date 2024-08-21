@@ -15,7 +15,7 @@ C:/Users/Cole/Documents/Unity/Roguelike/Roguelike
 -logFile
 Logs/AssetImportWorker3.log
 -srvPort
-63189
+50125
 Successfully changed project path to: C:/Users/Cole/Documents/Unity/Roguelike/Roguelike
 C:/Users/Cole/Documents/Unity/Roguelike/Roguelike
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -49,12 +49,12 @@ C:/Users/Cole/Documents/Unity/Roguelike/Roguelike
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [3528] Host "[IP] 192.168.1.74 [Port] 0 [Flags] 2 [Guid] 1431601206 [EditorId] 1431601206 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-PG0S2J2) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+Player connection [2044] Host "[IP] 192.168.1.74 [Port] 0 [Flags] 2 [Guid] 4197409895 [EditorId] 4197409895 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-PG0S2J2) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
 
-Player connection [3528] Host "[IP] 192.168.1.74 [Port] 0 [Flags] 2 [Guid] 1431601206 [EditorId] 1431601206 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-PG0S2J2) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [2044] Host "[IP] 192.168.1.74 [Port] 0 [Flags] 2 [Guid] 4197409895 [EditorId] 4197409895 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-PG0S2J2) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
 
 [Physics::Module] Initialized MultithreadedJobDispatcher with 11 workers.
-Refreshing native plugins compatible for Editor in 14.92 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 16.66 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2022.3.27f1 (73effa14754f)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2022.3.27f1/Editor/Data/Resources/UnitySubsystems
@@ -70,46 +70,46 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2022.3.27f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2022.3.27f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2022.3.27f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56584
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56260
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.3.27f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.3.27f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.008999 seconds.
-- Loaded All Assemblies, in  0.283 seconds
+Registered in 0.012016 seconds.
+- Loaded All Assemblies, in  0.424 seconds
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.202 seconds
-Domain Reload Profiling: 483ms
-	BeginReloadAssembly (91ms)
+- Finished resetting the current domain, in  0.275 seconds
+Domain Reload Profiling: 698ms
+	BeginReloadAssembly (141ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
 		CreateAndSetChildDomain (1ms)
-	RebuildCommonClasses (26ms)
-	RebuildNativeTypeToScriptingClass (8ms)
-	initialDomainReloadingComplete (50ms)
-	LoadAllAssembliesAndSetupDomain (106ms)
-		LoadAssemblies (89ms)
+	RebuildCommonClasses (35ms)
+	RebuildNativeTypeToScriptingClass (14ms)
+	initialDomainReloadingComplete (76ms)
+	LoadAllAssembliesAndSetupDomain (155ms)
+		LoadAssemblies (138ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (105ms)
-			TypeCache.Refresh (104ms)
-				TypeCache.ScanAssembly (93ms)
+		AnalyzeDomain (151ms)
+			TypeCache.Refresh (150ms)
+				TypeCache.ScanAssembly (135ms)
 			ScanForSourceGeneratedMonoScriptInfo (0ms)
 			ResolveRequiredComponents (0ms)
-	FinalizeReload (202ms)
+	FinalizeReload (276ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (160ms)
+		SetupLoadedEditorAssemblies (219ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (9ms)
-			SetLoadedEditorAssemblies (4ms)
+			InitializePlatformSupportModulesInManaged (12ms)
+			SetLoadedEditorAssemblies (5ms)
 			RefreshPlugins (0ms)
 			BeforeProcessingInitializeOnLoad (2ms)
-			ProcessInitializeOnLoadAttributes (111ms)
-			ProcessInitializeOnLoadMethodAttributes (34ms)
+			ProcessInitializeOnLoadAttributes (145ms)
+			ProcessInitializeOnLoadMethodAttributes (56ms)
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
@@ -117,8 +117,8 @@ Domain Reload Profiling: 483ms
 ========================================================================
 Worker process is ready to serve import requests
 Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  0.528 seconds
-Refreshing native plugins compatible for Editor in 4.63 ms, found 4 plugins.
+- Loaded All Assemblies, in  0.735 seconds
+Refreshing native plugins compatible for Editor in 6.20 ms, found 4 plugins.
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
 Package Manager log level set to [2]
@@ -126,47 +126,47 @@ Package Manager log level set to [2]
 [Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
 [Package Manager] Cannot connect to Unity Package Manager local server
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.486 seconds
-Domain Reload Profiling: 1011ms
-	BeginReloadAssembly (126ms)
+- Finished resetting the current domain, in  0.736 seconds
+Domain Reload Profiling: 1468ms
+	BeginReloadAssembly (169ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (4ms)
+		DisableScriptedObjects (5ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (18ms)
-	RebuildCommonClasses (24ms)
-	RebuildNativeTypeToScriptingClass (8ms)
-	initialDomainReloadingComplete (35ms)
-	LoadAllAssembliesAndSetupDomain (333ms)
-		LoadAssemblies (278ms)
+		CreateAndSetChildDomain (31ms)
+	RebuildCommonClasses (25ms)
+	RebuildNativeTypeToScriptingClass (12ms)
+	initialDomainReloadingComplete (42ms)
+	LoadAllAssembliesAndSetupDomain (484ms)
+		LoadAssemblies (419ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (132ms)
-			TypeCache.Refresh (112ms)
-				TypeCache.ScanAssembly (97ms)
-			ScanForSourceGeneratedMonoScriptInfo (15ms)
-			ResolveRequiredComponents (4ms)
-	FinalizeReload (486ms)
+		AnalyzeDomain (157ms)
+			TypeCache.Refresh (129ms)
+				TypeCache.ScanAssembly (113ms)
+			ScanForSourceGeneratedMonoScriptInfo (23ms)
+			ResolveRequiredComponents (5ms)
+	FinalizeReload (737ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (366ms)
+		SetupLoadedEditorAssemblies (581ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (6ms)
+			InitializePlatformSupportModulesInManaged (9ms)
 			SetLoadedEditorAssemblies (3ms)
 			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (59ms)
-			ProcessInitializeOnLoadAttributes (265ms)
-			ProcessInitializeOnLoadMethodAttributes (26ms)
-			AfterProcessingInitializeOnLoad (6ms)
+			BeforeProcessingInitializeOnLoad (89ms)
+			ProcessInitializeOnLoadAttributes (431ms)
+			ProcessInitializeOnLoadMethodAttributes (40ms)
+			AfterProcessingInitializeOnLoad (8ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (5ms)
+		AwakeInstancesAfterBackupRestoration (8ms)
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
 Refreshing native plugins compatible for Editor in 5.64 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 4044 Unused Serialized files (Serialized files now loaded: 0)
 Unloading 65 unused Assets / (61.6 KB). Loaded Objects now: 4506.
-Memory consumption went from 144.0 MB to 143.9 MB.
-Total: 3.086800 ms (FindLiveObjects: 0.271400 ms CreateObjectMapping: 0.234800 ms MarkObjects: 2.472900 ms  DeleteObjects: 0.106900 ms)
+Memory consumption went from 144.0 MB to 144.0 MB.
+Total: 3.508300 ms (FindLiveObjects: 0.304300 ms CreateObjectMapping: 0.201900 ms MarkObjects: 2.871500 ms  DeleteObjects: 0.130100 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
@@ -181,3 +181,96 @@ AssetImportParameters requested are different than current active one (requested
   custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 277.320365 seconds.
+  path: Assets/Game/Resources/Pokemon/384-Rayquaza.asset
+  artifactKey: Guid(a6c60c52cdc6db847bcfd06c1014e5ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game/Resources/Pokemon/384-Rayquaza.asset using Guid(a6c60c52cdc6db847bcfd06c1014e5ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4f76308bd68464716ae169a6e412fa9e') in 0.010894 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Game/Resources/Pokemon/250-Ho-Oh.asset
+  artifactKey: Guid(15e85a3d04c0e0f4bbf99cc9474235f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game/Resources/Pokemon/250-Ho-Oh.asset using Guid(15e85a3d04c0e0f4bbf99cc9474235f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'de4233227d95dc64a51ef2c25903eacd') in 0.001104 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000011 seconds.
+  path: Assets/Game/Resources/Pokemon/155-Cyndaquil.asset
+  artifactKey: Guid(50830c46b18829b48970c594dee33429) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game/Resources/Pokemon/155-Cyndaquil.asset using Guid(50830c46b18829b48970c594dee33429) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0536a4c754eace507580980a3da5379e') in 0.000744 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000008 seconds.
+  path: Assets/Game/Resources/Pokemon/249-Lugia.asset
+  artifactKey: Guid(b2100fd2175bdb24e9b84f536300b9e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game/Resources/Pokemon/249-Lugia.asset using Guid(b2100fd2175bdb24e9b84f536300b9e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7df8e6f8b97061fbc64232441e9dc4bf') in 0.000881 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000007 seconds.
+  path: Assets/Game/Resources/Pokemon/160-Feraligatr.asset
+  artifactKey: Guid(da2e0860c6f8ab048acc74f4ab2a7895) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game/Resources/Pokemon/160-Feraligatr.asset using Guid(da2e0860c6f8ab048acc74f4ab2a7895) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b4b5e4e183668dc75aed515fca364d59') in 0.000572 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 3519.983113 seconds.
+  path: Assets/Game/Resources/Pokemon/145-Zapdos.asset
+  artifactKey: Guid(ab89fb6d9cd487d4eac5f4cf84132a98) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game/Resources/Pokemon/145-Zapdos.asset using Guid(ab89fb6d9cd487d4eac5f4cf84132a98) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6a3ec7114688a997e36a9434fe3c484a') in 0.002285 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.005469 seconds.
+  path: Assets/Game/Resources/Pokemon/149-Dragonite.asset
+  artifactKey: Guid(eec51bb0c3a2ba34497f4aa00386b33e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game/Resources/Pokemon/149-Dragonite.asset using Guid(eec51bb0c3a2ba34497f4aa00386b33e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '061be4460fbcafbdd1ba479d5c2a5bbe') in 0.001206 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.005359 seconds.
+  path: Assets/Game/Resources/Pokemon/378-Regice.asset
+  artifactKey: Guid(dd8fd2988f1ba584d92715167e5492aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game/Resources/Pokemon/378-Regice.asset using Guid(dd8fd2988f1ba584d92715167e5492aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '46dc0a6d5562934592ed7d89f04394fd') in 0.001014 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/Game/Resources/Pokemon/380-Latias.asset
+  artifactKey: Guid(00e3aeca810737841896b164ab3e96c2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game/Resources/Pokemon/380-Latias.asset using Guid(00e3aeca810737841896b164ab3e96c2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ee5d5e90d33c76b78995725bc71f5b99') in 0.000917 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Game/Resources/Pokemon/385-Jirachi.asset
+  artifactKey: Guid(a36e418d2b33f6349ac41c7b74cf92d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game/Resources/Pokemon/385-Jirachi.asset using Guid(a36e418d2b33f6349ac41c7b74cf92d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '91a5110e3d0171ead84c9018bd4a5e3a') in 0.000770 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000010 seconds.
+  path: Assets/Game/Resources/Pokemon/Celebi.asset
+  artifactKey: Guid(23ef461f1bd3b8b449a44ce7cb9f5ecc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game/Resources/Pokemon/Celebi.asset using Guid(23ef461f1bd3b8b449a44ce7cb9f5ecc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd021101899deb7bad288c953347d6da8') in 0.000619 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+TcpMessagingSession - receive error: operation aborted. errorcode: 995, details: The I/O operation has been aborted because of either a thread exit or an application request.
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0

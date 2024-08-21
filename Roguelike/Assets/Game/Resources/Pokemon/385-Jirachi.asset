@@ -21,7 +21,7 @@ MonoBehaviour:
   learnableMoves: []
   hitpoints: 130
   attack: 90
-  defence: 100
-  specialAttack: 120
-  specialDefence: 90
-  speed: 110
+  defence: 110
+  specialAttack: 130
+  specialDefence: 100
+  speed: 120

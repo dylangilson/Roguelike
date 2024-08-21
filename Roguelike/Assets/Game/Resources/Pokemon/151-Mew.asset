@@ -22,6 +22,6 @@ MonoBehaviour:
   hitpoints: 100
   attack: 90
   defence: 110
-  specialAttack: 150
+  specialAttack: 180
   specialDefence: 130
   speed: 120
