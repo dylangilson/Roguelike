@@ -17,11 +17,11 @@ MonoBehaviour:
   frontSprite: {fileID: 0}
   backSprite: {fileID: 0}
   typeA: 15
-  typeB: 10
+  typeB: 17
   learnableMoves: []
-  hitpoints: 100
-  attack: 135
-  defence: 90
-  specialAttack: 115
-  specialDefence: 90
+  hitpoints: 115
+  attack: 115
+  defence: 135
+  specialAttack: 105
+  specialDefence: 100
   speed: 110

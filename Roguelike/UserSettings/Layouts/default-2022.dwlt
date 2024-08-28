@@ -493,7 +493,7 @@ MonoBehaviour:
     m_ReferencingInstanceIDs: 
     m_SceneHandles: 
     m_ShowAllHits: 0
-    m_SkipHidden: 0
+    m_SkipHidden: 1
     m_SearchArea: 1
     m_Folders:
     - Assets/Game/Resources/Pokemon
@@ -510,10 +510,10 @@ MonoBehaviour:
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: ec750000
-    m_LastClickedID: 30188
-    m_ExpandedIDs: 00000000c8750000ca750000cc750000ce75000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 34}
+    m_SelectedIDs: 44760000
+    m_LastClickedID: 30276
+    m_ExpandedIDs: 000000002076000022760000247600002676000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -541,7 +541,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000c8750000ca750000cc750000ce750000
+    m_ExpandedIDs: 0000000020760000227600002476000026760000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -593,9 +593,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 54}
+    m_ScrollPosition: {x: 0, y: 0}
     m_GridSize: 53
-  m_SkipHiddenPackages: 0
+  m_SkipHiddenPackages: 1
   m_DirectoriesAreaWidth: 115
 --- !u!114 &16
 MonoBehaviour:

@@ -19,9 +19,9 @@ MonoBehaviour:
   typeA: 11
   typeB: 17
   learnableMoves: []
-  hitpoints: 0
-  attack: 0
-  defence: 0
-  specialAttack: 0
-  specialDefence: 0
-  speed: 0
+  hitpoints: 65
+  attack: 55
+  defence: 85
+  specialAttack: 55
+  specialDefence: 60
+  speed: 40

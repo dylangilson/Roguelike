@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f72bffefd2f67e4f9be79cc6dd915ae, type: 3}
+  m_Name: 024-Arbok
+  m_EditorClassIdentifier: 
+  pokemonName: Arbok
+  description: 
+  frontSprite: {fileID: 0}
+  backSprite: {fileID: 0}
+  typeA: 8
+  typeB: 0
+  learnableMoves: []
+  hitpoints: 105
+  attack: 110
+  defence: 70
+  specialAttack: 45
+  specialDefence: 80
+  speed: 105
