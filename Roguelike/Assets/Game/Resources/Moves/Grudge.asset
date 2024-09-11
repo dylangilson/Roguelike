@@ -16,5 +16,5 @@ MonoBehaviour:
   moveType: 14
   power: 0
   accuracy: 100
-  powerPoints: 5
+  powerPoints: 10
   description: 

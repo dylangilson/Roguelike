@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 117573f7344ece54589ddc5380196d24, type: 3}
-  m_Name: Destiny Bond
+  m_Name: Sheer Cold
   m_EditorClassIdentifier: 
-  moveName: Destiny Bond
-  moveType: 14
+  moveName: Sheer Cold
+  moveType: 6
   power: 0
-  accuracy: 100
+  accuracy: 30
   powerPoints: 10
   description: 

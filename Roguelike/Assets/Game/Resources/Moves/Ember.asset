@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveName: Ember
   moveType: 2
-  power: 40
+  power: 45
   accuracy: 100
   powerPoints: 25
   description: 

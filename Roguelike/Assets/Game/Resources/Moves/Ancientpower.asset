@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveName: Ancientpower
   moveType: 13
-  power: 60
+  power: 80
   accuracy: 100
-  powerPoints: 5
+  powerPoints: 10
   description: 

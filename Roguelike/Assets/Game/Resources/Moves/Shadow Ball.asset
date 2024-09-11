@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveName: Shadow Ball
   moveType: 14
-  power: 80
+  power: 95
   accuracy: 100
   powerPoints: 15
   description: 

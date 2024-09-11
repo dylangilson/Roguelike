@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveName: Water Gun
   moveType: 3
-  power: 40
+  power: 45
   accuracy: 100
   powerPoints: 25
   description: 

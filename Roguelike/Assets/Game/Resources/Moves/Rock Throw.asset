@@ -15,6 +15,6 @@ MonoBehaviour:
   moveName: Rock Throw
   moveType: 13
   power: 50
-  accuracy: 90
+  accuracy: 100
   powerPoints: 15
   description: 

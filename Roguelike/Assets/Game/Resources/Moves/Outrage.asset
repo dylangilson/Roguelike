@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 117573f7344ece54589ddc5380196d24, type: 3}
   m_Name: Outrage
   m_EditorClassIdentifier: 
-  moveName: Twister
+  moveName: Outrage
   moveType: 15
   power: 90
   accuracy: 100
