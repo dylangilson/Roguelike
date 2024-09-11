@@ -2,6 +2,7 @@
 .vscode/
 Roguelike/Library/
 Roguelike/Temp/
+Roguelike/Logs/
 
 # files
 *.o
