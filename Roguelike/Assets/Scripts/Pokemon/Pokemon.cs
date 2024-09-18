@@ -77,9 +77,22 @@ public class Pokemon {
             Critical = critical,
             Fainted = false
         };
+        float attack = 0;
+        float defence = 0;
+
+        if (move.Blueprint.GetMoveCatagory() == MoveCatagory.Physical) {
+            attack = attacker.GetAttack();
+            defence = GetDefence();
+        } else if (move.Blueprint.GetMoveCatagory() == MoveCatagory.Special) {
+            attack = attacker.GetSpecialAttack();
+            defence = GetSpecialDefence();
+        } else {
+            Debug.Log(move.Blueprint.GetMoveName() + " is not Physical or Special");
+        }
+
         float modifiers = Random.Range (0.85f, 1.0f) * typeModifier * critical;
         float attackModifier = (2 * attacker.Level + 10) / 250.0f;
-        float defenseModifier = attackModifier * move.Blueprint.GetPower() * ((float) attacker.GetAttack() / GetDefence()) + 2;
+        float defenseModifier = attackModifier * move.Blueprint.GetPower() * (attack / defence) + 2;
         int damage = Mathf.FloorToInt(defenseModifier * modifiers);
 
         CurrentHitpoints -= damage;

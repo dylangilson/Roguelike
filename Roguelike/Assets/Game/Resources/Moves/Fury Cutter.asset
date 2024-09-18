@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 117573f7344ece54589ddc5380196d24, type: 3}
-  m_Name: Astonish
+  m_Name: Fury Cutter
   m_EditorClassIdentifier: 
-  moveName: Astonish
-  moveType: 14
-  power: 30
-  accuracy: 100
-  powerPoints: 15
+  moveName: Fury Cutter
+  moveType: 12
+  power: 10
+  accuracy: 95
+  powerPoints: 20
   moveCatagory: 1
   description: 

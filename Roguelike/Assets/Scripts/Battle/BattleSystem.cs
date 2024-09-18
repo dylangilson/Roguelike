@@ -56,6 +56,7 @@ public class BattleSystem : MonoBehaviour {
         state = BattleState.BUSY;
 
         var move = playerUnit.Pokemon.Moves[currentMove];
+        move.PowerPoints--;
         yield return dialogueBox.TypeDialogue($"{playerUnit.Pokemon.Blueprint.GetPokemonName()} used {move.Blueprint.GetMoveName()}!");
 
         playerUnit.PlayAttackAnimation();
@@ -82,6 +83,7 @@ public class BattleSystem : MonoBehaviour {
         state = BattleState.ENEMY_MOVE;
 
         var move = enemyUnit.Pokemon.GetRandomMove();
+        move.PowerPoints--;
         yield return dialogueBox.TypeDialogue($"{enemyUnit.Pokemon.Blueprint.GetPokemonName()} used {move.Blueprint.GetMoveName()}!");
 
         enemyUnit.PlayAttackAnimation();

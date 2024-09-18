@@ -19,7 +19,7 @@
     <RootNamespace></RootNamespace>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <AssemblyName>Assembly-CSharp-firstpass</AssemblyName>
     <TargetFramework>netstandard2.1</TargetFramework>
     <BaseDirectory>.</BaseDirectory>
   </PropertyGroup>
@@ -54,7 +54,7 @@
     <UnityProjectGenerator>Package</UnityProjectGenerator>
     <UnityProjectGeneratorVersion>2.0.22</UnityProjectGeneratorVersion>
     <UnityProjectGeneratorStyle>SDK</UnityProjectGeneratorStyle>
-    <UnityProjectType>Game:1</UnityProjectType>
+    <UnityProjectType>GamePlugins:3</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2022.3.27f1</UnityVersion>
   </PropertyGroup>
@@ -63,17 +63,19 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.27f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\GameController.cs" />
-    <Compile Include="Assets\Scripts\Battle\HitpointsBar.cs" />
-    <Compile Include="Assets\Scripts\Pokemon\PokemonBase.cs" />
-    <Compile Include="Assets\Scripts\Pokemon\Pokemon.cs" />
-    <Compile Include="Assets\Scripts\Battle\BattleDialogueBox.cs" />
-    <Compile Include="Assets\Scripts\Battle\BattleSystem.cs" />
-    <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
-    <Compile Include="Assets\Scripts\Pokemon\Move.cs" />
-    <Compile Include="Assets\Scripts\Battle\BattleHUD.cs" />
-    <Compile Include="Assets\Scripts\Battle\BattleUnit.cs" />
-    <Compile Include="Assets\Scripts\Pokemon\MoveBase.cs" />
+    <Compile Include="Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModulePhysics2D.cs" />
+    <Compile Include="Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleUnityVersion.cs" />
+    <Compile Include="Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModulePhysics.cs" />
+    <Compile Include="Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleEPOOutline.cs" />
+    <Compile Include="Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleUtils.cs" />
+    <Compile Include="Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleAudio.cs" />
+    <Compile Include="Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleSprite.cs" />
+    <Compile Include="Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleUI.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Plugins\Demigiant\DOTween\DOTween.XML" />
+    <None Include="Assets\Plugins\Demigiant\DOTween\DOTween.dll" />
+    <None Include="Assets\Plugins\Demigiant\DOTween\readme.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -1082,7 +1084,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Assembly-CSharp-firstpass.csproj" />
   </ItemGroup>
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
   <ItemGroup>

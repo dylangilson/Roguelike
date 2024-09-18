@@ -17,4 +17,5 @@ MonoBehaviour:
   power: 95
   accuracy: 100
   powerPoints: 10
+  moveCatagory: 2
   description: 

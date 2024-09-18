@@ -5709,7 +5709,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameText: {fileID: 1436368063}
   levelText: {fileID: 281392591}
-  hitpointsBar: {fileID: 1144457485}
+  hitpointsBar: {fileID: 0}
 --- !u!114 &888365774
 MonoBehaviour:
   m_ObjectHideFlags: 0

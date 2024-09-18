@@ -29,5 +29,5 @@ MonoBehaviour:
   attack: 55
   defence: 65
   specialAttack: 75
-  specialDefence: 65
+  specialDefence: 400
   speed: 40

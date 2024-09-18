@@ -9,6 +9,7 @@ public class MoveBase : ScriptableObject {
     [SerializeField] int power;
     [SerializeField] int accuracy;
     [SerializeField] int powerPoints;
+    [SerializeField] MoveCatagory moveCatagory;
 
     [TextArea]
     [SerializeField] string description;
@@ -31,6 +32,10 @@ public class MoveBase : ScriptableObject {
 
     public int GetPowerPoints() {
         return powerPoints;
+    }
+
+    public MoveCatagory GetMoveCatagory() {
+        return moveCatagory;
     }
 
     public string GetDescription() {

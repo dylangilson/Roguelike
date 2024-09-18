@@ -112,6 +112,12 @@ public enum Type {
     Steel
 }
 
+public enum MoveCatagory {
+    Other,
+    Physical,
+    Special
+}
+
 public class TypeChart {
     static float[][] chart = {
         //                        NOR   FIR   WAT   ELE   GRA   ICE   FIG   POI   GRO   FLY   PSY   BUG   ROC   GHO   DRA   DAR   STE
