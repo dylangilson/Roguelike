@@ -7,7 +7,7 @@ public class BattleHUD : MonoBehaviour {
     [SerializeField] Text nameText;
     [SerializeField] Text levelText;
     [SerializeField] HitpointsBar hitpointsBar;
-    //[SerializeField] Text hitpointsText;
+    [SerializeField] Text hitpointsValueText;
 
     Pokemon currentPokemon;
 
@@ -16,7 +16,7 @@ public class BattleHUD : MonoBehaviour {
         nameText.text = pokemon.Blueprint.GetPokemonName();
         levelText.text = "Lvl: " + pokemon.Level;
         hitpointsBar.SetHitpoints((float)(pokemon.CurrentHitpoints / pokemon.GetHitpoints()));
-        //hitpointsText.text = "HP: " + pokemon.CurrentHitpoints; // + "/" + pokemon.GetHitpoints();
+        hitpointsValueText.text = "HP: " + pokemon.CurrentHitpoints; // + "/" + pokemon.GetHitpoints();
     }
     
     public IEnumerator UpdateHitpoints() {
