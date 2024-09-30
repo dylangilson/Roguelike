@@ -93,6 +93,7 @@ public class BattleSystem : MonoBehaviour {
 
         var damageDetails = playerUnit.Pokemon.TakeDamage(move, enemyUnit.Pokemon);
         yield return playerHUD.UpdateHitpoints();
+        yield return playerHUD.UpdateHitpointsValue();
         yield return ShowDamageDetails(damageDetails);
 
         if (damageDetails.Fainted) {
