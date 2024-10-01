@@ -71,7 +71,7 @@ public class BattleSystem : MonoBehaviour {
         enemyUnit.PlayHitAnimation();
 
         var damageDetails = enemyUnit.Pokemon.TakeDamage(move, playerUnit.Pokemon);
-        yield return enemyHUD.UpdateHitpoints();
+        yield return enemyHUD.UpdateEnemyHitpoints();
         yield return ShowDamageDetails(damageDetails);
 
         if (damageDetails.Fainted) {
@@ -99,7 +99,7 @@ public class BattleSystem : MonoBehaviour {
         playerUnit.PlayHitAnimation();
 
         var damageDetails = playerUnit.Pokemon.TakeDamage(move, enemyUnit.Pokemon);
-        yield return playerHUD.UpdateHitpoints();
+        yield return playerHUD.UpdatePlayerHitpoints();
         yield return ShowDamageDetails(damageDetails);
 
         if (damageDetails.Fainted) {
