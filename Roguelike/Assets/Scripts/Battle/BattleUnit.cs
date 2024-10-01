@@ -5,8 +5,6 @@ using UnityEngine.UI;
 using DG.Tweening;
 
 public class BattleUnit : MonoBehaviour {
-    [SerializeField] PokemonBase blueprint;
-    [SerializeField] int level;
     [SerializeField] bool isPlayerUnit;
 
     public Pokemon Pokemon { get; set; }
@@ -21,8 +19,8 @@ public class BattleUnit : MonoBehaviour {
         originalColour = image.color;
     }
 
-    public void Setup() {
-        Pokemon = new Pokemon(blueprint, level);
+    public void Setup(Pokemon pokemon) {
+        Pokemon = pokemon;
 
         if (isPlayerUnit) {
             image.sprite = Pokemon.Blueprint.GetBackSprite();

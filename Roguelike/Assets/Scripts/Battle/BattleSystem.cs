@@ -18,15 +18,21 @@ public class BattleSystem : MonoBehaviour {
     int currentAction;
     int currentMove;
 
-    public void StartBattle() {
+    Party playerParty;
+    Pokemon wildPokemon;
+
+    public void StartBattle(Party playerParty, Pokemon wildPokemon) {
+        this.playerParty = playerParty;
+        this.wildPokemon = wildPokemon;
+
         StartCoroutine(SetupBattle());
     }
 
     public IEnumerator SetupBattle() {
-        playerUnit.Setup();
+        playerUnit.Setup(playerParty.GetLeadPokemon());
         playerHUD.SetData(playerUnit.Pokemon);
 
-        enemyUnit.Setup();
+        enemyUnit.Setup(wildPokemon);
         enemyHUD.SetData(enemyUnit.Pokemon);
 
         dialogueBox.SetMoveNames(playerUnit.Pokemon.Moves);
@@ -73,6 +79,7 @@ public class BattleSystem : MonoBehaviour {
             enemyUnit.PlayFaintAnimation();
             
             yield return new WaitForSeconds(2.0f);
+
             OnBattleOver(true);
         } else {
             StartCoroutine(PerformEnemyMove());
@@ -101,7 +108,20 @@ public class BattleSystem : MonoBehaviour {
             playerUnit.PlayFaintAnimation();
 
             yield return new WaitForSeconds(2.0f);
-            OnBattleOver(false);
+
+            var nextPokemon = playerParty.GetLeadPokemon();
+            if (nextPokemon == null) {
+                OnBattleOver(true);
+            }
+
+            playerUnit.Setup(nextPokemon);
+            playerHUD.SetData(nextPokemon);
+
+            dialogueBox.SetMoveNames(nextPokemon.Moves);
+
+            yield return dialogueBox.TypeDialogue($"Go {nextPokemon.Blueprint.GetPokemonName()}!");
+
+            PlayerAction();
         } else {
             PlayerAction();
         }

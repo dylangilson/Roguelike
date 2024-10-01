@@ -22,7 +22,10 @@ public class GameController : MonoBehaviour {
         battleSystem.gameObject.SetActive(true);
         overworldCamera.gameObject.SetActive(false);
 
-        battleSystem.StartBattle();
+        var playerParty = playerController.GetComponent<Party>();
+        var wildPokemon = FindObjectOfType<MapArea>().GetComponent<MapArea>().GetRandomWildPokemon();
+
+        battleSystem.StartBattle(playerParty, wildPokemon);
     }
 
     private void EndBattle(bool won) {

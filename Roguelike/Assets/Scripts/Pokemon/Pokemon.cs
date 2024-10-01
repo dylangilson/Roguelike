@@ -2,15 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Pokemon {
-    public PokemonBase Blueprint { get; set; }
-    public int Level { get; set; }
+    [SerializeField] PokemonBase blueprint;
+    [SerializeField] int level;
+
+    public PokemonBase Blueprint { 
+        get {
+            return blueprint;
+        }
+    }
+    public int Level { 
+        get {
+            return level;
+        } 
+    }
     public int CurrentHitpoints { get; set; }
     public List<Move> Moves { get; set; }
 
-    public Pokemon(PokemonBase pokemonBase, int pokemonLevel) {
-        Blueprint = pokemonBase;
-        Level = pokemonLevel;
+    public void Init() {
         CurrentHitpoints = GetHitpoints();
 
         // generate Moves

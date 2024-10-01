@@ -295,6 +295,7 @@ GameObject:
   - component: {fileID: 253932109}
   - component: {fileID: 253932111}
   - component: {fileID: 253932112}
+  - component: {fileID: 253932113}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -410,6 +411,23 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &253932113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 253932107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c77c87cb8852bfd45b44142bf774d12a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  party:
+  - blueprint: {fileID: 11400000, guid: 0bfd8c35f3aa78f488b98573adf1d53c, type: 2}
+    level: 3
+  - blueprint: {fileID: 11400000, guid: 0bfd8c35f3aa78f488b98573adf1d53c, type: 2}
+    level: 9
 --- !u!1 &281392589
 GameObject:
   m_ObjectHideFlags: 0
@@ -5790,7 +5808,6 @@ MonoBehaviour:
   levelText: {fileID: 281392591}
   hitpointsBar: {fileID: 1144457485}
   hitpointsValueText: {fileID: 680061420}
-  hitpointsTextMax: {fileID: 0}
 --- !u!114 &888365774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5987,85 +6004,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1046843648}
   m_CullTransparentMesh: 0
---- !u!1 &1102916192
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1102916193}
-  - component: {fileID: 1102916195}
-  - component: {fileID: 1102916194}
-  m_Layer: 0
-  m_Name: HitpointsValueText (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1102916193
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1102916192}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1106774571}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -46.699997, y: -24.300003}
-  m_SizeDelta: {x: 84.899994, y: 48.6}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1102916194
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1102916192}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.8901961, g: 0.62352943, b: 0.22745098, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 12800000, guid: 4b8b6386a3ed9534ba5ba611634ce86b, type: 3}
-    m_FontSize: 32
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 3
-    m_MaxSize: 40
-    m_Alignment: 0
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: 0/0
---- !u!222 &1102916195
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1102916192}
-  m_CullTransparentMesh: 0
 --- !u!1 &1106774570
 GameObject:
   m_ObjectHideFlags: 0
@@ -6101,7 +6039,6 @@ RectTransform:
   - {fileID: 368047794}
   - {fileID: 1548732090}
   - {fileID: 680061419}
-  - {fileID: 1102916193}
   m_Father: {fileID: 1810601248}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -6163,7 +6100,6 @@ MonoBehaviour:
   levelText: {fileID: 368047795}
   hitpointsBar: {fileID: 1548732093}
   hitpointsValueText: {fileID: 680061420}
-  hitpointsTextMax: {fileID: 0}
 --- !u!1 &1144457483
 GameObject:
   m_ObjectHideFlags: 0
@@ -6306,8 +6242,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c412c34e8acd4ee4e9728054c7923b1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blueprint: {fileID: 11400000, guid: 578522609b0490d458520a0d87a81d91, type: 2}
-  level: 7
   isPlayerUnit: 0
 --- !u!114 &1223707154
 MonoBehaviour:
@@ -6357,6 +6291,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1326861563}
   - component: {fileID: 1326861562}
+  - component: {fileID: 1326861564}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -6394,6 +6329,23 @@ Transform:
   - {fileID: 1692039955}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1326861564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1326861561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90b80a049008a91468c11c356ea689e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wildPokemon:
+  - blueprint: {fileID: 11400000, guid: 578522609b0490d458520a0d87a81d91, type: 2}
+    level: 5
+  - blueprint: {fileID: 11400000, guid: 578522609b0490d458520a0d87a81d91, type: 2}
+    level: 7
 --- !u!1 &1414505380
 GameObject:
   m_ObjectHideFlags: 0
@@ -7222,8 +7174,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c412c34e8acd4ee4e9728054c7923b1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blueprint: {fileID: 11400000, guid: 0bfd8c35f3aa78f488b98573adf1d53c, type: 2}
-  level: 7
   isPlayerUnit: 1
 --- !u!1 &1692039954
 GameObject:
@@ -8057,7 +8007,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2065207399
 Transform:
   m_ObjectHideFlags: 0
