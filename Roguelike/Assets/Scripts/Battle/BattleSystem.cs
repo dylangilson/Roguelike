@@ -11,6 +11,7 @@ public class BattleSystem : MonoBehaviour {
     [SerializeField] BattleUnit enemyUnit;
     [SerializeField] BattleHUD enemyHUD;
     [SerializeField] BattleDialogueBox dialogueBox;
+    [SerializeField] PartyScreen partyScreen;
 
     public event Action<bool> OnBattleOver;
     
@@ -35,6 +36,8 @@ public class BattleSystem : MonoBehaviour {
         enemyUnit.Setup(wildPokemon);
         enemyHUD.SetData(enemyUnit.Pokemon);
 
+        partyScreen.Init();
+
         dialogueBox.SetMoveNames(playerUnit.Pokemon.Moves);
 
         yield return dialogueBox.TypeDialogue($"A wild {enemyUnit.Pokemon.Blueprint.GetPokemonName()} has appeared!");
@@ -43,11 +46,24 @@ public class BattleSystem : MonoBehaviour {
     }
 
     void PlayerAction() {
-        state = BattleState.PLAYER_ACTION;
-
         StartCoroutine(dialogueBox.TypeDialogue("Choose an action!"));
 
+        state = BattleState.PLAYER_ACTION;
+
         dialogueBox.EnableActionSelector(true);
+    }
+
+    void PlayerBag() {
+        print("Bag Screen");
+    }
+
+    void PlayerPokemon() {
+        partyScreen.SetPartyData(playerParty.GetParty());
+        partyScreen.gameObject.SetActive(true);
+    }
+
+    void PlayerRun() {
+        print("Player Ran");
     }
 
     void PlayerMove() {
@@ -147,15 +163,17 @@ public class BattleSystem : MonoBehaviour {
     }
 
     private void HandleActionSelection() {
-        if (Input.GetKeyDown(KeyCode.DownArrow)) {
-            if (currentAction < 1) {
+        if (Input.GetKeyDown(KeyCode.RightArrow)) {
                 ++currentAction;
-            } 
-        } else if (Input.GetKeyDown(KeyCode.UpArrow)) {
-            if (currentAction > 0) {
+        } else if (Input.GetKeyDown(KeyCode.LeftArrow)) {
                 --currentAction;
-            }
+        } else if (Input.GetKeyDown(KeyCode.UpArrow)) {
+                currentAction -= 2;
+        } else if (Input.GetKeyDown(KeyCode.DownArrow)) {
+                currentAction += 2;
         }
+        currentAction = Mathf.Clamp(currentAction, 0, 3);
+    
 
         dialogueBox.UpdateActionSelection(currentAction);
 
@@ -163,6 +181,11 @@ public class BattleSystem : MonoBehaviour {
             if (currentAction == 0) {
                 PlayerMove();
             } else if (currentAction == 1) {
+                // PlayerBag();
+            }  else if (currentAction == 2) {
+                PlayerPokemon();
+
+            }  else if (currentAction == 3) {
                 // PlayerRun();
             }
         }
@@ -170,24 +193,15 @@ public class BattleSystem : MonoBehaviour {
 
     private void HandleMoveSelection() {
         if (Input.GetKeyDown(KeyCode.RightArrow)) {
-            if (currentMove < playerUnit.Pokemon.Moves.Count - 1) {
-                ++currentMove;
-            } 
+            ++currentMove;
         } else if (Input.GetKeyDown(KeyCode.LeftArrow)) {
-            if (currentMove > 0) {
-                --currentMove;
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.UpArrow)) {
-            if (currentMove > 1) {
-                currentMove -= 2;
-            } 
+            --currentMove;
+        } else if (Input.GetKeyDown(KeyCode.UpArrow)) {
+            currentMove -= 2;
         } else if (Input.GetKeyDown(KeyCode.DownArrow)) {
-            if (currentMove < playerUnit.Pokemon.Moves.Count - 2) {
-                currentMove += 2;
-            }
+            currentMove += 2;
         }
+        currentMove = Mathf.Clamp(currentMove, 0, playerUnit.Pokemon.Moves.Count - 1);
 
         dialogueBox.UpdateMoveSelection(currentMove, playerUnit.Pokemon.Moves[currentMove]);
 
@@ -195,6 +209,10 @@ public class BattleSystem : MonoBehaviour {
             dialogueBox.EnableMoveSelector(false);
             dialogueBox.EnableDialogueText(true);
             StartCoroutine(PerformPlayerMove());
+        } else if (Input.GetKeyDown(KeyCode.Backspace) || Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.Escape)) {
+            dialogueBox.EnableMoveSelector(false);
+            dialogueBox.EnableDialogueText(true);
+            PlayerAction();
         }
     }
 }
