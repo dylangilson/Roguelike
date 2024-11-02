@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum BattleState { START, PLAYER_ACTION, PLAYER_MOVE, ENEMY_MOVE, BUSY }
+public enum BattleState { START, PLAYER_ACTION, PLAYER_MOVE, ENEMY_MOVE, BUSY, PARTYSCREEN }
 
 public class BattleSystem : MonoBehaviour {
     [SerializeField] BattleUnit playerUnit;
@@ -18,6 +18,7 @@ public class BattleSystem : MonoBehaviour {
     BattleState state;
     int currentAction;
     int currentMove;
+    int currentMember;
 
     Party playerParty;
     Pokemon wildPokemon;
@@ -58,6 +59,7 @@ public class BattleSystem : MonoBehaviour {
     }
 
     void PlayerPokemon() {
+        state =  BattleState.PARTYSCREEN;
         partyScreen.SetPartyData(playerParty.GetParty());
         partyScreen.gameObject.SetActive(true);
     }
@@ -128,15 +130,7 @@ public class BattleSystem : MonoBehaviour {
             if (nextPokemon == null) {
                 OnBattleOver(true);
             }
-
-            playerUnit.Setup(nextPokemon);
-            playerHUD.SetData(nextPokemon);
-
-            dialogueBox.SetMoveNames(nextPokemon.Moves);
-
-            yield return dialogueBox.TypeDialogue($"Go {nextPokemon.Blueprint.GetPokemonName()}!");
-
-            PlayerAction();
+            PlayerPokemon();
         } else {
             PlayerAction();
         }
@@ -159,6 +153,8 @@ public class BattleSystem : MonoBehaviour {
             HandleActionSelection();
         } else if (state == BattleState.PLAYER_MOVE) {
             HandleMoveSelection();
+        } else if (state == BattleState.PARTYSCREEN) {
+            HandlePartySelection();
         }
     }
 
@@ -213,6 +209,63 @@ public class BattleSystem : MonoBehaviour {
             dialogueBox.EnableMoveSelector(false);
             dialogueBox.EnableDialogueText(true);
             PlayerAction();
+        }
+    }
+
+    void HandlePartySelection(){
+        if (Input.GetKeyDown(KeyCode.RightArrow)) {
+            ++currentMember;
+        } else if (Input.GetKeyDown(KeyCode.LeftArrow)) {
+            --currentMember;
+        } else if (Input.GetKeyDown(KeyCode.UpArrow)) {
+            currentMember -= 2;
+        } else if (Input.GetKeyDown(KeyCode.DownArrow)) {
+            currentMember += 2;
+        }
+        currentMember = Mathf.Clamp(currentMember, 0, playerParty.GetParty().Count - 1);
+
+        partyScreen.UpdateMemberSelect(currentMember);
+
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Space)) {
+            var selectedMember = playerParty.GetParty()[currentMember];
+            if (selectedMember.CurrentHitpoints <= 0) {
+                partyScreen.SetMessageText("You can't send out a fainted pokemon");
+                return;
+            }
+            if (selectedMember == playerUnit.Pokemon){
+                partyScreen.SetMessageText("You can't switch with the same pokemon");
+                return;
+            }
+
+            partyScreen.gameObject.SetActive(false);
+            state = BattleState.BUSY;
+            StartCoroutine(SwitchPokemon(selectedMember));
+
+        } else if (Input.GetKeyDown(KeyCode.Backspace) || Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.Escape)) {
+            partyScreen.gameObject.SetActive(false);
+            PlayerAction();
+        }
+    }
+
+    IEnumerator SwitchPokemon(Pokemon newPokemon) {
+        bool fainted = false;
+        if (playerUnit.Pokemon.CurrentHitpoints > 0) {
+            yield return dialogueBox.TypeDialogue($"Come back {playerUnit.Pokemon.Blueprint.GetPokemonName()}");
+            playerUnit.PlayFaintAnimation();
+            yield return new WaitForSeconds(2f);
+        } else if (playerUnit.Pokemon.CurrentHitpoints <= 0) {
+            fainted = true;
+        }
+
+        playerUnit.Setup(newPokemon);
+        playerHUD.SetData(newPokemon);
+        dialogueBox.SetMoveNames(newPokemon.Moves);
+
+        yield return dialogueBox.TypeDialogue($"Go {newPokemon.Blueprint.GetPokemonName()}!");
+        if (fainted){
+            PlayerAction();
+        } else if (!fainted){
+            StartCoroutine(PerformEnemyMove());
         }
     }
 }

@@ -300,6 +300,7 @@ MonoBehaviour:
   levelText: {fileID: 6798307649044063031}
   hitpointsBar: {fileID: 2335719463014539313}
   hitpointsValueText: {fileID: 3879943652340963849}
+  highlightedColour: {r: 0.24313726, g: 0.5529412, b: 0.9843137, a: 1}
 --- !u!1 &7118895076298539904
 GameObject:
   m_ObjectHideFlags: 0
