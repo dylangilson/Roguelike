@@ -6,8 +6,19 @@ using DG.Tweening;
 
 public class BattleUnit : MonoBehaviour {
     [SerializeField] bool isPlayerUnit;
+    [SerializeField] BattleHUD hud;
 
     public Pokemon Pokemon { get; set; }
+    public bool IsPlayerUnit {
+        get {
+            return isPlayerUnit;
+        }
+    }
+    public BattleHUD HUD {
+        get {
+            return hud;
+        }
+    }
 
     Image image;
     Vector3 originalPosition;
@@ -15,6 +26,7 @@ public class BattleUnit : MonoBehaviour {
 
     private void Awake() {
         image = GetComponent<Image>();
+        
         originalPosition = image.transform.localPosition;
         originalColour = image.color;
     }
@@ -27,6 +39,8 @@ public class BattleUnit : MonoBehaviour {
         } else {
             image.sprite = Pokemon.Blueprint.GetFrontSprite();
         }
+
+        hud.SetData(pokemon);
 
         image.color = originalColour;
 

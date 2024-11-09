@@ -14,6 +14,7 @@ public class PartyScreen : MonoBehaviour {
 
     public void SetPartyData(List<Pokemon> pokemon) {
         this.pokemon = pokemon;
+
         for (int i = 0; i < memberSlots.Length; i++) {
             if (i < pokemon.Count) {
                 memberSlots[i].SetData(pokemon[i]);
@@ -21,6 +22,7 @@ public class PartyScreen : MonoBehaviour {
                 memberSlots[i].gameObject.SetActive(false);
             }
         }
+        
         messageText.text = "Choose A Pokémon!";
     }
 

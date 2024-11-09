@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public class Party : MonoBehaviour {
     [SerializeField] List<Pokemon> party;
 
-
     public List<Pokemon> GetParty() {
         return party;
     }
+    
     private void Start() {
         foreach (var pokemon in party) {
             pokemon.Init();

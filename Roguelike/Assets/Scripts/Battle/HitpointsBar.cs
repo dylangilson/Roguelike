@@ -16,8 +16,10 @@ public class HitpointsBar : MonoBehaviour {
         while (currentHitpoints - newHitpoints > Mathf.Epsilon) {
             currentHitpoints -= changeAmount * Time.deltaTime; 
             hitpoints.transform.localScale = new Vector3(currentHitpoints, 1.0f);
+
             yield return currentHitpoints;
         }
+        
         hitpoints.transform.localScale = new Vector3(newHitpoints, 1.0f);
     }
 }

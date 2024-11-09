@@ -13,9 +13,11 @@ public class BattleHUD : MonoBehaviour {
 
     public void SetData(Pokemon pokemon) {
         currentPokemon = pokemon;
+
         nameText.text = pokemon.Blueprint.GetPokemonName();
         levelText.text = "Lvl: " + pokemon.Level;
         hitpointsValueText.text = "HP: " + pokemon.CurrentHitpoints;
+        
         hitpointsBar.SetHitpoints((float)(pokemon.CurrentHitpoints / pokemon.GetHitpoints()));
     }
     

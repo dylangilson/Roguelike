@@ -4,29 +4,29 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class BattleDialogueBox : MonoBehaviour {
-    
     [SerializeField] int lettersPerSecond;
     [SerializeField] Color highlightedColour;
     [SerializeField] Text dialogueText;
-    [SerializeField] GameObject actionSelector;    
-    [SerializeField] GameObject moveSelector;    
+    [SerializeField] GameObject actionSelector;
+    [SerializeField] GameObject moveSelector;
     [SerializeField] GameObject moveDetails;
-    [SerializeField] List<Text> actionTexts;    
-    [SerializeField] List<Text> moveTexts;    
-    [SerializeField] Text ppText;    
-    [SerializeField] Text typeText;    
+    [SerializeField] List<Text> actionTexts;
+    [SerializeField] List<Text> moveTexts;
+    [SerializeField] Text ppText;
+    [SerializeField] Text typeText;
 
-    public void setDialogue(string dialogue) {
+    public void SetDialogue(string dialogue) {
         dialogueText.text = dialogue;
     }
 
     public IEnumerator TypeDialogue(string dialogue) {
         dialogueText.text = "";
+
         foreach (var letter in dialogue.ToCharArray()) {
             dialogueText.text += letter;
+
             yield return new WaitForSeconds(1.0f / lettersPerSecond);
         }
-
         
         yield return new WaitForSeconds(1.0f);
     }
@@ -66,6 +66,7 @@ public class BattleDialogueBox : MonoBehaviour {
             typeText.text = move.Blueprint.GetMoveType().ToString();
         }
     }
+    
     public void SetMoveNames(List<Move> moves) {
         for (int i = 0; i < moveTexts.Count; i++) {
             if (i < moves.Count) {

@@ -7,9 +7,8 @@ public class PlayerController : MonoBehaviour {
     public float movementSpeed;
     public LayerMask solidObjectsLayer;
     public LayerMask grassLayer;
-
     public event Action OnEncountered;
-    
+
     private bool isMoving;
     private Vector2 input;
     private Animator animator;
@@ -52,6 +51,7 @@ public class PlayerController : MonoBehaviour {
 
         while ((targetPosition - transform.position).sqrMagnitude > Mathf.Epsilon) {
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, movementSpeed * Time.deltaTime);
+            
             yield return null;
         }
 

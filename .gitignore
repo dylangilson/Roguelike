@@ -7,3 +7,4 @@ Roguelike/Logs/
 # files
 *.o
 *.obj
+*.dwlt
