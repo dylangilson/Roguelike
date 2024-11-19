@@ -19,9 +19,11 @@ public class Pokemon {
     }
     public int CurrentHitpoints { get; set; }
     public List<Move> Moves { get; set; }
+    public Dictionary<Stat, int> Stats { get; private set; }
+    public Dictionary<Stat, int> StatBoosts { get; private set; }
+    public int MaxHitpoints { get; private set; }
 
     public void Init() {
-        CurrentHitpoints = GetHitpoints();
         Moves = new List<Move>();
 
         // generate moves
@@ -36,30 +38,73 @@ public class Pokemon {
                 break;
             }
         }
+
+        CalculateStats();
+        
+        CurrentHitpoints = MaxHitpoints;
+        StatBoosts = new Dictionary<Stat, int>() {
+            {Stat.ATTACK, 0},
+            {Stat.DEFENCE, 0},
+            {Stat.SPECIALATTACK, 0},
+            {Stat.SPECIALDEFENCE, 0},
+            {Stat.SPEED, 0},
+        };
     }
 
-    public int GetHitpoints() {
-        return Mathf.FloorToInt((Blueprint.GetHitpoints() * Level) / 100.0f) + 10;
+    void CalculateStats() {
+        Stats = new Dictionary<Stat, int>();
+        Stats.Add(Stat.ATTACK, Mathf.FloorToInt((Blueprint.GetAttack() * Level) / 100.0f) + 5);
+        Stats.Add(Stat.DEFENCE, Mathf.FloorToInt((Blueprint.GetDefence() * Level) / 100.0f) + 5);
+        Stats.Add(Stat.SPECIALATTACK, Mathf.FloorToInt((Blueprint.GetSpecialAttack() * Level) / 100.0f) + 5);
+        Stats.Add(Stat.SPECIALDEFENCE, Mathf.FloorToInt((Blueprint.GetSpecialDefence() * Level) / 100.0f) + 5);
+        Stats.Add(Stat.SPEED, Mathf.FloorToInt((Blueprint.GetSpeed() * Level) / 100.0f) + 5);
+
+        MaxHitpoints = Mathf.FloorToInt((Blueprint.GetHitpoints() * Level) / 100.0f) + 10;
+    }
+
+    int GetStat(Stat stat) {
+        int statValue = Stats[stat];
+
+        int boost = StatBoosts[stat];
+        var boostValues = new float[] {1.0f, 1.5f, 2.0f, 2.5f, 3.0f, 3.5f, 4.0f};
+
+        if (boost >= 0) {
+            statValue = Mathf.FloorToInt(statValue * boostValues[boost]);
+        } else if (boost < 0) {
+            statValue = Mathf.FloorToInt(statValue / boostValues[-boost]);
+        }
+
+        return statValue;
+    }
+
+    public void ApplyBoosts(List<StatBoost> statBoosts) {
+        foreach (var statBoost in statBoosts) {
+            var stat = statBoost.stat;
+            var boost = statBoost.boost;
+
+            StatBoosts[stat] = Mathf.Clamp(StatBoosts[stat] + boost, -6, 6);
+            Debug.Log($"{stat} has been altered!");
+        }
     }
 
     public int GetAttack() {
-        return Mathf.FloorToInt((Blueprint.GetAttack() * Level) / 100.0f) + 5;
+        return GetStat(Stat.ATTACK);
     }
 
     public int GetDefence() {
-        return Mathf.FloorToInt((Blueprint.GetDefence() * Level) / 100.0f) + 5;
+        return GetStat(Stat.DEFENCE);
     }
 
     public int GetSpecialAttack() {
-        return Mathf.FloorToInt((Blueprint.GetSpecialAttack() * Level) / 100.0f) + 5;
+        return GetStat(Stat.SPECIALATTACK);
     }
 
     public int GetSpecialDefence() {
-        return Mathf.FloorToInt((Blueprint.GetSpecialDefence() * Level) / 100.0f) + 5;
+        return GetStat(Stat.SPECIALDEFENCE);
     }
 
     public int GetSpeed() {
-        return Mathf.FloorToInt((Blueprint.GetSpeed() * Level) / 100.0f) + 5;
+        return GetStat(Stat.SPEED);
     }
 
     public DamageDetails TakeDamage(Move move, Pokemon attacker) {
@@ -84,10 +129,14 @@ public class Pokemon {
 
         if (move.Blueprint.GetMoveCatagory() == MoveCatagory.PHYSICAL) {
             attack = attacker.GetAttack();
+            Debug.Log($"{attacker.Blueprint.GetPokemonName()}'s attack is {attacker.GetAttack()}");
             defence = GetDefence();
+            Debug.Log($"Defender's defence is {GetDefence()}");
         } else if (move.Blueprint.GetMoveCatagory() == MoveCatagory.SPECIAL) {
             attack = attacker.GetSpecialAttack();
+            Debug.Log($"{attacker.Blueprint.GetPokemonName()}'s special attack is {attacker.GetSpecialAttack()}");
             defence = GetSpecialDefence();
+            Debug.Log($"Defender's special defence is {GetSpecialDefence()}");
         } else {
             Debug.Log(move.Blueprint.GetMoveName() + " is not Physical or Special!");
         }

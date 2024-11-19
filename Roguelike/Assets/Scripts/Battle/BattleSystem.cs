@@ -101,12 +101,29 @@ public class BattleSystem : MonoBehaviour {
 
         target.PlayHitAnimation();
 
-        var damageDetails = target.Pokemon.TakeDamage(move, source.Pokemon);
+        if (move.Blueprint.GetMoveCatagory() == MoveCatagory.OTHER) {
+            MoveEffects effects = move.Blueprint.GetMoveEffects();
+            if (effects.GetBoosts() != null) {
+                if (move.Blueprint.GetMoveTarget() == MoveTarget.SELF) {
+                    source.Pokemon.ApplyBoosts(effects.GetBoosts());
+                } else if (move.Blueprint.GetMoveTarget() == MoveTarget.FOE) {
+                    target.Pokemon.ApplyBoosts(effects.GetBoosts());
+                } else {
+                    Debug.Log($"{move} has no target");
+                }
+            }
 
-        yield return target.HUD.UpdateEnemyHitpoints();
-        yield return ShowDamageDetails(damageDetails);
 
-        if (damageDetails.Fainted) {
+        } else if (move.Blueprint.GetMoveCatagory() == MoveCatagory.PHYSICAL || move.Blueprint.GetMoveCatagory() == MoveCatagory.SPECIAL) {
+            var damageDetails = target.Pokemon.TakeDamage(move, source.Pokemon);
+
+            yield return target.HUD.UpdateEnemyHitpoints();
+            yield return ShowDamageDetails(damageDetails);
+        } else {
+            Debug.Log($"{move} is not PHYSICAL, SPECIAL, OR OTHER");
+        }
+
+        if (target.Pokemon.CurrentHitpoints <= 0) {
             yield return dialogueBox.TypeDialogue($"{target.Pokemon.Blueprint.GetPokemonName()} fainted!");
 
             target.PlayFaintAnimation();

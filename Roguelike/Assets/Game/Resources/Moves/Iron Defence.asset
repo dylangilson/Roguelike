@@ -17,4 +17,10 @@ MonoBehaviour:
   power: 0
   accuracy: 100
   powerPoints: 15
+  moveCatagory: 0
+  effects:
+    boosts:
+    - stat: 1
+      boost: 2
+  target: 0
   description: 

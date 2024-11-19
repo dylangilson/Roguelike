@@ -6732,9 +6732,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wildPokemon:
   - blueprint: {fileID: 11400000, guid: 578522609b0490d458520a0d87a81d91, type: 2}
-    level: 5
+    level: 1
   - blueprint: {fileID: 11400000, guid: 578522609b0490d458520a0d87a81d91, type: 2}
-    level: 7
+    level: 1
 --- !u!1001 &1355904232
 PrefabInstance:
   m_ObjectHideFlags: 0

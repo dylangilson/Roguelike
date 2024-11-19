@@ -20,7 +20,7 @@ public class PartyMemberUI : MonoBehaviour {
 
         hitpointsValueText.text = "HP: " + pokemon.CurrentHitpoints;
 
-        hitpointsBar.SetHitpoints((float)(pokemon.CurrentHitpoints / pokemon.GetHitpoints()));
+        hitpointsBar.SetHitpoints((float)(pokemon.CurrentHitpoints / pokemon.MaxHitpoints));
     }
 
     public void SetSelected(bool selected) {

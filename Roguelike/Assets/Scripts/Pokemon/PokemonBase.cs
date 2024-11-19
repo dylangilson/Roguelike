@@ -108,6 +108,14 @@ public enum Type {
     STEEL
 }
 
+public enum Stat {
+    ATTACK,
+    DEFENCE,
+    SPECIALATTACK,
+    SPECIALDEFENCE,
+    SPEED
+}
+
 public enum MoveCatagory { OTHER, PHYSICAL, SPECIAL }
 
 public class TypeChart {

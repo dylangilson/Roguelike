@@ -18,16 +18,16 @@ public class BattleHUD : MonoBehaviour {
         levelText.text = "Lvl: " + pokemon.Level;
         hitpointsValueText.text = "HP: " + pokemon.CurrentHitpoints;
         
-        hitpointsBar.SetHitpoints((float)(pokemon.CurrentHitpoints / pokemon.GetHitpoints()));
+        hitpointsBar.SetHitpoints((float)(pokemon.CurrentHitpoints / pokemon.MaxHitpoints));
     }
     
     public IEnumerator UpdatePlayerHitpoints() {
-        hitpointsValueText.text = "HP: " + currentPokemon.CurrentHitpoints;
-
-        yield return hitpointsBar.SetHitpointsSmooth((float) currentPokemon.CurrentHitpoints / currentPokemon.GetHitpoints());
+        yield return hitpointsBar.SetHitpointsSmooth((float) currentPokemon.CurrentHitpoints / currentPokemon.MaxHitpoints);
     }
 
     public IEnumerator UpdateEnemyHitpoints() {
-        yield return hitpointsBar.SetHitpointsSmooth((float) currentPokemon.CurrentHitpoints / currentPokemon.GetHitpoints());
+        hitpointsValueText.text = "HP: " + currentPokemon.CurrentHitpoints;
+
+        yield return hitpointsBar.SetHitpointsSmooth((float) currentPokemon.CurrentHitpoints / currentPokemon.MaxHitpoints);
     }
 }

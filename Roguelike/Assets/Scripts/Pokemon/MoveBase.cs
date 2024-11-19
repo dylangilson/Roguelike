@@ -10,6 +10,8 @@ public class MoveBase : ScriptableObject {
     [SerializeField] int accuracy;
     [SerializeField] int powerPoints;
     [SerializeField] MoveCatagory moveCatagory;
+    [SerializeField] MoveEffects effects;
+    [SerializeField] MoveTarget target;
 
     [TextArea]
     [SerializeField] string description;
@@ -38,7 +40,35 @@ public class MoveBase : ScriptableObject {
         return moveCatagory;
     }
 
+    public MoveEffects GetMoveEffects() {
+        return effects;
+    }
+
+    public MoveTarget GetMoveTarget() {
+        return target;
+    }
+
     public string GetDescription() {
         return description;
     }
+}
+
+[System.Serializable]
+public class StatBoost {
+    public Stat stat;
+    public int boost;
+}
+
+[System.Serializable]
+public class MoveEffects {
+    [SerializeField] List<StatBoost> boosts;
+
+    public List<StatBoost> GetBoosts() {
+        return boosts;
+    }
+}
+
+public enum MoveTarget {
+    FOE,
+    SELF
 }
