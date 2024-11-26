@@ -22,6 +22,7 @@ public class Pokemon {
     public Dictionary<Stat, int> Stats { get; private set; }
     public Dictionary<Stat, int> StatBoosts { get; private set; }
     public int MaxHitpoints { get; private set; }
+    public Queue<string> StatusChanges { get; private set; } = new Queue<string>();
 
     public void Init() {
         Moves = new List<Move>();
@@ -42,13 +43,8 @@ public class Pokemon {
         CalculateStats();
         
         CurrentHitpoints = MaxHitpoints;
-        StatBoosts = new Dictionary<Stat, int>() {
-            {Stat.ATTACK, 0},
-            {Stat.DEFENCE, 0},
-            {Stat.SPECIALATTACK, 0},
-            {Stat.SPECIALDEFENCE, 0},
-            {Stat.SPEED, 0},
-        };
+
+        ResetStatBoosts();
     }
 
     void CalculateStats() {
@@ -60,6 +56,16 @@ public class Pokemon {
         Stats.Add(Stat.SPEED, Mathf.FloorToInt((Blueprint.GetSpeed() * Level) / 100.0f) + 5);
 
         MaxHitpoints = Mathf.FloorToInt((Blueprint.GetHitpoints() * Level) / 100.0f) + 10;
+    }
+
+    void ResetStatBoosts() {
+        StatBoosts = new Dictionary<Stat, int>() {
+            {Stat.ATTACK, 0},
+            {Stat.DEFENCE, 0},
+            {Stat.SPECIALATTACK, 0},
+            {Stat.SPECIALDEFENCE, 0},
+            {Stat.SPEED, 0},
+        };
     }
 
     int GetStat(Stat stat) {
@@ -83,7 +89,14 @@ public class Pokemon {
             var boost = statBoost.boost;
 
             StatBoosts[stat] = Mathf.Clamp(StatBoosts[stat] + boost, -6, 6);
-            Debug.Log($"{stat} has been altered!");
+
+            if (boost > 0) {
+                StatusChanges.Enqueue($"{Blueprint.GetPokemonName()}'s {stat} rose!");
+            } else if (boost < 0) {
+                StatusChanges.Enqueue($"{Blueprint.GetPokemonName()}'s {stat} fell!");
+            }
+
+            Debug.Log($"{Blueprint.GetPokemonName()}'s {stat} has been altered!");
         }
     }
 
@@ -131,12 +144,12 @@ public class Pokemon {
             attack = attacker.GetAttack();
             Debug.Log($"{attacker.Blueprint.GetPokemonName()}'s attack is {attacker.GetAttack()}");
             defence = GetDefence();
-            Debug.Log($"Defender's defence is {GetDefence()}");
+            // Debug.Log($"Defender's defence is {GetDefence()}");
         } else if (move.Blueprint.GetMoveCatagory() == MoveCatagory.SPECIAL) {
             attack = attacker.GetSpecialAttack();
             Debug.Log($"{attacker.Blueprint.GetPokemonName()}'s special attack is {attacker.GetSpecialAttack()}");
             defence = GetSpecialDefence();
-            Debug.Log($"Defender's special defence is {GetSpecialDefence()}");
+            // Debug.Log($"Defender's special defence is {GetSpecialDefence()}");
         } else {
             Debug.Log(move.Blueprint.GetMoveName() + " is not Physical or Special!");
         }
@@ -158,6 +171,10 @@ public class Pokemon {
     public Move GetRandomMove() {
         int r = Random.Range(0, Moves.Count);
         return Moves[r];
+    }
+
+    public void OnBattleOver() {
+        ResetStatBoosts();
     }
 }
 
