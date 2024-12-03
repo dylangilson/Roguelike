@@ -76,7 +76,9 @@
     <Compile Include="Assets\Scripts\Battle\BattleHUD.cs" />
     <Compile Include="Assets\Scripts\Pokemon\Party.cs" />
     <Compile Include="Assets\Scripts\Battle\BattleUnit.cs" />
+    <Compile Include="Assets\Scripts\Data\ConditionsDataBase.cs" />
     <Compile Include="Assets\Scripts\Gameplay\MapArea.cs" />
+    <Compile Include="Assets\Scripts\Pokemon\Condition.cs" />
     <Compile Include="Assets\Scripts\Pokemon\MoveBase.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -20,56 +20,56 @@ public class PokemonBase : ScriptableObject {
     [SerializeField] int specialDefence;
     [SerializeField] int speed;    
 
-    public string GetPokemonName() {
-        return pokemonName;
+    public string PokemonName {
+        get { return pokemonName; }
     }
 
-    public string GetDescription() {
-        return description;
+    public string Description {
+        get { return description; }
     }
     
-    public Sprite GetFrontSprite() {
-        return frontSprite;
+    public Sprite FrontSprite {
+        get { return frontSprite; }
     }
 
-    public Sprite GetBackSprite() {
-        return backSprite;
+    public Sprite BackSprite {
+        get { return backSprite; }
     }
 
-    public Type GetTypeA() {
-        return typeA;
+    public Type TypeA {
+        get { return typeA; }
     }
 
-    public Type GetTypeB() {
-        return typeB;
+    public Type TypeB {
+        get { return typeB; }
     }
 
-    public List<LearnableMove> GetLearnableMoves() {
-        return learnableMoves;
+    public List<LearnableMove> LearnableMoves {
+        get { return learnableMoves; }
     }
 
-    public int GetHitpoints() {
-        return hitpoints;
+    public int Hitpoints {
+        get { return hitpoints; }
     }
 
-    public int GetAttack() {
-        return attack;
+    public int Attack {
+        get { return attack; }
     }
 
-    public int GetDefence() {
-        return defence;
+    public int Defence {
+        get { return defence; }
     }
 
-    public int GetSpecialAttack() {
-        return specialAttack;
+    public int SpecialAttack {
+        get { return specialAttack; }
     }
 
-    public int GetSpecialDefence() {
-        return specialDefence;
+    public int SpecialDefence {
+        get { return specialDefence; }
     }
 
-    public int GetSpeed() {
-        return speed;
+    public int Speed {
+        get { return speed; }
     }
 }
 

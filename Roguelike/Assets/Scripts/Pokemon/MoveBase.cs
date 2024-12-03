@@ -16,40 +16,40 @@ public class MoveBase : ScriptableObject {
     [TextArea]
     [SerializeField] string description;
 
-    public string GetMoveName() {
-        return moveName;
+    public string MoveName {
+        get { return moveName; }
     }
 
-    public Type GetMoveType() {
-        return moveType;
+    public Type MoveType {
+        get { return moveType; }
     }
 
-    public int GetPower() {
-        return power;
+    public int Power {
+        get { return power; }
     }
 
-    public int GetAccuracy() {
-        return accuracy;
+    public int Accuracy {
+        get { return accuracy; }
     }
 
-    public int GetPowerPoints() {
-        return powerPoints;
+    public int PowerPoints {
+        get { return powerPoints; }
     }
 
-    public MoveCatagory GetMoveCatagory() {
-        return moveCatagory;
+    public MoveCatagory MoveCatagory {
+        get { return moveCatagory; }
     }
 
-    public MoveEffects GetMoveEffects() {
-        return effects;
+    public MoveEffects MoveEffects {
+        get { return effects; }
     }
 
-    public MoveTarget GetMoveTarget() {
-        return target;
+    public MoveTarget MoveTarget {
+        get { return target; }
     }
 
-    public string GetDescription() {
-        return description;
+    public string Description {
+        get { return description; }
     }
 }
 
@@ -62,9 +62,14 @@ public class StatBoost {
 [System.Serializable]
 public class MoveEffects {
     [SerializeField] List<StatBoost> boosts;
+    [SerializeField] ConditionID status;
 
-    public List<StatBoost> GetBoosts() {
-        return boosts;
+    public List<StatBoost> Boosts {
+        get { return boosts; }
+    }
+
+    public ConditionID Status {
+        get { return status; }
     }
 }
 

@@ -15,7 +15,7 @@ public class PartyMemberUI : MonoBehaviour {
     public void SetData(Pokemon pokemon) {
         currentPokemon = pokemon;
 
-        nameText.text = pokemon.Blueprint.GetPokemonName();
+        nameText.text = pokemon.Blueprint.PokemonName;
         levelText.text = "Lvl: " + pokemon.Level;
 
         hitpointsValueText.text = "HP: " + pokemon.CurrentHitpoints;

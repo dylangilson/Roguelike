@@ -62,15 +62,15 @@ public class BattleDialogueBox : MonoBehaviour {
                 moveTexts[i].color = Color.black;
             }
 
-            ppText.text = $"PP {move.PowerPoints} / {move.Blueprint.GetPowerPoints()}";
-            typeText.text = move.Blueprint.GetMoveType().ToString();
+            ppText.text = $"PP {move.PowerPoints} / {move.Blueprint.PowerPoints}";
+            typeText.text = move.Blueprint.MoveType.ToString();
         }
     }
     
     public void SetMoveNames(List<Move> moves) {
         for (int i = 0; i < moveTexts.Count; i++) {
             if (i < moves.Count) {
-                moveTexts[i].text = moves[i].Blueprint.GetMoveName();
+                moveTexts[i].text = moves[i].Blueprint.MoveName;
             } else {
                 moveTexts[i].text = "-";
             }

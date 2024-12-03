@@ -35,13 +35,13 @@ public class BattleSystem : MonoBehaviour {
 
         dialogueBox.SetMoveNames(playerUnit.Pokemon.Moves);
 
-        yield return dialogueBox.TypeDialogue($"A wild {enemyUnit.Pokemon.Blueprint.GetPokemonName()} has appeared!");
+        yield return dialogueBox.TypeDialogue($"A wild {enemyUnit.Pokemon.Blueprint.PokemonName} has appeared!");
 
         RollInitiative();
     }
 
     void RollInitiative() {
-        if (playerUnit.Pokemon.GetSpeed() == enemyUnit.Pokemon.GetSpeed()) {
+        if (playerUnit.Pokemon.Speed == enemyUnit.Pokemon.Speed) {
             System.Random random = new System.Random();
             int value = random.Next(2); // random number 0 or 1
 
@@ -52,9 +52,9 @@ public class BattleSystem : MonoBehaviour {
             } else {
                 Debug.Log("Error during speed tie");
             }
-        } else if (playerUnit.Pokemon.GetSpeed() > enemyUnit.Pokemon.GetSpeed()) {
+        } else if (playerUnit.Pokemon.Speed > enemyUnit.Pokemon.Speed) {
             ActionSelection();
-        } else if (playerUnit.Pokemon.GetSpeed() < enemyUnit.Pokemon.GetSpeed()) {
+        } else if (playerUnit.Pokemon.Speed < enemyUnit.Pokemon.Speed) {
             StartCoroutine(PerformEnemyMove());
         } else {
             Debug.Log("Error determining initiaive");
@@ -115,7 +115,7 @@ public class BattleSystem : MonoBehaviour {
     IEnumerator PerformMove(BattleUnit source, BattleUnit target, Move move) {
         move.PowerPoints--;
 
-        yield return dialogueBox.TypeDialogue($"{source.Pokemon.Blueprint.GetPokemonName()} used {move.Blueprint.GetMoveName()}!");
+        yield return dialogueBox.TypeDialogue($"{source.Pokemon.Blueprint.PokemonName} used {move.Blueprint.MoveName}!");
 
         source.PlayAttackAnimation();
 
@@ -123,19 +123,43 @@ public class BattleSystem : MonoBehaviour {
 
         target.PlayHitAnimation();
 
-        if (move.Blueprint.GetMoveCatagory() == MoveCatagory.OTHER) {
+        if (move.Blueprint.MoveCatagory == MoveCatagory.OTHER) {
             yield return RunMoveEffects(move, source.Pokemon, target.Pokemon);
-        } else if (move.Blueprint.GetMoveCatagory() == MoveCatagory.PHYSICAL || move.Blueprint.GetMoveCatagory() == MoveCatagory.SPECIAL) {
+        } else if (move.Blueprint.MoveCatagory == MoveCatagory.PHYSICAL || move.Blueprint.MoveCatagory == MoveCatagory.SPECIAL) {
             var damageDetails = target.Pokemon.TakeDamage(move, source.Pokemon);
-
-            yield return target.HUD.UpdateEnemyHitpoints();
+            
+            if (target == playerUnit) {
+                yield return target.HUD.UpdatePlayerHitpoints();
+            } else if (target == enemyUnit) {
+                yield return target.HUD.UpdateEnemyHitpoints();
+            }
+            
             yield return ShowDamageDetails(damageDetails);
         } else {
             Debug.Log($"{move} is not PHYSICAL, SPECIAL, OR OTHER");
         }
 
         if (target.Pokemon.CurrentHitpoints <= 0) {
-            yield return dialogueBox.TypeDialogue($"{target.Pokemon.Blueprint.GetPokemonName()} fainted!");
+            yield return dialogueBox.TypeDialogue($"{target.Pokemon.Blueprint.PokemonName} fainted!");
+
+            target.PlayFaintAnimation();
+            
+            yield return new WaitForSeconds(2.0f);
+
+            HandleFaint(target);
+        }
+
+        // pokemon could be burned or poisoned, this deals damage to them after THEIR turn
+        source.Pokemon.OnAfterTurn();
+
+        yield return ShowStatusChanges(source.Pokemon);
+        if (source == playerUnit) {
+            yield return source.HUD.UpdatePlayerHitpoints();
+        } else if (source == enemyUnit) {
+            yield return source.HUD.UpdateEnemyHitpoints();
+        }    
+        if (source.Pokemon.CurrentHitpoints <= 0) {
+            yield return dialogueBox.TypeDialogue($"{target.Pokemon.Blueprint.PokemonName} fainted!");
 
             target.PlayFaintAnimation();
             
@@ -146,15 +170,21 @@ public class BattleSystem : MonoBehaviour {
     }
 
     IEnumerator RunMoveEffects(Move move, Pokemon source, Pokemon target) {
-        MoveEffects effects = move.Blueprint.GetMoveEffects();
-        if (effects.GetBoosts() != null) {
-            if (move.Blueprint.GetMoveTarget() == MoveTarget.SELF) {
-                source.ApplyBoosts(effects.GetBoosts());
-            } else if (move.Blueprint.GetMoveTarget() == MoveTarget.FOE) {
-                target.ApplyBoosts(effects.GetBoosts());
+        MoveEffects effects = move.Blueprint.MoveEffects;
+        // Stat changing move effects
+        if (effects.Boosts != null) {
+            if (move.Blueprint.MoveTarget == MoveTarget.SELF) {
+                source.ApplyBoosts(effects.Boosts);
+            } else if (move.Blueprint.MoveTarget == MoveTarget.FOE) {
+                target.ApplyBoosts(effects.Boosts);
             } else {
                 Debug.Log($"{move} has no target");
             }
+        }
+        
+        // Status effect move effects
+        if (effects.Status != ConditionID.NONE) {
+            target.SetStatus(effects.Status);
         }
 
         yield return ShowStatusChanges(source);
@@ -316,7 +346,7 @@ public class BattleSystem : MonoBehaviour {
     IEnumerator SwitchPokemon(Pokemon newPokemon) {
         bool fainted = false;
         if (playerUnit.Pokemon.CurrentHitpoints > 0) {
-            yield return dialogueBox.TypeDialogue($"Come back {playerUnit.Pokemon.Blueprint.GetPokemonName()}!");
+            yield return dialogueBox.TypeDialogue($"Come back {playerUnit.Pokemon.Blueprint.PokemonName}!");
 
             playerUnit.PlayFaintAnimation();
 
@@ -328,7 +358,7 @@ public class BattleSystem : MonoBehaviour {
         playerUnit.Setup(newPokemon);
         dialogueBox.SetMoveNames(newPokemon.Moves);
 
-        yield return dialogueBox.TypeDialogue($"Go {newPokemon.Blueprint.GetPokemonName()}!");
+        yield return dialogueBox.TypeDialogue($"Go {newPokemon.Blueprint.PokemonName}!");
 
         if (fainted) {
             RollInitiative();

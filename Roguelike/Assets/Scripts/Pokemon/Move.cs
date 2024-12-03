@@ -8,6 +8,6 @@ public class Move {
 
     public Move(MoveBase pokemonBase) {
         Blueprint = pokemonBase;
-        PowerPoints = pokemonBase.GetPowerPoints();
+        PowerPoints = pokemonBase.PowerPoints;
     }
 }

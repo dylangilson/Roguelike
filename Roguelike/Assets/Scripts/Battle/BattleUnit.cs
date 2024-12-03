@@ -35,9 +35,9 @@ public class BattleUnit : MonoBehaviour {
         Pokemon = pokemon;
 
         if (isPlayerUnit) {
-            image.sprite = Pokemon.Blueprint.GetBackSprite();
+            image.sprite = Pokemon.Blueprint.BackSprite;
         } else {
-            image.sprite = Pokemon.Blueprint.GetFrontSprite();
+            image.sprite = Pokemon.Blueprint.FrontSprite;
         }
 
         hud.SetData(pokemon);

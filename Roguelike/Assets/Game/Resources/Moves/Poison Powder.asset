@@ -10,17 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 117573f7344ece54589ddc5380196d24, type: 3}
-  m_Name: Iron Defence
+  m_Name: Poison Powder
   m_EditorClassIdentifier: 
-  moveName: Iron Defence
-  moveType: 17
+  moveName: Poison Powder
+  moveType: 8
   power: 0
   accuracy: 100
-  powerPoints: 15
+  powerPoints: 35
   moveCatagory: 0
   effects:
-    boosts:
-    - stat: 1
-      boost: 2
-  target: 1
+    boosts: []
+    status: 1
+  target: 0
   description: 
