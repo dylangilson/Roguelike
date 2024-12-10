@@ -12,11 +12,13 @@ public class Pokemon {
             return blueprint;
         }
     }
+
     public int Level { 
         get {
             return level;
         } 
     }
+
     public int CurrentHitpoints { get; set; }
     public List<Move> Moves { get; set; }
     public Dictionary<Stat, int> Stats { get; private set; }
@@ -24,7 +26,9 @@ public class Pokemon {
     public int MaxHitpoints { get; private set; }
     public Queue<string> StatusChanges { get; private set; } = new Queue<string>();
     public Condition Status { get; private set; }
+    public int StatusCounter { get; set; }
     public bool HitpointsChanged { get; set; }
+    
     public void Init() {
         Moves = new List<Move>();
 
@@ -173,12 +177,32 @@ public class Pokemon {
 
     public void SetStatus(ConditionID conditionID) {
         Status = ConditionsDataBase.Conditions[conditionID];
-        StatusChanges.Enqueue($"{Blueprint.PokemonName} {Status.StartMessage}");
+        bool success = false;
+
+        if (Status?.OnStart != null) {
+            success = Status.OnStart(this);
+        }
+
+        if (success) {
+            StatusChanges.Enqueue($"{Blueprint.PokemonName} {Status.StartMessage}");
+        }
+    }
+
+    public void CureStatus() {
+        Status = null;
     }
 
     public Move GetRandomMove() {
         int r = Random.Range(0, Moves.Count);
         return Moves[r];
+    }
+
+    public bool OnBeforeMove() {
+        if (Status?.OnBeforeMove != null) {
+            return Status.OnBeforeMove(this);
+        }
+
+        return true;
     }
 
     public void OnAfterTurn() {

@@ -41,9 +41,8 @@ public class BattleSystem : MonoBehaviour {
     }
 
     void RollInitiative() {
-        if (playerUnit.Pokemon.Speed == enemyUnit.Pokemon.Speed) {
-            System.Random random = new System.Random();
-            int value = random.Next(2); // random number 0 or 1
+        if (playerUnit.Pokemon.Speed == enemyUnit.Pokemon.Speed) {           
+            int value = UnityEngine.Random.Range(0, 2); // random number 0 or 1
 
             if (value == 0) {
                 ActionSelection();
@@ -113,6 +112,13 @@ public class BattleSystem : MonoBehaviour {
     }
 
     IEnumerator PerformMove(BattleUnit source, BattleUnit target, Move move) {
+        if (!source.Pokemon.OnBeforeMove()) {
+            yield return ShowStatusChanges(source.Pokemon);
+            yield break;
+        }
+
+        yield return ShowStatusChanges(source.Pokemon);
+
         move.PowerPoints--;
 
         yield return dialogueBox.TypeDialogue($"{source.Pokemon.Blueprint.PokemonName} used {move.Blueprint.MoveName}!");
@@ -171,6 +177,7 @@ public class BattleSystem : MonoBehaviour {
 
     IEnumerator RunMoveEffects(Move move, Pokemon source, Pokemon target) {
         MoveEffects effects = move.Blueprint.MoveEffects;
+
         // Stat changing move effects
         if (effects.Boosts != null) {
             if (move.Blueprint.MoveTarget == MoveTarget.SELF) {
@@ -249,13 +256,13 @@ public class BattleSystem : MonoBehaviour {
 
     private void HandleActionSelection() {
         if (Input.GetKeyDown(KeyCode.RightArrow)) {
-                ++currentAction;
+            ++currentAction;
         } else if (Input.GetKeyDown(KeyCode.LeftArrow)) {
-                --currentAction;
+            --currentAction;
         } else if (Input.GetKeyDown(KeyCode.UpArrow)) {
-                currentAction -= 2;
+            currentAction -= 2;
         } else if (Input.GetKeyDown(KeyCode.DownArrow)) {
-                currentAction += 2;
+            currentAction += 2;
         }
 
         currentAction = Mathf.Clamp(currentAction, 0, 3);
@@ -303,7 +310,7 @@ public class BattleSystem : MonoBehaviour {
         }
     }
 
-    void HandlePartySelection(){
+    void HandlePartySelection() {
         if (Input.GetKeyDown(KeyCode.RightArrow)) {
             ++currentMember;
         } else if (Input.GetKeyDown(KeyCode.LeftArrow)) {
@@ -335,7 +342,6 @@ public class BattleSystem : MonoBehaviour {
             state = BattleState.BUSY;
 
             StartCoroutine(SwitchPokemon(selectedMember));
-
         } else if (Input.GetKeyDown(KeyCode.Backspace) || Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.Escape)) {
             partyScreen.gameObject.SetActive(false);
 
@@ -344,15 +350,16 @@ public class BattleSystem : MonoBehaviour {
     }
 
     IEnumerator SwitchPokemon(Pokemon newPokemon) {
-        bool fainted = false;
+        bool fainted = true;
+
         if (playerUnit.Pokemon.CurrentHitpoints > 0) {
+            fainted = false;
+
             yield return dialogueBox.TypeDialogue($"Come back {playerUnit.Pokemon.Blueprint.PokemonName}!");
 
             playerUnit.PlayFaintAnimation();
 
             yield return new WaitForSeconds(2f);
-        } else if (playerUnit.Pokemon.CurrentHitpoints <= 0) {
-            fainted = true;
         }
 
         playerUnit.Setup(newPokemon);
@@ -362,7 +369,7 @@ public class BattleSystem : MonoBehaviour {
 
         if (fainted) {
             RollInitiative();
-        } else if (!fainted) {
+        } else {
             StartCoroutine(PerformEnemyMove());
         }
     }
