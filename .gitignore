@@ -3,8 +3,11 @@
 Roguelike/Library/
 Roguelike/Temp/
 Roguelike/Logs/
+Roguelike/UserSettings/
 
 # files
 *.o
 *.obj
 *.dwlt
+*.csproj
+*.sln
