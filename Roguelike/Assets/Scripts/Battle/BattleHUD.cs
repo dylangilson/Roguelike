@@ -6,12 +6,21 @@ using UnityEngine.UI;
 public class BattleHUD : MonoBehaviour {
     [SerializeField] Text nameText;
     [SerializeField] Text levelText;
+    [SerializeField] Text statusText;
     [SerializeField] HitpointsBar hitpointsBar;
     [SerializeField] Text hitpointsValueText;
 
+    [SerializeField] Color poisonColor;
+    [SerializeField] Color paralysisColor;
+    [SerializeField] Color sleepColor;
+    [SerializeField] Color burnColor;
+    [SerializeField] Color freezeColor;
+
     Pokemon currentPokemon;
+    Dictionary<ConditionID, Color> statusColors;
 
     public void SetData(Pokemon pokemon) {
+        // Debug.Log("HERE WE ARE!");
         currentPokemon = pokemon;
 
         nameText.text = pokemon.Blueprint.PokemonName;
@@ -19,6 +28,29 @@ public class BattleHUD : MonoBehaviour {
         hitpointsValueText.text = "HP: " + pokemon.CurrentHitpoints;
         
         hitpointsBar.SetHitpoints((float)(pokemon.CurrentHitpoints / pokemon.MaxHitpoints));
+
+        statusColors = new Dictionary<ConditionID, Color>() {
+            {ConditionID.POISON, poisonColor},
+            {ConditionID.BURN, burnColor},
+            {ConditionID.SLEEP, sleepColor},
+            {ConditionID.PARALYSIS, paralysisColor},
+            {ConditionID.FREEZE, freezeColor},
+        };
+
+        SetStatusText();
+        // Debug.Log("HERE WE ARE!");
+        currentPokemon.OnStatusChanged += SetStatusText;
+    }
+
+    void SetStatusText() {
+        if (currentPokemon.Status == null) {
+            Debug.Log("HERE WE GO!");
+            statusText.text = "";
+        } else if (currentPokemon.Status != null) {
+            Debug.Log("HERE WE ARE!");
+            statusText.text = currentPokemon.Status.Abbreviation.ToString().ToUpper();
+            statusText.color = statusColors[currentPokemon.Status.ID];
+        }
     }
     
     public IEnumerator UpdatePlayerHitpoints() {

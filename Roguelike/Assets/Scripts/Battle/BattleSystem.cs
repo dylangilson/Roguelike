@@ -114,6 +114,7 @@ public class BattleSystem : MonoBehaviour {
     IEnumerator PerformMove(BattleUnit source, BattleUnit target, Move move) {
         if (!source.Pokemon.OnBeforeMove()) {
             yield return ShowStatusChanges(source.Pokemon);
+            yield return source.HUD.UpdatePlayerHitpoints();
             yield break;
         }
 
@@ -192,6 +193,11 @@ public class BattleSystem : MonoBehaviour {
         // Status effect move effects
         if (effects.Status != ConditionID.NONE) {
             target.SetStatus(effects.Status);
+        }
+
+        // Volatile status effect move effects
+        if (effects.VolatileStatus != ConditionID.NONE) {
+            target.SetVolatileStatus(effects.VolatileStatus);
         }
 
         yield return ShowStatusChanges(source);

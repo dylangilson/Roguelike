@@ -1,0 +1,6 @@
+TODOs:
+	- fix screen swap on faint from status
+	- fix faint from confusion
+	- fix HPBar (brackey's)
+	- implement "player is already confused" if trying to confuse a confused pokemon
+	- on battle start if opp is faster, they attack before move is picked

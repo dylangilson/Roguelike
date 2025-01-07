@@ -27,7 +27,10 @@ public class Pokemon {
     public Queue<string> StatusChanges { get; private set; } = new Queue<string>();
     public Condition Status { get; private set; }
     public int StatusCounter { get; set; }
+    public Condition VolatileStatus { get; private set; }
+    public int VolatileStatusCounter { get; set; }
     public bool HitpointsChanged { get; set; }
+    public event System.Action OnStatusChanged;
     
     public void Init() {
         Moves = new List<Move>();
@@ -50,6 +53,8 @@ public class Pokemon {
         CurrentHitpoints = MaxHitpoints;
 
         ResetStatBoosts();
+        Status = null;
+        VolatileStatus = null;
     }
 
     void CalculateStats() {
@@ -60,7 +65,7 @@ public class Pokemon {
         Stats.Add(Stat.SPECIALDEFENCE, Mathf.FloorToInt((Blueprint.SpecialDefence * Level) / 100.0f) + 5);
         Stats.Add(Stat.SPEED, Mathf.FloorToInt((Blueprint.Speed * Level) / 100.0f) + 5);
 
-        MaxHitpoints = Mathf.FloorToInt((Blueprint.Hitpoints * Level) / 100.0f) + 10;
+        MaxHitpoints = Mathf.FloorToInt((Blueprint.Hitpoints * Level) / 100.0f) + 10 + Level;
     }
 
     void ResetStatBoosts() {
@@ -186,10 +191,29 @@ public class Pokemon {
         if (success) {
             StatusChanges.Enqueue($"{Blueprint.PokemonName} {Status.StartMessage}");
         }
+        OnStatusChanged?.Invoke();
     }
 
     public void CureStatus() {
         Status = null;
+        OnStatusChanged?.Invoke();
+    }
+
+    public void SetVolatileStatus(ConditionID conditionID) {
+        VolatileStatus = ConditionsDataBase.Conditions[conditionID];
+        bool success = false;
+
+        if (VolatileStatus?.OnStart != null) {
+            success = VolatileStatus.OnStart(this);
+        }
+
+        if (success) {
+            StatusChanges.Enqueue($"{Blueprint.PokemonName} {VolatileStatus.StartMessage}");
+        }
+    }
+
+    public void CureVolatileStatus() {
+        VolatileStatus = null;
     }
 
     public Move GetRandomMove() {
@@ -198,18 +222,28 @@ public class Pokemon {
     }
 
     public bool OnBeforeMove() {
+        bool canPerformMove = true;
         if (Status?.OnBeforeMove != null) {
-            return Status.OnBeforeMove(this);
+            if (!Status.OnBeforeMove(this)) {
+                return false;
+            }
+        }
+        if (VolatileStatus?.OnBeforeMove != null) {
+            if (!VolatileStatus.OnBeforeMove(this)) {
+                return false;
+            }
         }
 
-        return true;
+        return canPerformMove;
     }
 
     public void OnAfterTurn() {
         Status?.OnAfterTurn?.Invoke(this);
+        VolatileStatus?.OnAfterTurn?.Invoke(this);
     }
 
     public void OnBattleOver() {
+        VolatileStatus = null;
         ResetStatBoosts();
     }
 }

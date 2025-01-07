@@ -11,6 +11,10 @@ public class GameController : MonoBehaviour {
 
     GameState state;
 
+    private void Awake() {
+        ConditionsDataBase.Init();
+    }
+
     private void Start() {
         playerController.OnEncountered += StartBattle;
         battleSystem.OnBattleOver += EndBattle;
