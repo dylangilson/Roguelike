@@ -206,7 +206,7 @@ public class BattleSystem : MonoBehaviour {
         if (effects.Status != ConditionID.NONE) {
             if (target.Status != null) {
                 // This should work but does not, We successfully enter this if statement
-                yield return dialogueBox.TypeDialogue($"{source.Blueprint.PokemonName} is already afflicted by {effects.Status}!");
+                yield return dialogueBox.TypeDialogue($"{source.Blueprint.PokemonName} is already afflicted by {target.Status.Name}!");
             } else{
                 target.SetStatus(effects.Status);
             }
@@ -216,7 +216,7 @@ public class BattleSystem : MonoBehaviour {
         if (effects.VolatileStatus != ConditionID.NONE) {
             if (target.VolatileStatus != null) {
                 // This should work but does not, We successfully enter this if statement
-                yield return dialogueBox.TypeDialogue($"{source.Blueprint.PokemonName} is already afflicted by {effects.VolatileStatus}!");
+                yield return dialogueBox.TypeDialogue($"{source.Blueprint.PokemonName} is already afflicted by {target.VolatileStatus.Name}!");
             }
             else{
             target.SetVolatileStatus(effects.VolatileStatus);

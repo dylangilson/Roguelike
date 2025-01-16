@@ -190,9 +190,7 @@ public class Pokemon {
             success = Status.OnStart(this);
         }
 
-        if (success) {
-            StatusChanges.Enqueue($"{Blueprint.PokemonName} {Status.StartMessage}");
-        }
+        StatusChanges.Enqueue($"{Blueprint.PokemonName} {Status.StartMessage}");
         OnStatusChanged?.Invoke();
     }
 
@@ -209,9 +207,8 @@ public class Pokemon {
             success = VolatileStatus.OnStart(this);
         }
 
-        if (success) {
-            StatusChanges.Enqueue($"{Blueprint.PokemonName} {VolatileStatus.StartMessage}");
-        }
+        StatusChanges.Enqueue($"{Blueprint.PokemonName} {VolatileStatus.StartMessage}");
+        
     }
 
     public void CureVolatileStatus() {
