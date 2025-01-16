@@ -70,11 +70,13 @@ public class Pokemon {
 
     void ResetStatBoosts() {
         StatBoosts = new Dictionary<Stat, int>() {
-            {Stat.ATTACK, 0},
-            {Stat.DEFENCE, 0},
-            {Stat.SPECIALATTACK, 0},
-            {Stat.SPECIALDEFENCE, 0},
-            {Stat.SPEED, 0},
+            { Stat.ATTACK, 0 },
+            { Stat.DEFENCE, 0 },
+            { Stat.SPECIALATTACK, 0 },
+            { Stat.SPECIALDEFENCE, 0 },
+            { Stat.SPEED, 0 },
+            { Stat.ACCURACY, 0 },
+            { Stat.EVASION, 0 }
         };
     }
 

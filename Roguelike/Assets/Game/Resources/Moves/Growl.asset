@@ -16,11 +16,14 @@ MonoBehaviour:
   moveType: 1
   power: 0
   accuracy: 100
+  skipAccuracyCheck: 0
   powerPoints: 40
   moveCatagory: 0
   effects:
     boosts:
     - stat: 0
       boost: -1
+    status: 0
+    volatileStatus: 0
   target: 0
   description: 

@@ -113,7 +113,11 @@ public enum Stat {
     DEFENCE,
     SPECIALATTACK,
     SPECIALDEFENCE,
-    SPEED
+    SPEED,
+
+    // these are invisible stats
+    ACCURACY,
+    EVASION
 }
 
 public enum MoveCatagory { OTHER, PHYSICAL, SPECIAL }

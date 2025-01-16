@@ -124,47 +124,61 @@ public class BattleSystem : MonoBehaviour {
 
         yield return dialogueBox.TypeDialogue($"{source.Pokemon.Blueprint.PokemonName} used {move.Blueprint.MoveName}!");
 
-        source.PlayAttackAnimation();
+        if (checkIfMoveHits(move, source.Pokemon, target.Pokemon)) {
+            source.PlayAttackAnimation();
 
-        yield return new WaitForSeconds(1.0f);
+            yield return new WaitForSeconds(1.0f);
 
-        target.PlayHitAnimation();
+            target.PlayHitAnimation();
 
-        if (move.Blueprint.MoveCatagory == MoveCatagory.OTHER) {
-            yield return RunMoveEffects(move, source.Pokemon, target.Pokemon);
-        } else if (move.Blueprint.MoveCatagory == MoveCatagory.PHYSICAL || move.Blueprint.MoveCatagory == MoveCatagory.SPECIAL) {
-            var damageDetails = target.Pokemon.TakeDamage(move, source.Pokemon);
-            
-            if (target == playerUnit) {
-                yield return target.HUD.UpdatePlayerHitpoints();
-            } else if (target == enemyUnit) {
-                yield return target.HUD.UpdateEnemyHitpoints();
+            if (move.Blueprint.MoveCatagory == MoveCatagory.OTHER) {
+                yield return RunMoveEffects(move.Blueprint.MoveEffects, source.Pokemon, target.Pokemon, move.Blueprint.MoveTarget);
+            } else if (move.Blueprint.MoveCatagory == MoveCatagory.PHYSICAL || move.Blueprint.MoveCatagory == MoveCatagory.SPECIAL) {
+                var damageDetails = target.Pokemon.TakeDamage(move, source.Pokemon);
+                
+                if (target == playerUnit) {
+                    yield return target.HUD.UpdatePlayerHitpoints();
+                } else if (target == enemyUnit) {
+                    yield return target.HUD.UpdateEnemyHitpoints();
+                }
+                
+                yield return ShowDamageDetails(damageDetails);
+            } else {
+                Debug.Log($"{move} is not PHYSICAL, SPECIAL, OR OTHER");
             }
-            
-            yield return ShowDamageDetails(damageDetails);
+
+            if (move.Blueprint.SecondaryEffects != null && move.Blueprint.SecondaryEffects.Count > 0 && target.Pokemon.CurrentHitpoints > 0) {
+                foreach (var secondaryEffect in move.Blueprint.SecondaryEffects) {
+                    if (UnityEngine.Random.Range(1, 101) <= secondaryEffect.Chance) {
+                        yield return RunMoveEffects(secondaryEffect, source.Pokemon, target.Pokemon, secondaryEffect.Target);
+                    }
+                }
+            }
+
+            if (target.Pokemon.CurrentHitpoints <= 0) {
+                yield return dialogueBox.TypeDialogue($"{target.Pokemon.Blueprint.PokemonName} fainted!");
+
+                target.PlayFaintAnimation();
+                
+                yield return new WaitForSeconds(2.0f);
+
+                HandleFaint(target);
+            }
         } else {
-            Debug.Log($"{move} is not PHYSICAL, SPECIAL, OR OTHER");
-        }
-
-        if (target.Pokemon.CurrentHitpoints <= 0) {
-            yield return dialogueBox.TypeDialogue($"{target.Pokemon.Blueprint.PokemonName} fainted!");
-
-            target.PlayFaintAnimation();
-            
-            yield return new WaitForSeconds(2.0f);
-
-            HandleFaint(target);
+            yield return dialogueBox.TypeDialogue($"{source.Pokemon.Blueprint.PokemonName}'s attack missed!");
         }
 
         // pokemon could be burned or poisoned, this deals damage to them after THEIR turn
         source.Pokemon.OnAfterTurn();
 
         yield return ShowStatusChanges(source.Pokemon);
+
         if (source == playerUnit) {
             yield return source.HUD.UpdatePlayerHitpoints();
         } else if (source == enemyUnit) {
             yield return source.HUD.UpdateEnemyHitpoints();
-        }    
+        }
+
         if (source.Pokemon.CurrentHitpoints <= 0) {
             yield return dialogueBox.TypeDialogue($"{target.Pokemon.Blueprint.PokemonName} fainted!");
 
@@ -176,17 +190,15 @@ public class BattleSystem : MonoBehaviour {
         }
     }
 
-    IEnumerator RunMoveEffects(Move move, Pokemon source, Pokemon target) {
-        MoveEffects effects = move.Blueprint.MoveEffects;
-
+    IEnumerator RunMoveEffects(MoveEffects effects, Pokemon source, Pokemon target, MoveTarget moveTarget) {
         // Stat changing move effects
         if (effects.Boosts != null) {
-            if (move.Blueprint.MoveTarget == MoveTarget.SELF) {
+            if (moveTarget == MoveTarget.SELF) {
                 source.ApplyBoosts(effects.Boosts);
-            } else if (move.Blueprint.MoveTarget == MoveTarget.FOE) {
+            } else if (moveTarget == MoveTarget.FOE) {
                 target.ApplyBoosts(effects.Boosts);
             } else {
-                Debug.Log($"{move} has no target");
+                Debug.Log($"This move has no target");
             }
         }
         
@@ -202,6 +214,31 @@ public class BattleSystem : MonoBehaviour {
 
         yield return ShowStatusChanges(source);
         yield return ShowStatusChanges(target);
+    }
+
+    bool checkIfMoveHits(Move move, Pokemon source, Pokemon target) {
+        if (move.Blueprint.SkipAccuracyCheck) {
+            return true;
+        }
+
+        float moveAccuracy = move.Blueprint.Accuracy;
+        int accuracy = source.StatBoosts[Stat.ACCURACY];
+        int evasion = target.StatBoosts[Stat.EVASION];
+        var boostValues = new float[] { 1.0f, 4.0f / 3.0f, 5.0f / 3.0f, 2.0f, 7.0f / 3.0f, 8.0f / 3.0f, 3.0f };
+
+        if (accuracy > 0) {
+            moveAccuracy *= boostValues[accuracy];
+        } else {
+            moveAccuracy /= boostValues[-accuracy];
+        }
+
+        if (evasion > 0) {
+            moveAccuracy /= boostValues[evasion];
+        } else {
+            moveAccuracy *= boostValues[-evasion];
+        }
+
+        return UnityEngine.Random.Range(1, 101) <= moveAccuracy; // roll between 1 and 100
     }
 
     IEnumerator ShowStatusChanges(Pokemon pokemon) {

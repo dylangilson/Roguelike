@@ -104,7 +104,7 @@ public class ConditionsDataBase {
         },
         // Volatile Status Condition
         {
-            ConditionID.confusion, new Condition() {
+            ConditionID.CONFUSION, new Condition() {
                 Name = "Confusion",
                 Abbreviation = "CON",
                 StartMessage = "is confused!",
@@ -144,6 +144,6 @@ public class ConditionsDataBase {
 }
 
 public enum ConditionID {
-    NONE, POISON, BURN, SLEEP, PARALYSIS, FREEZE,
-    confusion
+    NONE, POISON, BURN, SLEEP, PARALYSIS, FREEZE, 
+    CONFUSION // volatile conditions
 }

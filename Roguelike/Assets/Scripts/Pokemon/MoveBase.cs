@@ -8,9 +8,11 @@ public class MoveBase : ScriptableObject {
     [SerializeField] Type moveType;
     [SerializeField] int power;
     [SerializeField] int accuracy;
+    [SerializeField] bool skipAccuracyCheck;
     [SerializeField] int powerPoints;
     [SerializeField] MoveCatagory moveCatagory;
     [SerializeField] MoveEffects effects;
+    [SerializeField] List<SecondaryEffects> secondaryEffects;
     [SerializeField] MoveTarget target;
 
     [TextArea]
@@ -32,6 +34,10 @@ public class MoveBase : ScriptableObject {
         get { return accuracy; }
     }
 
+    public bool SkipAccuracyCheck {
+        get { return skipAccuracyCheck; }
+    }
+
     public int PowerPoints {
         get { return powerPoints; }
     }
@@ -42,6 +48,10 @@ public class MoveBase : ScriptableObject {
 
     public MoveEffects MoveEffects {
         get { return effects; }
+    }
+
+    public List<SecondaryEffects> SecondaryEffects {
+        get { return secondaryEffects; }
     }
 
     public MoveTarget MoveTarget {
@@ -75,6 +85,20 @@ public class MoveEffects {
 
     public ConditionID VolatileStatus {
         get { return volatileStatus; }
+    }
+}
+
+[System.Serializable]
+public class SecondaryEffects : MoveEffects {
+    [SerializeField] int chance;
+    [SerializeField] MoveTarget target;
+
+    public int Chance {
+        get { return chance; }
+    }
+
+    public MoveTarget Target {
+        get { return target; }
     }
 }
 

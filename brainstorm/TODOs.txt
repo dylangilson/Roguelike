@@ -4,3 +4,8 @@ TODOs:
 	- fix HPBar (brackey's)
 	- implement "player is already confused" if trying to confuse a confused pokemon
 	- on battle start if opp is faster, they attack before move is picked
+	- force player to walk within map bounds
+	- allow to skip current stage of turn by pressing space bar
+	- ensure if already status'd that it cannot be replaced with new status
+	- If a condition is a secondary effect, it does not state in the dialogue box that the condition was given
+	- Volatile conditions are always coded to only affect target (e.g. Burn can't affect SELF), should also have a target variable in Effects (not just Secondary Effects) (this is in any move prefab)

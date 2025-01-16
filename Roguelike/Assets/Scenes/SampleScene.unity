@@ -8097,6 +8097,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5008902735478135198, guid: 313d4d0f77542a7469106845d013326d, type: 3}
+      propertyPath: burnColor.b
+      value: 0.20392157
+      objectReference: {fileID: 0}
+    - target: {fileID: 5008902735478135198, guid: 313d4d0f77542a7469106845d013326d, type: 3}
+      propertyPath: burnColor.g
+      value: 0.20392157
+      objectReference: {fileID: 0}
+    - target: {fileID: 5008902735478135198, guid: 313d4d0f77542a7469106845d013326d, type: 3}
+      propertyPath: burnColor.r
+      value: 0.85882354
+      objectReference: {fileID: 0}
+    - target: {fileID: 5008902735478135198, guid: 313d4d0f77542a7469106845d013326d, type: 3}
+      propertyPath: paralysisColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5008902735478135198, guid: 313d4d0f77542a7469106845d013326d, type: 3}
+      propertyPath: paralysisColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5008902735478135198, guid: 313d4d0f77542a7469106845d013326d, type: 3}
+      propertyPath: paralysisColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8883722866326480614, guid: 313d4d0f77542a7469106845d013326d, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -20.699997

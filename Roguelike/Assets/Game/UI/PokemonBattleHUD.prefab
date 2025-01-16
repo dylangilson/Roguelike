@@ -191,9 +191,9 @@ MonoBehaviour:
   hitpointsBar: {fileID: 748608422178837411}
   hitpointsValueText: {fileID: 55407695952394926}
   poisonColor: {r: 0.8509804, g: 0.21568628, b: 0.75686276, a: 1}
-  paralysisColor: {r: 0.85882354, g: 0.20392157, b: 0.20392157, a: 1}
+  paralysisColor: {r: 1, g: 1, b: 0, a: 1}
   sleepColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  burnColor: {r: 1, g: 1, b: 0, a: 1}
+  burnColor: {r: 0.85882354, g: 0.20392157, b: 0.20392157, a: 1}
   freezeColor: {r: 0, g: 1, b: 0.8666667, a: 1}
 --- !u!1 &3384325097248636536
 GameObject:
