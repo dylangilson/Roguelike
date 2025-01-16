@@ -204,12 +204,23 @@ public class BattleSystem : MonoBehaviour {
         
         // Status effect move effects
         if (effects.Status != ConditionID.NONE) {
-            target.SetStatus(effects.Status);
+            if (target.Status != null) {
+                // This should work but does not, We successfully enter this if statement
+                yield return dialogueBox.TypeDialogue($"{source.Blueprint.PokemonName} is already afflicted by {effects.Status}!");
+            } else{
+                target.SetStatus(effects.Status);
+            }
         }
 
         // Volatile status effect move effects
         if (effects.VolatileStatus != ConditionID.NONE) {
+            if (target.VolatileStatus != null) {
+                // This should work but does not, We successfully enter this if statement
+                yield return dialogueBox.TypeDialogue($"{source.Blueprint.PokemonName} is already afflicted by {effects.VolatileStatus}!");
+            }
+            else{
             target.SetVolatileStatus(effects.VolatileStatus);
+            }
         }
 
         yield return ShowStatusChanges(source);

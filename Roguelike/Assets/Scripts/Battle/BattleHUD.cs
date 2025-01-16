@@ -44,10 +44,8 @@ public class BattleHUD : MonoBehaviour {
 
     void SetStatusText() {
         if (currentPokemon.Status == null) {
-            Debug.Log("HERE WE GO!");
             statusText.text = "";
         } else if (currentPokemon.Status != null) {
-            Debug.Log("HERE WE ARE!");
             statusText.text = currentPokemon.Status.Abbreviation.ToString().ToUpper();
             statusText.color = statusColors[currentPokemon.Status.ID];
         }
