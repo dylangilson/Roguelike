@@ -115,16 +115,15 @@ public class ConditionsDataBase {
                     return true;
                 },
                 OnBeforeMove = (Pokemon pokemon) => {
-                    pokemon.StatusCounter--;
+                    pokemon.VolatileStatusCounter--;
                     Debug.Log(pokemon.VolatileStatusCounter);
 
-                    if (pokemon.StatusCounter == 0) {
+                    if (pokemon.VolatileStatusCounter == 0) {
                         pokemon.CureVolatileStatus();
                         pokemon.StatusChanges.Enqueue($"{pokemon.Blueprint.PokemonName} is no longer confused!");
                         
                         return true;
                     }
-                    pokemon.VolatileStatusCounter--;
                     pokemon.StatusChanges.Enqueue($"{pokemon.Blueprint.PokemonName} is confused!");
 
                     // check to see if move performs anyways, 50% chance

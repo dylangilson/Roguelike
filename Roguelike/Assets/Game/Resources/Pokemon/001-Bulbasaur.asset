@@ -27,8 +27,14 @@ MonoBehaviour:
     level: 7
   - moveBase: {fileID: 11400000, guid: d1ab9ca6282e76c4e8a6e54c1723a712, type: 2}
     level: 1
-  - moveBase: {fileID: 11400000, guid: 0bd27edb1463a3b43b3914a8aa4b6dc6, type: 2}
+  - moveBase: {fileID: 11400000, guid: af35c231c07848643a91f471394993ef, type: 2}
     level: 2
+  - moveBase: {fileID: 11400000, guid: f4b9e4adc5adee748977d60d907d1632, type: 2}
+    level: 50
+  - moveBase: {fileID: 11400000, guid: c543c09a8f29e7445837dc51056be02b, type: 2}
+    level: 51
+  - moveBase: {fileID: 11400000, guid: 867a772fad63a6f459489a8a2a615f5a, type: 2}
+    level: 52
   hitpoints: 60
   attack: 55
   defence: 65
