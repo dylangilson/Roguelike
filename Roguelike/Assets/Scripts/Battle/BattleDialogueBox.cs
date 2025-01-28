@@ -64,6 +64,14 @@ public class BattleDialogueBox : MonoBehaviour {
 
             ppText.text = $"PP {move.PowerPoints} / {move.Blueprint.PowerPoints}";
             typeText.text = move.Blueprint.MoveType.ToString();
+
+            if (move.PowerPoints == 0) {
+                ppText.color = Color.red;
+            } else if (move.PowerPoints <= Mathf.Ceil((float)move.Blueprint.PowerPoints / 3.0f)) {
+                ppText.color = Color.yellow;
+            } else {
+                ppText.color = Color.black;
+            }
         }
     }
     

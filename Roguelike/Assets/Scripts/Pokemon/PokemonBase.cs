@@ -12,6 +12,7 @@ public class PokemonBase : ScriptableObject {
     [SerializeField] Type typeA;
     [SerializeField] Type typeB;
     [SerializeField] List<LearnableMove> learnableMoves;
+    
     // base stats
     [SerializeField] int hitpoints;
     [SerializeField] int attack;

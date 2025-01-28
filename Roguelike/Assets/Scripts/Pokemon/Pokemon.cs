@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [System.Serializable]
@@ -157,12 +158,10 @@ public class Pokemon {
             attack = attacker.Attack;
             Debug.Log($"{attacker.Blueprint.PokemonName}'s attack is {attacker.Attack}");
             defence = Defence;
-            // Debug.Log($"Defender's defence is {Defence}");
         } else if (move.Blueprint.MoveCatagory == MoveCatagory.SPECIAL) {
             attack = attacker.SpecialAttack;
             Debug.Log($"{attacker.Blueprint.PokemonName}'s special attack is {attacker.SpecialAttack}");
             defence = SpecialDefence;
-            // Debug.Log($"Defender's special defence is {SpecialDefence}");
         } else {
             Debug.Log(move.Blueprint.MoveName + " is not Physical or Special!");
         }
@@ -216,17 +215,21 @@ public class Pokemon {
     }
 
     public Move GetRandomMove() {
-        int r = Random.Range(0, Moves.Count);
-        return Moves[r];
+        var movesWithPP = Moves.Where(move => move.PowerPoints > 0).ToList();
+        int r = Random.Range(0, movesWithPP.Count);
+
+        return movesWithPP[r];
     }
 
     public bool OnBeforeMove() {
         bool canPerformMove = true;
+
         if (Status?.OnBeforeMove != null) {
             if (!Status.OnBeforeMove(this)) {
                 return false;
             }
         }
+
         if (VolatileStatus?.OnBeforeMove != null) {
             if (!VolatileStatus.OnBeforeMove(this)) {
                 return false;

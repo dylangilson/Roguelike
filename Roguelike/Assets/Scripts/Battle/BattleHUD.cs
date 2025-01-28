@@ -20,7 +20,6 @@ public class BattleHUD : MonoBehaviour {
     Dictionary<ConditionID, Color> statusColors;
 
     public void SetData(Pokemon pokemon) {
-        // Debug.Log("HERE WE ARE!");
         currentPokemon = pokemon;
 
         nameText.text = pokemon.Blueprint.PokemonName;
@@ -38,7 +37,6 @@ public class BattleHUD : MonoBehaviour {
         };
 
         SetStatusText();
-        // Debug.Log("HERE WE ARE!");
         currentPokemon.OnStatusChanged += SetStatusText;
     }
 

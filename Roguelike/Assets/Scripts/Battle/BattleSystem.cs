@@ -74,6 +74,7 @@ public class BattleSystem : MonoBehaviour {
 
     IEnumerator RunAfterTurn(BattleUnit source) {
         yield return new WaitUntil(() => state == BattleState.RUNNING_TURN);
+        
         // pokemon could be burned or poisoned, this deals damage to them after THEIR turn
         source.Pokemon.OnAfterTurn();
 
@@ -103,8 +104,29 @@ public class BattleSystem : MonoBehaviour {
             playerUnit.Pokemon.CurrentMove = playerUnit.Pokemon.Moves[currentMove];
             enemyUnit.Pokemon.CurrentMove = enemyUnit.Pokemon.GetRandomMove();
 
-            // Check who moves first
-            bool isPlayerFaster = playerUnit.Pokemon.Speed > enemyUnit.Pokemon.Speed;
+            // check who moves first
+            int playerMovePriority = playerUnit.Pokemon.CurrentMove.Blueprint.PriorityValue;
+            int enemyMovePriority = enemyUnit.Pokemon.CurrentMove.Blueprint.PriorityValue;
+
+            bool isPlayerFaster = playerMovePriority > enemyMovePriority;
+
+            if (playerMovePriority == enemyMovePriority) {
+                isPlayerFaster = playerUnit.Pokemon.Speed == enemyUnit.Pokemon.Speed;
+
+                if (isPlayerFaster) {
+                    int random = UnityEngine.Random.Range(1, 3); // roll a 50/50 to determine which unit goes first
+
+                    if (random == 1) {
+                        isPlayerFaster = false;
+                    } else if (random == 2) {
+                        isPlayerFaster = true;
+                    }
+                } else if (playerUnit.Pokemon.Speed > enemyUnit.Pokemon.Speed) {
+                    isPlayerFaster = true;
+                } else if (enemyUnit.Pokemon.Speed > playerUnit.Pokemon.Speed) {
+                    isPlayerFaster = false;
+                }
+            }
 
             var firstUnit = (isPlayerFaster) ? playerUnit : enemyUnit; 
             var secondUnit = (isPlayerFaster) ? enemyUnit : playerUnit; 
@@ -112,6 +134,7 @@ public class BattleSystem : MonoBehaviour {
             var secondPokemon = secondUnit.Pokemon;
 
             yield return PerformMove(firstUnit, secondUnit, firstUnit.Pokemon.CurrentMove);
+
             if (state == BattleState.BATTLE_OVER) {
                 yield break;
             } else {
@@ -120,6 +143,7 @@ public class BattleSystem : MonoBehaviour {
             
             if (secondPokemon.CurrentHitpoints > 0){
                 yield return PerformMove(secondUnit, firstUnit, secondUnit.Pokemon.CurrentMove);
+                
                 if (state == BattleState.BATTLE_OVER) {
                     yield break;
                 } else {
@@ -127,15 +151,23 @@ public class BattleSystem : MonoBehaviour {
                 }
             }
         } else if (playerAction == BattleAction.SWITCH_POKEMON) { 
-            // If player switches out as action for turn
+            // if player switches out as action for turn
             var selectedMember = playerParty.GetParty()[currentMember];
+
             state = BattleState.BUSY;
+
             yield return SwitchPokemon(selectedMember);
 
-            // Enemy Action
-            enemyUnit.Pokemon.GetRandomMove();
+            playerUnit.Pokemon = selectedMember;
+
+            yield return RunAfterTurn(playerUnit);
+
+            // enemy Action
+            enemyUnit.Pokemon.CurrentMove = enemyUnit.Pokemon.GetRandomMove();
+
             yield return PerformMove(enemyUnit, playerUnit, enemyUnit.Pokemon.CurrentMove);
             yield return RunAfterTurn(enemyUnit);
+
             if (state == BattleState.BATTLE_OVER) {
                 yield break;
             }
@@ -144,7 +176,6 @@ public class BattleSystem : MonoBehaviour {
         if (state != BattleState.BATTLE_OVER){
             ActionSelection();
         }
-
     }
 
     void HandleFaint(BattleUnit pokemon) {
@@ -227,7 +258,7 @@ public class BattleSystem : MonoBehaviour {
     }
 
     IEnumerator RunMoveEffects(MoveEffects effects, Pokemon source, Pokemon target, MoveTarget moveTarget) {
-        // Stat changing move effects
+        // stat changing move effects
         if (effects.Boosts != null) {
             if (moveTarget == MoveTarget.SELF) {
                 source.ApplyBoosts(effects.Boosts);
@@ -238,24 +269,23 @@ public class BattleSystem : MonoBehaviour {
             }
         }
         
-        // Status effect move effects
+        // status effect move effects
         if (effects.Status != ConditionID.NONE) {
             if (target.Status != null) {
                 // This should work but does not, We successfully enter this if statement
                 yield return dialogueBox.TypeDialogue($"{source.Blueprint.PokemonName} is already afflicted by {target.Status.Name}!");
-            } else{
+            } else {
                 target.SetStatus(effects.Status);
             }
         }
     
-        // Volatile status effect move effects
+        // volatile status effect move effects
         if (effects.VolatileStatus != ConditionID.NONE) {
             if (target.VolatileStatus != null) {
-                // This should work but does not, We successfully enter this if statement
+                // TODO: does this work?? this should work but does not ; we successfully enter this if statement
                 yield return dialogueBox.TypeDialogue($"{source.Blueprint.PokemonName} is already afflicted by {target.VolatileStatus.Name}!");
-            }
-            else{
-            target.SetVolatileStatus(effects.VolatileStatus);
+            } else {
+                target.SetVolatileStatus(effects.VolatileStatus);
             }
         }
 
@@ -363,6 +393,12 @@ public class BattleSystem : MonoBehaviour {
         dialogueBox.UpdateMoveSelection(currentMove, playerUnit.Pokemon.Moves[currentMove]);
 
         if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Space)) {
+            var move = playerUnit.Pokemon.Moves[currentMove];
+
+            if (move.PowerPoints == 0) {
+                return;
+            }
+
             dialogueBox.EnableMoveSelector(false);
             dialogueBox.EnableDialogueText(true);
             StartCoroutine(RunTurns(BattleAction.MOVE));

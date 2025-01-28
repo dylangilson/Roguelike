@@ -22,13 +22,13 @@ MonoBehaviour:
   - moveBase: {fileID: 11400000, guid: 606af25636c0a6e409b771cf0fb9ff5b, type: 2}
     level: 1
   - moveBase: {fileID: 11400000, guid: a6a205adad666aa45b81611aad6bb7dc, type: 2}
-    level: 4
+    level: 50
   - moveBase: {fileID: 11400000, guid: 665efafd613966f49a53cc37403671a3, type: 2}
-    level: 7
+    level: 50
   - moveBase: {fileID: 11400000, guid: d1ab9ca6282e76c4e8a6e54c1723a712, type: 2}
-    level: 1
-  - moveBase: {fileID: 11400000, guid: af35c231c07848643a91f471394993ef, type: 2}
-    level: 2
+    level: 50
+  - moveBase: {fileID: 11400000, guid: 5b7288c064172b74fa6ef6ed5c6ce38b, type: 2}
+    level: 6
   - moveBase: {fileID: 11400000, guid: f4b9e4adc5adee748977d60d907d1632, type: 2}
     level: 50
   - moveBase: {fileID: 11400000, guid: c543c09a8f29e7445837dc51056be02b, type: 2}

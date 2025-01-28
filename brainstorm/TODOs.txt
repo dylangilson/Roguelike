@@ -4,5 +4,11 @@ TODOs:
 	- fix faint from confusion
 	- fix HPBar (brackey's)
 	- force player to walk within map bounds
-	- allow to skip current stage of turn by pressing space bar
 	- Volatile conditions are always coded to only affect target (e.g. Burn can't affect SELF), should also have a target variable in Effects (not just Secondary Effects) (this is in any move prefab)
+	- Should state already statused if another status move is used, even if it misses
+		- When this condition is met, ensure that the pokemon named is the right one
+	- When Enemy's Turn display 'Enemy'/'Wild' before pokemon name
+	- If a move hits, ensure the damage dealt is at least 1
+	- Fix all dialogue's to be skippable with space bar
+	- Implement Struggle if pokemon has 0 PP in all moves
+	- Implement a volatile status counter for each volatile status (e.g. you can be confused and perish song'd at the same time)

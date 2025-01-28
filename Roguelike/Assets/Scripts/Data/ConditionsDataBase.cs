@@ -102,7 +102,8 @@ public class ConditionsDataBase {
                 }
             }
         },
-        // Volatile Status Condition
+
+        // volatile status conditions
         {
             ConditionID.CONFUSION, new Condition() {
                 Name = "Confusion",
@@ -112,6 +113,7 @@ public class ConditionsDataBase {
                     // confused for 1-4 turns
                     pokemon.VolatileStatusCounter = Random.Range(1, 5);
                     Debug.Log($"{pokemon.Blueprint.PokemonName} will be confused for {pokemon.VolatileStatusCounter} turns!");
+
                     return true;
                 },
                 OnBeforeMove = (Pokemon pokemon) => {
@@ -124,6 +126,7 @@ public class ConditionsDataBase {
                         
                         return true;
                     }
+
                     pokemon.StatusChanges.Enqueue($"{pokemon.Blueprint.PokemonName} is confused!");
 
                     // check to see if move performs anyways, 50% chance
