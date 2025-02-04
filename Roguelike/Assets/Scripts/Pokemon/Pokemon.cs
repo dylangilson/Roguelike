@@ -157,6 +157,7 @@ public class Pokemon {
         if (move.Blueprint.MoveCatagory == MoveCatagory.PHYSICAL) {
             attack = attacker.Attack;
             Debug.Log($"{attacker.Blueprint.PokemonName}'s attack is {attacker.Attack}");
+            // Debug.Log($"{attacker.Blueprint.PokemonName}'s attack is {attacker.Attack}");
             defence = Defence;
         } else if (move.Blueprint.MoveCatagory == MoveCatagory.SPECIAL) {
             attack = attacker.SpecialAttack;
@@ -169,8 +170,10 @@ public class Pokemon {
         float modifiers = Random.Range (0.85f, 1.0f) * typeModifier * critical;
         float attackModifier = (2 * attacker.Level + 10) / 250.0f;
         float defenseModifier = attackModifier * move.Blueprint.Power * (attack / defence) + 2;
-        int damage = Mathf.FloorToInt(defenseModifier * modifiers);
-        CurrentHitpoints -= damage;
+        // Debug.Log($"defence modifier is {defenseModifier} with {modifiers} as modifiers");
+        int damage = Mathf.Clamp(Mathf.FloorToInt(defenseModifier * modifiers), 1, 100000);
+        Debug.Log($"{attacker.Blueprint.PokemonName} deals {damage} much damage");
+        // CurrentHitpoints -= damage;
 
         UpdateHitpoints(damage);
 

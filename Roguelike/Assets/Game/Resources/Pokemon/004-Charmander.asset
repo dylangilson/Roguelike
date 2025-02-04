@@ -27,6 +27,8 @@ MonoBehaviour:
     level: 7
   - moveBase: {fileID: 11400000, guid: 5b7288c064172b74fa6ef6ed5c6ce38b, type: 2}
     level: 10
+  - moveBase: {fileID: 11400000, guid: 7fb5daf200edca5429cbee663e772d86, type: 2}
+    level: 11
   hitpoints: 60
   attack: 60
   defence: 55

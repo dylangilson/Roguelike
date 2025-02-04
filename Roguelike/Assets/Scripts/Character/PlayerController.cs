@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
     public float movementSpeed;
     public LayerMask solidObjectsLayer;
+    public LayerMask interactableLayer;
     public LayerMask grassLayer;
     public event Action OnEncountered;
 
@@ -44,6 +45,21 @@ public class PlayerController : MonoBehaviour {
         }
         
         animator.SetBool("isMoving", isMoving);
+
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Space)) {
+            Interact();
+        }
+    }
+
+    void Interact() {
+        var facingDirection = new Vector3(animator.GetFloat("moveX"), animator.GetFloat("moveY"));
+        var interactPosition = transform.position + facingDirection;
+
+        var collider = Physics2D.OverlapCircle(interactPosition, 0.3f, interactableLayer);
+        if (collider != null) {
+            collider.GetComponent<Interactable>()?.Interact();
+        }
+        // Debug.DrawLine(transform.position, interactPosition, Color.red, 0.5f);
     }
 
     IEnumerator Move(Vector3 targetPosition) {
@@ -63,7 +79,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     private bool IsWalkable(Vector3 targetPosition) {
-        return Physics2D.OverlapCircle(targetPosition, 0.3f, solidObjectsLayer) == null;
+        return Physics2D.OverlapCircle(targetPosition, 0.3f, solidObjectsLayer | interactableLayer) == null;
     }
  
     private void CheckForEncounters() {

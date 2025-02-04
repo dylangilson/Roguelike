@@ -209,9 +209,11 @@ public class BattleSystem : MonoBehaviour {
         yield return ShowStatusChanges(source.Pokemon);
 
         move.PowerPoints--;
-
-        yield return dialogueBox.TypeDialogue($"{source.Pokemon.Blueprint.PokemonName} used {move.Blueprint.MoveName}!");
-
+        if (source.IsPlayerUnit) {
+            yield return dialogueBox.TypeDialogue($"{source.Pokemon.Blueprint.PokemonName} used {move.Blueprint.MoveName}!");
+        } else {
+            yield return dialogueBox.TypeDialogue($"Enemy {source.Pokemon.Blueprint.PokemonName} used {move.Blueprint.MoveName}!");
+        }
         if (checkIfMoveHits(move, source.Pokemon, target.Pokemon)) {
             source.PlayAttackAnimation();
 
@@ -223,7 +225,12 @@ public class BattleSystem : MonoBehaviour {
                 yield return RunMoveEffects(move.Blueprint.MoveEffects, source.Pokemon, target.Pokemon, move.Blueprint.MoveTarget);
             } else if (move.Blueprint.MoveCatagory == MoveCatagory.PHYSICAL || move.Blueprint.MoveCatagory == MoveCatagory.SPECIAL) {
                 var damageDetails = target.Pokemon.TakeDamage(move, source.Pokemon);
-                
+                if (move.Blueprint.MoveCatagory == MoveCatagory.PHYSICAL){
+                    Debug.Log($"{target.Pokemon.Blueprint.PokemonName} has {target.Pokemon.Defence} defence");
+                } else {
+                    Debug.Log($"{target.Pokemon.Blueprint.PokemonName} has {target.Pokemon.SpecialDefence} special defence");
+                }
+
                 if (target == playerUnit) {
                     yield return target.HUD.UpdatePlayerHitpoints();
                 } else if (target == enemyUnit) {
