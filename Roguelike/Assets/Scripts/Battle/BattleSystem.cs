@@ -279,7 +279,7 @@ public class BattleSystem : MonoBehaviour {
         // status effect move effects
         if (effects.Status != ConditionID.NONE) {
             if (target.Status != null) {
-                // This should work but does not, We successfully enter this if statement
+                // this should work but does not, we successfully enter this if statement
                 yield return dialogueBox.TypeDialogue($"{source.Blueprint.PokemonName} is already afflicted by {target.Status.Name}!");
             } else {
                 target.SetStatus(effects.Status);

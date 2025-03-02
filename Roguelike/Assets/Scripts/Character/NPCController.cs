@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPCController : MonoBehaviour, Interactable
-{
+public class NPCController : MonoBehaviour, Interactable {
+    [SerializeField] Dialogue dialogue;
+
     public void Interact() {
-        Debug.Log("interacting with NPC!");
+        StartCoroutine(DialogueManager.Instance.ShowDialogue(dialogue));
     }
 }

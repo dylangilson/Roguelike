@@ -15,10 +15,6 @@ public class BattleDialogueBox : MonoBehaviour {
     [SerializeField] Text ppText;
     [SerializeField] Text typeText;
 
-    public void SetDialogue(string dialogue) {
-        dialogueText.text = dialogue;
-    }
-
     public IEnumerator TypeDialogue(string dialogue) {
         dialogueText.text = "";
 
