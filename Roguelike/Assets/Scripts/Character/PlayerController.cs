@@ -12,10 +12,10 @@ public class PlayerController : MonoBehaviour {
 
     private bool isMoving;
     private Vector2 input;
-    private Animator animator;
+    private CharacterAnimator animator;
 
     private void Awake() {
-        animator = GetComponent<Animator>();
+        animator = GetComponent<CharacterAnimator>();
     }
 
     public void HandleUpdate() {
@@ -31,8 +31,8 @@ public class PlayerController : MonoBehaviour {
 
             // move
             if (input != Vector2.zero) {
-                animator.SetFloat("moveX", input.x);
-                animator.SetFloat("moveY", input.y);
+                animator.MoveX = input.x;
+                animator.MoveY =  input.y;
 
                 var targetPosition = transform.position;
                 targetPosition.x += input.x;
@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour {
             }
         }
         
-        animator.SetBool("isMoving", isMoving);
+        animator.IsMoving =  isMoving;
 
         if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Space)) {
             Interact();
@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Interact() {
-        var facingDirection = new Vector3(animator.GetFloat("moveX"), animator.GetFloat("moveY"));
+        var facingDirection = new Vector3(animator.MoveX, animator.MoveY);
         var interactPosition = transform.position + facingDirection;
 
         var collider = Physics2D.OverlapCircle(interactPosition, 0.3f, interactableLayer);
@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour {
     private void CheckForEncounters() {
         if (Physics2D.OverlapCircle(transform.position, 0.2f, grassLayer) != null) {
             if (UnityEngine.Random.Range(1, 101) <= 10) {
-                animator.SetBool("isMoving", false);
+                animator.IsMoving =  false;
                 OnEncountered();
             }
         }
