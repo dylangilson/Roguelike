@@ -215,6 +215,7 @@ GameObject:
   - component: {fileID: 253932111}
   - component: {fileID: 253932113}
   - component: {fileID: 253932114}
+  - component: {fileID: 253932115}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -302,16 +303,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fef724dcc06d8564595366218b9186cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5
-  solidObjectsLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  interactableLayer:
-    serializedVersion: 2
-    m_Bits: 1024
-  grassLayer:
-    serializedVersion: 2
-    m_Bits: 512
 --- !u!114 &253932113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -367,6 +358,19 @@ MonoBehaviour:
   - {fileID: 2690600881683387669, guid: 3111f23cd57d2be48b2ee6bac4a23588, type: 3}
   - {fileID: 6634202828824015816, guid: 3111f23cd57d2be48b2ee6bac4a23588, type: 3}
   - {fileID: -5008138227279614530, guid: 3111f23cd57d2be48b2ee6bac4a23588, type: 3}
+--- !u!114 &253932115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 253932107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 364f1b56cf8a20a49b55add0aac7cc19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 5
 --- !u!1 &333168329
 GameObject:
   m_ObjectHideFlags: 0
@@ -735,6 +739,8 @@ GameObject:
   - component: {fileID: 386800993}
   - component: {fileID: 386800992}
   - component: {fileID: 386800994}
+  - component: {fileID: 386800995}
+  - component: {fileID: 386800996}
   m_Layer: 10
   m_Name: NPC
   m_TagString: Untagged
@@ -803,7 +809,7 @@ Transform:
   m_GameObject: {fileID: 386800989}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.5, y: 3.8, z: 0}
+  m_LocalPosition: {x: 4.5, y: 1.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -897,6 +903,57 @@ MonoBehaviour:
     lines:
     - Hi, I'm Gary. Hi, I'm Gary. Hi, I'm Gary. Hi, I'm Gary.
     - Smell ya later!
+  movements:
+  - {x: -2, y: 0}
+  - {x: 0, y: -2}
+  - {x: 2, y: 0}
+  - {x: 0, y: 2}
+  timeBetweenMovements: 2
+--- !u!114 &386800995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386800989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 364f1b56cf8a20a49b55add0aac7cc19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 5
+--- !u!114 &386800996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386800989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 999a9c485650b8c4c849899a9c8651c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkDownSprites:
+  - {fileID: 2013958873, guid: 25467b46cb7cab24ba6ec0f4a014fdf4, type: 3}
+  - {fileID: -1674621931, guid: 25467b46cb7cab24ba6ec0f4a014fdf4, type: 3}
+  - {fileID: -1007248080, guid: 25467b46cb7cab24ba6ec0f4a014fdf4, type: 3}
+  - {fileID: 578681099, guid: 25467b46cb7cab24ba6ec0f4a014fdf4, type: 3}
+  walkUpSprites:
+  - {fileID: -479502751, guid: 25467b46cb7cab24ba6ec0f4a014fdf4, type: 3}
+  - {fileID: 1150328525, guid: 25467b46cb7cab24ba6ec0f4a014fdf4, type: 3}
+  - {fileID: -1464764255, guid: 25467b46cb7cab24ba6ec0f4a014fdf4, type: 3}
+  - {fileID: -134075243, guid: 25467b46cb7cab24ba6ec0f4a014fdf4, type: 3}
+  walkRightSprites:
+  - {fileID: 171928808, guid: 25467b46cb7cab24ba6ec0f4a014fdf4, type: 3}
+  - {fileID: 558509015, guid: 25467b46cb7cab24ba6ec0f4a014fdf4, type: 3}
+  - {fileID: 1565767629, guid: 25467b46cb7cab24ba6ec0f4a014fdf4, type: 3}
+  - {fileID: 2146056351, guid: 25467b46cb7cab24ba6ec0f4a014fdf4, type: 3}
+  walkLeftSprites:
+  - {fileID: 1109915116, guid: 25467b46cb7cab24ba6ec0f4a014fdf4, type: 3}
+  - {fileID: 1230342580, guid: 25467b46cb7cab24ba6ec0f4a014fdf4, type: 3}
+  - {fileID: -1129154816, guid: 25467b46cb7cab24ba6ec0f4a014fdf4, type: 3}
+  - {fileID: -1030627755, guid: 25467b46cb7cab24ba6ec0f4a014fdf4, type: 3}
 --- !u!224 &419153928 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1623347807925640728, guid: 7051e84b926ce9a4f9c8ab30432c432a, type: 3}
@@ -7957,6 +8014,7 @@ GameObject:
   - component: {fileID: 1973169481}
   - component: {fileID: 1973169480}
   - component: {fileID: 1973169482}
+  - component: {fileID: 1973169483}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -8009,6 +8067,27 @@ MonoBehaviour:
   dialogueBox: {fileID: 1184442085}
   dialogueText: {fileID: 2039614489}
   lettersPerSecond: 45
+--- !u!114 &1973169483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973169479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0ceb0a91b4cd494ea83a95293876d2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  solidObjectsLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  interactableLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  grassLayer:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1001 &2001227204
 PrefabInstance:
   m_ObjectHideFlags: 0

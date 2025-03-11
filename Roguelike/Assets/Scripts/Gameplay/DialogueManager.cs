@@ -17,6 +17,7 @@ public class DialogueManager : MonoBehaviour {
     private bool isTyping; // true -> dialogue box is typing letters per second
 
     public static DialogueManager Instance { get; private set; } // global instance of DialogueManager
+    public bool IsShowing { get; private set; }
 
     private void Awake() {
         Instance = this;
@@ -26,6 +27,8 @@ public class DialogueManager : MonoBehaviour {
         yield return new WaitForEndOfFrame();
 
         OnShowDialogue?.Invoke(); // change GameController state to DIALOGUE
+
+        IsShowing = true;
 
         this.dialogue = dialogue;
 
@@ -48,6 +51,8 @@ public class DialogueManager : MonoBehaviour {
                     StartCoroutine(TypeDialogue(dialogue.Lines[index])); // populate dialogue box
                 } else {
                     index = 0;
+
+                    IsShowing = false;
 
                     dialogueBox.SetActive(false); // stop display of dialogue box
 
