@@ -13,6 +13,7 @@ public class DialogueManager : MonoBehaviour {
     public event Action OnCloseDialogue;
 
     private Dialogue dialogue;
+    private Action onDialogueFinished;
     private int index; // index of current line
     private bool isTyping; // true -> dialogue box is typing letters per second
 
@@ -23,14 +24,16 @@ public class DialogueManager : MonoBehaviour {
         Instance = this;
     }
 
-    public IEnumerator ShowDialogue(Dialogue dialogue) {
+    public IEnumerator ShowDialogue(Dialogue dialogue, Action onFinished=null) {
         yield return new WaitForEndOfFrame();
 
         OnShowDialogue?.Invoke(); // change GameController state to DIALOGUE
 
+
         IsShowing = true;
 
         this.dialogue = dialogue;
+        onDialogueFinished = onFinished;
 
         dialogueBox.SetActive(true); // display dialogue box
 
@@ -55,6 +58,7 @@ public class DialogueManager : MonoBehaviour {
                     IsShowing = false;
 
                     dialogueBox.SetActive(false); // stop display of dialogue box
+                    onDialogueFinished?.Invoke();
 
                     OnCloseDialogue?.Invoke();
                 }

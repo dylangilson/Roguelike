@@ -12,4 +12,3 @@ TODOs:
 	- Implement Struggle if pokemon has 0 PP in all moves
 	- Implement a volatile status counter for each volatile status (e.g. you can be confused and perish song'd at the same time)
 	- Fix HP text on BattleHUD (overflow)
-	- Force Character to move as close to solid object as possible
