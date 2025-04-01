@@ -2,16 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum FacingDirection { UP, DOWN, LEFT, RIGHT }
+
 public class CharacterAnimator : MonoBehaviour {
     [SerializeField] List<Sprite> walkDownSprites;
     [SerializeField] List<Sprite> walkUpSprites;
     [SerializeField] List<Sprite> walkRightSprites;
     [SerializeField] List<Sprite> walkLeftSprites;
+    [SerializeField] FacingDirection defaultDirection = FacingDirection.DOWN;
 
     // parameters
     public float MoveX { get; set; }
     public float MoveY { get; set; }
     public bool IsMoving { get; set; }
+    public FacingDirection DefaultDirection {
+        get {
+            return defaultDirection;
+        }
+    }
 
     // states
     SpriteAnimator walkDownAnimation;
@@ -31,24 +39,26 @@ public class CharacterAnimator : MonoBehaviour {
         walkRightAnimation = new SpriteAnimator(walkRightSprites, spriteRenderer);
         walkLeftAnimation = new SpriteAnimator(walkLeftSprites, spriteRenderer);
 
+        SetFacingDirection(defaultDirection);
+
         currentAnimation = walkDownAnimation;
     }
 
     private void Update() {
         var previousAnimation = currentAnimation;
-        bool perviousMoving = IsMoving;
+        bool previousMoving = IsMoving;
 
-        if(MoveX == 1) {
+        if(MoveX == 1.0f) {
             currentAnimation = walkRightAnimation;
-        } else if (MoveX == -1) {
+        } else if (MoveX == -1.0f) {
             currentAnimation = walkLeftAnimation;
-        } else if (MoveY == 1) {
+        } else if (MoveY == 1.0f) {
             currentAnimation = walkUpAnimation;
-        } else if (MoveY == -1) {
+        } else if (MoveY == -1.0f) {
             currentAnimation = walkDownAnimation;
         }
 
-        if (currentAnimation != previousAnimation || IsMoving != perviousMoving) {
+        if (currentAnimation != previousAnimation || IsMoving != previousMoving) {
             currentAnimation.Start();
         }
 
@@ -57,6 +67,21 @@ public class CharacterAnimator : MonoBehaviour {
         } else {
             spriteRenderer.sprite = currentAnimation.Frames[0];
         }
-        perviousMoving = IsMoving;
+
+        previousMoving = IsMoving;
+    }
+
+    public void SetFacingDirection(FacingDirection direction) {
+        if (direction == FacingDirection.RIGHT) {
+            MoveX = 1.0f;
+        } else if (direction == FacingDirection.LEFT) {
+            MoveX = -1.0f;
+        } else if (direction == FacingDirection.UP) {
+            MoveY = 1.0f;
+        } else if (direction == FacingDirection.DOWN) {
+            MoveY = -1.0f;
+        } else {
+            Debug.LogError("Invalid Move Direction!");
+        }
     }
 }

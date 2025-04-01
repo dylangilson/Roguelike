@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum GameState { OVERWORLD, BATTLE, DIALOGUE }
+public enum GameState { OVERWORLD, BATTLE, DIALOGUE, CUTSCENE }
 
 public class GameController : MonoBehaviour {
     [SerializeField] PlayerController playerController;
@@ -19,6 +19,17 @@ public class GameController : MonoBehaviour {
         // battle events
         playerController.OnEncountered += StartBattle;
         battleSystem.OnBattleOver += EndBattle;
+
+        // trainer events
+        playerController.OnEnterTrainerView += (Collider2D trainerCollider) => {
+            var trainer = trainerCollider.GetComponentInParent<TrainerController>();
+
+            if (trainer != null) {
+                state = GameState.CUTSCENE;
+                
+                StartCoroutine(trainer.TriggerTrainerBattle(playerController));
+            }
+        };
 
         // dialogue events
         DialogueManager.Instance.OnShowDialogue += () => { state = GameState.DIALOGUE; };

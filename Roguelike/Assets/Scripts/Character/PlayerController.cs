@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
     public event Action OnEncountered;
+    public event Action<Collider2D> OnEnterTrainerView;
 
     private Vector2 input;
     private Character character;
@@ -26,7 +27,7 @@ public class PlayerController : MonoBehaviour {
 
             // move
             if (input != Vector2.zero) {
-                StartCoroutine(character.Move(input, CheckForEncounters));
+                StartCoroutine(character.Move(input, OnMove));
             }
         }
 
@@ -48,6 +49,11 @@ public class PlayerController : MonoBehaviour {
  
         // Debug.DrawLine(transform.position, interactPosition, Color.red, 0.5f);
     }
+
+    private void OnMove() {
+        CheckForTrainers();
+        CheckForEncounters();
+    }
  
     private void CheckForEncounters() {
         if (Physics2D.OverlapCircle(transform.position, 0.2f, GameLayers.Instance.GrassLayer) != null) {
@@ -55,6 +61,15 @@ public class PlayerController : MonoBehaviour {
                 character.Animator.IsMoving =  false;
                 OnEncountered();
             }
+        }
+    }
+
+    private void CheckForTrainers() {
+        var collider = Physics2D.OverlapCircle(transform.position, 0.2f, GameLayers.Instance.FOVLayer);
+
+        if (collider != null) {
+            character.Animator.IsMoving =  false;
+            OnEnterTrainerView?.Invoke(collider);
         }
     }
 }
