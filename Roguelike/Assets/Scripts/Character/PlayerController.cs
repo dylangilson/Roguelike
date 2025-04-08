@@ -4,11 +4,26 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
+    [SerializeField] string name;
+    [SerializeField] Sprite sprite;
+
     public event Action OnEncountered;
     public event Action<Collider2D> OnEnterTrainerView;
 
     private Vector2 input;
     private Character character;
+
+    public string Name {
+        get {
+            return name;
+        }
+    }
+
+    public Sprite Sprite {
+        get {
+            return sprite;
+        }
+    }
 
     private void Awake() {
         character = GetComponent<Character>();

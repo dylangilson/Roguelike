@@ -3,11 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TrainerController : MonoBehaviour {
+    [SerializeField] string name;
+    [SerializeField] Sprite sprite;
     [SerializeField] Dialogue dialogue;
     [SerializeField] GameObject exclamation;
     [SerializeField] GameObject fov;
     
     Character character;
+
+    public string Name {
+        get {
+            return name;
+        }
+    }
+
+    public Sprite Sprite {
+        get {
+            return sprite;
+        }
+    }
 
     private void Awake() {
         character = GetComponent<Character>();
@@ -32,7 +46,7 @@ public class TrainerController : MonoBehaviour {
 
         // show dialogue
         StartCoroutine(DialogueManager.Instance.ShowDialogue(dialogue, () => {
-            Debug.Log("Battle started");
+            GameController.Instance.StartTrainerBattle(this);
         }));
     }
 
