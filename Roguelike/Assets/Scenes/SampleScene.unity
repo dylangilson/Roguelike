@@ -970,6 +970,7 @@ GameObject:
   - component: {fileID: 386800997}
   - component: {fileID: 386800995}
   - component: {fileID: 386800996}
+  - component: {fileID: 386800998}
   m_Layer: 10
   m_Name: Gary
   m_TagString: Untagged
@@ -1163,7 +1164,7 @@ MonoBehaviour:
   - {fileID: 1230342580, guid: 25467b46cb7cab24ba6ec0f4a014fdf4, type: 3}
   - {fileID: -1129154816, guid: 25467b46cb7cab24ba6ec0f4a014fdf4, type: 3}
   - {fileID: -1030627755, guid: 25467b46cb7cab24ba6ec0f4a014fdf4, type: 3}
-  defaultDirection: 3
+  defaultDirection: 2
 --- !u!114 &386800997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1183,6 +1184,23 @@ MonoBehaviour:
     - Hey Ash
   exclamation: {fileID: 1368077392}
   fov: {fileID: 273721515}
+--- !u!114 &386800998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386800989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c77c87cb8852bfd45b44142bf774d12a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  party:
+  - blueprint: {fileID: 11400000, guid: 0bfd8c35f3aa78f488b98573adf1d53c, type: 2}
+    level: 15
+  - blueprint: {fileID: 11400000, guid: 578522609b0490d458520a0d87a81d91, type: 2}
+    level: 10
 --- !u!224 &419153928 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1623347807925640728, guid: 7051e84b926ce9a4f9c8ab30432c432a, type: 3}
@@ -8131,12 +8149,12 @@ RectTransform:
   - {fileID: 348710386}
   - {fileID: 1671456419}
   - {fileID: 1223707152}
+  - {fileID: 830234814}
+  - {fileID: 167515463}
   - {fileID: 439318933}
   - {fileID: 1106774571}
   - {fileID: 1553729596}
   - {fileID: 1006288821}
-  - {fileID: 830234814}
-  - {fileID: 167515463}
   m_Father: {fileID: 2065207399}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
