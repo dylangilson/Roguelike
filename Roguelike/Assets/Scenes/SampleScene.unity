@@ -380,7 +380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fef724dcc06d8564595366218b9186cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Lebrooooon
+  playerName: 
   sprite: {fileID: 21300000, guid: 262efe1fd631da446adff773c630ff13, type: 3}
 --- !u!114 &253932113
 MonoBehaviour:
@@ -1177,7 +1177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4db99ec044672cf43bd1000f04a13a04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Ace Trainer Gary
+  trainerName: Ace Trainer Gary
   sprite: {fileID: 21300000, guid: 54fb614df062f09409e46d21094ec350, type: 3}
   dialogue:
     lines:

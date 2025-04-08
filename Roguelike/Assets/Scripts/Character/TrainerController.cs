@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TrainerController : MonoBehaviour {
-    [SerializeField] string name;
+    [SerializeField] string trainerName;
     [SerializeField] Sprite sprite;
     [SerializeField] Dialogue dialogue;
     [SerializeField] GameObject exclamation;
@@ -11,9 +11,9 @@ public class TrainerController : MonoBehaviour {
     
     Character character;
 
-    public string Name {
+    public string TrainerName {
         get {
-            return name;
+            return trainerName;
         }
     }
 

@@ -68,14 +68,14 @@ public class BattleSystem : MonoBehaviour {
             playerImage.sprite = player.Sprite;
             trainerImage.sprite = trainer.Sprite;
 
-            yield return dialogueBox.TypeDialogue($"{trainer.Name} wants to battle!");
+            yield return dialogueBox.TypeDialogue($"{trainer.TrainerName} wants to battle!");
 
             trainerImage.gameObject.SetActive(false);
             enemyUnit.gameObject.SetActive(true);
             var enemyPokemon = trainerParty.GetLeadPokemon();
             enemyUnit.Setup(enemyPokemon);
 
-            yield return dialogueBox.TypeDialogue($"{trainer.Name} sends out {enemyPokemon.Blueprint.PokemonName}!");
+            yield return dialogueBox.TypeDialogue($"{trainer.TrainerName} sends out {enemyPokemon.Blueprint.PokemonName}!");
 
             playerImage.gameObject.SetActive(false);
             playerUnit.gameObject.SetActive(true);
@@ -221,7 +221,8 @@ public class BattleSystem : MonoBehaviour {
             }
         }
 
-        if (state != BattleState.BATTLE_OVER){
+        if (state != BattleState.BATTLE_OVER) {
+            dialogueBox.EnableActionSelector(true);
             ActionSelection();
         }
     }
@@ -523,7 +524,7 @@ public class BattleSystem : MonoBehaviour {
 
     IEnumerator SwitchPokemon(Pokemon newPokemon) {
         if (playerUnit.Pokemon.CurrentHitpoints > 0) {
-
+            dialogueBox.EnableActionSelector(false);
             yield return dialogueBox.TypeDialogue($"Come back {playerUnit.Pokemon.Blueprint.PokemonName}!");
 
             playerUnit.PlayFaintAnimation();
@@ -531,6 +532,7 @@ public class BattleSystem : MonoBehaviour {
             yield return new WaitForSeconds(2f);
         }
 
+        dialogueBox.EnableActionSelector(false);
         playerUnit.Setup(newPokemon);
         dialogueBox.SetMoveNames(newPokemon.Moves);
 
@@ -543,7 +545,7 @@ public class BattleSystem : MonoBehaviour {
         state = BattleState.BUSY;
 
         enemyUnit.Setup(nextPokemon);
-        yield return dialogueBox.TypeDialogue($"{trainer.Name} Sends out {nextPokemon.Blueprint.PokemonName}");
+        yield return dialogueBox.TypeDialogue($"{trainer.TrainerName} Sends out {nextPokemon.Blueprint.PokemonName}");
 
         state = BattleState.RUNNING_TURN;
     }

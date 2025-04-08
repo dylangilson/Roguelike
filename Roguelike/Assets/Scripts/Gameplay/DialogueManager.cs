@@ -29,7 +29,6 @@ public class DialogueManager : MonoBehaviour {
 
         OnShowDialogue?.Invoke(); // change GameController state to DIALOGUE
 
-
         IsShowing = true;
 
         this.dialogue = dialogue;

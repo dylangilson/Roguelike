@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
-    [SerializeField] string name;
+    [SerializeField] string playerName;
     [SerializeField] Sprite sprite;
 
     public event Action OnEncountered;
@@ -13,9 +13,9 @@ public class PlayerController : MonoBehaviour {
     private Vector2 input;
     private Character character;
 
-    public string Name {
+    public string PlayerName {
         get {
-            return name;
+            return playerName;
         }
     }
 
