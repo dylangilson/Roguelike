@@ -10,10 +10,13 @@ public class BattleDialogueBox : MonoBehaviour {
     [SerializeField] GameObject actionSelector;
     [SerializeField] GameObject moveSelector;
     [SerializeField] GameObject moveDetails;
+    [SerializeField] GameObject choiceBox;
     [SerializeField] List<Text> actionTexts;
     [SerializeField] List<Text> moveTexts;
     [SerializeField] Text ppText;
     [SerializeField] Text typeText;
+    [SerializeField] Text yesText;
+    [SerializeField] Text noText;
 
     public IEnumerator TypeDialogue(string dialogue) {
         dialogueText.text = "";
@@ -38,6 +41,10 @@ public class BattleDialogueBox : MonoBehaviour {
     public void EnableMoveSelector(bool enabled) {
         moveSelector.SetActive(enabled);
         moveDetails.SetActive(enabled);
+    }
+
+    public void EnableChoiceBox(bool enabled) {
+        choiceBox.SetActive(enabled);
     }
 
     public void UpdateActionSelection(int selectedAction) {
@@ -78,6 +85,16 @@ public class BattleDialogueBox : MonoBehaviour {
             } else {
                 moveTexts[i].text = "-";
             }
+        }
+    }
+
+    public void UpdateChoiceBox(bool yesSelected) {
+        if (yesSelected) {
+            yesText.color = highlightedColour;
+            noText.color = Color.black;
+        } else {
+            yesText.color = Color.black;
+            noText.color = highlightedColour;
         }
     }
 }

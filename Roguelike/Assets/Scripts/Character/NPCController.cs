@@ -32,15 +32,15 @@ public class NPCController : MonoBehaviour, Interactable {
         character.HandleUpdate();
     }
 
-    public void Interact(Transform initiator) {
+    public IEnumerator Interact(Transform initiator) {
         if (state == NPCState.IDLE) {
             state = NPCState.DIALOGUE;
             character.LookTowards(initiator.position);
 
-            StartCoroutine(DialogueManager.Instance.ShowDialogue(dialogue, () => {
+            yield return DialogueManager.Instance.ShowDialogue(dialogue, () => {
                 idleTimer = 0.0f;
                 state = NPCState.IDLE;
-            }));
+            });
 
             // StartCoroutine(character.Move(new Vector2(-3, 0)));
         }

@@ -59,7 +59,11 @@ public class PlayerController : MonoBehaviour {
 
         var collider = Physics2D.OverlapCircle(interactPosition, 0.3f, GameLayers.Instance.InteractableLayer);
         if (collider != null) {
-            collider.GetComponent<Interactable>()?.Interact(transform);
+            var interactable = collider.GetComponent<Interactable>();
+
+            if (interactable != null) {
+                StartCoroutine(interactable.Interact(transform));
+            }
         }
  
         // Debug.DrawLine(transform.position, interactPosition, Color.red, 0.5f);

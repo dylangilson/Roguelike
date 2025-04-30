@@ -3,5 +3,5 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public interface Interactable {
-    void Interact(Transform initiator);
+    IEnumerator Interact(Transform initiator);
 }

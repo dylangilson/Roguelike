@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour {
     [SerializeField] Camera overworldCamera;
 
     GameState state;
+    TrainerController trainer;
 
     public static GameController Instance { get; private set; }
 
@@ -61,6 +62,8 @@ public class GameController : MonoBehaviour {
         battleSystem.gameObject.SetActive(true);
         overworldCamera.gameObject.SetActive(false);
 
+        this.trainer = trainer;
+
         var playerParty = playerController.GetComponent<Party>();
         var trainerParty = trainer.GetComponent<Party>();
 
@@ -68,6 +71,11 @@ public class GameController : MonoBehaviour {
     }
 
     private void EndBattle(bool won) {
+        if (trainer != null && won) {
+            trainer.DefeatedByPlayer();
+            trainer = null;
+        }
+        
         state = GameState.OVERWORLD;
 
         battleSystem.gameObject.SetActive(false);
