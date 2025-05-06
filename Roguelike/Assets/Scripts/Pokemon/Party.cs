@@ -25,4 +25,12 @@ public class Party : MonoBehaviour {
 
         return null;
     }
+
+    public void AddPokemon(Pokemon pokemon){
+        if (party.Count < 6) {
+            party.Add(pokemon);
+        } else {
+            // TODO: Add to PC 
+        }
+    }
 }

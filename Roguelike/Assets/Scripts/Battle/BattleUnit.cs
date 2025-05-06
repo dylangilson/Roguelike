@@ -43,6 +43,7 @@ public class BattleUnit : MonoBehaviour {
         hud.gameObject.SetActive(true);
         hud.SetData(pokemon);
 
+        transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
         image.color = originalColour;
 
         PlayEnterAnimation();
@@ -86,5 +87,23 @@ public class BattleUnit : MonoBehaviour {
 
         sequence.Append(image.transform.DOLocalMoveY(originalPosition.y - 150.0f, 0.5f));
         sequence.Join(image.DOFade(0.0f, 0.5f));
+    }
+
+    public IEnumerator PlayCatchAnimation() {
+        var sequence = DOTween.Sequence();
+
+        sequence.Append(image.DOFade(0.0f, 0.5f));
+        sequence.Join(transform.DOLocalMoveY(originalPosition.y + 50.0f, 0.5f));
+        sequence.Join(transform.DOScale(new Vector3(0.3f, 0.3f, 1.0f), 0.5f));
+        yield return sequence.WaitForCompletion();
+    }
+
+    public IEnumerator PlayBreakOutAnimation() {
+        var sequence = DOTween.Sequence();
+
+        sequence.Append(image.DOFade(1.0f, 0.5f));
+        sequence.Join(transform.DOLocalMoveY(originalPosition.y, 0.5f));
+        sequence.Join(transform.DOScale(new Vector3(1.0f, 1.0f, 1.0f), 0.5f));
+        yield return sequence.WaitForCompletion();
     }
 }

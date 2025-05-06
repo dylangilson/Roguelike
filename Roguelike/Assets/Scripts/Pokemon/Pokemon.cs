@@ -8,6 +8,12 @@ public class Pokemon {
     [SerializeField] PokemonBase blueprint;
     [SerializeField] int level;
 
+    public Pokemon(PokemonBase copyBlueprint, int copyLevel) {
+        blueprint = copyBlueprint;
+        level = copyLevel;
+        Init();
+    }
+
     public PokemonBase Blueprint { 
         get {
             return blueprint;
@@ -26,7 +32,7 @@ public class Pokemon {
     public Dictionary<Stat, int> Stats { get; private set; }
     public Dictionary<Stat, int> StatBoosts { get; private set; }
     public int MaxHitpoints { get; private set; }
-    public Queue<string> StatusChanges { get; private set; } = new Queue<string>();
+    public Queue<string> StatusChanges { get; private set; }
     public Condition Status { get; private set; }
     public int StatusCounter { get; set; }
     public Condition VolatileStatus { get; private set; }
@@ -53,7 +59,7 @@ public class Pokemon {
         CalculateStats();
         
         CurrentHitpoints = MaxHitpoints;
-
+        StatusChanges = new Queue<string>();
         ResetStatBoosts();
         Status = null;
         VolatileStatus = null;

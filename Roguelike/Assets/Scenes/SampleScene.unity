@@ -380,7 +380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fef724dcc06d8564595366218b9186cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerName: 
+  playerName: Ash
   sprite: {fileID: 21300000, guid: 262efe1fd631da446adff773c630ff13, type: 3}
 --- !u!114 &253932113
 MonoBehaviour:
@@ -397,14 +397,6 @@ MonoBehaviour:
   party:
   - blueprint: {fileID: 11400000, guid: 0bfd8c35f3aa78f488b98573adf1d53c, type: 2}
     level: 100
-  - blueprint: {fileID: 11400000, guid: 578522609b0490d458520a0d87a81d91, type: 2}
-    level: 6
-  - blueprint: {fileID: 11400000, guid: 0bfd8c35f3aa78f488b98573adf1d53c, type: 2}
-    level: 9
-  - blueprint: {fileID: 11400000, guid: 0bfd8c35f3aa78f488b98573adf1d53c, type: 2}
-    level: 10
-  - blueprint: {fileID: 11400000, guid: 578522609b0490d458520a0d87a81d91, type: 2}
-    level: 9
 --- !u!114 &253932114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1202,8 +1194,6 @@ MonoBehaviour:
   party:
   - blueprint: {fileID: 11400000, guid: 0bfd8c35f3aa78f488b98573adf1d53c, type: 2}
     level: 15
-  - blueprint: {fileID: 11400000, guid: 578522609b0490d458520a0d87a81d91, type: 2}
-    level: 10
 --- !u!1 &414463264
 GameObject:
   m_ObjectHideFlags: 0
@@ -6741,7 +6731,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 214, y: 55}
+  m_AnchoredPosition: {x: 205, y: 55}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1223707153
@@ -8464,7 +8454,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: -734658537
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!1 &1835876295
@@ -9367,6 +9357,7 @@ MonoBehaviour:
   partyScreen: {fileID: 1006288824}
   playerImage: {fileID: 830234816}
   trainerImage: {fileID: 167515461}
+  pokeballSprite: {fileID: 1386053197519928550, guid: 7047348251897174b90fb3905c5a323d, type: 3}
 --- !u!1 &2096132503
 GameObject:
   m_ObjectHideFlags: 0

@@ -143,6 +143,18 @@ public class ConditionsDataBase {
             }
         }
     };
+
+    public static float GetStatusBonus(Condition condition) {
+        if (condition == null) {
+            return 1.0f;
+        } else if (condition.ID == ConditionID.SLEEP || condition.ID == ConditionID.FREEZE) {
+            return 2.0f;
+        } else if (condition.ID == ConditionID.PARALYSIS || condition.ID == ConditionID.POISON || condition.ID == ConditionID.BURN) {
+            return 1.5f;
+        } else {
+            return 1.0f;
+        }
+    }
 }
 
 public enum ConditionID {
