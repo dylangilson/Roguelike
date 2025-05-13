@@ -31,6 +31,7 @@ public class BattleSystem : MonoBehaviour {
     bool isTrainerbattle = false;
     PlayerController player;
     TrainerController trainer;
+    int runAttempts;
 
     public void StartBattle(Party playerParty, Pokemon wildPokemon) {
         this.playerParty = playerParty;
@@ -93,6 +94,8 @@ public class BattleSystem : MonoBehaviour {
             dialogueBox.SetMoveNames(playerUnit.Pokemon.Moves);
         }
 
+        runAttempts = 0;
+
         partyScreen.Init();
         ActionSelection();
     }
@@ -152,13 +155,7 @@ public class BattleSystem : MonoBehaviour {
         }
 
         if (source.Pokemon.CurrentHitpoints <= 0) {
-            yield return dialogueBox.TypeDialogue($"{source.Pokemon.Blueprint.PokemonName} fainted!");
-
-            source.PlayFaintAnimation();
-            
-            yield return new WaitForSeconds(2.0f);
-
-            HandleFaint(source);
+            yield return HandlePokemonFainted(source);
 
             yield return new WaitUntil(() => state == BattleState.RUNNING_TURN);
         }
@@ -240,7 +237,38 @@ public class BattleSystem : MonoBehaviour {
             }
         } else if (playerAction == BattleAction.USE_ITEM) {
             dialogueBox.EnableActionSelector(false);
+
             yield return ThrowPokeball();
+
+            if (state == BattleState.BATTLE_OVER) {
+                yield break;
+            }
+
+            // enemy still gets a move if Pokémon was not caught
+            enemyUnit.Pokemon.CurrentMove = enemyUnit.Pokemon.GetRandomMove();
+
+            yield return PerformMove(enemyUnit, playerUnit, enemyUnit.Pokemon.CurrentMove);
+            yield return RunAfterTurn(enemyUnit);
+
+            if (state == BattleState.BATTLE_OVER) {
+                yield break;
+            }
+        } else if (playerAction == BattleAction.RUN) {
+            yield return TryToEscape();
+
+            if (state == BattleState.BATTLE_OVER) {
+                yield break;
+            }
+
+            // enemy still gets a move if run was not successful
+            enemyUnit.Pokemon.CurrentMove = enemyUnit.Pokemon.GetRandomMove();
+
+            yield return PerformMove(enemyUnit, playerUnit, enemyUnit.Pokemon.CurrentMove);
+            yield return RunAfterTurn(enemyUnit);
+
+            if (state == BattleState.BATTLE_OVER) {
+                yield break;
+            }
         }
 
         if (state != BattleState.BATTLE_OVER) {
@@ -332,13 +360,7 @@ public class BattleSystem : MonoBehaviour {
             }
 
             if (target.Pokemon.CurrentHitpoints <= 0) {
-                yield return dialogueBox.TypeDialogue($"{target.Pokemon.Blueprint.PokemonName} fainted!");
-
-                target.PlayFaintAnimation();
-                
-                yield return new WaitForSeconds(2.0f);
-
-                HandleFaint(target);
+                yield return HandlePokemonFainted(target);
             }
         } else {
             yield return dialogueBox.TypeDialogue($"{source.Pokemon.Blueprint.PokemonName}'s attack missed!");
@@ -414,6 +436,32 @@ public class BattleSystem : MonoBehaviour {
         }
     }
 
+    IEnumerator HandlePokemonFainted(BattleUnit targetUnit) {
+        yield return dialogueBox.TypeDialogue($"{targetUnit.Pokemon.Blueprint.PokemonName} fainted!");
+
+        targetUnit.PlayFaintAnimation();
+        
+        yield return new WaitForSeconds(2.0f);
+
+        if (!targetUnit.IsPlayerUnit) {
+            int expYield = targetUnit.Pokemon.Blueprint.ExpYield;
+            int enemyLevel = targetUnit.Pokemon.Level;
+            float trainerBonus = (isTrainerbattle) ? 1.5f : 1.0f;
+
+            int expGain = Mathf.FloorToInt(expYield * enemyLevel * trainerBonus / 7.0f);
+
+            playerUnit.Pokemon.Exp += expGain;
+
+            yield return dialogueBox.TypeDialogue($"{playerUnit.Pokemon.Blueprint.PokemonName} gained {expGain} experience!");
+
+            yield return playerUnit.HUD.SetExpSmooth();
+
+            yield return new WaitForSeconds(1.0f);
+        }
+
+        HandleFaint(targetUnit);
+    }
+
     IEnumerator ShowDamageDetails(DamageDetails damageDetails) {
         if (damageDetails.Critical == 2.0f) {
             yield return dialogueBox.TypeDialogue("A critical hit!");
@@ -462,7 +510,7 @@ public class BattleSystem : MonoBehaviour {
                 previousState = state;
                 PlayerPokemon();
             }  else if (currentAction == 3) {
-                // PlayerRun();
+                StartCoroutine(RunTurns(BattleAction.RUN));
             }
         }
     }
@@ -663,6 +711,7 @@ public class BattleSystem : MonoBehaviour {
             } else {
                 yield return dialogueBox.TypeDialogue($"{enemyUnit.Pokemon.Blueprint.PokemonName} was almost caught!");
             }
+
             Destroy(pokeball);
             state = BattleState.RUNNING_TURN;
         }
@@ -684,5 +733,40 @@ public class BattleSystem : MonoBehaviour {
             ++shakeCount;
         }
         return shakeCount;
+    }
+
+    IEnumerator TryToEscape() {
+        state = BattleState.BUSY;
+
+        if (isTrainerbattle) {
+            yield return dialogueBox.TypeDialogue("You can't run from trainer battles!");
+
+            state = BattleState.RUNNING_TURN;
+
+            yield break;
+        }
+
+        runAttempts++;
+
+        int playerSpeed = playerUnit.Pokemon.Speed;
+        int enemySpeed = enemyUnit.Pokemon.Speed;
+
+        if (enemySpeed < playerSpeed) {
+            yield return dialogueBox.TypeDialogue("Got away safely!");
+
+            BattleOver(true);
+        } else {
+            float runChance = playerSpeed * 128 / enemySpeed + 30 * runAttempts;
+
+            if (UnityEngine.Random.Range(0, 256) < runChance) {
+                yield return dialogueBox.TypeDialogue("Got away safely!");
+
+                BattleOver(true);
+            } else {
+                yield return dialogueBox.TypeDialogue("Failed to escape!");
+
+                state = BattleState.RUNNING_TURN;
+            }
+        }
     }
 }

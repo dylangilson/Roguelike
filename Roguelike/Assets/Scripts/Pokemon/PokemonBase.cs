@@ -13,14 +13,16 @@ public class PokemonBase : ScriptableObject {
     [SerializeField] Type typeB;
     [SerializeField] List<LearnableMove> learnableMoves;
     [SerializeField] int catchRate = 255;
-    
+    [SerializeField] int expYield;
+    [SerializeField] GrowthRate growthRate;
+
     // base stats
     [SerializeField] int hitpoints;
     [SerializeField] int attack;
     [SerializeField] int defence;
     [SerializeField] int specialAttack;
     [SerializeField] int specialDefence;
-    [SerializeField] int speed;    
+    [SerializeField] int speed;
 
     public string PokemonName {
         get { return pokemonName; }
@@ -50,7 +52,17 @@ public class PokemonBase : ScriptableObject {
         get { return learnableMoves; }
     }
 
-    public int CatchRate => catchRate;
+    public int CatchRate {
+        get { return catchRate; }
+    }
+
+    public int ExpYield {
+        get { return expYield; }
+    }
+
+    public GrowthRate GrowthRate {
+        get { return growthRate; }
+    }
 
     public int Hitpoints {
         get { return hitpoints; }
@@ -74,6 +86,20 @@ public class PokemonBase : ScriptableObject {
 
     public int Speed {
         get { return speed; }
+    }
+
+    public int GetExp(int level) {
+        if (growthRate == GrowthRate.FAST) {
+            return 4 * level * level * level / 5; // (4n^3)/5
+        } else if (growthRate == GrowthRate.MEDIUM_FAST) {
+            return level * level * level; // n^3
+        } else if (growthRate == GrowthRate.MEDIUM_SLOW) {
+            return 6 * level * level * level / 5 - 15 * level * level + 100 * level - 140; // (6n^3)/5 - 15n^2 + 100n - 140
+        } else if (growthRate == GrowthRate.SLOW) {
+            return 5 * level * level * level / 4; // (5n^3)/4
+        }
+
+        return -1;
     }
 }
 
@@ -122,6 +148,10 @@ public enum Stat {
     // these are invisible stats
     ACCURACY,
     EVASION
+}
+
+public enum GrowthRate {
+    FAST, MEDIUM_FAST, MEDIUM_SLOW, SLOW
 }
 
 public enum MoveCatagory { OTHER, PHYSICAL, SPECIAL }

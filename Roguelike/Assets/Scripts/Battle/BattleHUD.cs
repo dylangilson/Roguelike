@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class BattleHUD : MonoBehaviour {
     [SerializeField] Text nameText;
@@ -9,6 +10,7 @@ public class BattleHUD : MonoBehaviour {
     [SerializeField] Text statusText;
     [SerializeField] HitpointsBar hitpointsBar;
     [SerializeField] Text hitpointsValueText;
+    [SerializeField] GameObject expBar;
 
     [SerializeField] Color poisonColor;
     [SerializeField] Color paralysisColor;
@@ -27,6 +29,7 @@ public class BattleHUD : MonoBehaviour {
         hitpointsValueText.text = "HP: " + pokemon.CurrentHitpoints;
         
         hitpointsBar.SetHitpoints((float)(pokemon.CurrentHitpoints / pokemon.MaxHitpoints));
+        SetExp();
 
         statusColors = new Dictionary<ConditionID, Color>() {
             {ConditionID.POISON, poisonColor},
@@ -47,6 +50,37 @@ public class BattleHUD : MonoBehaviour {
             statusText.text = currentPokemon.Status.Abbreviation.ToString().ToUpper();
             statusText.color = statusColors[currentPokemon.Status.ID];
         }
+    }
+
+    // use this to initialize HUD
+    public void SetExp() {
+        if (expBar == null) {
+            return;
+        }
+
+        float normalizedExp = GetNormalizedExp();
+
+        expBar.transform.localScale = new Vector3(normalizedExp, 1.0f, 1.0f);
+    }
+
+    // use this when gaining exp
+    public IEnumerator SetExpSmooth() {
+        if (expBar == null) {
+            yield break;
+        }
+
+        float normalizedExp = GetNormalizedExp();
+
+        yield return expBar.transform.DOScaleX(normalizedExp, 1.5f).WaitForCompletion();
+    }
+
+    public float GetNormalizedExp() {
+        int currentLevelExp = currentPokemon.Blueprint.GetExp(currentPokemon.Level);
+        int nextLevelExp = currentPokemon.Blueprint.GetExp(currentPokemon.Level + 1);
+
+        float normalizedExp = (float)(currentPokemon.Exp - currentLevelExp) / (nextLevelExp - currentLevelExp);
+
+        return Mathf.Clamp01(normalizedExp);
     }
     
     public IEnumerator UpdatePlayerHitpoints() {

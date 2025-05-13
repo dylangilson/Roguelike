@@ -26,6 +26,7 @@ public class Pokemon {
         } 
     }
 
+    public int Exp { get; set; }
     public int CurrentHitpoints { get; set; }
     public List<Move> Moves { get; set; }
     public Move CurrentMove { get; set; }    
@@ -55,6 +56,8 @@ public class Pokemon {
                 break;
             }
         }
+
+        Exp = Blueprint.GetExp(Level);
 
         CalculateStats();
         
@@ -163,11 +166,12 @@ public class Pokemon {
         if (move.Blueprint.MoveCatagory == MoveCatagory.PHYSICAL) {
             attack = attacker.Attack;
             Debug.Log($"{attacker.Blueprint.PokemonName}'s attack is {attacker.Attack}");
-            // Debug.Log($"{attacker.Blueprint.PokemonName}'s attack is {attacker.Attack}");
+
             defence = Defence;
         } else if (move.Blueprint.MoveCatagory == MoveCatagory.SPECIAL) {
             attack = attacker.SpecialAttack;
             Debug.Log($"{attacker.Blueprint.PokemonName}'s special attack is {attacker.SpecialAttack}");
+
             defence = SpecialDefence;
         } else {
             Debug.Log(move.Blueprint.MoveName + " is not Physical or Special!");
@@ -176,10 +180,8 @@ public class Pokemon {
         float modifiers = Random.Range (0.85f, 1.0f) * typeModifier * critical;
         float attackModifier = (2 * attacker.Level + 10) / 250.0f;
         float defenseModifier = attackModifier * move.Blueprint.Power * (attack / defence) + 2;
-        // Debug.Log($"defence modifier is {defenseModifier} with {modifiers} as modifiers");
         int damage = Mathf.Clamp(Mathf.FloorToInt(defenseModifier * modifiers), 1, 100000);
         Debug.Log($"{attacker.Blueprint.PokemonName} deals {damage} much damage");
-        // CurrentHitpoints -= damage;
 
         UpdateHitpoints(damage);
 

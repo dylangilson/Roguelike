@@ -35,6 +35,9 @@ MonoBehaviour:
     level: 51
   - moveBase: {fileID: 11400000, guid: 867a772fad63a6f459489a8a2a615f5a, type: 2}
     level: 52
+  catchRate: 255
+  expYield: 64
+  growthRate: 1
   hitpoints: 60
   attack: 55
   defence: 65
