@@ -19,6 +19,9 @@ MonoBehaviour:
   typeA: 8
   typeB: 0
   learnableMoves: []
+  catchRate: 255
+  expYield: 62
+  growthRate: 1
   hitpoints: 60
   attack: 60
   defence: 45

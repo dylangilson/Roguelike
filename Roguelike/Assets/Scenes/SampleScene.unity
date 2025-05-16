@@ -396,7 +396,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   party:
   - blueprint: {fileID: 11400000, guid: 0bfd8c35f3aa78f488b98573adf1d53c, type: 2}
-    level: 15
+    level: 8
   - blueprint: {fileID: 11400000, guid: 0bfd8c35f3aa78f488b98573adf1d53c, type: 2}
     level: 100
   - blueprint: {fileID: 11400000, guid: 0bfd8c35f3aa78f488b98573adf1d53c, type: 2}

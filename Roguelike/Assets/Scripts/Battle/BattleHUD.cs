@@ -28,6 +28,7 @@ public class BattleHUD : MonoBehaviour {
         levelText.text = "Lvl: " + pokemon.Level;
         hitpointsValueText.text = "HP: " + pokemon.CurrentHitpoints;
         
+        SetLevel();
         hitpointsBar.SetHitpoints((float)(pokemon.CurrentHitpoints / pokemon.MaxHitpoints));
         SetExp();
 
@@ -52,6 +53,10 @@ public class BattleHUD : MonoBehaviour {
         }
     }
 
+    public void SetLevel() {
+        levelText.text = "Lvl: " + currentPokemon.Level;
+    }
+
     // use this to initialize HUD
     public void SetExp() {
         if (expBar == null) {
@@ -64,9 +69,13 @@ public class BattleHUD : MonoBehaviour {
     }
 
     // use this when gaining exp
-    public IEnumerator SetExpSmooth() {
+    public IEnumerator SetExpSmooth(bool reset) {
         if (expBar == null) {
             yield break;
+        }
+
+        if (reset) {
+            expBar.transform.localScale = new Vector3(0.0f, 1.0f, 1.0f);
         }
 
         float normalizedExp = GetNormalizedExp();

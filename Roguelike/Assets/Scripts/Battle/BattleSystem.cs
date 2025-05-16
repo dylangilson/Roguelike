@@ -454,7 +454,26 @@ public class BattleSystem : MonoBehaviour {
 
             yield return dialogueBox.TypeDialogue($"{playerUnit.Pokemon.Blueprint.PokemonName} gained {expGain} experience!");
 
-            yield return playerUnit.HUD.SetExpSmooth();
+            yield return playerUnit.HUD.SetExpSmooth(false);
+
+            while (playerUnit.Pokemon.CheckForLevelUp()) {
+                yield return dialogueBox.TypeDialogue($"{playerUnit.Pokemon.Blueprint.PokemonName} is now level {playerUnit.Pokemon.Level}!");
+                playerUnit.HUD.SetLevel();
+
+                var newMove = playerUnit.Pokemon.GetLearnableMoveAtCurrentLevel();
+                if (newMove != null) {
+                    if (playerUnit.Pokemon.Moves.Count < PokemonBase.MaxNumOfMoves) {
+                        if (!playerUnit.Pokemon.GetMoveNames().Contains(newMove.GetBase().MoveName)) {
+                            playerUnit.Pokemon.LearnMove(newMove);
+                            yield return dialogueBox.TypeDialogue($"{playerUnit.Pokemon.Blueprint.PokemonName} learned {newMove.GetBase().MoveName}!");
+                            dialogueBox.SetMoveNames(playerUnit.Pokemon.Moves);
+                        }
+                    } else {
+                        // TODO: forget old move  
+                    }
+                }
+                yield return playerUnit.HUD.SetExpSmooth(true);
+            }
 
             yield return new WaitForSeconds(1.0f);
         }

@@ -52,7 +52,7 @@ public class Pokemon {
                 Moves.Add(new Move(move.GetBase()));
             }
 
-            if (Moves.Count >= 4) {
+            if (Moves.Count >= PokemonBase.MaxNumOfMoves) {
                 break;
             }
         }
@@ -121,6 +121,41 @@ public class Pokemon {
 
             Debug.Log($"{Blueprint.PokemonName}'s {stat} has been altered!");
         }
+    }
+
+    public bool CheckForLevelUp() {
+        int nextLevelExpThreshold = Blueprint.GetExp(level + 1);
+
+        if (Exp > nextLevelExpThreshold) {
+            level++;
+        
+            return true;
+        }
+
+        return false;
+    }
+
+    // get new move or return null
+    public LearnableMove GetLearnableMoveAtCurrentLevel() {
+        return Blueprint.LearnableMoves.Where(x => x.GetLevel() == level).FirstOrDefault();
+    }
+
+    public void LearnMove(LearnableMove moveToLearn) {
+        if (Moves.Count >= PokemonBase.MaxNumOfMoves) {
+            return;
+        }
+
+        Moves.Add(new Move(moveToLearn.GetBase()));
+    }
+
+    public List<string> GetMoveNames() {
+        List<string> moveNames = new List<string>();
+        
+        foreach (Move move in Moves) {
+            moveNames.Add(move.Blueprint.MoveName);
+        }
+        
+        return moveNames;
     }
 
     public int Attack {
