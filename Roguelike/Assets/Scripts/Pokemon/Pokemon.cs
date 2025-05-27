@@ -52,7 +52,7 @@ public class Pokemon {
                 Moves.Add(new Move(move.GetBase()));
             }
 
-            if (Moves.Count >= PokemonBase.MaxNumOfMoves) {
+            if (Moves.Count >= PokemonBase.MAX_NUMBER_OF_MOVES) {
                 break;
             }
         }
@@ -141,7 +141,7 @@ public class Pokemon {
     }
 
     public void LearnMove(LearnableMove moveToLearn) {
-        if (Moves.Count >= PokemonBase.MaxNumOfMoves) {
+        if (Moves.Count >= PokemonBase.MAX_NUMBER_OF_MOVES) {
             return;
         }
 

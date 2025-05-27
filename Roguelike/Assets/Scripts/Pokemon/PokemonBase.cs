@@ -24,7 +24,7 @@ public class PokemonBase : ScriptableObject {
     [SerializeField] int specialDefence;
     [SerializeField] int speed;
 
-    public static int MaxNumOfMoves { get; set; } = 4;
+    public static int MAX_NUMBER_OF_MOVES { get; set; } = 4;
 
     public string PokemonName {
         get { return pokemonName; }
