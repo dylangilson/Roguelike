@@ -8,6 +8,7 @@ public class GameLayers : MonoBehaviour {
     [SerializeField] LayerMask grassLayer;
     [SerializeField] LayerMask playerLayer;
     [SerializeField] LayerMask fovLayer;
+    [SerializeField] LayerMask portalLayer;
 
     public static GameLayers Instance { get; set; }
 
@@ -42,6 +43,18 @@ public class GameLayers : MonoBehaviour {
     public LayerMask FOVLayer {
         get {
             return fovLayer;
+        }
+    }
+    
+    public LayerMask PortalPlayer {
+        get {
+            return portalLayer;
+        }
+    }
+    
+    public LayerMask TriggerableLayers {
+        get {
+            return grassLayer | fovLayer | portalLayer;
         }
     }
 }

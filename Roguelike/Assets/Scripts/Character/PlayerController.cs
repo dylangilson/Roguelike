@@ -7,9 +7,6 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] string playerName;
     [SerializeField] Sprite sprite;
 
-    public event Action OnEncountered;
-    public event Action<Collider2D> OnEnterTrainerView;
-
     private Vector2 input;
     private Character character;
 
@@ -58,6 +55,7 @@ public class PlayerController : MonoBehaviour {
         var interactPosition = transform.position + facingDirection;
 
         var collider = Physics2D.OverlapCircle(interactPosition, 0.3f, GameLayers.Instance.InteractableLayer);
+        
         if (collider != null) {
             var interactable = collider.GetComponent<Interactable>();
 
@@ -65,30 +63,20 @@ public class PlayerController : MonoBehaviour {
                 StartCoroutine(interactable.Interact(transform));
             }
         }
- 
-        // Debug.DrawLine(transform.position, interactPosition, Color.red, 0.5f);
     }
 
     private void OnMove() {
-        CheckForTrainers();
-        CheckForEncounters();
-    }
- 
-    private void CheckForEncounters() {
-        if (Physics2D.OverlapCircle(transform.position, 0.2f, GameLayers.Instance.GrassLayer) != null) {
-            if (UnityEngine.Random.Range(1, 101) <= 10) {
-                character.Animator.IsMoving =  false;
-                OnEncountered();
+        var colliders = Physics2D.OverlapCircleAll(transform.position, 0.2f, GameLayers.Instance.TriggerableLayers);
+
+        foreach (var collider in colliders) {
+            var triggerable = collider.GetComponent<IPlayerTriggerable>();
+
+            if (triggerable != null) {
+                character.Animator.IsMoving = false;
+                triggerable.OnPlayerTriggered(this);
+
+                break;
             }
-        }
-    }
-
-    private void CheckForTrainers() {
-        var collider = Physics2D.OverlapCircle(transform.position, 0.2f, GameLayers.Instance.FOVLayer);
-
-        if (collider != null) {
-            character.Animator.IsMoving =  false;
-            OnEnterTrainerView?.Invoke(collider);
         }
     }
 }
