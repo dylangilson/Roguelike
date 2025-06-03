@@ -22,6 +22,12 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
+    public Character Character {
+        get {
+            return character;
+        }
+    }
+
     private void Awake() {
         character = GetComponent<Character>();
     }
@@ -66,7 +72,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void OnMove() {
-        var colliders = Physics2D.OverlapCircleAll(transform.position, 0.2f, GameLayers.Instance.TriggerableLayers);
+        var colliders = Physics2D.OverlapCircleAll(transform.position - new Vector3(0, character.OffsetY), 0.2f, GameLayers.Instance.TriggerableLayers);
 
         foreach (var collider in colliders) {
             var triggerable = collider.GetComponent<IPlayerTriggerable>();
