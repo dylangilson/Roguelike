@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum GameState { OVERWORLD, BATTLE, DIALOGUE, CUTSCENE }
+public enum GameState { OVERWORLD, BATTLE, DIALOGUE, CUTSCENE, PAUSED }
 
 public class GameController : MonoBehaviour {
     [SerializeField] PlayerController playerController;
@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour {
     [SerializeField] Camera overworldCamera;
 
     GameState state;
+    GameState stateBeforePause;
     TrainerController trainer;
 
     public static GameController Instance { get; private set; }
@@ -30,6 +31,15 @@ public class GameController : MonoBehaviour {
                 state = GameState.OVERWORLD;
             } 
         };
+    }
+
+    public void PauseGame(bool pause) {
+        if (pause) {
+            stateBeforePause = state;
+            state = GameState.PAUSED;
+        } else {
+            state = stateBeforePause;
+        }
     }
 
     public void StartBattle() {
