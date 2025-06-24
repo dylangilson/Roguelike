@@ -13,6 +13,9 @@ public class GameController : MonoBehaviour {
     GameState stateBeforePause;
     TrainerController trainer;
 
+    public SceneDetails CurrentScene { get; private set; }
+    public SceneDetails PreviousScene { get; private set; }
+
     public static GameController Instance { get; private set; }
 
     private void Awake() {
@@ -96,5 +99,10 @@ public class GameController : MonoBehaviour {
         } else if (state == GameState.DIALOGUE) {
             DialogueManager.Instance.HandleUpdate();
         }
+    }
+
+    public void SetCurrentScene(SceneDetails currScene) {
+        PreviousScene = CurrentScene;
+        CurrentScene = currScene;
     }
 }
