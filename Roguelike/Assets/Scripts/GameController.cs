@@ -52,7 +52,7 @@ public class GameController : MonoBehaviour {
         overworldCamera.gameObject.SetActive(false);
 
         var playerParty = playerController.GetComponent<Party>();
-        var wildPokemon = FindObjectOfType<MapArea>().GetComponent<MapArea>().GetRandomWildPokemon();
+        var wildPokemon = CurrentScene.GetComponent<MapArea>().GetRandomWildPokemon();
 
         var wildPokemonCopy = new Pokemon(wildPokemon.Blueprint, wildPokemon.Level);
 

@@ -5247,7 +5247,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1518947643}
   - component: {fileID: 1518947642}
-  - component: {fileID: 1518947641}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -5255,23 +5254,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1518947641
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1518947640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90b80a049008a91468c11c356ea689e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wildPokemon:
-  - blueprint: {fileID: 11400000, guid: 578522609b0490d458520a0d87a81d91, type: 2}
-    level: 1
-  - blueprint: {fileID: 11400000, guid: 578522609b0490d458520a0d87a81d91, type: 2}
-    level: 2
 --- !u!156049354 &1518947642
 Grid:
   m_ObjectHideFlags: 0

@@ -23415,7 +23415,16 @@ PrefabInstance:
       propertyPath: m_Tiles.Array.data[479].second.m_TileObjectToInstantiateIndex
       value: 65535
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8841895691389038535, guid: 09f313f1fb854534688732e1cb8d237c, type: 3}
+      propertyPath: wildPokemon.Array.data[0].blueprint
+      value: 
+      objectReference: {fileID: 11400000, guid: 0bfd8c35f3aa78f488b98573adf1d53c, type: 2}
+    - target: {fileID: 8841895691389038535, guid: 09f313f1fb854534688732e1cb8d237c, type: 3}
+      propertyPath: wildPokemon.Array.data[1].blueprint
+      value: 
+      objectReference: {fileID: 11400000, guid: 0bfd8c35f3aa78f488b98573adf1d53c, type: 2}
+    m_RemovedComponents:
+    - {fileID: 8841895691389038535, guid: 09f313f1fb854534688732e1cb8d237c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

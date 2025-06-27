@@ -23415,7 +23415,8 @@ PrefabInstance:
       propertyPath: m_Tiles.Array.data[479].second.m_TileObjectToInstantiateIndex
       value: 65535
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8841895691389038535, guid: 09f313f1fb854534688732e1cb8d237c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
