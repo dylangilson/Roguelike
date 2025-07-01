@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour, ISavable {
     [SerializeField] string playerName;
     [SerializeField] Sprite sprite;
 
@@ -83,5 +83,15 @@ public class PlayerController : MonoBehaviour {
                 break;
             }
         }
+    }
+
+    public object CaptureState() {
+        float[] position = new float[] { transform.position.x, transform.position.y };
+        return position;
+    }
+
+    public void RestoreState(object state) {
+        var position = (float[])state;
+        transform.position = new Vector3(position[0], position[1]);
     }
 }

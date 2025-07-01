@@ -94,6 +94,13 @@ public class GameController : MonoBehaviour {
     private void Update() {
         if (state == GameState.OVERWORLD) {
             playerController.HandleUpdate();
+            if (Input.GetKeyDown(KeyCode.S)) {
+                SavingSystem.i.Save("saveSlot1");
+            }
+            
+            if (Input.GetKeyDown(KeyCode.L)) {
+                SavingSystem.i.Load("saveSlot1");
+            }
         } else if (state == GameState.BATTLE) {
             battleSystem.HandleUpdate();
         } else if (state == GameState.DIALOGUE) {

@@ -17,3 +17,4 @@ TODOs:
 	- Fix tiling issues with sizes of tile vs camera view in different scenes
 	- Reset Action Selector position on battle end
 	- Don't allow pokemon to learn a move it already knows
+	- Save position and defeated state of trainers
