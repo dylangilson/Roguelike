@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f72bffefd2f67e4f9be79cc6dd915ae, type: 3}
-  m_Name: 26-Raichu
+  m_Name: 026-Raichu
   m_EditorClassIdentifier: 
   pokemonName: Raichu
   description: 
