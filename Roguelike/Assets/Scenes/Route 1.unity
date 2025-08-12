@@ -23441,6 +23441,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GlobalGameObjectsLoader
       objectReference: {fileID: 0}
+    - target: {fileID: 2852943198837426273, guid: e57cddc561c458e459ce6fbf3f01fc23, type: 3}
+      propertyPath: GlobalGameObjectsPrefab
+      value: 
+      objectReference: {fileID: 5787932891277545595, guid: 2c4a361129286c34b8036324e2e8f2ea, type: 3}
     - target: {fileID: 3513482475528229105, guid: e57cddc561c458e459ce6fbf3f01fc23, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.2231407
