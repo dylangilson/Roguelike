@@ -9,6 +9,10 @@ public class Party : MonoBehaviour {
     public List<Pokemon> GetParty() {
         return party;
     }
+
+    public void SetParty(List<Pokemon> pokemon) {
+        party = pokemon;
+    }
     
     private void Start() {
         foreach (var pokemon in party) {
@@ -30,7 +34,7 @@ public class Party : MonoBehaviour {
         if (party.Count < 6) {
             party.Add(pokemon);
         } else {
-            // TODO: Add to PC 
+            // TODO: add to PC 
         }
     }
 }

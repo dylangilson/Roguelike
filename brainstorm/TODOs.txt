@@ -18,3 +18,6 @@ TODOs:
 	- Reset Action Selector position on battle end
 	- Don't allow pokemon to learn a move it already knows
 	- Save position and defeated state of trainers
+	- Change text for 4x weakness to 'extremly effective'
+	- Continue Saving Party from 31:00, error with null during save
+	- Remove SampleScene Global Objects and add the Global Loader, ensure that the SavingSystem is retained

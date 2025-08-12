@@ -42,9 +42,9 @@ public class Pokemon {
     public event System.Action OnStatusChanged;
     
     public void Init() {
+        // generate moves
         Moves = new List<Move>();
 
-        // generate moves
         for (int i = Blueprint.LearnableMoves.Count - 1; i >= 0; i--) {
             var move = Blueprint.LearnableMoves[i];
 
@@ -66,6 +66,41 @@ public class Pokemon {
         ResetStatBoosts();
         Status = null;
         VolatileStatus = null;
+    }
+
+    public Pokemon(PokemonSaveData saveData) {
+        // reload data from savefile
+        blueprint = PokemonDataBase.GetPokemonByName(saveData.name);
+        level = saveData.level;
+        Exp = saveData.exp;
+        CurrentHitpoints = saveData.hitpoints;
+
+        if (saveData.statusID != null) {
+            Status = ConditionsDataBase.Conditions[saveData.statusID.Value];
+        } else {
+            Status = null;
+        }
+
+        Moves = saveData.moves.Select(move => new Move(move)).ToList();
+
+        // initialize other properties of Pokemon
+        CalculateStats();
+        StatusChanges = new Queue<string>();
+        ResetStatBoosts();
+        VolatileStatus = null;
+    }
+
+    public PokemonSaveData GetSaveData() {
+        var saveData = new PokemonSaveData() {
+            name = blueprint.PokemonName,
+            level = Level,
+            exp = Exp,
+            hitpoints = CurrentHitpoints,
+            statusID = Status?.ID,
+            moves = Moves.Select(move => move.GetSaveData()).ToList()
+        };
+
+        return saveData;
     }
 
     void CalculateStats() {
@@ -300,4 +335,14 @@ public class DamageDetails {
     public bool Fainted { get; set; }
     public float Critical { get; set; }
     public float Effectiveness { get; set; }
+}
+
+[System.Serializable]
+public class PokemonSaveData {
+    public string name;
+    public int level;
+    public int exp;
+    public int hitpoints;
+    public ConditionID? statusID;
+    public List<MoveSaveData> moves;
 }

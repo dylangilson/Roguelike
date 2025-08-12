@@ -20,6 +20,9 @@ public class GameController : MonoBehaviour {
 
     private void Awake() {
         Instance = this;
+
+        PokemonDataBase.Init();
+        MoveDataBase.Init();
         ConditionsDataBase.Init();
     }
 
@@ -94,7 +97,8 @@ public class GameController : MonoBehaviour {
     private void Update() {
         if (state == GameState.OVERWORLD) {
             playerController.HandleUpdate();
-            if (Input.GetKeyDown(KeyCode.S)) {
+            
+            if (Input.GetKeyDown(KeyCode.K)) {
                 SavingSystem.i.Save("saveSlot1");
             }
             

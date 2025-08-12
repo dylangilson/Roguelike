@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class ConditionsDataBase {
     public static void Init() {
-        foreach (var key_value_pair in Conditions) {
-            var conditionID = key_value_pair.Key;
-            var condition = key_value_pair.Value;
+        foreach (var keyValuePair in Conditions) {
+            var conditionID = keyValuePair.Key;
+            var condition = keyValuePair.Value;
 
             condition.ID = conditionID;
         }
     }
+    
     public static Dictionary<ConditionID, Condition> Conditions { get; set; } = new Dictionary<ConditionID, Condition> {
         {
             ConditionID.POISON, new Condition() {
