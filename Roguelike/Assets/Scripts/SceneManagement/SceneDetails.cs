@@ -30,7 +30,7 @@ public class SceneDetails : MonoBehaviour {
                     }
                 }
             
-                if (!connectedScenes.Contains(previousScene)) {
+                if (!connectedScenes.Contains(previousScene) && previousScene != this) {
                     previousScene.UnloadScene();
                 } 
                 

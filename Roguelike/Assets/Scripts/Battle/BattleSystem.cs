@@ -400,7 +400,7 @@ public class BattleSystem : MonoBehaviour {
         if (effects.Status != ConditionID.NONE) {
             if (target.Status != null) {
                 // TODO: this should work but does not, we successfully enter this if statement
-                yield return dialogueBox.TypeDialogue($"{source.Blueprint.PokemonName} is already afflicted by {target.Status.Name}!");
+                yield return dialogueBox.TypeDialogue($"{target.Blueprint.PokemonName} is already afflicted by {target.Status.Name}!");
             } else {
                 target.SetStatus(effects.Status);
             }
@@ -509,8 +509,12 @@ public class BattleSystem : MonoBehaviour {
             yield return dialogueBox.TypeDialogue("A critical hit!");
         }
 
-        if (damageDetails.Effectiveness > 1.0f) {
+        if (damageDetails.Effectiveness > 2.0f) {
+            yield return dialogueBox.TypeDialogue("It's extremely effective!");
+        } else if (damageDetails.Effectiveness > 1.0f) {
             yield return dialogueBox.TypeDialogue("It's super effective!");
+        } else if (damageDetails.Effectiveness < 0.5f) {
+            yield return dialogueBox.TypeDialogue("It's extremely ineffective!");
         } else if (damageDetails.Effectiveness < 1.0f) {
             yield return dialogueBox.TypeDialogue("It's not very effective!");
         }
@@ -557,6 +561,16 @@ public class BattleSystem : MonoBehaviour {
             currentAction -= 2;
         } else if (Input.GetKeyDown(KeyCode.DownArrow)) {
             currentAction += 2;
+        }
+        
+        if (Input.GetKeyDown(KeyCode.C)) {
+            Time.timeScale += 0.5f;
+            Debug.Log($"Current game speed is {Time.timeScale}");
+        }
+        
+        if (Input.GetKeyDown(KeyCode.X)) {
+            Time.timeScale -= 0.5f;
+            Debug.Log($"Current game speed is {Time.timeScale}");
         }
 
         currentAction = Mathf.Clamp(currentAction, 0, 3);

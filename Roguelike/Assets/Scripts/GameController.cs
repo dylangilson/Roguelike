@@ -101,6 +101,16 @@ public class GameController : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.K)) {
                 SavingSystem.i.Save("saveSlot1");
             }
+
+            if (Input.GetKeyDown(KeyCode.C)) {
+                Time.timeScale += 0.5f;
+                Debug.Log($"Current game speed is {Time.timeScale}");
+            }
+
+            if (Input.GetKeyDown(KeyCode.X)) {
+                Time.timeScale -= 0.5f;
+                Debug.Log($"Current game speed is {Time.timeScale}");
+            }
             
             if (Input.GetKeyDown(KeyCode.L)) {
                 SavingSystem.i.Load("saveSlot1");

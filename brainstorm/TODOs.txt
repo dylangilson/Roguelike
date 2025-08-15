@@ -15,6 +15,4 @@ TODOs:
 	- Fix tiling issues with sizes of tile vs camera view in different scenes
 	- Reset Action Selector position on battle end
 	- Don't allow pokemon to learn a move it already knows
-	- Change text for 4x weakness to 'extremly effective'
-	- Loading a save to a location that is not previously loaded will keep all scenes that the user was in before it loaded
 	- Ensure Confusion % hit chance is correct
