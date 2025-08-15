@@ -19,13 +19,15 @@ MonoBehaviour:
   typeA: 5
   typeB: 8
   learnableMoves:
-  - moveBase: {fileID: 11400000, guid: 606af25636c0a6e409b771cf0fb9ff5b, type: 2}
+  - moveBase: {fileID: 11400000, guid: af35c231c07848643a91f471394993ef, type: 2}
     level: 1
+  - moveBase: {fileID: 11400000, guid: d1ab9ca6282e76c4e8a6e54c1723a712, type: 2}
+    level: 3
+  - moveBase: {fileID: 11400000, guid: 606af25636c0a6e409b771cf0fb9ff5b, type: 2}
+    level: 3
   - moveBase: {fileID: 11400000, guid: a6a205adad666aa45b81611aad6bb7dc, type: 2}
     level: 50
   - moveBase: {fileID: 11400000, guid: 665efafd613966f49a53cc37403671a3, type: 2}
-    level: 50
-  - moveBase: {fileID: 11400000, guid: d1ab9ca6282e76c4e8a6e54c1723a712, type: 2}
     level: 50
   - moveBase: {fileID: 11400000, guid: 5b7288c064172b74fa6ef6ed5c6ce38b, type: 2}
     level: 6
@@ -36,7 +38,7 @@ MonoBehaviour:
   - moveBase: {fileID: 11400000, guid: 867a772fad63a6f459489a8a2a615f5a, type: 2}
     level: 52
   catchRate: 255
-  expYield: 2000
+  expYield: 141
   growthRate: 2
   hitpoints: 60
   attack: 55

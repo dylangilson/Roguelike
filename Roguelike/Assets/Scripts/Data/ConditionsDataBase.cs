@@ -111,9 +111,9 @@ public class ConditionsDataBase {
                 Abbreviation = "CON",
                 StartMessage = "is confused!",
                 OnStart = (Pokemon pokemon) => {
-                    // confused for 1-4 turns
-                    pokemon.VolatileStatusCounter = Random.Range(1, 5);
-                    Debug.Log($"{pokemon.Blueprint.PokemonName} will be confused for {pokemon.VolatileStatusCounter} turns!");
+                    // confused for 0-5 turns
+                    pokemon.VolatileStatusCounter = Random.Range(1, 6);
+                    Debug.Log($"{pokemon.Blueprint.PokemonName} will be confused for {pokemon.VolatileStatusCounter - 1} turns!");
 
                     return true;
                 },
@@ -137,7 +137,7 @@ public class ConditionsDataBase {
 
                     // pokemon hurt itself
                     pokemon.UpdateHitpoints(pokemon.MaxHitpoints / 8);
-                    pokemon.StatusChanges.Enqueue($"{pokemon.Blueprint.PokemonName} hurt itself due to confusion, Fucking idiot!");
+                    pokemon.StatusChanges.Enqueue($"{pokemon.Blueprint.PokemonName} hurt itself due to confusion!");
 
                     return false;
                 }

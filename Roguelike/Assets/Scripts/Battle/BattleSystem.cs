@@ -147,7 +147,8 @@ public class BattleSystem : MonoBehaviour {
         yield return new WaitUntil(() => state == BattleState.RUNNING_TURN);
         
         // pokemon could be burned or poisoned, this deals damage to them after THEIR turn
-        source.Pokemon.OnAfterTurn();
+        source.Pokemon = source.Pokemon.OnAfterTurn();
+        Debug.Log($"{source.Pokemon.Blueprint.PokemonName} has {source.Pokemon.CurrentHitpoints} hitpoints");
 
         yield return ShowStatusChanges(source.Pokemon);
 

@@ -320,9 +320,10 @@ public class Pokemon {
         return canPerformMove;
     }
 
-    public void OnAfterTurn() {
+    public Pokemon OnAfterTurn() {
         Status?.OnAfterTurn?.Invoke(this);
         VolatileStatus?.OnAfterTurn?.Invoke(this);
+        return this;
     }
 
     public void OnBattleOver() {

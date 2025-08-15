@@ -1,7 +1,5 @@
 TODOs:
-	- fix screen swap on faint from status
-	- battle may end if pokemon faints from status
-	- fix faint from confusion
+	- fix confusion damage to be based off of attack stat
 	- fix HPBar (brackey's)
 	- force player to walk within map bounds
 	- Status conditions are always coded to only affect target (e.g. Burn can't affect SELF), should also have a target variable in Effects (not just Secondary Effects) (this is in any move prefab)
@@ -18,3 +16,5 @@ TODOs:
 	- Reset Action Selector position on battle end
 	- Don't allow pokemon to learn a move it already knows
 	- Change text for 4x weakness to 'extremly effective'
+	- Loading a save to a location that is not previously loaded will keep all scenes that the user was in before it loaded
+	- Ensure Confusion % hit chance is correct
