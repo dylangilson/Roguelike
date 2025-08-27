@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class BattleDialogueBox : MonoBehaviour {
     [SerializeField] int lettersPerSecond;
-    [SerializeField] Color highlightedColour;
     [SerializeField] Text dialogueText;
     [SerializeField] GameObject actionSelector;
     [SerializeField] GameObject moveSelector;
@@ -17,6 +16,12 @@ public class BattleDialogueBox : MonoBehaviour {
     [SerializeField] Text typeText;
     [SerializeField] Text yesText;
     [SerializeField] Text noText;
+
+    Color highlightedColour;
+
+    private void Start() {
+        highlightedColour = GlobalSettings.i.HighlightedColour;
+    }
 
     public IEnumerator TypeDialogue(string dialogue) {
         dialogueText.text = "";

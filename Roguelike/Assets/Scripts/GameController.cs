@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum GameState { OVERWORLD, BATTLE, DIALOGUE, CUTSCENE, PAUSED }
+public enum GameState { OVERWORLD, BATTLE, DIALOGUE, MENU, CUTSCENE, PAUSED }
 
 public class GameController : MonoBehaviour {
     [SerializeField] PlayerController playerController;
@@ -16,10 +16,14 @@ public class GameController : MonoBehaviour {
     public SceneDetails CurrentScene { get; private set; }
     public SceneDetails PreviousScene { get; private set; }
 
+    MenuController menuController;
+
     public static GameController Instance { get; private set; }
 
     private void Awake() {
         Instance = this;
+
+        menuController = GetComponent<MenuController>();
 
         PokemonDataBase.Init();
         MoveDataBase.Init();
@@ -37,6 +41,10 @@ public class GameController : MonoBehaviour {
                 state = GameState.OVERWORLD;
             } 
         };
+        
+        // menu events
+        menuController.onMenuItemSelected += OnMenuItemSelected;
+        menuController.onBack += () => { state = GameState.OVERWORLD; };
     }
 
     public void PauseGame(bool pause) {
@@ -97,9 +105,11 @@ public class GameController : MonoBehaviour {
     private void Update() {
         if (state == GameState.OVERWORLD) {
             playerController.HandleUpdate();
-            
-            if (Input.GetKeyDown(KeyCode.K)) {
-                SavingSystem.i.Save("saveSlot1");
+
+            if (Input.GetKeyDown(KeyCode.Escape)) {
+                state = GameState.MENU;
+
+                menuController.OpenMenu();
             }
 
             if (Input.GetKeyDown(KeyCode.C)) {
@@ -111,19 +121,44 @@ public class GameController : MonoBehaviour {
                 Time.timeScale -= 0.5f;
                 Debug.Log($"Current game speed is {Time.timeScale}");
             }
-            
-            if (Input.GetKeyDown(KeyCode.L)) {
-                SavingSystem.i.Load("saveSlot1");
-            }
         } else if (state == GameState.BATTLE) {
             battleSystem.HandleUpdate();
         } else if (state == GameState.DIALOGUE) {
             DialogueManager.Instance.HandleUpdate();
+        } else if (state == GameState.MENU) {
+            menuController.HandleUpdate();
         }
     }
 
     public void SetCurrentScene(SceneDetails currScene) {
         PreviousScene = CurrentScene;
         CurrentScene = currScene;
+    }
+
+    void OnMenuItemSelected(int selectedItem) {
+        if (selectedItem == 0) {
+            // Pokedex
+        } else if (selectedItem == 1) {
+            // Pokemon
+        } else if (selectedItem == 2) {
+            // Bag
+        } else if (selectedItem == 3) {
+            // User
+        } else if (selectedItem == 4) {
+            // Save
+            SavingSystem.i.Save("saveSlot1");
+
+            state = GameState.OVERWORLD;
+        } else if (selectedItem == 5) {
+            // Load
+            SavingSystem.i.Load("saveSlot1");
+
+            state = GameState.OVERWORLD;
+        } else if (selectedItem == 6) {
+            // Options
+        } else if (selectedItem == 7) {
+            // Exit
+            state = GameState.OVERWORLD;
+        }
     }
 }
