@@ -3,7 +3,6 @@ TODOs:
 	- force player to walk within map bounds
 	- Should state already statused if another status move is used, even if it misses
 		- When this condition is met, ensure that the pokemon named is the right one
-	- Moves that target SELF still have attack animation and opponent still has attack animation 
 	- Fix all dialogue's to be skippable with space bar
 	- Implement Struggle if pokemon has 0 PP in all moves
 	- Fix Player and Enemy Battle HUD graphics
