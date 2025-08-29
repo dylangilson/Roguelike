@@ -1,7 +1,6 @@
 TODOs:
 	- fix HPBar (brackey's)
 	- force player to walk within map bounds
-	- Status conditions are always coded to only affect target (e.g. Burn can't affect SELF), should also have a target variable in Effects (not just Secondary Effects) (this is in any move prefab)
 	- Should state already statused if another status move is used, even if it misses
 		- When this condition is met, ensure that the pokemon named is the right one
 	- Moves that target SELF still have attack animation and opponent still has attack animation 

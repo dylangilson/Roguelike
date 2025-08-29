@@ -396,21 +396,35 @@ public class BattleSystem : MonoBehaviour {
         
         // status effect move effects
         if (effects.Status != ConditionID.NONE) {
-            if (target.Status != null) {
-                // TODO: this should work but does not, we successfully enter this if statement
-                yield return dialogueBox.TypeDialogue($"{target.Blueprint.PokemonName} is already afflicted by {target.Status.Name}!");
-            } else {
-                target.SetStatus(effects.Status);
+            if (moveTarget == MoveTarget.SELF) {
+                if (source.Status != null) {
+                    yield return dialogueBox.TypeDialogue($"{source.Blueprint.PokemonName} is already afflicted by {source.Status.Name}!");
+                } else {
+                    source.SetStatus(effects.Status);
+                }
+            } else if (moveTarget == MoveTarget.FOE) {
+                if (target.Status != null) {
+                    yield return dialogueBox.TypeDialogue($"{target.Blueprint.PokemonName} is already afflicted by {target.Status.Name}!");
+                } else {
+                    target.SetStatus(effects.Status);
+                }
             }
         }
     
         // volatile status effect move effects
         if (effects.VolatileStatus != ConditionID.NONE) {
-            if (target.VolatileStatus != null) {
-                // TODO: does this work?? this should work but does not ; we successfully enter this if statement
-                yield return dialogueBox.TypeDialogue($"{source.Blueprint.PokemonName} is already afflicted by {target.VolatileStatus.Name}!");
-            } else {
-                target.SetVolatileStatus(effects.VolatileStatus);
+            if (moveTarget == MoveTarget.FOE) {
+                if (target.VolatileStatus != null) {
+                    yield return dialogueBox.TypeDialogue($"{target.Blueprint.PokemonName} is already afflicted by {target.VolatileStatus.Name}!");
+                } else {
+                    target.SetVolatileStatus(effects.VolatileStatus);
+                }
+            } else if (moveTarget == MoveTarget.SELF) {
+                if (source.VolatileStatus != null) {
+                    yield return dialogueBox.TypeDialogue($"{source.Blueprint.PokemonName} is already afflicted by {source.VolatileStatus.Name}!");
+                } else {
+                    source.SetVolatileStatus(effects.VolatileStatus);
+                }
             }
         }
 
