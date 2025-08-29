@@ -26,8 +26,8 @@ MonoBehaviour:
   - moveBase: {fileID: 11400000, guid: c543c09a8f29e7445837dc51056be02b, type: 2}
     level: 1
   - moveBase: {fileID: 11400000, guid: 5b7288c064172b74fa6ef6ed5c6ce38b, type: 2}
-    level: 8
-  - moveBase: {fileID: 11400000, guid: c543c09a8f29e7445837dc51056be02b, type: 2}
+    level: 10
+  - moveBase: {fileID: 11400000, guid: 13d691852078af64481bceccf10cd3dd, type: 2}
     level: 9
   catchRate: 45
   expYield: 65
@@ -35,6 +35,6 @@ MonoBehaviour:
   hitpoints: 60
   attack: 60
   defence: 55
-  specialAttack: 75
+  specialAttack: 750
   specialDefence: 55
   speed: 65

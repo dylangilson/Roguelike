@@ -1,18 +1,13 @@
 TODOs:
-	- fix confusion damage to be based off of attack stat
 	- fix HPBar (brackey's)
 	- force player to walk within map bounds
 	- Status conditions are always coded to only affect target (e.g. Burn can't affect SELF), should also have a target variable in Effects (not just Secondary Effects) (this is in any move prefab)
 	- Should state already statused if another status move is used, even if it misses
 		- When this condition is met, ensure that the pokemon named is the right one
 	- Moves that target SELF still have attack animation and opponent still has attack animation 
-	- Fix all battle dialogue's to be skippable with space bar
+	- Fix all dialogue's to be skippable with space bar
 	- Implement Struggle if pokemon has 0 PP in all moves
-	- Implement a volatile status counter for each volatile status (e.g. you can be confused and perish song'd at the same time)
-	- Fix HP text on BattleHUD (overflow)
 	- Fix Player and Enemy Battle HUD graphics
+	- Implement a volatile status counter for each volatile status (e.g. you can be confused and perish song'd at the same time)
 	- Add dialogue to allow player to say no to learning a new move instead of selecting to forget the new move
 	- Fix tiling issues with sizes of tile vs camera view in different scenes
-	- Reset Action Selector position on battle end
-	- Don't allow pokemon to learn a move it already knows
-	- Ensure Confusion % hit chance is correct

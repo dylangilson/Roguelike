@@ -121,10 +121,6 @@ public class BattleSystem : MonoBehaviour {
         partyScreen.gameObject.SetActive(true);
     }
 
-    void PlayerRun() {
-        Debug.Log("Player Ran");
-    }
-
     void MoveSelection() {
         state = BattleState.MOVE_SELECTION;
 
@@ -319,6 +315,8 @@ public class BattleSystem : MonoBehaviour {
     }
 
     void BattleOver(bool won) {
+        currentAction = 0;
+        dialogueBox.UpdateActionSelection(currentAction);
         state = BattleState.BATTLE_OVER;
         playerParty.GetParty().ForEach(pokemon => pokemon.OnBattleOver());
 
@@ -478,13 +476,11 @@ public class BattleSystem : MonoBehaviour {
                 playerUnit.HUD.SetLevel();
 
                 var newMove = playerUnit.Pokemon.GetLearnableMoveAtCurrentLevel();
-                if (newMove != null) {
+                if (newMove != null && !playerUnit.Pokemon.GetMoveNames().Contains(newMove.GetBase().MoveName)) {
                     if (playerUnit.Pokemon.Moves.Count < PokemonBase.MAX_NUMBER_OF_MOVES) {
-                        if (!playerUnit.Pokemon.GetMoveNames().Contains(newMove.GetBase().MoveName)) {
-                            playerUnit.Pokemon.LearnMove(newMove);
-                            yield return dialogueBox.TypeDialogue($"{playerUnit.Pokemon.Blueprint.PokemonName} learned {newMove.GetBase().MoveName}!");
-                            dialogueBox.SetMoveNames(playerUnit.Pokemon.Moves);
-                        }
+                        playerUnit.Pokemon.LearnMove(newMove);
+                        yield return dialogueBox.TypeDialogue($"{playerUnit.Pokemon.Blueprint.PokemonName} learned {newMove.GetBase().MoveName}!");
+                        dialogueBox.SetMoveNames(playerUnit.Pokemon.Moves);
                     } else {
                         yield return dialogueBox.TypeDialogue($"{playerUnit.Pokemon.Blueprint.PokemonName} is trying to learn {newMove.GetBase().MoveName}!");
                         yield return dialogueBox.TypeDialogue($"But it cannot learn more than {PokemonBase.MAX_NUMBER_OF_MOVES} moves!");
@@ -493,6 +489,7 @@ public class BattleSystem : MonoBehaviour {
 
                         yield return new WaitUntil(() => state != BattleState.MOVE_TO_FORGET);
                         yield return new WaitForSeconds(2.0f);
+                        
                     }
                 }
                 yield return playerUnit.HUD.SetExpSmooth(true);
@@ -574,7 +571,6 @@ public class BattleSystem : MonoBehaviour {
         }
 
         currentAction = Mathf.Clamp(currentAction, 0, 3);
-    
         dialogueBox.UpdateActionSelection(currentAction);
 
         if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Space)) {

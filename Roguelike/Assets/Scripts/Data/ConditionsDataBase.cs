@@ -136,7 +136,7 @@ public class ConditionsDataBase {
                     }
 
                     // pokemon hurt itself
-                    pokemon.UpdateHitpoints(pokemon.MaxHitpoints / 8);
+                    pokemon.UpdateHitpoints(((((2 * pokemon.Level / 5 + 2) * pokemon.Attack * 40) / pokemon.Defence) / 50) + 2);
                     pokemon.StatusChanges.Enqueue($"{pokemon.Blueprint.PokemonName} hurt itself due to confusion!");
 
                     return false;
