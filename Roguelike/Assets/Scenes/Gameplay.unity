@@ -219,6 +219,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e972e482897dab42ad5e514f453b697, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &710024259 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6869048809504063534, guid: 2c4a361129286c34b8036324e2e8f2ea, type: 3}
+  m_PrefabInstance: {fileID: 2114860944}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43568d8caf1305542892af03d7f7f257, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &720039641 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3853798577214317132, guid: 017ad15c70d69fa4e9e25e0cad49f9e9, type: 3}
@@ -793,6 +804,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7403780467156233163, guid: 2c4a361129286c34b8036324e2e8f2ea, type: 3}
+      propertyPath: partyScreen
+      value: 
+      objectReference: {fileID: 710024259}
     - target: {fileID: 9071170535925926213, guid: 2c4a361129286c34b8036324e2e8f2ea, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

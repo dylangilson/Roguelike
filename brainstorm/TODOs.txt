@@ -9,3 +9,4 @@ TODOs:
 	- Implement a volatile status counter for each volatile status (e.g. you can be confused and perish song'd at the same time)
 	- Add dialogue to allow player to say no to learning a new move instead of selecting to forget the new move
 	- Fix tiling issues with sizes of tile vs camera view in different scenes
+	- Fix Party Screen height

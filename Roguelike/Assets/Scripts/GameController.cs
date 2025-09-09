@@ -1,13 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum GameState { OVERWORLD, BATTLE, DIALOGUE, MENU, CUTSCENE, PAUSED }
+public enum GameState { OVERWORLD, BATTLE, DIALOGUE, MENU, PARTY_SCREEN, CUTSCENE, PAUSED }
 
 public class GameController : MonoBehaviour {
     [SerializeField] PlayerController playerController;
     [SerializeField] BattleSystem battleSystem;
     [SerializeField] Camera overworldCamera;
+    [SerializeField] PartyScreen partyScreen;
 
     GameState state;
     GameState stateBeforePause;
@@ -33,6 +35,7 @@ public class GameController : MonoBehaviour {
     private void Start() {
         // battle events
         battleSystem.OnBattleOver += EndBattle;
+        partyScreen.Init();
 
         // dialogue events
         DialogueManager.Instance.OnShowDialogue += () => { state = GameState.DIALOGUE; };
@@ -127,6 +130,19 @@ public class GameController : MonoBehaviour {
             DialogueManager.Instance.HandleUpdate();
         } else if (state == GameState.MENU) {
             menuController.HandleUpdate();
+        } else if (state == GameState.PARTY_SCREEN) {
+            Action onSelected = () => {
+                // TODO: go to pokemon summary screen
+            };
+
+            Action onBack = () => {
+                partyScreen.gameObject.SetActive(false);
+                state = GameState.MENU;
+
+                menuController.OpenMenu();
+            };
+
+            partyScreen.HandleUpdate(onSelected, onBack);
         }
     }
 
@@ -140,6 +156,9 @@ public class GameController : MonoBehaviour {
             // Pokedex
         } else if (selectedItem == 1) {
             // Pokemon
+            partyScreen.gameObject.SetActive(true);
+            partyScreen.SetPartyData(playerController.GetComponent<Party>().GetParty());
+            state = GameState.PARTY_SCREEN;
         } else if (selectedItem == 2) {
             // Bag
         } else if (selectedItem == 3) {

@@ -7,8 +7,7 @@ public class PartyMemberUI : MonoBehaviour {
     [SerializeField] Text nameText;
     [SerializeField] Text levelText;
     [SerializeField] HitpointsBar hitpointsBar;
-    [SerializeField] Text hitpointsValueText;
-    [SerializeField] Color highlightedColour;    
+    [SerializeField] Text hitpointsValueText;   
 
     Pokemon currentPokemon;
 
@@ -25,7 +24,7 @@ public class PartyMemberUI : MonoBehaviour {
 
     public void SetSelected(bool selected) {
         if (selected) {
-            nameText.color = highlightedColour;
+            nameText.color = GlobalSettings.i.HighlightedColour;
         } else if (!selected) {
             nameText.color = Color.black;
         }
