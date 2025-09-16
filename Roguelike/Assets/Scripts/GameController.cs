@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum GameState { OVERWORLD, BATTLE, DIALOGUE, MENU, PARTY_SCREEN, CUTSCENE, PAUSED }
+public enum GameState { OVERWORLD, BATTLE, DIALOGUE, MENU, PARTY_SCREEN, BAG, CUTSCENE, PAUSED }
 
 public class GameController : MonoBehaviour {
     [SerializeField] PlayerController playerController;
     [SerializeField] BattleSystem battleSystem;
     [SerializeField] Camera overworldCamera;
     [SerializeField] PartyScreen partyScreen;
+    [SerializeField] InventoryUI inventoryUI;
 
     GameState state;
     GameState stateBeforePause;
@@ -139,10 +140,18 @@ public class GameController : MonoBehaviour {
                 partyScreen.gameObject.SetActive(false);
                 state = GameState.MENU;
 
-                menuController.OpenMenu();
+                menuController.OpenMenu(1);
             };
 
             partyScreen.HandleUpdate(onSelected, onBack);
+        } else if (state == GameState.BAG) {
+            Action onBack = () => {
+                inventoryUI.gameObject.SetActive(false);
+                state = GameState.MENU;
+
+                menuController.OpenMenu(2);
+            };
+            inventoryUI.HandleUpdate(onBack);
         }
     }
 
@@ -161,6 +170,8 @@ public class GameController : MonoBehaviour {
             state = GameState.PARTY_SCREEN;
         } else if (selectedItem == 2) {
             // Bag
+            inventoryUI.gameObject.SetActive(true);
+            state = GameState.BAG;
         } else if (selectedItem == 3) {
             // User
         } else if (selectedItem == 4) {

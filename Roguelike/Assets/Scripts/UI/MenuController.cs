@@ -15,14 +15,17 @@ public class MenuController : MonoBehaviour {
     List<Text> menuItems;
     int selectedItem = 0;
 
+    public int SelectedItem {
+        get { return selectedItem; }
+    }
     private void Awake() {
         menuItems = menu.GetComponentsInChildren<Text>().ToList();
     }
 
-    public void OpenMenu() {
+    public void OpenMenu(int currentItem = 0) {
         menu.SetActive(true);
 
-        selectedItem = 0;
+        selectedItem = currentItem;
 
         UpdateItemSelection();
     }
