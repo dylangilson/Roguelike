@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9276e18f3670b9548a1985fb2ec3d9ab, type: 3}
+  m_Name: Awakening
+  m_EditorClassIdentifier: 
+  itemName: Awakening
+  description: "Wakes a Pok\xE9mon up"
+  icon: {fileID: -80687248, guid: 35950ae0de763814eb5ce688af979f15, type: 3}
+  amountHealed: 0
+  restoreMaxHitpoints: 0
+  powerPointsRecovered: 0
+  restoreMaxPowerPoints: 0
+  statusCure: 3
+  cureAll: 0
+  revive: 0
+  maxRevive: 0
