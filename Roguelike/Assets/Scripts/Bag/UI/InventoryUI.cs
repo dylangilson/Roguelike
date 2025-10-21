@@ -5,24 +5,31 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour {
+    const int ITEMS_IN_VIEWPORT = 7;
+
     [SerializeField] GameObject itemList;
     [SerializeField] ItemSlotUI itemSlotUI;
     [SerializeField] Image itemIcon;
     [SerializeField] Text itemDescription;
+    [SerializeField] Image upArrow;
+    [SerializeField] Image downArrow;
 
     int selectedItem = 0;
+    int scrollOffset = 0;
     List<ItemSlotUI> slotUIlist;
     Bag bag;
+    RectTransform itemListTransform;
 
     private void Awake() {
         bag = Bag.GetBag();
+        itemListTransform = itemList.GetComponent<RectTransform>();
     }
 
     private void Start() {
         UpdateItemList();
     }
 
-    void UpdateItemList() {
+    private void UpdateItemList() {
         // clear all existing items
         foreach (Transform child in itemList.transform) {
             Destroy(child.gameObject);
@@ -38,6 +45,8 @@ public class InventoryUI : MonoBehaviour {
 
             slotUIlist.Add(slotUIObject);
         }
+
+        scrollOffset = 0;
 
         UpdateItemSelection();
     }
@@ -62,7 +71,7 @@ public class InventoryUI : MonoBehaviour {
         }
     }
 
-    public void UpdateItemSelection() {
+    private void UpdateItemSelection() {
         for (int i = 0; i < slotUIlist.Count; i++) {
             if (i == selectedItem) {
                 slotUIlist[i].NameText.color = GlobalSettings.i.HighlightedColour;
@@ -75,5 +84,31 @@ public class InventoryUI : MonoBehaviour {
 
         itemIcon.sprite = item.Icon;
         itemDescription.text = item.Description;
+
+        HandleScrolling();
+    }
+
+    private void HandleScrolling() {
+        if (slotUIlist.Count == 0) {
+            return;
+        }
+
+        // if the selection moved beyond the visible area, adjust scroll offset
+        if (selectedItem < scrollOffset) {
+            scrollOffset = selectedItem;
+        } else if (selectedItem >= scrollOffset + ITEMS_IN_VIEWPORT) {
+            scrollOffset = selectedItem - ITEMS_IN_VIEWPORT + 1;
+        }
+
+        float scrollPosition = scrollOffset * slotUIlist[0].Height;
+        
+        itemListTransform.localPosition = new Vector2(itemListTransform.localPosition.x, scrollPosition);
+
+        // update arrows visibility
+        bool showUpArrow = scrollOffset > 0;
+        upArrow.gameObject.SetActive(showUpArrow);
+
+        bool showDownArrow = scrollOffset + ITEMS_IN_VIEWPORT < slotUIlist.Count;
+        downArrow.gameObject.SetActive(showDownArrow);
     }
 }

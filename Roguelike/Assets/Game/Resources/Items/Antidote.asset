@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9276e18f3670b9548a1985fb2ec3d9ab, type: 3}
   m_Name: Antidote
   m_EditorClassIdentifier: 
-  itemName: Antitode
+  itemName: Antidote
   description: "Cures a Pok\xE9mon of Poison"
   icon: {fileID: -1205879049, guid: 35950ae0de763814eb5ce688af979f15, type: 3}
   amountHealed: 0
