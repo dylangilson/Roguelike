@@ -11,3 +11,4 @@ TODOs:
 	- Fix tiling issues with sizes of tile vs camera view in different scenes
 	- Fix Party Screen height
 	- Don't allow mouse to scroll within Menu UIs
+	- Fix divide by zero in SetHPBar function

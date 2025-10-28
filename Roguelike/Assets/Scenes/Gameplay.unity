@@ -4546,6 +4546,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SampleScene
       objectReference: {fileID: 0}
+    - target: {fileID: 6347411739880567639, guid: 017ad15c70d69fa4e9e25e0cad49f9e9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8773888855637100086, guid: 017ad15c70d69fa4e9e25e0cad49f9e9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.5699999

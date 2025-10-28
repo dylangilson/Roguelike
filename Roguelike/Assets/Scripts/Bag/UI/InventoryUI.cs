@@ -4,21 +4,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InventoryUI : MonoBehaviour {
-    const int ITEMS_IN_VIEWPORT = 7;
+public enum InventoryUIState {ITEM_SELECTION, PARTY_SELECTION, BUSY}
 
+public class InventoryUI : MonoBehaviour {
     [SerializeField] GameObject itemList;
     [SerializeField] ItemSlotUI itemSlotUI;
     [SerializeField] Image itemIcon;
     [SerializeField] Text itemDescription;
     [SerializeField] Image upArrow;
     [SerializeField] Image downArrow;
+    [SerializeField] PartyScreen partyScreen;
 
     int selectedItem = 0;
     int scrollOffset = 0;
+    InventoryUIState state;
     List<ItemSlotUI> slotUIlist;
     Bag bag;
     RectTransform itemListTransform;
+    
+    const int ITEMS_IN_VIEWPORT = 7;
 
     private void Awake() {
         bag = Bag.GetBag();
@@ -52,23 +56,36 @@ public class InventoryUI : MonoBehaviour {
     }
 
     public void HandleUpdate(Action onBack) {
-        int previousSelectedItem = selectedItem;
+        if (state == InventoryUIState.ITEM_SELECTION) {
+            int previousSelectedItem = selectedItem;
 
-        if (Input.GetKeyDown(KeyCode.DownArrow)) {
-            selectedItem++;
-        } else if (Input.GetKeyDown(KeyCode.UpArrow)) {
-            selectedItem--;
-        }
+            if (Input.GetKeyDown(KeyCode.DownArrow)) {
+                selectedItem++;
+            } else if (Input.GetKeyDown(KeyCode.UpArrow)) {
+                selectedItem--;
+            }
 
-        selectedItem = (selectedItem + bag.Slots.Count) % bag.Slots.Count;
+            selectedItem = (selectedItem + bag.Slots.Count) % bag.Slots.Count;
 
-        if (previousSelectedItem != selectedItem) {
-            UpdateItemSelection();
-        }
+            if (previousSelectedItem != selectedItem) {
+                UpdateItemSelection();
+            }
 
-        if (Input.GetKeyDown(KeyCode.Escape)) {
-            onBack?.Invoke();
-        }
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Space)) {
+                OpenPartyScreen();
+            } else if (Input.GetKeyDown(KeyCode.Escape)) {
+                onBack?.Invoke();
+            }
+        } else if (state == InventoryUIState.PARTY_SELECTION) {
+            Action onSelected = () => {
+                // use item on pokemon :)
+            };
+
+            Action onClosePartyScreen = () => {
+                ClosePartyScreen();
+            };
+            partyScreen.HandleUpdate(onSelected, onClosePartyScreen);
+        } 
     }
 
     private void UpdateItemSelection() {
@@ -110,5 +127,15 @@ public class InventoryUI : MonoBehaviour {
 
         bool showDownArrow = scrollOffset + ITEMS_IN_VIEWPORT < slotUIlist.Count;
         downArrow.gameObject.SetActive(showDownArrow);
+    }
+
+    void OpenPartyScreen() {
+        state = InventoryUIState.PARTY_SELECTION;
+        partyScreen.gameObject.SetActive(true);
+    }
+
+    void ClosePartyScreen() {
+        state = InventoryUIState.ITEM_SELECTION;
+        partyScreen.gameObject.SetActive(false);
     }
 }

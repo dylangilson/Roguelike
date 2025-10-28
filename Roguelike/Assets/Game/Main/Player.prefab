@@ -153,24 +153,6 @@ MonoBehaviour:
     count: 2
   - item: {fileID: 11400000, guid: bd3803209d313884bb67ec7ff9d0e980, type: 2}
     count: 4
-  - item: {fileID: 11400000, guid: 0fa9de16bbb3f2c42bdee151599c4a65, type: 2}
-    count: 7
-  - item: {fileID: 11400000, guid: bb7ea115537d4cd4693a356725329389, type: 2}
-    count: 9
-  - item: {fileID: 11400000, guid: bd3803209d313884bb67ec7ff9d0e980, type: 2}
-    count: 4
-  - item: {fileID: 11400000, guid: 1a3748d693ad884488b63e8f1a4f89ff, type: 2}
-    count: 15
-  - item: {fileID: 11400000, guid: bd3803209d313884bb67ec7ff9d0e980, type: 2}
-    count: 11
-  - item: {fileID: 11400000, guid: 0316650f456f9eb49b319be12077563c, type: 2}
-    count: 3
-  - item: {fileID: 11400000, guid: a61f29d662713c341b7d096be36b308e, type: 2}
-    count: 7
-  - item: {fileID: 11400000, guid: 02cfed0f0c568af4f931cd2835dfa33c, type: 2}
-    count: 2
-  - item: {fileID: 11400000, guid: 65b4944fa54158a4ebdde864d49321b0, type: 2}
-    count: 5
 --- !u!114 &6158435993494037090
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -7,7 +7,7 @@ public class PartyMemberUI : MonoBehaviour {
     [SerializeField] Text nameText;
     [SerializeField] Text levelText;
     [SerializeField] HitpointsBar hitpointsBar;
-    [SerializeField] Text hitpointsValueText;   
+    [SerializeField] Text hitpointsValueText;
 
     Pokemon currentPokemon;
 
@@ -19,7 +19,9 @@ public class PartyMemberUI : MonoBehaviour {
 
         hitpointsValueText.text = "HP: " + pokemon.CurrentHitpoints;
 
-        hitpointsBar.SetHitpoints((float)(pokemon.CurrentHitpoints / pokemon.MaxHitpoints));
+        if (pokemon.MaxHitpoints != 0){
+            hitpointsBar.SetHitpoints((float)(pokemon.CurrentHitpoints / pokemon.MaxHitpoints));
+        }
     }
 
     public void SetSelected(bool selected) {

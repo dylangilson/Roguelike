@@ -166,7 +166,6 @@ public class GameController : MonoBehaviour {
         } else if (selectedItem == 1) {
             // Pokemon
             partyScreen.gameObject.SetActive(true);
-            partyScreen.SetPartyData(playerController.GetComponent<Party>().GetParty());
             state = GameState.PARTY_SCREEN;
         } else if (selectedItem == 2) {
             // Bag
