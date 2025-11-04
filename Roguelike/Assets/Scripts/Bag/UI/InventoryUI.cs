@@ -31,6 +31,8 @@ public class InventoryUI : MonoBehaviour {
 
     private void Start() {
         UpdateItemList();
+
+        bag.OnUpdated += UpdateItemList;
     }
 
     private void UpdateItemList() {
@@ -78,14 +80,29 @@ public class InventoryUI : MonoBehaviour {
             }
         } else if (state == InventoryUIState.PARTY_SELECTION) {
             Action onSelected = () => {
-                // use item on pokemon :)
+                StartCoroutine(UseItem());
             };
 
             Action onClosePartyScreen = () => {
                 ClosePartyScreen();
             };
+
             partyScreen.HandleUpdate(onSelected, onClosePartyScreen);
         } 
+    }
+
+    private IEnumerator UseItem() {
+        state = InventoryUIState.BUSY;
+
+        var item = bag.UseItem(selectedItem, partyScreen.SelectedMember);
+
+        if (item != null) {
+            yield return DialogueManager.Instance.ShowDialogueText($"Player used {item.ItemName} on {partyScreen.SelectedMember.Blueprint.PokemonName}!");
+        } else {
+            yield return DialogueManager.Instance.ShowDialogueText($"It won't have any effect on {partyScreen.SelectedMember.Blueprint.PokemonName}!");
+        }
+
+        ClosePartyScreen();
     }
 
     private void UpdateItemSelection() {

@@ -11,16 +11,22 @@ public class PartyMemberUI : MonoBehaviour {
 
     Pokemon currentPokemon;
 
-    public void SetData(Pokemon pokemon) {
+    public void Init(Pokemon pokemon) {
         currentPokemon = pokemon;
 
-        nameText.text = pokemon.Blueprint.PokemonName;
-        levelText.text = "Lvl: " + pokemon.Level;
+        UpdateData();
 
-        hitpointsValueText.text = "HP: " + pokemon.CurrentHitpoints;
+        currentPokemon.OnHitpointsChanged += UpdateData;
+    }
 
-        if (pokemon.MaxHitpoints != 0){
-            hitpointsBar.SetHitpoints((float)(pokemon.CurrentHitpoints / pokemon.MaxHitpoints));
+    public void UpdateData() {
+        nameText.text = currentPokemon.Blueprint.PokemonName;
+        levelText.text = "Lvl: " + currentPokemon.Level;
+
+        hitpointsValueText.text = "HP: " + currentPokemon.CurrentHitpoints;
+
+        if (currentPokemon.MaxHitpoints != 0){
+            hitpointsBar.SetHitpoints((float)(currentPokemon.CurrentHitpoints / currentPokemon.MaxHitpoints));
         }
     }
 

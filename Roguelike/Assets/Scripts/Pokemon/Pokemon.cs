@@ -40,7 +40,8 @@ public class Pokemon {
     public int VolatileStatusCounter { get; set; }
     public bool HitpointsChanged { get; set; }
     public event System.Action OnStatusChanged;
-    
+    public event System.Action OnHitpointsChanged;
+
     public void Init() {
         // generate moves
         Moves = new List<Move>();
@@ -253,13 +254,24 @@ public class Pokemon {
         int damage = Mathf.Clamp(Mathf.FloorToInt(defenseModifier * modifiers), 1, 100000);
         Debug.Log($"{attacker.Blueprint.PokemonName} deals {damage} much damage");
 
-        UpdateHitpoints(damage);
+        DecreaseHitpoints(damage);
 
         return damageDetails;
     }
 
-    public void UpdateHitpoints(int damage) {
+    public void DecreaseHitpoints(int damage) {
         CurrentHitpoints = Mathf.Clamp(CurrentHitpoints - damage, 0, MaxHitpoints);
+
+        OnHitpointsChanged?.Invoke();
+
+        HitpointsChanged = true;
+    }
+
+    public void IncreaseHitpoints(int amount) {
+        CurrentHitpoints = Mathf.Clamp(CurrentHitpoints + amount, 0, MaxHitpoints);
+
+        OnHitpointsChanged?.Invoke();
+
         HitpointsChanged = true;
     }
 

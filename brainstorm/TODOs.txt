@@ -12,3 +12,7 @@ TODOs:
 	- Fix Party Screen height
 	- Don't allow mouse to scroll within Menu UIs
 	- Fix divide by zero in SetHPBar function
+	- Fix window height (currently blue around the top and bottom borders) during battle
+	- Fix text in party screen and battle screen to display 'HP' instead of just 'H' for each pokemon
+	- Display text for Items in Dialogue within InventoryUI even if its null in UseItem() (currently displays 'It' instead of ItemName)
+	- Make Bag Save/Load its contents to file when Save/Load is called

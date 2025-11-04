@@ -15,6 +15,8 @@ public class Party : MonoBehaviour {
 
     public void SetParty(List<Pokemon> pokemon) {
         party = pokemon;
+
+        OnUpdated?.Invoke();
     }
     
     private void Start() {

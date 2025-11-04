@@ -53,7 +53,7 @@ public class MenuController : MonoBehaviour {
             onBack?.Invoke();
 
             CloseMenu();
-        } else if (Input.GetKeyDown(KeyCode.Return)) {
+        } else if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Space)) {
             onMenuItemSelected?.Invoke(selectedItem);
 
             CloseMenu();

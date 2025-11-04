@@ -24,4 +24,8 @@ public class ItemBase : ScriptableObject {
             return icon;
         }
     }
+
+    public virtual bool Use(Pokemon pokemon) {
+        return false;
+    }
 }

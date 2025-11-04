@@ -19,7 +19,7 @@ public class ConditionsDataBase {
                 Abbreviation = "PSN",
                 StartMessage = "has been poisoned!",
                 OnAfterTurn = (Pokemon pokemon) => {
-                    pokemon.UpdateHitpoints(pokemon.MaxHitpoints / 8);
+                    pokemon.DecreaseHitpoints(pokemon.MaxHitpoints / 8);
                     pokemon.StatusChanges.Enqueue($"{pokemon.Blueprint.PokemonName} was hurt by the poison!");
                 }
             }
@@ -30,7 +30,7 @@ public class ConditionsDataBase {
                 Abbreviation = "BRN",
                 StartMessage = "has been burned!",
                 OnAfterTurn = (Pokemon pokemon) => {
-                    pokemon.UpdateHitpoints(pokemon.MaxHitpoints / 16);
+                    pokemon.DecreaseHitpoints(pokemon.MaxHitpoints / 16);
                     pokemon.StatusChanges.Enqueue($"{pokemon.Blueprint.PokemonName} was hurt by the burn!");
                 }
             }
@@ -136,7 +136,7 @@ public class ConditionsDataBase {
                     }
 
                     // pokemon hurt itself
-                    pokemon.UpdateHitpoints(((((2 * pokemon.Level / 5 + 2) * pokemon.Attack * 40) / pokemon.Defence) / 50) + 2);
+                    pokemon.DecreaseHitpoints(((((2 * pokemon.Level / 5 + 2) * pokemon.Attack * 40) / pokemon.Defence) / 50) + 2);
                     pokemon.StatusChanges.Enqueue($"{pokemon.Blueprint.PokemonName} hurt itself due to confusion!");
 
                     return false;
