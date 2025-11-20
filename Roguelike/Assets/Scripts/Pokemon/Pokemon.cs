@@ -38,7 +38,6 @@ public class Pokemon {
     public int StatusCounter { get; set; }
     public Condition VolatileStatus { get; private set; }
     public int VolatileStatusCounter { get; set; }
-    public bool HitpointsChanged { get; set; }
     public event System.Action OnStatusChanged;
     public event System.Action OnHitpointsChanged;
 
@@ -263,16 +262,12 @@ public class Pokemon {
         CurrentHitpoints = Mathf.Clamp(CurrentHitpoints - damage, 0, MaxHitpoints);
 
         OnHitpointsChanged?.Invoke();
-
-        HitpointsChanged = true;
     }
 
     public void IncreaseHitpoints(int amount) {
         CurrentHitpoints = Mathf.Clamp(CurrentHitpoints + amount, 0, MaxHitpoints);
 
         OnHitpointsChanged?.Invoke();
-
-        HitpointsChanged = true;
     }
 
     public void SetStatus(ConditionID conditionID) {

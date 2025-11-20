@@ -190,6 +190,7 @@ MonoBehaviour:
   statusText: {fileID: 1311363032740337640}
   hitpointsBar: {fileID: 748608422178837411}
   hitpointsValueText: {fileID: 55407695952394926}
+  expBar: {fileID: 0}
   poisonColor: {r: 0.8509804, g: 0.21568628, b: 0.75686276, a: 1}
   paralysisColor: {r: 1, g: 1, b: 0, a: 1}
   sleepColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
@@ -601,7 +602,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &87828121682914435
 RectTransform:
   m_ObjectHideFlags: 0

@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
-public enum BattleState { START, ACTION_SELECTION, MOVE_SELECTION, RUNNING_TURN, BUSY, PARTY_SCREEN, SWITCHING, BATTLE_OVER, MOVE_TO_FORGET }
+public enum BattleState { ACTION_SELECTION, BAG, BATTLE_OVER, BUSY, MOVE_SELECTION, MOVE_TO_FORGET, PARTY_SCREEN, RUNNING_TURN, START, SWITCHING }
 public enum BattleAction { MOVE, SWITCH_POKEMON, USE_ITEM, RUN }
 
 public class BattleSystem : MonoBehaviour {
@@ -18,6 +18,7 @@ public class BattleSystem : MonoBehaviour {
     [SerializeField] Image trainerImage;
     [SerializeField] GameObject pokeballSprite;
     [SerializeField] MoveSelectionUI moveSelectionUI;
+    [SerializeField] InventoryUI inventoryUI;
 
     public event Action<bool> OnBattleOver;
     
@@ -111,7 +112,9 @@ public class BattleSystem : MonoBehaviour {
     }
 
     void PlayerBag() {
-        Debug.Log("Bag Screen");
+        state = BattleState.BAG;
+        inventoryUI.gameObject.SetActive(true);
+
     }
 
     void PlayerPokemon() {
@@ -146,12 +149,7 @@ public class BattleSystem : MonoBehaviour {
         Debug.Log($"{source.Pokemon.Blueprint.PokemonName} has {source.Pokemon.CurrentHitpoints} hitpoints");
 
         yield return ShowStatusChanges(source.Pokemon);
-
-        if (source == playerUnit) {
-            yield return source.HUD.UpdatePlayerHitpoints();
-        } else if (source == enemyUnit) {
-            yield return source.HUD.UpdateEnemyHitpoints();
-        }
+        yield return source.HUD.WaitForHitpointsUpdate();
 
         if (source.Pokemon.CurrentHitpoints <= 0) {
             yield return HandlePokemonFainted(source);
@@ -250,8 +248,6 @@ public class BattleSystem : MonoBehaviour {
         } else if (playerAction == BattleAction.USE_ITEM) {
             dialogueBox.EnableActionSelector(false);
 
-            yield return ThrowPokeball();
-
             if (state == BattleState.BATTLE_OVER) {
                 yield break;
             }
@@ -325,7 +321,7 @@ public class BattleSystem : MonoBehaviour {
     IEnumerator PerformMove(BattleUnit source, BattleUnit target, Move move) {
         if (!source.Pokemon.OnBeforeMove()) {
             yield return ShowStatusChanges(source.Pokemon);
-            yield return source.HUD.UpdatePlayerHitpoints();
+            yield return target.HUD.WaitForHitpointsUpdate();
             yield break;
         }
 
@@ -365,13 +361,8 @@ public class BattleSystem : MonoBehaviour {
                 } else {
                     Debug.Log($"{target.Pokemon.Blueprint.PokemonName} has {target.Pokemon.SpecialDefence} special defence");
                 }
-
-                if (target == playerUnit) {
-                    yield return target.HUD.UpdatePlayerHitpoints();
-                } else if (target == enemyUnit) {
-                    yield return target.HUD.UpdateEnemyHitpoints();
-                }
                 
+                yield return target.HUD.WaitForHitpointsUpdate();
                 yield return ShowDamageDetails(damageDetails);
             } else {
                 Debug.Log($"{move} is not PHYSICAL, SPECIAL, OR OTHER");
@@ -554,6 +545,19 @@ public class BattleSystem : MonoBehaviour {
             HandleMoveSelection();
         } else if (state == BattleState.PARTY_SCREEN) {
             HandlePartySelection();
+        } else if (state == BattleState.BAG) {
+            Action onBack = () => {
+                inventoryUI.gameObject.SetActive(false);
+                state = BattleState.ACTION_SELECTION;
+            };
+
+            Action onItemUsed = () => {
+                state = BattleState.BUSY;
+                inventoryUI.gameObject.SetActive(false);
+                StartCoroutine(RunTurns(BattleAction.USE_ITEM));
+            };
+
+            inventoryUI.HandleUpdate(onBack, onItemUsed);
         } else if (state == BattleState.SWITCHING) {
             HandleSwitching();
         } else if (state == BattleState.MOVE_TO_FORGET) {
@@ -607,7 +611,7 @@ public class BattleSystem : MonoBehaviour {
             if (currentAction == 0) {
                 MoveSelection();
             } else if (currentAction == 1) {
-                StartCoroutine(RunTurns(BattleAction.USE_ITEM));
+                PlayerBag();
             }  else if (currentAction == 2) {
                 PlayerPokemon();
             }  else if (currentAction == 3) {

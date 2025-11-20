@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class HitpointsBar : MonoBehaviour {
     [SerializeField] GameObject hitpoints;
+
+    public bool IsUpdating { get; private set; }
     
     public void SetHitpoints(float normalizedHitpoints) {
         hitpoints.transform.localScale = new Vector3(normalizedHitpoints, 1.0f);
     }
 
     public IEnumerator SetHitpointsSmooth(float newHitpoints) {
+        IsUpdating = true;
         float currentHitpoints = hitpoints.transform.localScale.x;
         float changeAmount = currentHitpoints - newHitpoints;
 
@@ -21,5 +24,6 @@ public class HitpointsBar : MonoBehaviour {
         }
         
         hitpoints.transform.localScale = new Vector3(newHitpoints, 1.0f);
+        IsUpdating = false;
     }
 }

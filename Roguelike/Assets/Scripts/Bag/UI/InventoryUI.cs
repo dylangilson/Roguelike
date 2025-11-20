@@ -15,6 +15,8 @@ public class InventoryUI : MonoBehaviour {
     [SerializeField] Image downArrow;
     [SerializeField] PartyScreen partyScreen;
 
+    Action onItemUsed;
+
     int selectedItem = 0;
     int scrollOffset = 0;
     InventoryUIState state;
@@ -57,7 +59,8 @@ public class InventoryUI : MonoBehaviour {
         UpdateItemSelection();
     }
 
-    public void HandleUpdate(Action onBack) {
+    public void HandleUpdate(Action onBack, Action onItemUsed = null) {
+        this.onItemUsed = onItemUsed;
         if (state == InventoryUIState.ITEM_SELECTION) {
             int previousSelectedItem = selectedItem;
 
@@ -98,6 +101,7 @@ public class InventoryUI : MonoBehaviour {
 
         if (item != null) {
             yield return DialogueManager.Instance.ShowDialogueText($"Player used {item.ItemName} on {partyScreen.SelectedMember.Blueprint.PokemonName}!");
+            onItemUsed?.Invoke();
         } else {
             yield return DialogueManager.Instance.ShowDialogueText($"It won't have any effect on {partyScreen.SelectedMember.Blueprint.PokemonName}!");
         }
@@ -106,6 +110,10 @@ public class InventoryUI : MonoBehaviour {
     }
 
     private void UpdateItemSelection() {
+        if (selectedItem >= bag.Slots.Count) {
+           selectedItem = bag.Slots.Count - 1;
+        }
+
         for (int i = 0; i < slotUIlist.Count; i++) {
             if (i == selectedItem) {
                 slotUIlist[i].NameText.color = GlobalSettings.i.HighlightedColour;

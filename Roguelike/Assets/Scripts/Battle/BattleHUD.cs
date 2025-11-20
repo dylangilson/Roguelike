@@ -22,6 +22,10 @@ public class BattleHUD : MonoBehaviour {
     Dictionary<ConditionID, Color> statusColors;
 
     public void SetData(Pokemon pokemon) {
+        if (currentPokemon != null) {
+            currentPokemon.OnStatusChanged -= SetStatusText;
+            currentPokemon.OnHitpointsChanged -= UpdateHitpoints;
+        }
         currentPokemon = pokemon;
 
         nameText.text = pokemon.Blueprint.PokemonName;
@@ -42,6 +46,7 @@ public class BattleHUD : MonoBehaviour {
 
         SetStatusText();
         currentPokemon.OnStatusChanged += SetStatusText;
+        currentPokemon.OnHitpointsChanged += UpdateHitpoints;        
     }
 
     void SetStatusText() {
@@ -91,17 +96,16 @@ public class BattleHUD : MonoBehaviour {
 
         return Mathf.Clamp01(normalizedExp);
     }
-    
-    public IEnumerator UpdatePlayerHitpoints() {
-        hitpointsValueText.text = $"{currentPokemon.CurrentHitpoints} / {currentPokemon.MaxHitpoints}";
-        if (currentPokemon.HitpointsChanged) {
-            yield return hitpointsBar.SetHitpointsSmooth((float) currentPokemon.CurrentHitpoints / currentPokemon.MaxHitpoints);
-        }
+    public void UpdateHitpoints() {
+        StartCoroutine(UpdateHitpointsAsync());
     }
 
-    public IEnumerator UpdateEnemyHitpoints() {
-        if (currentPokemon.HitpointsChanged) {
-            yield return hitpointsBar.SetHitpointsSmooth((float) currentPokemon.CurrentHitpoints / currentPokemon.MaxHitpoints);
-        }
+    public IEnumerator UpdateHitpointsAsync() {
+        hitpointsValueText.text = $"{currentPokemon.CurrentHitpoints} / {currentPokemon.MaxHitpoints}";
+        yield return hitpointsBar.SetHitpointsSmooth((float) currentPokemon.CurrentHitpoints / currentPokemon.MaxHitpoints);
+    }
+
+    public IEnumerator WaitForHitpointsUpdate() {
+        yield return new WaitUntil(() => hitpointsBar.IsUpdating == false);
     }
 }
