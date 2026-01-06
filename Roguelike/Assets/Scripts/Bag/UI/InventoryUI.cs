@@ -110,9 +110,7 @@ public class InventoryUI : MonoBehaviour {
     }
 
     private void UpdateItemSelection() {
-        if (selectedItem >= bag.Slots.Count) {
-           selectedItem = bag.Slots.Count - 1;
-        }
+        selectedItem = Mathf.Clamp(selectedItem, 0, bag.Slots.Count - 1);
 
         for (int i = 0; i < slotUIlist.Count; i++) {
             if (i == selectedItem) {

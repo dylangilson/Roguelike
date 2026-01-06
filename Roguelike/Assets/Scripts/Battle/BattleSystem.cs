@@ -286,6 +286,9 @@ public class BattleSystem : MonoBehaviour {
     }
 
     void HandleFaint(BattleUnit pokemon) {
+        pokemon.Pokemon.CureStatus();
+        pokemon.Pokemon.CureVolatileStatus();
+
         if (pokemon.IsPlayerUnit) {
             var nextPokemon = playerParty.GetLeadPokemon();
 
@@ -300,11 +303,11 @@ public class BattleSystem : MonoBehaviour {
             } else {
                 var nextPokemon = trainerParty.GetLeadPokemon();
 
-            if (nextPokemon != null) {
-                StartCoroutine(TrainerPokemonFainted(nextPokemon));
-            } else {
-                BattleOver(true);
-            }
+                if (nextPokemon != null) {
+                    StartCoroutine(TrainerPokemonFainted(nextPokemon));
+                } else {
+                    BattleOver(true);
+                }
             }
         }
     }

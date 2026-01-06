@@ -16,3 +16,4 @@ TODOs:
 	- Fix text in party screen and battle screen to display 'HP' instead of just 'H' for each pokemon
 	- Display text for Items in Dialogue within InventoryUI even if its null in UseItem() (currently displays 'It' instead of ItemName)
 	- Make Bag Save/Load its contents to file when Save/Load is called
+	- Make Ethers recover PP for only one move instead of all (ensure elixirs only work if at least one move has lost PP)

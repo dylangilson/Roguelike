@@ -7,9 +7,9 @@ public class Move {
     public MoveBase Blueprint { get; set; }
     public int PowerPoints { get; set; }
 
-    public Move(MoveBase pokemonBase) {
-        Blueprint = pokemonBase;
-        PowerPoints = pokemonBase.PowerPoints;
+    public Move(MoveBase moveBase) {
+        Blueprint = moveBase;
+        PowerPoints = moveBase.PowerPoints;
     }
 
     public Move(MoveSaveData saveData) {
@@ -24,6 +24,16 @@ public class Move {
         };
 
         return saveData;
+    }
+
+    public bool IncreasePowerPoints(int amount) {
+        if (PowerPoints == Blueprint.PowerPoints) {
+            return false;
+        }
+
+        PowerPoints = Mathf.Clamp(PowerPoints + amount, 0, Blueprint.PowerPoints);
+
+        return true;
     }
 }
 

@@ -21,14 +21,80 @@ public class RecoveryItem : ItemBase {
     [SerializeField] bool maxRevive;
 
     public override bool Use(Pokemon pokemon) {
-        if (amountHealed > 0) {
+        // revive
+        if (revive || maxRevive) {
+            if (pokemon.CurrentHitpoints > 0) {
+                return false;
+            }
+
+            if (revive) {
+                pokemon.IncreaseHitpoints(pokemon.MaxHitpoints / 2);
+            } else if (maxRevive) {
+                pokemon.IncreaseHitpoints(pokemon.MaxHitpoints);
+            }
+
+            pokemon.CureStatus();
+
+            return true;
+        }
+
+        // can't use other recovery items on fainted pokemon
+        if (pokemon.CurrentHitpoints == 0) {
+            return false;
+        }
+        
+        // potion
+        if (restoreMaxHitpoints || amountHealed > 0) {
             if (pokemon.CurrentHitpoints == pokemon.MaxHitpoints) {
                 return false;
             }
 
-            pokemon.IncreaseHitpoints(amountHealed);
+            if (restoreMaxHitpoints) {
+                pokemon.IncreaseHitpoints(pokemon.MaxHitpoints);
+            } else {
+                pokemon.IncreaseHitpoints(amountHealed);
+            }
+
+            return true;
         }
 
-        return true;
+        // status
+        if (cureAll || statusCure != ConditionID.NONE) {
+            if (pokemon.Status == null && pokemon.VolatileStatus == null) {
+                return false;
+            }
+
+            if (cureAll) {
+                pokemon.CureStatus();
+                pokemon.CureVolatileStatus();
+            } else {
+                if (pokemon.Status != null && pokemon.Status.ID == statusCure) {
+                    pokemon.CureStatus();
+                } else if (pokemon.VolatileStatus != null && pokemon.VolatileStatus.ID == statusCure) {
+                    pokemon.CureVolatileStatus();
+                } else {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        // powerpoints
+        if (restoreMaxHitpoints || powerPointsRecovered > 0) {
+            bool increasedMove = false;
+
+            foreach (var move in pokemon.Moves) {
+                bool increased = restoreMaxPowerPoints ? move.IncreasePowerPoints(move.Blueprint.PowerPoints) : move.IncreasePowerPoints(powerPointsRecovered);
+
+                if (increased) {
+                    increasedMove = true;
+                }
+            }
+
+            return increasedMove;
+        }        
+
+        return false;
     }
 }
