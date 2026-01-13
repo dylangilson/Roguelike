@@ -6,13 +6,23 @@ using UnityEngine;
 
 public class Bag : MonoBehaviour {
     [SerializeField] List<ItemSlot> slots;
+    [SerializeField] List<ItemSlot> pokeballSlots;
+    [SerializeField] List<ItemSlot> technicalMachineSlots;
+
+    List<List<ItemSlot>> allSlots;
 
     public event Action OnUpdated;
 
-    public List<ItemSlot> Slots {
-        get {
-            return slots;
-        }
+    private void Awake() {
+        allSlots = new List<List<ItemSlot>>() { slots, pokeballSlots, technicalMachineSlots };
+    }
+
+    public static List<string> ItemCategories { get; set; } = new List<string>() {
+        "ITEMS", "POKEBALLS", "TMs & HMs"
+    };
+
+    public List<ItemSlot> GetSlotsByCategory(int categoryIndex) {
+        return allSlots[categoryIndex];
     }
 
     public static Bag GetBag() {

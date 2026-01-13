@@ -153,6 +153,20 @@ MonoBehaviour:
     count: 2
   - item: {fileID: 11400000, guid: bd3803209d313884bb67ec7ff9d0e980, type: 2}
     count: 4
+  - item: {fileID: 11400000, guid: 02cfed0f0c568af4f931cd2835dfa33c, type: 2}
+    count: 4
+  - item: {fileID: 11400000, guid: bb7ea115537d4cd4693a356725329389, type: 2}
+    count: 4
+  pokeballSlots:
+  - item: {fileID: 11400000, guid: 91cc2f6a34089e542aee338bfab94cb8, type: 2}
+    count: 10
+  - item: {fileID: 11400000, guid: 746b65b34308ba7408d8c7e42bdcba20, type: 2}
+    count: 5
+  - item: {fileID: 11400000, guid: 8cf93f5a048d7af40b729fe6a120dff5, type: 2}
+    count: 20
+  - item: {fileID: 11400000, guid: ee6a274afec01d0439523fb0c58872f7, type: 2}
+    count: 1
+  technicalMachineSlots: []
 --- !u!114 &6158435993494037090
 MonoBehaviour:
   m_ObjectHideFlags: 0
