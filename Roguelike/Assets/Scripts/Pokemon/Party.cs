@@ -19,7 +19,7 @@ public class Party : MonoBehaviour {
         OnUpdated?.Invoke();
     }
     
-    private void Start() {
+    private void Awake() {
         foreach (var pokemon in party) {
             pokemon.Init();
         }
@@ -35,7 +35,7 @@ public class Party : MonoBehaviour {
         return null;
     }
 
-    public void AddPokemon(Pokemon pokemon){
+    public void AddPokemon(Pokemon pokemon) {
         if (party.Count < 6) {
             party.Add(pokemon);
             OnUpdated?.Invoke();

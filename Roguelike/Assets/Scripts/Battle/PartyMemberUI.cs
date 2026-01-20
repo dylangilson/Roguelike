@@ -25,7 +25,7 @@ public class PartyMemberUI : MonoBehaviour {
 
         hitpointsValueText.text = "HP: " + currentPokemon.CurrentHitpoints;
 
-        if (currentPokemon.MaxHitpoints != 0){
+        if (currentPokemon.MaxHitpoints != 0) {
             hitpointsBar.SetHitpoints((float)(currentPokemon.CurrentHitpoints / currentPokemon.MaxHitpoints));
         }
     }

@@ -317,6 +317,8 @@ public class BattleSystem : MonoBehaviour {
         dialogueBox.UpdateActionSelection(currentAction);
         state = BattleState.BATTLE_OVER;
         playerParty.GetParty().ForEach(pokemon => pokemon.OnBattleOver());
+        playerUnit.HUD.ClearData();
+        enemyUnit.HUD.ClearData();
 
         OnBattleOver(won);
     }

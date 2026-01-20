@@ -29,13 +29,15 @@ public class Bag : MonoBehaviour {
         return FindObjectOfType<PlayerController>().GetComponent<Bag>();
     }
 
-    public ItemBase UseItem(int itemIndex, Pokemon pokemon) {
-        var item = slots[itemIndex].Item;
+    public ItemBase UseItem(int itemIndex, Pokemon pokemon, int selectedCategory) {
+        var currentSlots = GetSlotsByCategory(selectedCategory);
+
+        var item = currentSlots[itemIndex].Item;
 
         bool used = item.Use(pokemon);
 
         if (used) {
-            RemoveItem(item);
+            RemoveItem(item, selectedCategory);
 
             return item;
         }
@@ -43,13 +45,15 @@ public class Bag : MonoBehaviour {
         return null;
     }
 
-    public void RemoveItem(ItemBase item) {
-        var slot = slots.First(slot => slot.Item == item);
+    public void RemoveItem(ItemBase item, int selectedCategory) {
+        var currentSlots = GetSlotsByCategory(selectedCategory);
+
+        var slot = currentSlots.First(slot => slot.Item == item);
 
         slot.Count--;
 
         if (slot.Count <= 0) {
-            slots.Remove(slot);
+            currentSlots.Remove(slot);
         }
 
         OnUpdated?.Invoke();

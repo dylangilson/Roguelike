@@ -81,7 +81,7 @@ public class RecoveryItem : ItemBase {
         }
 
         // powerpoints
-        if (restoreMaxHitpoints || powerPointsRecovered > 0) {
+        if (restoreMaxPowerPoints || powerPointsRecovered > 0) {
             bool increasedMove = false;
 
             foreach (var move in pokemon.Moves) {

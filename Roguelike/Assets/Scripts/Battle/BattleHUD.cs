@@ -26,6 +26,7 @@ public class BattleHUD : MonoBehaviour {
             currentPokemon.OnStatusChanged -= SetStatusText;
             currentPokemon.OnHitpointsChanged -= UpdateHitpoints;
         }
+
         currentPokemon = pokemon;
 
         nameText.text = pokemon.Blueprint.PokemonName;
@@ -46,7 +47,7 @@ public class BattleHUD : MonoBehaviour {
 
         SetStatusText();
         currentPokemon.OnStatusChanged += SetStatusText;
-        currentPokemon.OnHitpointsChanged += UpdateHitpoints;        
+        currentPokemon.OnHitpointsChanged += UpdateHitpoints;
     }
 
     void SetStatusText() {
@@ -107,5 +108,12 @@ public class BattleHUD : MonoBehaviour {
 
     public IEnumerator WaitForHitpointsUpdate() {
         yield return new WaitUntil(() => hitpointsBar.IsUpdating == false);
+    }
+
+    public void ClearData() {
+        if (currentPokemon != null) {
+            currentPokemon.OnStatusChanged -= SetStatusText;
+            currentPokemon.OnHitpointsChanged -= UpdateHitpoints;
+        }
     }
 }

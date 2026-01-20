@@ -112,10 +112,11 @@ public class InventoryUI : MonoBehaviour {
     private IEnumerator UseItem() {
         state = InventoryUIState.BUSY;
 
-        var item = bag.UseItem(selectedItem, partyScreen.SelectedMember);
+        var item = bag.UseItem(selectedItem, partyScreen.SelectedMember, selectedCategory);
 
         if (item != null) {
             yield return DialogueManager.Instance.ShowDialogueText($"Player used {item.ItemName} on {partyScreen.SelectedMember.Blueprint.PokemonName}!");
+
             onItemUsed?.Invoke();
         } else {
             yield return DialogueManager.Instance.ShowDialogueText($"It won't have any effect on {partyScreen.SelectedMember.Blueprint.PokemonName}!");
