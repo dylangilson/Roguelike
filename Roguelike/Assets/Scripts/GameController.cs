@@ -190,4 +190,6 @@ public class GameController : MonoBehaviour {
             state = GameState.OVERWORLD;
         }
     }
+
+    public GameState State => state;
 }

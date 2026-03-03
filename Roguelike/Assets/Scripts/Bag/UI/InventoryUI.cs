@@ -16,7 +16,7 @@ public class InventoryUI : MonoBehaviour {
     [SerializeField] Image downArrow;
     [SerializeField] PartyScreen partyScreen;
 
-    Action onItemUsed;
+    Action<ItemBase> onItemUsed;
 
     int selectedItem = 0;
     int selectedCategory = 0;
@@ -61,7 +61,7 @@ public class InventoryUI : MonoBehaviour {
         UpdateItemSelection();
     }
 
-    public void HandleUpdate(Action onBack, Action onItemUsed = null) {
+    public void HandleUpdate(Action onBack, Action<ItemBase> onItemUsed = null) {
         this.onItemUsed = onItemUsed;
 
         if (state == InventoryUIState.ITEM_SELECTION) {
@@ -92,7 +92,7 @@ public class InventoryUI : MonoBehaviour {
             }
 
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Space)) {
-                OpenPartyScreen();
+                ItemSelected();
             } else if (Input.GetKeyDown(KeyCode.Escape)) {
                 onBack?.Invoke();
             }
@@ -109,15 +109,25 @@ public class InventoryUI : MonoBehaviour {
         } 
     }
 
+    void ItemSelected() {
+        if (selectedCategory == (int)ItemCategory.Pokeballs) {
+            StartCoroutine(UseItem());
+        } else {
+            OpenPartyScreen();
+        }
+    }
+
     private IEnumerator UseItem() {
         state = InventoryUIState.BUSY;
 
         var item = bag.UseItem(selectedItem, partyScreen.SelectedMember, selectedCategory);
 
         if (item != null) {
-            yield return DialogueManager.Instance.ShowDialogueText($"Player used {item.ItemName} on {partyScreen.SelectedMember.Blueprint.PokemonName}!");
+            if (!(item is Pokeball)) {
+                yield return DialogueManager.Instance.ShowDialogueText($"Player used {item.ItemName} on {partyScreen.SelectedMember.Blueprint.PokemonName}!");
+            }
 
-            onItemUsed?.Invoke();
+            onItemUsed?.Invoke(item);
         } else {
             yield return DialogueManager.Instance.ShowDialogueText($"It won't have any effect on {partyScreen.SelectedMember.Blueprint.PokemonName}!");
         }
