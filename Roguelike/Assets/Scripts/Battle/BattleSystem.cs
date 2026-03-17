@@ -504,7 +504,7 @@ public class BattleSystem : MonoBehaviour {
                 var newMove = playerUnit.Pokemon.GetLearnableMoveAtCurrentLevel();
                 if (newMove != null && !playerUnit.Pokemon.GetMoveNames().Contains(newMove.GetBase().MoveName)) {
                     if (playerUnit.Pokemon.Moves.Count < PokemonBase.MAX_NUMBER_OF_MOVES) {
-                        playerUnit.Pokemon.LearnMove(newMove);
+                        playerUnit.Pokemon.LearnMove(newMove.GetBase());
                         yield return dialogueBox.TypeDialogue($"{playerUnit.Pokemon.Blueprint.PokemonName} learned {newMove.GetBase().MoveName}!");
                         dialogueBox.SetMoveNames(playerUnit.Pokemon.Moves);
                     } else {
@@ -572,7 +572,7 @@ public class BattleSystem : MonoBehaviour {
                 } else {
                     var selectedMove = playerUnit.Pokemon.Moves[moveIndex].Blueprint;
 
-                    StartCoroutine(dialogueBox.TypeDialogue($"{playerUnit.Pokemon.Blueprint.PokemonName} forgot {selectedMove.MoveName} and learned {moveToLearn.MoveName}"));
+                    StartCoroutine(dialogueBox.TypeDialogue($"{playerUnit.Pokemon.Blueprint.PokemonName} forgot {selectedMove.MoveName} and learned {moveToLearn.MoveName}!"));
                     // yield return new WaitForSeconds(1.0f);
 
                     playerUnit.Pokemon.Moves[moveIndex] = new Move(moveToLearn);

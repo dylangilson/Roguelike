@@ -17,3 +17,8 @@ TODOs:
 	- Display text for Items in Dialogue within InventoryUI even if its null in UseItem() (currently displays 'It' instead of ItemName)
 	- Make Bag Save/Load its contents to file when Save/Load is called
 	- Make Ethers recover PP for only one move instead of all (ensure elixirs only work if at least one move has lost PP)
+	- Sort TMs alphanumerically (i.e. TM01 should always be before TM02 in bag order)
+	- Get Generation 3 TM bag sprites (get all type colours; get spritesheet of all TM sprites if possible)
+	- Add Looping Around the MoveSelectionUI List when learning a new move while already having 4 moves
+	- Remove WaitForSeconds after learning replacing a move (i.e. you already had 4 and then learned another) and fix the fact that the DialogueManager is still trying to print the move
+	- Hide count of item in TMs in InventoryUI

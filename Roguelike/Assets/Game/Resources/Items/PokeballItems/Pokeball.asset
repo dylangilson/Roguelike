@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Pokeball
   m_EditorClassIdentifier: 
   itemName: "Pok\xE9ball"
-  description: A ball to capture pokemon
+  description: "A ball to capture pok\xE9mon"
   icon: {fileID: -6885498132332409789, guid: f64ca9a0e50d2214aa7054deb58e16bc, type: 3}
+  catchRateModifier: 1

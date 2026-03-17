@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: GreatBall
   m_EditorClassIdentifier: 
   itemName: Great Ball
-  description: A greater ball to capture pokemon
+  description: "A greater ball to capture pok\xE9mon"
   icon: {fileID: 8020060226805192610, guid: f64ca9a0e50d2214aa7054deb58e16bc, type: 3}
   catchRateModifier: 1.5

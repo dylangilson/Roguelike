@@ -20,7 +20,7 @@ public class Bag : MonoBehaviour {
     }
 
     public static List<string> ItemCategories { get; set; } = new List<string>() {
-        "ITEMS", "POKEBALLS", "TMs & HMs"
+        "ITEMS", "POKÉBALLS", "TMs"
     };
 
     public List<ItemSlot> GetSlotsByCategory(int categoryIndex) {
@@ -31,10 +31,13 @@ public class Bag : MonoBehaviour {
         return FindObjectOfType<PlayerController>().GetComponent<Bag>();
     }
 
-    public ItemBase UseItem(int itemIndex, Pokemon pokemon, int selectedCategory) {
-        var currentSlots = GetSlotsByCategory(selectedCategory);
+    public ItemBase GetItem(int itemIndex, int categoryIndex) {
+        var currentSlots = GetSlotsByCategory(categoryIndex);
+        return currentSlots[itemIndex].Item;
+    }
 
-        var item = currentSlots[itemIndex].Item;
+    public ItemBase UseItem(int itemIndex, Pokemon pokemon, int selectedCategory) {
+        var item = GetItem(itemIndex, selectedCategory);
 
         bool used = item.Use(pokemon);
 

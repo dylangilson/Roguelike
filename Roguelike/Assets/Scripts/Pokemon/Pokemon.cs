@@ -175,12 +175,16 @@ public class Pokemon {
         return Blueprint.LearnableMoves.Where(x => x.GetLevel() == level).FirstOrDefault();
     }
 
-    public void LearnMove(LearnableMove moveToLearn) {
+    public void LearnMove(MoveBase moveToLearn) {
         if (Moves.Count >= PokemonBase.MAX_NUMBER_OF_MOVES) {
             return;
         }
 
-        Moves.Add(new Move(moveToLearn.GetBase()));
+        Moves.Add(new Move(moveToLearn));
+    }
+
+    public bool HasMove(MoveBase moveToCheck) {
+        return Moves.Count(move => move.Blueprint == moveToCheck) > 0;
     }
 
     public List<string> GetMoveNames() {

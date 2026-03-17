@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b1e70320c223834faf98d60f73fde63, type: 3}
+  m_Name: TM14 - Blizzard
+  m_EditorClassIdentifier: 
+  itemName: TM 14 - Blizzard
+  description: 'The foe is blasted with a blizzard. It may freeze the foe solid. '
+  icon: {fileID: -1361200918, guid: 3ae12697ae504414bbf0797ea36dfddd, type: 3}
+  move: {fileID: 11400000, guid: ae236b68d47df6d4faf1b1f5647f8065, type: 2}

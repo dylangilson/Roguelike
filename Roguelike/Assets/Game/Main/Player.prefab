@@ -166,7 +166,11 @@ MonoBehaviour:
     count: 20
   - item: {fileID: 11400000, guid: ee6a274afec01d0439523fb0c58872f7, type: 2}
     count: 1
-  technicalMachineSlots: []
+  technicalMachineSlots:
+  - item: {fileID: 11400000, guid: b44aa81a94d30df49a5932776e59ff47, type: 2}
+    count: 1
+  - item: {fileID: 11400000, guid: ff30c15369494b349aff58d17879ee6c, type: 2}
+    count: 1
 --- !u!114 &6158435993494037090
 MonoBehaviour:
   m_ObjectHideFlags: 0

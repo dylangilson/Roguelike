@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: UltraBall
   m_EditorClassIdentifier: 
   itemName: Ultra Ball
-  description: an ultimate ball to capture pokemon
+  description: "An ultimate ball to capture pok\xE9mon"
   icon: {fileID: -2598005947579844795, guid: f64ca9a0e50d2214aa7054deb58e16bc, type: 3}
   catchRateModifier: 2

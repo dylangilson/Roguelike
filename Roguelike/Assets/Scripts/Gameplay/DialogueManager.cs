@@ -24,6 +24,12 @@ public class DialogueManager : MonoBehaviour {
         Instance = this;
     }
 
+    public void CloseDialogue() {
+        dialogueBox.SetActive(false);
+
+        IsShowing = false;
+    }
+
     // single frame of dialogue
     public IEnumerator ShowDialogueText(string text, bool waitForInput=true) {
         IsShowing = true;
@@ -36,9 +42,7 @@ public class DialogueManager : MonoBehaviour {
             yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Space));
         }
 
-        dialogueBox.SetActive(false);
-
-        IsShowing = false;
+        CloseDialogue();
     }
 
     // multiple frames of dialogue
