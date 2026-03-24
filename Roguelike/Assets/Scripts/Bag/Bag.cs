@@ -42,8 +42,9 @@ public class Bag : MonoBehaviour {
         bool used = item.Use(pokemon);
 
         if (used) {
-            RemoveItem(item, selectedCategory);
-
+            if (!item.IsReusable) {
+                RemoveItem(item, selectedCategory);
+            }
             return item;
         }
 

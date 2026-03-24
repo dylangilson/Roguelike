@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: TM 14 - Blizzard
   description: 'The foe is blasted with a blizzard. It may freeze the foe solid. '
-  icon: {fileID: -1361200918, guid: 3ae12697ae504414bbf0797ea36dfddd, type: 3}
+  icon: {fileID: 184325880, guid: 347a0e269173c5d418f2535a6ce17d52, type: 3}
   move: {fileID: 11400000, guid: ae236b68d47df6d4faf1b1f5647f8065, type: 2}

@@ -1452,6 +1452,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2381258284772380626, guid: 2c4a361129286c34b8036324e2e8f2ea, type: 3}
+      propertyPath: party.Array.data[3].blueprint
+      value: 
+      objectReference: {fileID: 11400000, guid: 578522609b0490d458520a0d87a81d91, type: 2}
     - target: {fileID: 2456064721821682783, guid: 2c4a361129286c34b8036324e2e8f2ea, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

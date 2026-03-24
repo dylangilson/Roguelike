@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b1e70320c223834faf98d60f73fde63, type: 3}
-  m_Name: TM13 - Ice Beam
+  m_Name: TM07 - Hail
   m_EditorClassIdentifier: 
-  itemName: TM 13 - Ice Beam
-  description: 'The foe is struck with an icy beam. It may freeze the foe solid. '
+  itemName: TM07 - Hail
+  description: "A hailstorm lasting five turns damages all Pok\xE9mon except the
+    Ice-type."
   icon: {fileID: 184325880, guid: 347a0e269173c5d418f2535a6ce17d52, type: 3}
-  move: {fileID: 11400000, guid: f4b9e4adc5adee748977d60d907d1632, type: 2}
+  move: {fileID: 11400000, guid: 11bce3e27235f01448c29b5cbda72924, type: 2}

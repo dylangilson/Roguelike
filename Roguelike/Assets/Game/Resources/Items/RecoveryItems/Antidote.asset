@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Antidote
   description: "Cures a Pok\xE9mon of Poison"
-  icon: {fileID: -1205879049, guid: 35950ae0de763814eb5ce688af979f15, type: 3}
+  icon: {fileID: -965487216, guid: cc61bc02c9602de4884e310e84159509, type: 3}
   amountHealed: 0
   restoreMaxHitpoints: 0
   powerPointsRecovered: 0

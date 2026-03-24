@@ -6,6 +6,8 @@ using UnityEngine;
 public class Pokeball : ItemBase {
     [SerializeField] float catchRateModifier = 1;
 
+    public override bool CanUseOutsideBattle => false;
+
     public override bool Use(Pokemon pokemon) {
         if (GameController.Instance.State == GameState.BATTLE){
             return true;

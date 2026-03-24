@@ -29,6 +29,8 @@ MonoBehaviour:
     level: 10
   - moveBase: {fileID: 11400000, guid: 13d691852078af64481bceccf10cd3dd, type: 2}
     level: 9
+  tmMoves:
+  - {fileID: 11400000, guid: f4b9e4adc5adee748977d60d907d1632, type: 2}
   catchRate: 45
   expYield: 65
   growthRate: 2

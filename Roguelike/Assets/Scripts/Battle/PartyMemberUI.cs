@@ -8,6 +8,7 @@ public class PartyMemberUI : MonoBehaviour {
     [SerializeField] Text levelText;
     [SerializeField] HitpointsBar hitpointsBar;
     [SerializeField] Text hitpointsValueText;
+    [SerializeField] Text miscText;
 
     Pokemon currentPokemon;
 
@@ -15,6 +16,7 @@ public class PartyMemberUI : MonoBehaviour {
         currentPokemon = pokemon;
 
         UpdateData();
+        SetMiscText("");
 
         currentPokemon.OnHitpointsChanged += UpdateData;
     }
@@ -36,5 +38,9 @@ public class PartyMemberUI : MonoBehaviour {
         } else if (!selected) {
             nameText.color = Color.black;
         }
+    }
+    
+    public void SetMiscText(string message) {
+        miscText.text = message;
     }
 }

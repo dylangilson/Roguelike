@@ -95,7 +95,7 @@ public class InventoryUI : MonoBehaviour {
             }
 
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Space)) {
-                ItemSelected();
+                StartCoroutine(ItemSelected());
             } else if (Input.GetKeyDown(KeyCode.Escape)) {
                 onBack?.Invoke();
             }
@@ -118,11 +118,33 @@ public class InventoryUI : MonoBehaviour {
         }
     }
 
-    void ItemSelected() {
+    IEnumerator ItemSelected() {
+        state = InventoryUIState.BUSY;
+        var item = bag.GetItem(selectedItem, selectedCategory);
+        
+        if (GameController.Instance.State == GameState.BATTLE) {
+            // in battle
+            if (!item.CanUseInBattle) {
+                yield return DialogueManager.Instance.ShowDialogueText($"{item.ItemName} cannot be used in battle!");      
+                state = InventoryUIState.ITEM_SELECTION;
+                yield break;          
+            }
+        } else {
+            // outside battle
+            if (!item.CanUseOutsideBattle) {
+                yield return DialogueManager.Instance.ShowDialogueText($"{item.ItemName} cannot be used outside of a battle!");      
+                state = InventoryUIState.ITEM_SELECTION;
+                yield break;          
+            }
+        }
         if (selectedCategory == (int)ItemCategory.Pokeballs) {
             StartCoroutine(UseItem());
         } else {
             OpenPartyScreen();
+
+            if (item is TMItem) {
+                partyScreen.ShowIfTMIsUsable(item as TMItem);                
+            }
         }
     }
 
@@ -134,7 +156,7 @@ public class InventoryUI : MonoBehaviour {
         var item = bag.UseItem(selectedItem, partyScreen.SelectedMember, selectedCategory);
 
         if (item != null) {
-            if (!(item is Pokeball)) {
+            if (item is RecoveryItem) {
                 yield return DialogueManager.Instance.ShowDialogueText($"Player used {item.ItemName} on {partyScreen.SelectedMember.Blueprint.PokemonName}!");
             }
 
@@ -167,6 +189,16 @@ public class InventoryUI : MonoBehaviour {
         }
 
         var pokemon = partyScreen.SelectedMember;
+
+        if (pokemon.HasMove(item.Move)) {
+            yield return DialogueManager.Instance.ShowDialogueText($"{pokemon.Blueprint.PokemonName} already knows {item.Move.MoveName}!");
+            yield break;
+        }
+
+        if (!(item.CanBeTaught(pokemon))) {
+            yield return DialogueManager.Instance.ShowDialogueText($"{pokemon.Blueprint.PokemonName} cannot learn {item.Move.MoveName}!");
+            yield break;
+        }
 
         if (pokemon.Moves.Count < PokemonBase.MAX_NUMBER_OF_MOVES) {
             pokemon.LearnMove(item.Move);
@@ -246,6 +278,7 @@ public class InventoryUI : MonoBehaviour {
 
     void ClosePartyScreen() {
         state = InventoryUIState.ITEM_SELECTION;
+        partyScreen.ClearMessage();
         partyScreen.gameObject.SetActive(false);
     }
 
@@ -264,10 +297,8 @@ public class InventoryUI : MonoBehaviour {
 
             yield return DialogueManager.Instance.ShowDialogueText($"{pokemon.Blueprint.PokemonName} forgot {selectedMove.MoveName} and learned {moveToLearn.MoveName}!");
             // yield return new WaitForSeconds(1.0f);
-
             pokemon.Moves[moveIndex] = new Move(moveToLearn);
-
-            moveToLearn = null;
+    
             state = InventoryUIState.ITEM_SELECTION;
         }
     }

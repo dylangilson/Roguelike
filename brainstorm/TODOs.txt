@@ -22,3 +22,4 @@ TODOs:
 	- Add Looping Around the MoveSelectionUI List when learning a new move while already having 4 moves
 	- Remove WaitForSeconds after learning replacing a move (i.e. you already had 4 and then learned another) and fix the fact that the DialogueManager is still trying to print the move
 	- Hide count of item in TMs in InventoryUI
+	- Rate Limit user button input to stop keyboard spam
