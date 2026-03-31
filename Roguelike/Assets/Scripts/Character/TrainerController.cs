@@ -50,9 +50,9 @@ public class TrainerController : MonoBehaviour, Interactable, ISavable {
 
         // show dialogue
         if (!defeated) {
-            yield return DialogueManager.Instance.ShowDialogue(dialogue, () => {
-                GameController.Instance.StartTrainerBattle(this);
-            });
+            yield return DialogueManager.Instance.ShowDialogue(dialogue);
+
+            GameController.Instance.StartTrainerBattle(this);
         } else {
             yield return DialogueManager.Instance.ShowDialogue(dialogueAfterBattle);
         }
@@ -71,10 +71,9 @@ public class TrainerController : MonoBehaviour, Interactable, ISavable {
 
         yield return character.Move(movementVector);
 
-        // show dialogue
-        StartCoroutine(DialogueManager.Instance.ShowDialogue(dialogue, () => {
-            GameController.Instance.StartTrainerBattle(this);
-        }));
+        yield return DialogueManager.Instance.ShowDialogue(dialogue);
+        
+        GameController.Instance.StartTrainerBattle(this);
     }
 
     public void DefeatedByPlayer() {

@@ -53,11 +53,11 @@ public class PlayerController : MonoBehaviour, ISavable {
         character.HandleUpdate();
 
         if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Space)) {
-            Interact();
+            StartCoroutine(Interact());
         }
     }
 
-    void Interact() {
+    IEnumerator Interact() {
         var facingDirection = new Vector3(character.Animator.MoveX, character.Animator.MoveY);
         var interactPosition = transform.position + facingDirection;
 
@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour, ISavable {
             var interactable = collider.GetComponent<Interactable>();
 
             if (interactable != null) {
-                StartCoroutine(interactable.Interact(transform));
+                yield return interactable.Interact(transform);
             }
         }
     }

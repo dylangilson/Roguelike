@@ -12,11 +12,6 @@ public class DialogueManager : MonoBehaviour {
     public event Action OnShowDialogue;
     public event Action OnCloseDialogue;
 
-    private Dialogue dialogue;
-    private Action onDialogueFinished;
-    private int index; // index of current line
-    private bool isTyping; // true -> dialogue box is typing letters per second
-
     public static DialogueManager Instance { get; private set; } // global instance of DialogueManager
     public bool IsShowing { get; private set; }
 
@@ -46,60 +41,39 @@ public class DialogueManager : MonoBehaviour {
     }
 
     // multiple frames of dialogue
-    public IEnumerator ShowDialogue(Dialogue dialogue, Action onFinished=null) {
+    public IEnumerator ShowDialogue(Dialogue dialogue) {
         yield return new WaitForEndOfFrame();
 
         OnShowDialogue?.Invoke(); // change GameController state to DIALOGUE
 
         IsShowing = true;
 
-        this.dialogue = dialogue;
-        onDialogueFinished = onFinished;
-
         dialogueBox.SetActive(true); // display dialogue box
 
-        StartCoroutine(TypeDialogue(dialogue.Lines[0])); // populate dialogue box
+        foreach (var line in dialogue.Lines) {
+            yield return TypeDialogue(line); // populate dialogue box
+
+            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Space));
+        }
+
+        dialogueBox.SetActive(false);
+
+        IsShowing = false;
+
+        OnCloseDialogue?.Invoke();
     }
 
     public void HandleUpdate() {
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Space)) {
-            if (isTyping) {
-                dialogueText.text = "";
-                dialogueText.text = dialogue.Lines[index];
-
-                isTyping = false;
-            } else {
-                index++;
-
-                if (index < dialogue.Lines.Count) {
-                    StartCoroutine(TypeDialogue(dialogue.Lines[index])); // populate dialogue box
-                } else {
-                    index = 0;
-
-                    IsShowing = false;
-
-                    dialogueBox.SetActive(false); // stop display of dialogue box
-                    onDialogueFinished?.Invoke();
-
-                    OnCloseDialogue?.Invoke();
-                }
-            }
-        }
+        
     }
 
     private IEnumerator TypeDialogue(string line) {
-        isTyping = true;
-
         dialogueText.text = "";
 
         foreach (var letter in line.ToCharArray()) {
-            if (isTyping) {
-                dialogueText.text += letter;
+            dialogueText.text += letter;
 
-                yield return new WaitForSeconds(1.0f / lettersPerSecond);
-            }
+            yield return new WaitForSeconds(1.0f / lettersPerSecond);
         }
-
-        isTyping = false;
     }
 }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public enum ItemCategory { Items, Pokeballs, TMs }
+public enum ItemCategory { ITEMS, POKEBALLS, TMs }
 
 public class Bag : MonoBehaviour {
     [SerializeField] List<ItemSlot> slots;

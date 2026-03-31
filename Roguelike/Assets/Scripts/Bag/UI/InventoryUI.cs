@@ -137,7 +137,7 @@ public class InventoryUI : MonoBehaviour {
                 yield break;          
             }
         }
-        if (selectedCategory == (int)ItemCategory.Pokeballs) {
+        if (selectedCategory == (int)ItemCategory.POKEBALLS) {
             StartCoroutine(UseItem());
         } else {
             OpenPartyScreen();
@@ -162,7 +162,9 @@ public class InventoryUI : MonoBehaviour {
 
             onItemUsed?.Invoke(item);
         } else {
-            yield return DialogueManager.Instance.ShowDialogueText($"It won't have any effect on {partyScreen.SelectedMember.Blueprint.PokemonName}!");
+            if (selectedCategory == (int)ItemCategory.ITEMS) {
+                yield return DialogueManager.Instance.ShowDialogueText($"It won't have any effect on {partyScreen.SelectedMember.Blueprint.PokemonName}!");
+            }
         }
 
         ClosePartyScreen();
