@@ -15,4 +15,4 @@ MonoBehaviour:
   itemName: Master Ball
   description: "A ball that automatically captures any wild pok\xE9mon"
   icon: {fileID: 9112020770366926958, guid: f64ca9a0e50d2214aa7054deb58e16bc, type: 3}
-  catchRateModifier: 1
+  catchRateModifier: 10000

@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour {
     [SerializeField] InventoryUI inventoryUI;
 
     GameState state;
-    GameState stateBeforePause;
+    GameState prevState;
     TrainerController trainer;
 
     public SceneDetails CurrentScene { get; private set; }
@@ -39,10 +39,14 @@ public class GameController : MonoBehaviour {
         partyScreen.Init();
 
         // dialogue events
-        DialogueManager.Instance.OnShowDialogue += () => { state = GameState.DIALOGUE; };
+        DialogueManager.Instance.OnShowDialogue += () => { 
+            prevState = state; 
+            state = GameState.DIALOGUE; 
+        };
+        
         DialogueManager.Instance.OnCloseDialogue += () => {
             if (state == GameState.DIALOGUE) {
-                state = GameState.OVERWORLD;
+                state = prevState;
             } 
         };
         
@@ -53,10 +57,10 @@ public class GameController : MonoBehaviour {
 
     public void PauseGame(bool pause) {
         if (pause) {
-            stateBeforePause = state;
+            prevState = state;
             state = GameState.PAUSED;
         } else {
-            state = stateBeforePause;
+            state = prevState;
         }
     }
 

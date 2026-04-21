@@ -23,10 +23,12 @@ public class DialogueManager : MonoBehaviour {
         dialogueBox.SetActive(false);
 
         IsShowing = false;
+        OnCloseDialogue?.Invoke();
     }
 
     // single frame of dialogue
     public IEnumerator ShowDialogueText(string text, bool waitForInput=true) {
+        OnShowDialogue?.Invoke();
         IsShowing = true;
 
         dialogueBox.SetActive(true); // display dialogue box

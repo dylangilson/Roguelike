@@ -51,6 +51,23 @@ public class Bag : MonoBehaviour {
         return null;
     }
 
+    public void AddItem(ItemBase item, int count=1) {
+        int category = (int)GetCategoryFromItem(item);
+        var currentSlots = GetSlotsByCategory(category);
+        var itemSlot = currentSlots.FirstOrDefault(slot => slot.Item == item);
+        
+        if (itemSlot != null) {
+            itemSlot.Count += count;
+        } else {
+            currentSlots.Add(new ItemSlot() {
+                Item = item,
+                Count = count
+            });
+        }
+
+        OnUpdated?.Invoke();
+    }
+
     public void RemoveItem(ItemBase item, int selectedCategory) {
         var currentSlots = GetSlotsByCategory(selectedCategory);
 
@@ -64,7 +81,18 @@ public class Bag : MonoBehaviour {
 
         OnUpdated?.Invoke();
     }
+    
+    ItemCategory GetCategoryFromItem(ItemBase item) {
+        if (item is RecoveryItem) {
+            return ItemCategory.ITEMS;
+        } else if (item is Pokeball) {
+            return ItemCategory.POKEBALLS;
+        } else {
+            return ItemCategory.TMs;
+        } 
+    }
 }
+
 
 [Serializable]
 public class ItemSlot {
@@ -74,6 +102,10 @@ public class ItemSlot {
     public ItemBase Item {
         get {
             return item;
+        }
+        
+        set {
+            item = value;
         }
     }
 
