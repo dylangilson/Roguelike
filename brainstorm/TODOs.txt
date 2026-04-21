@@ -24,4 +24,5 @@ TODOs:
 	- Hide count of item in TMs in InventoryUI
 	- Rate Limit user button input to stop keyboard spam
 	- Fix spamming through dialogue in battle skips initialization of battle system
-	- make WASD and arrow keys interchangable
+	- Make WASD and arrow keys interchangable
+	- Make Master Ball 100% catch rate
