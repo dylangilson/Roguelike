@@ -26,3 +26,4 @@ TODOs:
 	- Fix spamming through dialogue in battle skips initialization of battle system
 	- Make WASD and arrow keys interchangable
 	- Make Master Ball 100% catch rate
+	- Fix SampleScene Null Reference

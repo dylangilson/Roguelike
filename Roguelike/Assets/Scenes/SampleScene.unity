@@ -6559,6 +6559,26 @@ PrefabInstance:
       propertyPath: uniqueId
       value: bf1055f5-cbc9-4c95-b372-e648d847e04a
       objectReference: {fileID: 0}
+    - target: {fileID: 8746050877028995212, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: de464924283429043bb2a4406ad28ee1, type: 2}
+    - target: {fileID: 8746050877028995212, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: count
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8746050877028995212, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: dialogue.lines.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8746050877028995212, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: dialogue.lines.Array.data[0]
+      value: Here is Sandstorm!
+      objectReference: {fileID: 0}
+    - target: {fileID: 8746050877028995212, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: dialogue.lines.Array.data[1]
+      value: Stay Golden, Ponyboy!
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6618,6 +6638,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7273258983717346586, guid: f2862d3b612d151429131b35f2869449, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8880450328925628138, guid: f2862d3b612d151429131b35f2869449, type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8880450328925628138, guid: f2862d3b612d151429131b35f2869449, type: 3}
+      propertyPath: dialogue.lines.Array.size
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -11,9 +11,11 @@ public class NPCController : MonoBehaviour, Interactable, ISavable {
     float idleTimer = 0.0f;
     int index = 0;
     Character character;
+    ItemGiver itemGiver;
 
     private void Awake() {
         character = GetComponent<Character>();
+        itemGiver = GetComponent<ItemGiver>();
     }
 
     private void Update() {
@@ -37,7 +39,11 @@ public class NPCController : MonoBehaviour, Interactable, ISavable {
             state = NPCState.DIALOGUE;
             character.LookTowards(initiator.position);
 
-            yield return DialogueManager.Instance.ShowDialogue(dialogue);
+            if (itemGiver != null && itemGiver.CanBeGiven()) {
+                yield return itemGiver.GiveItem(initiator.GetComponent<PlayerController>());
+            } else {
+                yield return DialogueManager.Instance.ShowDialogue(dialogue);
+            }
 
             idleTimer = 0.0f;
             state = NPCState.IDLE;
