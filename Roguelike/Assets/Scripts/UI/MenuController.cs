@@ -37,9 +37,9 @@ public class MenuController : MonoBehaviour {
     public void HandleUpdate() {
         int previousSelectedItem = selectedItem;
 
-        if (Input.GetKeyDown(KeyCode.DownArrow)) {
+        if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S)) {
             selectedItem++;
-        } else if (Input.GetKeyDown(KeyCode.UpArrow)) {
+        } else if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) {
             selectedItem--;
         }
 

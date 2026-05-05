@@ -587,13 +587,13 @@ public class BattleSystem : MonoBehaviour {
     }
 
     private void HandleActionSelection() {
-        if (Input.GetKeyDown(KeyCode.RightArrow)) {
+        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D)) {
             ++currentAction;
-        } else if (Input.GetKeyDown(KeyCode.LeftArrow)) {
+        } else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A)) {
             --currentAction;
-        } else if (Input.GetKeyDown(KeyCode.UpArrow)) {
+        } else if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) {
             currentAction -= 2;
-        } else if (Input.GetKeyDown(KeyCode.DownArrow)) {
+        } else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S)) {
             currentAction += 2;
         }
         
@@ -624,13 +624,13 @@ public class BattleSystem : MonoBehaviour {
     }
 
     private void HandleMoveSelection() {
-        if (Input.GetKeyDown(KeyCode.RightArrow)) {
+        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D)) {
             ++currentMove;
-        } else if (Input.GetKeyDown(KeyCode.LeftArrow)) {
+        } else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A)) {
             --currentMove;
-        } else if (Input.GetKeyDown(KeyCode.UpArrow)) {
+        } else if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) {
             currentMove -= 2;
-        } else if (Input.GetKeyDown(KeyCode.DownArrow)) {
+        } else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S)) {
             currentMove += 2;
         }
 
@@ -705,7 +705,7 @@ public class BattleSystem : MonoBehaviour {
     }
 
     void HandleSwitching() {
-        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow)) {
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S)) {
             switchingChoice = !switchingChoice;
         }
 

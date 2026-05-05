@@ -62,13 +62,13 @@ public class PartyScreen : MonoBehaviour {
     public void HandleUpdate(Action onSelected, Action onBack) {
         var previousSelection = selection;
 
-        if (Input.GetKeyDown(KeyCode.RightArrow)) {
+        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D)) {
             ++selection;
-        } else if (Input.GetKeyDown(KeyCode.LeftArrow)) {
+        } else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A)) {
             --selection;
-        } else if (Input.GetKeyDown(KeyCode.UpArrow)) {
+        } else if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) {
             selection -= 2;
-        } else if (Input.GetKeyDown(KeyCode.DownArrow)) {
+        } else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S)) {
             selection += 2;
         }
 

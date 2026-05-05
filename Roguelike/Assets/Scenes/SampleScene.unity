@@ -5666,12 +5666,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3472125220716155392, guid: 33666b14aac2f4e439b965ea4350bc9a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3472125220716155392, guid: 33666b14aac2f4e439b965ea4350bc9a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2
+      value: -2.25
       objectReference: {fileID: 0}
     - target: {fileID: 3472125220716155392, guid: 33666b14aac2f4e439b965ea4350bc9a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3472125220716155392, guid: 33666b14aac2f4e439b965ea4350bc9a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5703,6 +5707,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3472125220716155392, guid: 33666b14aac2f4e439b965ea4350bc9a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3472125220716155392, guid: 33666b14aac2f4e439b965ea4350bc9a, type: 3}
+      propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4114499974865842140, guid: 33666b14aac2f4e439b965ea4350bc9a, type: 3}
@@ -5913,7 +5921,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d827d4f36c77b74daba1859fd336468, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: ee6a274afec01d0439523fb0c58872f7, type: 2}
+  item: {fileID: 11400000, guid: d5c62fd1eedd02d49b481c2a087fbe9a, type: 2}
 --- !u!61 &1635711974
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6020,7 +6028,7 @@ Transform:
   m_GameObject: {fileID: 1635711972}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.5, y: -0.5, z: 0}
+  m_LocalPosition: {x: 6.5, y: 2.5, z: 0}
   m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_ConstrainProportionsScale: 1
   m_Children: []

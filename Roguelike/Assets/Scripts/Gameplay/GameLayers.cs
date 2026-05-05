@@ -46,7 +46,7 @@ public class GameLayers : MonoBehaviour {
         }
     }
     
-    public LayerMask PortalPlayer {
+    public LayerMask PortalLayer {
         get {
             return portalLayer;
         }

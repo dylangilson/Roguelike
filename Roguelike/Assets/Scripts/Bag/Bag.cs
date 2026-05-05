@@ -65,6 +65,10 @@ public class Bag : MonoBehaviour {
             });
         }
 
+        if (category == (int)ItemCategory.TMs) {
+            technicalMachineSlots.Sort((a, b) => string.Compare(a.Item.ItemName, b.Item.ItemName));
+        }
+
         OnUpdated?.Invoke();
     }
 

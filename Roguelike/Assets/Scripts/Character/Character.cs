@@ -87,8 +87,17 @@ public class Character : MonoBehaviour {
         var direction = difference.normalized;
         
         if (Physics2D.BoxCast(transform.position + direction, new Vector2(0.2f, 0.2f), 0.0f, 
-              direction, difference.magnitude - 1,  GameLayers.Instance.SolidObjectsLayer | GameLayers.Instance.InteractableLayer | GameLayers.Instance.PlayerLayer) == true) {
-                return false; // path is blocked
+              direction, difference.magnitude - 1,  GameLayers.Instance.SolidObjectsLayer | GameLayers.Instance.InteractableLayer | GameLayers.Instance.PlayerLayer)) {
+                // path is blocked
+                if (Physics2D.BoxCast(transform.position + direction, new Vector2(0.2f, 0.2f), 0.0f, direction, difference.magnitude - 1,  GameLayers.Instance.PortalLayer)) {
+                    // entering a portal
+                    return true;
+                } else {
+                    // reached an impasse
+                    return false;
+                }
+                
+                
         };
             
         return true;

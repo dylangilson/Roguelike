@@ -19,9 +19,9 @@ public class MoveSelectionUI : MonoBehaviour {
     }
 
     public void HandleMoveSelection(Action<int> onSelected) {
-        if (Input.GetKeyDown(KeyCode.DownArrow)) {
+        if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S)) {
             index++;
-        } else if (Input.GetKeyDown(KeyCode.UpArrow)) {
+        } else if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) {
             index--;
         }
 
