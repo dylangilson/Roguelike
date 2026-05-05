@@ -6,7 +6,7 @@ using UnityEngine;
 
 public enum ItemCategory { ITEMS, POKEBALLS, TMs }
 
-public class Bag : MonoBehaviour {
+public class Bag : MonoBehaviour, ISavable {
     [SerializeField] List<ItemSlot> slots;
     [SerializeField] List<ItemSlot> pokeballSlots;
     [SerializeField] List<ItemSlot> technicalMachineSlots;
@@ -95,6 +95,27 @@ public class Bag : MonoBehaviour {
             return ItemCategory.TMs;
         } 
     }
+
+    public object CaptureState() {
+        var saveData = new BagSaveData() {
+            items = slots.Select(i => i.GetSaveData()).ToList(),
+            pokeballs = pokeballSlots.Select(i => i.GetSaveData()).ToList(),
+            tms = technicalMachineSlots.Select(i => i.GetSaveData()).ToList(),
+        };
+        return saveData;
+    }
+
+    public void RestoreState(object state) {
+        var saveData = state as BagSaveData;
+
+        slots = saveData.items.Select(i => new ItemSlot(i)).ToList();
+        pokeballSlots = saveData.pokeballs.Select(i => new ItemSlot(i)).ToList();
+        technicalMachineSlots = saveData.tms.Select(i => new ItemSlot(i)).ToList();
+
+        allSlots = new List<List<ItemSlot>>() { slots, pokeballSlots, technicalMachineSlots };
+
+        OnUpdated?.Invoke();
+    }
 }
 
 
@@ -102,6 +123,22 @@ public class Bag : MonoBehaviour {
 public class ItemSlot {
     [SerializeField] ItemBase item;
     [SerializeField] int count;
+
+    public ItemSlot(){}
+
+    public ItemSlot(ItemSaveData saveData) {
+        item = ItemDataBase.GetItemByName(saveData.name);
+        count = saveData.count;
+    }
+
+    public ItemSaveData GetSaveData() {
+        var saveData = new ItemSaveData() {
+            name = item.ItemName,
+            count = count
+        };
+
+        return saveData;
+    }
 
     public ItemBase Item {
         get {
@@ -122,4 +159,17 @@ public class ItemSlot {
             count = value;
         }
     }
+}
+
+[Serializable]
+public class ItemSaveData {
+    public string name;
+    public int count; 
+}
+
+[Serializable]
+public class BagSaveData {
+    public List<ItemSaveData> items;
+    public List<ItemSaveData> pokeballs;
+    public List<ItemSaveData> tms;
 }

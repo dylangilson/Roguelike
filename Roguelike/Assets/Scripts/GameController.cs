@@ -31,6 +31,7 @@ public class GameController : MonoBehaviour {
         PokemonDataBase.Init();
         MoveDataBase.Init();
         ConditionsDataBase.Init();
+        ItemDataBase.Init();
     }
 
     private void Start() {
