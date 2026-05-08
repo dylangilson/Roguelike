@@ -825,6 +825,10 @@ public class BattleSystem : MonoBehaviour {
     }
 
     int TryToCatchPokemon(Pokemon pokemon, Pokeball pokeballItem) {
+        if (pokeballItem.ItemName == "Master Ball") {
+            return 4;
+        }
+        
         float a = (3 * pokemon.MaxHitpoints - 2 * pokemon.CurrentHitpoints) * pokemon.Blueprint.CatchRate * ConditionsDataBase.GetStatusBonus(pokemon.Status) / (3 * pokemon.MaxHitpoints);
         if (a >= 255) {
             return 4;
