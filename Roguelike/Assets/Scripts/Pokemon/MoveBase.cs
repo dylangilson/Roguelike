@@ -11,6 +11,7 @@ public class MoveBase : ScriptableObject {
     [SerializeField] bool skipAccuracyCheck;
     [SerializeField] int powerPoints;
     [SerializeField] int priorityValue;
+    [SerializeField] int setDamage;
     [SerializeField] MoveCatagory moveCatagory;
     [SerializeField] MoveEffects effects;
     [SerializeField] List<SecondaryEffects> secondaryEffects;
@@ -45,6 +46,10 @@ public class MoveBase : ScriptableObject {
 
     public int PriorityValue {
         get { return priorityValue; }
+    }
+
+    public int SetDamage {
+        get { return setDamage; }
     }
 
     public MoveCatagory MoveCatagory {

@@ -3314,6 +3314,10 @@ PrefabInstance:
       propertyPath: uniqueId
       value: 681ced3c-48a6-41a4-91f5-b933c23d1d4a
       objectReference: {fileID: 0}
+    - target: {fileID: 3475063293129058987, guid: 0e92f167f158ea04fadd7b8088c069c6, type: 3}
+      propertyPath: party.Array.data[0].level
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 4294599285673375435, guid: 0e92f167f158ea04fadd7b8088c069c6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.5

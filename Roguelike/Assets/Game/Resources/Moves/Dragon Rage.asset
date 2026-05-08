@@ -16,6 +16,15 @@ MonoBehaviour:
   moveType: 15
   power: 0
   accuracy: 100
+  skipAccuracyCheck: 0
   powerPoints: 15
+  priorityValue: 0
+  setDamage: 40
   moveCatagory: 2
+  effects:
+    boosts: []
+    status: 0
+    volatileStatus: 0
+  secondaryEffects: []
+  target: 0
   description: 

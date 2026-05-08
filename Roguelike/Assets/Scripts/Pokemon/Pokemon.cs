@@ -230,7 +230,7 @@ public class Pokemon {
 
         var damageDetails = new DamageDetails() {
             Effectiveness = typeModifier,
-            Critical = critical,
+            Critical = move.Blueprint.SetDamage > 0 ? 1.0f : critical,
             Fainted = false
         };
 
@@ -254,8 +254,8 @@ public class Pokemon {
         float modifiers = Random.Range (0.85f, 1.0f) * typeModifier * critical;
         float attackModifier = (2 * attacker.Level + 10) / 250.0f;
         float defenseModifier = attackModifier * move.Blueprint.Power * (attack / defence) + 2;
-        int damage = Mathf.Clamp(Mathf.FloorToInt(defenseModifier * modifiers), 1, 100000);
-        Debug.Log($"{attacker.Blueprint.PokemonName} deals {damage} much damage");
+        int damage = move.Blueprint.SetDamage > 0 ? move.Blueprint.SetDamage : Mathf.Clamp(Mathf.FloorToInt(defenseModifier * modifiers), 1, 100000);
+        Debug.Log($"{attacker.Blueprint.PokemonName} deals {damage} damage");
 
         DecreaseHitpoints(damage);
 
