@@ -213,7 +213,7 @@ public class InventoryUI : MonoBehaviour {
             yield return ChooseMoveToForget(pokemon, item.Move);
 
             yield return new WaitUntil(() => state != InventoryUIState.MOVE_TO_FORGET);
-            yield return new WaitForSeconds(1.25f);
+            yield return new WaitForSeconds(0.25f);
         }
     }
 
@@ -298,7 +298,6 @@ public class InventoryUI : MonoBehaviour {
             var selectedMove = pokemon.Moves[moveIndex].Blueprint;
 
             yield return DialogueManager.Instance.ShowDialogueText($"{pokemon.Blueprint.PokemonName} forgot {selectedMove.MoveName} and learned {moveToLearn.MoveName}!");
-            // yield return new WaitForSeconds(1.0f);
             pokemon.Moves[moveIndex] = new Move(moveToLearn);
     
             state = InventoryUIState.ITEM_SELECTION;

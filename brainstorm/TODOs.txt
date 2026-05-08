@@ -7,17 +7,14 @@ TODOs:
 	- Implement Struggle if pokemon has 0 PP in all moves
 	- Fix Player and Enemy Battle HUD graphics
 	- Implement a volatile status counter for each volatile status (e.g. you can be confused and perish song'd at the same time)
-	- Add dialogue to allow player to say no to learning a new move instead of selecting to forget the new move
 	- Fix tiling issues with sizes of tile vs camera view in different scenes
-	- Fix Party Screen height
 	- Fix divide by zero in SetHPBar function
 	- Fix window height (currently blue around the top and bottom borders) during battle
 	- Display text for Items in Dialogue within InventoryUI even if its null in UseItem() (currently displays 'It' instead of ItemName)
 	- Make Ethers recover PP for only one move instead of all (ensure elixirs only work if at least one move has lost PP)
 	- Add Looping Around the MoveSelectionUI List when learning a new move while already having 4 moves
-	- Remove WaitForSeconds after learning replacing a move (i.e. you already had 4 and then learned another) and fix the fact that the DialogueManager is still trying to print the move
+	- Remove WaitForSeconds after learning/replacing a move (i.e. you already had 4 and then learned another) and fix the fact that the DialogueManager is still trying to print the move
 	- Hide count of item in TMs in InventoryUI
 	- Rate Limit user button input to stop keyboard spam
 	- Fix spamming through dialogue in battle skips initialization of battle system
-	- Make Master Ball 100% catch rate
 	- Fix SampleScene Null Reference

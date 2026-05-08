@@ -6456,6 +6456,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6237829518656527788, guid: f2862d3b612d151429131b35f2869449, type: 3}
+      propertyPath: party.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6237829518656527788, guid: f2862d3b612d151429131b35f2869449, type: 3}
+      propertyPath: party.Array.data[0].level
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6237829518656527788, guid: f2862d3b612d151429131b35f2869449, type: 3}
+      propertyPath: party.Array.data[1].level
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6237829518656527788, guid: f2862d3b612d151429131b35f2869449, type: 3}
+      propertyPath: party.Array.data[0].blueprint
+      value: 
+      objectReference: {fileID: 11400000, guid: 578522609b0490d458520a0d87a81d91, type: 2}
+    - target: {fileID: 6237829518656527788, guid: f2862d3b612d151429131b35f2869449, type: 3}
+      propertyPath: party.Array.data[1].blueprint
+      value: 
+      objectReference: {fileID: 11400000, guid: 0bfd8c35f3aa78f488b98573adf1d53c, type: 2}
     - target: {fileID: 6414442340935506467, guid: f2862d3b612d151429131b35f2869449, type: 3}
       propertyPath: m_Name
       value: Gary
