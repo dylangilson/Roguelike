@@ -320,6 +320,9 @@ MonoBehaviour:
   portalLayer:
     serializedVersion: 2
     m_Bits: 8192
+  triggersLayer:
+    serializedVersion: 2
+    m_Bits: 16384
 --- !u!114 &96767309344727944
 MonoBehaviour:
   m_ObjectHideFlags: 0

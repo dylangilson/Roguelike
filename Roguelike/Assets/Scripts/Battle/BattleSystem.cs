@@ -538,24 +538,17 @@ public class BattleSystem : MonoBehaviour {
     }
 
     IEnumerator HandleLearnMoveConfirmation() {
-
-        if (Input.GetKeyDown(KeyCode.UpArrow) ||
-            Input.GetKeyDown(KeyCode.DownArrow) ||
-            Input.GetKeyDown(KeyCode.W) ||
-            Input.GetKeyDown(KeyCode.S)) {
-
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S)) {
             learningMoveChoice = !learningMoveChoice;
         }
 
         dialogueBox.UpdateChoiceBox(learningMoveChoice);
 
         if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Space)) {
-
             dialogueBox.EnableChoiceBox(false);
 
             if (learningMoveChoice) {
                 if (playerUnit.Pokemon.Moves.Count < PokemonBase.MAX_NUMBER_OF_MOVES) {
-
                     playerUnit.Pokemon.LearnMove(moveToLearn);
 
                     yield return dialogueBox.TypeDialogue($"{playerUnit.Pokemon.Blueprint.PokemonName} learned {moveToLearn.MoveName}!");
@@ -563,7 +556,6 @@ public class BattleSystem : MonoBehaviour {
                     dialogueBox.SetMoveNames(playerUnit.Pokemon.Moves);
 
                     moveToLearn = null;
-
                     state = BattleState.RUNNING_TURN;
                 } else {
                     yield return dialogueBox.TypeDialogue("Choose a move you want to forget!");
@@ -576,6 +568,7 @@ public class BattleSystem : MonoBehaviour {
                 moveToLearn = null;
                 state = BattleState.RUNNING_TURN;
             }
+            
             Debug.Log(state);   
         }
     }

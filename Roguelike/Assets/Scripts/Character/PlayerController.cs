@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour, ISavable {
     private Vector2 input;
     private Character character;
 
+    IPlayerTriggerable currentlyInTrigger;
+
     public string PlayerName {
         get {
             return playerName;
@@ -74,15 +76,26 @@ public class PlayerController : MonoBehaviour, ISavable {
 
     private void OnMove() {
         var colliders = Physics2D.OverlapCircleAll(transform.position - new Vector3(0, character.OffsetY), 0.2f, GameLayers.Instance.TriggerableLayers);
+        IPlayerTriggerable triggerable = null;
 
         foreach (var collider in colliders) {
-            var triggerable = collider.GetComponent<IPlayerTriggerable>();
+            triggerable = collider.GetComponent<IPlayerTriggerable>();
 
             if (triggerable != null) {
+                if (triggerable == currentlyInTrigger && !triggerable.TriggerRepeatedly) {
+                    break;
+                }
+
                 triggerable.OnPlayerTriggered(this);
+
+                currentlyInTrigger = triggerable;
 
                 break;
             }
+        }
+
+        if (colliders.Count() == 0 || triggerable != currentlyInTrigger) {
+            currentlyInTrigger = null;
         }
     }
 
