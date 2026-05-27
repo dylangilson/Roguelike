@@ -43,7 +43,7 @@ public class Bag : MonoBehaviour, ISavable {
 
         if (used) {
             if (!item.IsReusable) {
-                RemoveItem(item, selectedCategory);
+                RemoveItem(item);
             }
             return item;
         }
@@ -72,8 +72,9 @@ public class Bag : MonoBehaviour, ISavable {
         OnUpdated?.Invoke();
     }
 
-    public void RemoveItem(ItemBase item, int selectedCategory) {
-        var currentSlots = GetSlotsByCategory(selectedCategory);
+    public void RemoveItem(ItemBase item) {
+        int category = (int)GetCategoryFromItem(item);
+        var currentSlots = GetSlotsByCategory(category);
 
         var slot = currentSlots.First(slot => slot.Item == item);
 
@@ -86,6 +87,13 @@ public class Bag : MonoBehaviour, ISavable {
         OnUpdated?.Invoke();
     }
     
+    public bool HasItem(ItemBase item) {
+        int category = (int)GetCategoryFromItem(item);
+        var currentSlots = GetSlotsByCategory(category);
+
+        return currentSlots.Exists(slot => slot.Item == item);
+    }
+
     ItemCategory GetCategoryFromItem(ItemBase item) {
         if (item is RecoveryItem) {
             return ItemCategory.ITEMS;

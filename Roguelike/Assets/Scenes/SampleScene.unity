@@ -1977,6 +1977,99 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
+--- !u!1001 &635920402
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1961229742392944689, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: questToStart
+      value: 
+      objectReference: {fileID: 11400000, guid: 3e68050f09602584b86e8f8510900c4e, type: 2}
+    - target: {fileID: 1961229742392944689, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: dialogue.lines.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1961229742392944689, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: dialogue.lines.Array.data[0]
+      value: What is the worth of a soul?
+      objectReference: {fileID: 0}
+    - target: {fileID: 2838783164089710200, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: m_Name
+      value: Thresh
+      objectReference: {fileID: 0}
+    - target: {fileID: 3584296996135967451, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3584296996135967451, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3584296996135967451, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3584296996135967451, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3584296996135967451, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3584296996135967451, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3584296996135967451, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3584296996135967451, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3584296996135967451, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3584296996135967451, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4498286823756440174, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: uniqueId
+      value: 946a5fac-b705-42fc-b9ed-97c4a5a0256c
+      objectReference: {fileID: 0}
+    - target: {fileID: 8746050877028995212, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8746050877028995212, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: count
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8746050877028995212, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: dialogue.lines.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8746050877028995212, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: dialogue.lines.Array.data[0]
+      value: Here is Sandstorm!
+      objectReference: {fileID: 0}
+    - target: {fileID: 8746050877028995212, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: dialogue.lines.Array.data[1]
+      value: Stay Golden, Ponyboy!
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
 --- !u!1 &683872065
 GameObject:
   m_ObjectHideFlags: 0
@@ -6644,11 +6737,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4540489608830583853, guid: 306a1f67443632942a13eca9153ace8b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.5
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4540489608830583853, guid: 306a1f67443632942a13eca9153ace8b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.5
+      value: -2.5
       objectReference: {fileID: 0}
     - target: {fileID: 4540489608830583853, guid: 306a1f67443632942a13eca9153ace8b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6682,6 +6775,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5432048078585505282, guid: 306a1f67443632942a13eca9153ace8b, type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: bb7ea115537d4cd4693a356725329389, type: 2}
     - target: {fileID: 7993245956871297875, guid: 306a1f67443632942a13eca9153ace8b, type: 3}
       propertyPath: uniqueId
       value: 04cf0b3f-e4b5-4dd2-a5c5-3e0846a3b935
@@ -6698,6 +6795,7 @@ SceneRoots:
   - {fileID: 1326861563}
   - {fileID: 7457141101096641302}
   - {fileID: 2093228838601026592}
+  - {fileID: 635920402}
   - {fileID: 1024624527}
   - {fileID: 1750482297}
   - {fileID: 7702818507665257408}

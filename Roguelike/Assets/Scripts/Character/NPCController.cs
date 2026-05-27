@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class NPCController : MonoBehaviour, Interactable, ISavable {
     [SerializeField] Dialogue dialogue;
+    [SerializeField] QuestBase questToStart;
     [SerializeField] List<Vector2> movements;
     [SerializeField] float timeBetweenMovements;
 
     NPCState state;
     float idleTimer = 0.0f;
     int index = 0;
+    Quests activeQuest;
     Character character;
     ItemGiver itemGiver;
 
@@ -41,6 +43,17 @@ public class NPCController : MonoBehaviour, Interactable, ISavable {
 
             if (itemGiver != null && itemGiver.CanBeGiven()) {
                 yield return itemGiver.GiveItem(initiator.GetComponent<PlayerController>());
+            } else if (questToStart != null) {
+                activeQuest = new Quests(questToStart);
+                yield return activeQuest.StartQuest();
+                questToStart = null;
+            } else if (activeQuest != null) {
+                if (activeQuest.CanBeCompleted()) {
+                    yield return activeQuest.CompleteQuest(initiator);
+                    activeQuest = null;
+                } else {
+                    yield return DialogueManager.Instance.ShowDialogue(activeQuest.Base.InProgressDialogue);
+                }
             } else {
                 yield return DialogueManager.Instance.ShowDialogue(dialogue);
             }
