@@ -10,20 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1de50fdb826cde428c83570bd9e382e, type: 3}
-  m_Name: FaintedPokemon
+  m_Name: MeetProfessor
   m_EditorClassIdentifier: 
-  questName: FaintedPokemon
+  questName: MeetProfessor
   description: 
   startDialogue:
-    lines:
-    - My Charmander has fainted!
-    - Can you bring me a REVIVE?
+    lines: []
   inProgressDialogue:
-    lines:
-    - Please, I need a REVIVE!
+    lines: []
   completedDialogue:
-    lines:
-    - Oh you got it! You're a life saver!
-    - You can have Dragon Claw as a reward!
-  requiredItem: {fileID: 11400000, guid: bb7ea115537d4cd4693a356725329389, type: 2}
-  rewardItem: {fileID: 11400000, guid: ff9af517084f3a44292d91201c26029c, type: 2}
+    lines: []
+  requiredItem: {fileID: 0}
+  rewardItem: {fileID: 0}

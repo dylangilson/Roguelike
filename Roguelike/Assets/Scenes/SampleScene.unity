@@ -123,6 +123,30 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &299687106 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2838783164089710200, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+  m_PrefabInstance: {fileID: 637073452}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &299687107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299687106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 748be8815e2f0924394378fad238dc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pokemon:
+    blueprint: {fileID: 11400000, guid: a36e418d2b33f6349ac41c7b74cf92d2, type: 2}
+    level: 70
+  dialogue:
+    lines:
+    - Did you know...
+    - Gods of Death love apples?
 --- !u!1 &495884204
 GameObject:
   m_ObjectHideFlags: 0
@@ -2069,6 +2093,106 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+--- !u!1001 &637073452
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1961229742392944689, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: questToStart
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1961229742392944689, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: questToComplete
+      value: 
+      objectReference: {fileID: 11400000, guid: e23f7e280a5310247b79f295ae68556d, type: 2}
+    - target: {fileID: 1961229742392944689, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: dialogue.lines.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1961229742392944689, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: dialogue.lines.Array.data[0]
+      value: I'll take a potato chip... and eat it!
+      objectReference: {fileID: 0}
+    - target: {fileID: 2838783164089710200, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: m_Name
+      value: Light Yagami
+      objectReference: {fileID: 0}
+    - target: {fileID: 3584296996135967451, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3584296996135967451, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3584296996135967451, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3584296996135967451, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3584296996135967451, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3584296996135967451, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3584296996135967451, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3584296996135967451, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3584296996135967451, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3584296996135967451, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4498286823756440174, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: uniqueId
+      value: bc639566-0f61-4d6b-9498-7f782b676c6f
+      objectReference: {fileID: 0}
+    - target: {fileID: 8746050877028995212, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8746050877028995212, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: count
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8746050877028995212, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: dialogue.lines.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8746050877028995212, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: dialogue.lines.Array.data[0]
+      value: Here is Sandstorm!
+      objectReference: {fileID: 0}
+    - target: {fileID: 8746050877028995212, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: dialogue.lines.Array.data[1]
+      value: Stay Golden, Ponyboy!
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2838783164089710200, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 299687107}
   m_SourcePrefab: {fileID: 100100000, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
 --- !u!1 &683872065
 GameObject:
@@ -6796,6 +6920,7 @@ SceneRoots:
   - {fileID: 7457141101096641302}
   - {fileID: 2093228838601026592}
   - {fileID: 635920402}
+  - {fileID: 637073452}
   - {fileID: 1024624527}
   - {fileID: 1750482297}
   - {fileID: 7702818507665257408}

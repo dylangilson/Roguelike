@@ -4,11 +4,11 @@ using UnityEngine;
 
 public enum QuestStatus { NONE, STARTED, COMPLETED }
 
-public class Quests {
+public class Quest {
     public QuestBase Base { get; private set; }
     public QuestStatus Status { get; private set; }
 
-    public Quests(QuestBase questBase) {
+    public Quest(QuestBase questBase) {
         Base = questBase;
     }
 

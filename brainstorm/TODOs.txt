@@ -19,3 +19,4 @@ TODOs:
 	- Fix spamming through dialogue in battle skips initialization of battle system
 	- Fix SampleScene Null Reference
 	- Dialogue Says 'Did not learn {move}' twice if you decline learning it (currently commented out; now it freezes when clicking no)
+	- Why do we keep walking animation during pickup item / dialgogue
