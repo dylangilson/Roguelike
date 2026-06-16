@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 4956494232773304503}
   - component: {fileID: 7747668513589008272}
   - component: {fileID: 2902403826493789684}
+  - component: {fileID: 5167050526899169171}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -119,15 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c77c87cb8852bfd45b44142bf774d12a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  party:
-  - blueprint: {fileID: 11400000, guid: 0bfd8c35f3aa78f488b98573adf1d53c, type: 2}
-    level: 8
-  - blueprint: {fileID: 11400000, guid: 0bfd8c35f3aa78f488b98573adf1d53c, type: 2}
-    level: 100
-  - blueprint: {fileID: 11400000, guid: 0bfd8c35f3aa78f488b98573adf1d53c, type: 2}
-    level: 100
-  - blueprint: {fileID: 11400000, guid: 0bfd8c35f3aa78f488b98573adf1d53c, type: 2}
-    level: 100
+  party: []
 --- !u!114 &4487360555425893267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,7 +280,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.2553746}
+  m_Size: {x: 1, y: 1.255375}
   m_EdgeRadius: 0
 --- !u!114 &2902403826493789684
 MonoBehaviour:
@@ -302,6 +295,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uniqueId: 
+--- !u!114 &5167050526899169171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4634106365896068985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3fa8ab738f97b947b38daf8e1c9cd6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7710206496077068154
 GameObject:
   m_ObjectHideFlags: 0

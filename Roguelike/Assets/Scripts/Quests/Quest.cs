@@ -4,6 +4,7 @@ using UnityEngine;
 
 public enum QuestStatus { NONE, STARTED, COMPLETED }
 
+[System.Serializable]
 public class Quest {
     public QuestBase Base { get; private set; }
     public QuestStatus Status { get; private set; }
@@ -16,6 +17,9 @@ public class Quest {
         Status = QuestStatus.STARTED;
 
         yield return DialogueManager.Instance.ShowDialogue(Base.StartDialogue);
+
+        var questList = QuestList.GetQuestList();
+        questList.AddQuest(this);
     }
 
     public IEnumerator CompleteQuest(Transform player) {
@@ -35,6 +39,9 @@ public class Quest {
             string playerName = player.GetComponent<PlayerController>().PlayerName;
             yield return DialogueManager.Instance.ShowDialogueText($"{playerName} received {Base.RewardItem.ItemName}!");
         }
+
+        var questList = QuestList.GetQuestList();
+        questList.AddQuest(this);
     }
 
     public bool CanBeCompleted() {
