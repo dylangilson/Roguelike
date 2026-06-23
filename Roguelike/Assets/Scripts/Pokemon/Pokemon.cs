@@ -70,7 +70,7 @@ public class Pokemon {
 
     public Pokemon(PokemonSaveData saveData) {
         // reload data from savefile
-        blueprint = PokemonDataBase.GetPokemonByName(saveData.name);
+        blueprint = PokemonDataBase.GetObjectByName(saveData.name);
         level = saveData.level;
         Exp = saveData.exp;
         CurrentHitpoints = saveData.hitpoints;
@@ -92,7 +92,7 @@ public class Pokemon {
 
     public PokemonSaveData GetSaveData() {
         var saveData = new PokemonSaveData() {
-            name = blueprint.PokemonName,
+            name = blueprint.name,
             level = Level,
             exp = Exp,
             hitpoints = CurrentHitpoints,

@@ -32,6 +32,7 @@ public class GameController : MonoBehaviour {
         MoveDataBase.Init();
         ConditionsDataBase.Init();
         ItemDataBase.Init();
+        QuestDataBase.Init();
     }
 
     private void Start() {

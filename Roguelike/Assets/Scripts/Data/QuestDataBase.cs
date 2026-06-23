@@ -2,6 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PokemonDataBase : ScriptableObjectDataBase<PokemonBase> {
+public class QuestDataBase : ScriptableObjectDataBase<QuestBase> {
     
 }

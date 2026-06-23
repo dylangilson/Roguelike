@@ -13,13 +13,13 @@ public class Move {
     }
 
     public Move(MoveSaveData saveData) {
-        Blueprint = MoveDataBase.GetMoveByName(saveData.name);
+        Blueprint = MoveDataBase.GetObjectByName(saveData.name);
         PowerPoints = saveData.powerPoints;
     }
 
     public MoveSaveData GetSaveData() {
         var saveData = new MoveSaveData() {
-            name = Blueprint.MoveName,
+            name = Blueprint.name,
             powerPoints = PowerPoints
         };
 

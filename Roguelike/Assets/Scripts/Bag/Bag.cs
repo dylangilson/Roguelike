@@ -135,13 +135,13 @@ public class ItemSlot {
     public ItemSlot(){}
 
     public ItemSlot(ItemSaveData saveData) {
-        item = ItemDataBase.GetItemByName(saveData.name);
+        item = ItemDataBase.GetObjectByName(saveData.name);
         count = saveData.count;
     }
 
     public ItemSaveData GetSaveData() {
         var saveData = new ItemSaveData() {
-            name = item.ItemName,
+            name = item.name,
             count = count
         };
 
