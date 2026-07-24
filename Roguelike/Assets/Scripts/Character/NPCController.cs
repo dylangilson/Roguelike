@@ -101,14 +101,36 @@ public class NPCController : MonoBehaviour, Interactable, ISavable {
         state = NPCState.IDLE;
     }
     public object CaptureState() {
-        float[] position = new float[] { transform.position.x, transform.position.y };
-        return position;
+        var saveData = new NPCQuestSaveData();
+        saveData.activeQuest = activeQuest?.GetSaveData();
+
+        if (questToStart != null) {
+            saveData.questToStart = (new Quest(questToStart)).GetSaveData();
+        }
+        
+        if (questToComplete != null) {
+            saveData.questToComplete = (new Quest(questToComplete)).GetSaveData();
+        }
+
+        return saveData;
     }
 
     public void RestoreState(object state) {
-        var position = (float[])state;
-        transform.position = new Vector3(position[0], position[1]);
+        var saveData = state as NPCQuestSaveData;
+        if (saveData != null) {
+            activeQuest = (saveData.activeQuest != null)? new Quest(saveData.activeQuest) : null;
+            questToStart = (saveData.questToStart != null)? new Quest(saveData.questToStart).Base : null;
+            questToComplete = (saveData.questToComplete != null)? new Quest(saveData.questToComplete).Base : null;
+        
+        }
     }
+}
+
+[System.Serializable]
+public class NPCQuestSaveData {
+    public QuestSaveData activeQuest;
+    public QuestSaveData questToStart;
+    public QuestSaveData questToComplete;
 }
 
 public enum NPCState { IDLE, WALKING, DIALOGUE }

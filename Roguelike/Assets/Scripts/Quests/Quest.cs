@@ -5,12 +5,31 @@ using UnityEngine;
 public enum QuestStatus { NONE, STARTED, COMPLETED }
 
 [System.Serializable]
+public class QuestSaveData {
+    public string questName;
+    public QuestStatus status;
+}
+
+[System.Serializable]
 public class Quest {
     public QuestBase Base { get; private set; }
     public QuestStatus Status { get; private set; }
 
     public Quest(QuestBase questBase) {
         Base = questBase;
+    }
+
+    public Quest(QuestSaveData saveData) {
+        Base = QuestDataBase.GetObjectByName(saveData.questName);
+        Status = saveData.status;
+    }
+
+    public QuestSaveData GetSaveData() {
+        var saveData = new QuestSaveData() {
+            questName = Base.QuestName,
+            status = Status
+        };
+        return saveData;
     }
 
     public IEnumerator StartQuest() {
