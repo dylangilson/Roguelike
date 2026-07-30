@@ -34,6 +34,9 @@ MonoBehaviour:
   catchRate: 45
   expYield: 65
   growthRate: 2
+  evolutions:
+  - evolvesInto: {fileID: 11400000, guid: 10b201b731502ab48b86f1bdd2438e83, type: 2}
+    requiredLevel: 16
   hitpoints: 60
   attack: 60
   defence: 55

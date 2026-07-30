@@ -197,6 +197,16 @@ public class Pokemon {
         return moveNames;
     }
 
+    public Evolution CheckForEvolution() {
+        return Blueprint.Evolutions.FirstOrDefault(e => e.GetRequiredLevel() <= level);
+    }
+
+    public void Evolve(Evolution evolution) {
+        blueprint = evolution.GetEvolvesInto();
+
+        CalculateStats();
+    }
+
     public int Attack {
         get { return GetStat(Stat.ATTACK); }
     }

@@ -63,6 +63,13 @@ public class SavingSystem : MonoBehaviour {
         }
     }
 
+    // used to restore a single entity
+    public void RestoreEntity(SavableEntity entity) {
+        if (gameState.ContainsKey(entity.UniqueId)) {
+            entity.RestoreState(gameState[entity.UniqueId]);
+        }
+    }
+
     void SaveFile(string saveFile, Dictionary<string, object> state) {
         string path = GetPath(saveFile);
         print($"saving to {path}");

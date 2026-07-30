@@ -44,6 +44,20 @@ public class Party : MonoBehaviour {
         }
     }
 
+    public IEnumerator CheckForEvolutions() {
+        foreach (var pokemon in party) {
+            var evolution = pokemon.CheckForEvolution();
+
+            if (evolution != null) {
+                yield return DialogueManager.Instance.ShowDialogueText($"{pokemon.Blueprint.PokemonName} evolved into {evolution.GetEvolvesInto().PokemonName}!");
+                
+                pokemon.Evolve(evolution);
+            }
+        }
+
+        OnUpdated?.Invoke();
+    }
+
     public static Party GetPlayerParty() {
         return FindObjectOfType<PlayerController>().GetComponent<Party>();
     }

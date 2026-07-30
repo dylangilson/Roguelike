@@ -110,6 +110,10 @@ public class GameController : MonoBehaviour {
 
         battleSystem.gameObject.SetActive(false);
         overworldCamera.gameObject.SetActive(true);
+
+        var party = playerController.GetComponent<Party>();
+
+        StartCoroutine(party.CheckForEvolutions());
     }
 
     private void Update() {

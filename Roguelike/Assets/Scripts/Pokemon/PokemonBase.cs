@@ -16,6 +16,7 @@ public class PokemonBase : ScriptableObject {
     [SerializeField] int catchRate = 255;
     [SerializeField] int expYield;
     [SerializeField] GrowthRate growthRate;
+    [SerializeField] List<Evolution> evolutions;
 
     // base stats
     [SerializeField] int hitpoints;
@@ -65,6 +66,10 @@ public class PokemonBase : ScriptableObject {
 
     public int ExpYield {
         get { return expYield; }
+    }
+
+    public List<Evolution> Evolutions {
+        get { return evolutions; }
     }
 
     public GrowthRate GrowthRate {
@@ -122,6 +127,20 @@ public class LearnableMove {
     public int GetLevel() {
         return level;
     }    
+}
+
+[System.Serializable]
+public class Evolution {
+    [SerializeField] PokemonBase evolvesInto;
+    [SerializeField] int requiredLevel;
+
+    public PokemonBase GetEvolvesInto() {
+        return evolvesInto;
+    }
+
+    public int GetRequiredLevel() {
+        return requiredLevel;
+    }
 }
 
 public enum Type {
