@@ -14,14 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Charmeleon
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: 7b639ec515c410e4ebf517fc3899e3bd, type: 3}
+  backSprite: {fileID: 21300000, guid: ade6afd9cbd5c1740bf6046d9a18b97d, type: 3}
   typeA: 2
   typeB: 15
   learnableMoves: []
+  tmMoves: []
   catchRate: 45
   expYield: 142
   growthRate: 2
+  evolutions: []
   hitpoints: 75
   attack: 100
   defence: 70

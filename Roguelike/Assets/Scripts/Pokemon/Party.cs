@@ -49,9 +49,7 @@ public class Party : MonoBehaviour {
             var evolution = pokemon.CheckForEvolution();
 
             if (evolution != null) {
-                yield return DialogueManager.Instance.ShowDialogueText($"{pokemon.Blueprint.PokemonName} evolved into {evolution.GetEvolvesInto().PokemonName}!");
-                
-                pokemon.Evolve(evolution);
+                yield return EvolutionManager.i.Evolve(pokemon, evolution);
             }
         }
 

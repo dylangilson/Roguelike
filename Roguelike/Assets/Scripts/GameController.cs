@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum GameState { OVERWORLD, BATTLE, DIALOGUE, MENU, PARTY_SCREEN, BAG, CUTSCENE, PAUSED }
+public enum GameState { OVERWORLD, BATTLE, DIALOGUE, MENU, PARTY_SCREEN, BAG, CUTSCENE, PAUSED, EVOLUTION }
 
 public class GameController : MonoBehaviour {
     [SerializeField] PlayerController playerController;
@@ -54,6 +54,8 @@ public class GameController : MonoBehaviour {
         
         // menu events
         menuController.onMenuItemSelected += OnMenuItemSelected;
+        EvolutionManager.i.OnStartEvolution += () =>  state = GameState.EVOLUTION; ;
+        EvolutionManager.i.OnCompleteEvolution += () =>  state = GameState.OVERWORLD; ;
         menuController.onBack += () => { state = GameState.OVERWORLD; };
     }
 
