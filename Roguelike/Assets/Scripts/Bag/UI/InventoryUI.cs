@@ -143,7 +143,7 @@ public class InventoryUI : MonoBehaviour {
             OpenPartyScreen();
 
             if (item is TMItem) {
-                partyScreen.ShowIfTMIsUsable(item as TMItem);                
+                partyScreen.ShowIfTMIsUsable(item as TMItem);          
             }
         }
     }
@@ -153,14 +153,32 @@ public class InventoryUI : MonoBehaviour {
 
         yield return HandleTMItems();
 
-        var item = bag.UseItem(selectedItem, partyScreen.SelectedMember, selectedCategory);
+        var item = bag.GetItem(selectedItem, selectedCategory);
+        var pokemon = partyScreen.SelectedMember;
 
-        if (item != null) {
-            if (item is RecoveryItem) {
-                yield return DialogueManager.Instance.ShowDialogueText($"Player used {item.ItemName} on {partyScreen.SelectedMember.Blueprint.PokemonName}!");
+        // handle evolution items
+        if (item is EvolutionItem) {
+            var evolution = pokemon.CheckForEvolution(item);
+
+            if (evolution != null) {
+                yield return EvolutionManager.i.Evolve(pokemon, evolution);
+            } else {
+                yield return DialogueManager.Instance.ShowDialogueText($"It won't have any effect on {partyScreen.SelectedMember.Blueprint.PokemonName}!");
+
+                ClosePartyScreen();
+
+                yield break;
+            }
+        }
+
+        var useItem = bag.UseItem(selectedItem, partyScreen.SelectedMember, selectedCategory);
+
+        if (useItem != null) {
+            if (useItem is RecoveryItem) {
+                yield return DialogueManager.Instance.ShowDialogueText($"Player used {useItem.ItemName} on {partyScreen.SelectedMember.Blueprint.PokemonName}!");
             }
 
-            onItemUsed?.Invoke(item);
+            onItemUsed?.Invoke(useItem);
         } else {
             if (selectedCategory == (int)ItemCategory.ITEMS) {
                 yield return DialogueManager.Instance.ShowDialogueText($"It won't have any effect on {partyScreen.SelectedMember.Blueprint.PokemonName}!");

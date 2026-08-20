@@ -133,6 +133,7 @@ public class LearnableMove {
 public class Evolution {
     [SerializeField] PokemonBase evolvesInto;
     [SerializeField] int requiredLevel;
+    [SerializeField] EvolutionItem requiredItem;
 
     public PokemonBase GetEvolvesInto() {
         return evolvesInto;
@@ -140,6 +141,10 @@ public class Evolution {
 
     public int GetRequiredLevel() {
         return requiredLevel;
+    }
+
+    public EvolutionItem GetRequiredItem() {
+        return requiredItem;
     }
 }
 

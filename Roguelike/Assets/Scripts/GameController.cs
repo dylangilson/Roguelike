@@ -14,6 +14,7 @@ public class GameController : MonoBehaviour {
 
     GameState state;
     GameState prevState;
+    GameState stateBeforeEvolution;
     TrainerController trainer;
 
     public SceneDetails CurrentScene { get; private set; }
@@ -54,8 +55,13 @@ public class GameController : MonoBehaviour {
         
         // menu events
         menuController.onMenuItemSelected += OnMenuItemSelected;
-        EvolutionManager.i.OnStartEvolution += () =>  state = GameState.EVOLUTION; ;
-        EvolutionManager.i.OnCompleteEvolution += () =>  state = GameState.OVERWORLD; ;
+
+        EvolutionManager.i.OnStartEvolution += () => {
+            stateBeforeEvolution = state;
+            state = GameState.EVOLUTION;
+        };
+
+        EvolutionManager.i.OnCompleteEvolution += () => { state = stateBeforeEvolution; };
         menuController.onBack += () => { state = GameState.OVERWORLD; };
     }
 

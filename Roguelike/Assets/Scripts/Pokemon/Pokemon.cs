@@ -201,6 +201,10 @@ public class Pokemon {
         return Blueprint.Evolutions.FirstOrDefault(e => e.GetRequiredLevel() <= level);
     }
 
+    public Evolution CheckForEvolution(ItemBase item) {
+        return Blueprint.Evolutions.FirstOrDefault(e => e.GetRequiredItem() == item);
+    }
+
     public void Evolve(Evolution evolution) {
         blueprint = evolution.GetEvolvesInto();
 

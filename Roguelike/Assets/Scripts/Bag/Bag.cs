@@ -95,13 +95,13 @@ public class Bag : MonoBehaviour, ISavable {
     }
 
     ItemCategory GetCategoryFromItem(ItemBase item) {
-        if (item is RecoveryItem) {
+        if (item is RecoveryItem || item is EvolutionItem) {
             return ItemCategory.ITEMS;
         } else if (item is Pokeball) {
             return ItemCategory.POKEBALLS;
         } else {
             return ItemCategory.TMs;
-        } 
+        }
     }
 
     public object CaptureState() {
@@ -125,7 +125,6 @@ public class Bag : MonoBehaviour, ISavable {
         OnUpdated?.Invoke();
     }
 }
-
 
 [Serializable]
 public class ItemSlot {
