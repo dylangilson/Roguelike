@@ -61,7 +61,10 @@ public class GameController : MonoBehaviour {
             state = GameState.EVOLUTION;
         };
 
-        EvolutionManager.i.OnCompleteEvolution += () => { state = stateBeforeEvolution; };
+        EvolutionManager.i.OnCompleteEvolution += () => { 
+            partyScreen.SetPartyData();
+            state = stateBeforeEvolution; 
+            };
         menuController.onBack += () => { state = GameState.OVERWORLD; };
     }
 
@@ -113,6 +116,8 @@ public class GameController : MonoBehaviour {
             trainer.DefeatedByPlayer();
             trainer = null;
         }
+
+        partyScreen.SetPartyData();
 
         state = GameState.OVERWORLD;
 

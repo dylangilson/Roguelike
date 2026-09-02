@@ -14,14 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Ivysaur
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: 538ff48a45a26ac42898ba1cc8279c45, type: 3}
+  backSprite: {fileID: 21300000, guid: a08cc5fd5d1cfac4084c92d45079be31, type: 3}
   typeA: 5
   typeB: 8
   learnableMoves: []
+  tmMoves: []
   catchRate: 45
   expYield: 141
   growthRate: 2
+  evolutions: []
   hitpoints: 85
   attack: 65
   defence: 80

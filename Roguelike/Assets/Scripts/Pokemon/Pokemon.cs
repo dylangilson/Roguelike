@@ -111,7 +111,9 @@ public class Pokemon {
         Stats.Add(Stat.SPECIALDEFENCE, Mathf.FloorToInt((Blueprint.SpecialDefence * Level) / 100.0f) + 5);
         Stats.Add(Stat.SPEED, Mathf.FloorToInt((Blueprint.Speed * Level) / 100.0f) + 5);
 
+        int oldMaxHitpoints = MaxHitpoints;
         MaxHitpoints = Mathf.FloorToInt((Blueprint.Hitpoints * Level) / 100.0f) + 10 + Level;
+        CurrentHitpoints += MaxHitpoints - oldMaxHitpoints;
     }
 
     void ResetStatBoosts() {
@@ -163,6 +165,7 @@ public class Pokemon {
 
         if (Exp > nextLevelExpThreshold) {
             level++;
+            CalculateStats();
         
             return true;
         }

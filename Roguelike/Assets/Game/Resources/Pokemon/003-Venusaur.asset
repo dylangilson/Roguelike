@@ -14,14 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Venusaur
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: 3c37635e9f6aabb458f72251a6862937, type: 3}
+  backSprite: {fileID: 21300000, guid: f466aa8dd97d7fc48926239e3f970cbb, type: 3}
   typeA: 5
   typeB: 8
   learnableMoves: []
+  tmMoves: []
   catchRate: 45
   expYield: 208
   growthRate: 2
+  evolutions: []
   hitpoints: 110
   attack: 80
   defence: 120
