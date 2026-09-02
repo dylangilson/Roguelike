@@ -14,14 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Charizard
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: 4f8d54f60533f4a488177cd4077e8618, type: 3}
+  backSprite: {fileID: 21300000, guid: 4d40e29da3a8b0e4bac09d6db51b5695, type: 3}
   typeA: 2
   typeB: 15
   learnableMoves: []
+  tmMoves: []
   catchRate: 45
   expYield: 209
   growthRate: 2
+  evolutions: []
   hitpoints: 95
   attack: 100
   defence: 90

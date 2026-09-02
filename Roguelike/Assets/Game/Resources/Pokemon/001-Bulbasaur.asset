@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Bulbasaur
   description: 
-  frontSprite: {fileID: 21300000, guid: 0f37bf3cf5680a64d863b5f155b2a597, type: 3}
-  backSprite: {fileID: 21300000, guid: aacaae602a38f884ab9e02e43de3736d, type: 3}
+  frontSprite: {fileID: 21300000, guid: 303ef4b0aff666240882898c0816e0fe, type: 3}
+  backSprite: {fileID: 21300000, guid: c9275c61bad03d04082761c9cdc2a701, type: 3}
   typeA: 5
   typeB: 8
   learnableMoves:
