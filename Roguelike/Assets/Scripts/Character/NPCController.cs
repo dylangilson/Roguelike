@@ -20,11 +20,13 @@ public class NPCController : MonoBehaviour, Interactable, ISavable {
     Character character;
     ItemGiver itemGiver;
     PokemonGiver pokemonGiver;
+    Healer healer;
 
     private void Awake() {
         character = GetComponent<Character>();
         itemGiver = GetComponent<ItemGiver>();
         pokemonGiver = GetComponent<PokemonGiver>();
+        healer = GetComponent<Healer>();
     }
 
     private void Update() {
@@ -64,20 +66,26 @@ public class NPCController : MonoBehaviour, Interactable, ISavable {
                 yield return pokemonGiver.GivePokemon(initiator.GetComponent<PlayerController>());
             } else if (questToStart != null) {
                 activeQuest = new Quest(questToStart);
+
                 yield return activeQuest.StartQuest();
+
                 questToStart = null;
 
                 if (activeQuest.CanBeCompleted()) {
                     yield return activeQuest.CompleteQuest(initiator);
+
                     activeQuest = null;
                 }
             } else if (activeQuest != null) {
                 if (activeQuest.CanBeCompleted()) {
                     yield return activeQuest.CompleteQuest(initiator);
+                    
                     activeQuest = null;
                 } else {
                     yield return DialogueManager.Instance.ShowDialogue(activeQuest.Base.InProgressDialogue);
                 }
+            } else if (healer != null) {
+                yield return healer.Heal(initiator, dialogue);
             } else {
                 yield return DialogueManager.Instance.ShowDialogue(dialogue);
             }

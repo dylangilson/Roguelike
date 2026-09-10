@@ -112,8 +112,12 @@ public class Pokemon {
         Stats.Add(Stat.SPEED, Mathf.FloorToInt((Blueprint.Speed * Level) / 100.0f) + 5);
 
         int oldMaxHitpoints = MaxHitpoints;
+
         MaxHitpoints = Mathf.FloorToInt((Blueprint.Hitpoints * Level) / 100.0f) + 10 + Level;
-        CurrentHitpoints += MaxHitpoints - oldMaxHitpoints;
+
+        if (oldMaxHitpoints != 0) {
+            CurrentHitpoints += MaxHitpoints - oldMaxHitpoints;
+        }
     }
 
     void ResetStatBoosts() {
@@ -212,6 +216,12 @@ public class Pokemon {
         blueprint = evolution.GetEvolvesInto();
 
         CalculateStats();
+    }
+
+    public void Heal() {
+        CurrentHitpoints = MaxHitpoints;
+
+        OnHitpointsChanged?.Invoke();
     }
 
     public int Attack {

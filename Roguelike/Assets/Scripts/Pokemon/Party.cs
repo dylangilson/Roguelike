@@ -54,6 +54,10 @@ public class Party : MonoBehaviour {
         }
     }
 
+    public void PartyUpdated() {
+        OnUpdated?.Invoke();
+    }
+
     public static Party GetPlayerParty() {
         return FindObjectOfType<PlayerController>().GetComponent<Party>();
     }

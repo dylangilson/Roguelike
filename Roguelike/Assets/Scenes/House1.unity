@@ -5197,6 +5197,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gary
       objectReference: {fileID: 0}
+    - target: {fileID: 6414442340935506467, guid: f2862d3b612d151429131b35f2869449, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7225955588807538457, guid: f2862d3b612d151429131b35f2869449, type: 3}
       propertyPath: uniqueId
       value: 696f9723-4ef6-469b-b7b2-f1bd6ce5933f
@@ -5207,7 +5211,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7273258983717346586, guid: f2862d3b612d151429131b35f2869449, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -19.2
+      value: -19.8
       objectReference: {fileID: 0}
     - target: {fileID: 7273258983717346586, guid: f2862d3b612d151429131b35f2869449, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5246,6 +5250,119 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2862d3b612d151429131b35f2869449, type: 3}
+--- !u!1001 &1002441222
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1961229742392944689, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: questToStart
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1961229742392944689, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: dialogue.lines.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1961229742392944689, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: dialogue.lines.Array.data[0]
+      value: Please have a rest.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2838783164089710200, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: m_Name
+      value: Nurse Joy
+      objectReference: {fileID: 0}
+    - target: {fileID: 3584296996135967451, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3584296996135967451, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -21.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3584296996135967451, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3584296996135967451, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3584296996135967451, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3584296996135967451, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3584296996135967451, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3584296996135967451, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3584296996135967451, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3584296996135967451, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4498286823756440174, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: uniqueId
+      value: 946a5fac-b705-42fc-b9ed-97c4a5a0256c
+      objectReference: {fileID: 0}
+    - target: {fileID: 8746050877028995212, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8746050877028995212, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: count
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8746050877028995212, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: dialogue.lines.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8746050877028995212, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: dialogue.lines.Array.data[0]
+      value: Here is Sandstorm!
+      objectReference: {fileID: 0}
+    - target: {fileID: 8746050877028995212, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: dialogue.lines.Array.data[1]
+      value: Stay Golden, Ponyboy!
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2838783164089710200, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1002441224}
+  m_SourcePrefab: {fileID: 100100000, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+--- !u!1 &1002441223 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2838783164089710200, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+  m_PrefabInstance: {fileID: 1002441222}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1002441224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1002441223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00e8089b800a12d408dd89f0e64e6999, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2139041472
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5268,7 +5385,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3472125220716155392, guid: 33666b14aac2f4e439b965ea4350bc9a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -32.71
+      value: -32.2
       objectReference: {fileID: 0}
     - target: {fileID: 3472125220716155392, guid: 33666b14aac2f4e439b965ea4350bc9a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -17366,3 +17483,4 @@ SceneRoots:
   - {fileID: 741933219}
   - {fileID: 2139041472}
   - {fileID: 922842135}
+  - {fileID: 1002441222}
