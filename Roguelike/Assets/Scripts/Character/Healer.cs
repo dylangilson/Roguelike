@@ -4,15 +4,24 @@ using UnityEngine;
 
 public class Healer : MonoBehaviour {
     public IEnumerator Heal(Transform player, Dialogue dialogue) {
-        yield return DialogueManager.Instance.ShowDialogue(dialogue);
+        int selectedChoice = 0;
+        yield return DialogueManager.Instance.ShowDialogue(dialogue, new List<string>() { "Yes", "No" }, (choiceIndex) => selectedChoice = choiceIndex);
 
-        yield return Fader.i.FadeIn(0.5f);
+        if (selectedChoice == 0) {
+            yield return Fader.i.FadeIn(0.5f);
 
-        var party = player.GetComponent<Party>();
+            var party = player.GetComponent<Party>();
 
-        party.GetParty().ForEach(pokemon => pokemon.Heal());
-        party.PartyUpdated();
+            party.GetParty().ForEach(pokemon => pokemon.Heal());
+            party.PartyUpdated();
 
-        yield return Fader.i.FadeOut(0.5f);
+            yield return Fader.i.FadeOut(0.5f);
+            yield return DialogueManager.Instance.ShowDialogueText($"All done! Your Pokemon are fully healed now!");
+        
+        } else if (selectedChoice == 1) {
+            yield return DialogueManager.Instance.ShowDialogueText($"Okay! Come back if you need a rest!");
+        }
+
+        
     }
 }
