@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Typhlosion
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: 3b945ab7704a7e440b375a0ed0bbe64d, type: 3}
+  backSprite: {fileID: 21300000, guid: 1126880e32484544ab875b2b83e59d98, type: 3}
   typeA: 2
   typeB: 14
   learnableMoves: []

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Deoxys-D
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: e1988c218b857fc488586fa983af4f7a, type: 3}
+  backSprite: {fileID: 21300000, guid: b830f10543bb52e4daf04d50c813a2aa, type: 3}
   typeA: 11
   typeB: 16
   learnableMoves: []

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Tyranitar
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: f7375611d8f9a6b4fb872d721196563b, type: 3}
+  backSprite: {fileID: 21300000, guid: 74596bcf6d120d341a0251473544f8cc, type: 3}
   typeA: 13
   typeB: 16
   learnableMoves: []

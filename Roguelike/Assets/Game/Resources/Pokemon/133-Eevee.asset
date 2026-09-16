@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Eevee
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: 39f0e0769e0560e49b756db4d9b2d886, type: 3}
+  backSprite: {fileID: 21300000, guid: 64c6e740a55c1a148a93eb5f4d2ba45a, type: 3}
   typeA: 1
   typeB: 0
   learnableMoves: []

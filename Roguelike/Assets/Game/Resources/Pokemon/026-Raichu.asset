@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Raichu
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: f73fdee8bdd0f2947ab928a993f0f640, type: 3}
+  backSprite: {fileID: 21300000, guid: 5f863afbd658f644183014872d878c3e, type: 3}
   typeA: 4
   typeB: 0
   learnableMoves: []

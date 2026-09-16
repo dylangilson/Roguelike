@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Wartortle
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: 992672a648677d24dbaa91c160655cab, type: 3}
+  backSprite: {fileID: 21300000, guid: a7ac57df0a1d94342a7087f71b0848d7, type: 3}
   typeA: 3
   typeB: 13
   learnableMoves: []

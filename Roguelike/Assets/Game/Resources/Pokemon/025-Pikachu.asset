@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Pikachu
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: c32072b7a13fbe144ac2385da455f262, type: 3}
+  backSprite: {fileID: 21300000, guid: b672d8f098378fc4389616ad4035b1a9, type: 3}
   typeA: 4
   typeB: 0
   learnableMoves: []

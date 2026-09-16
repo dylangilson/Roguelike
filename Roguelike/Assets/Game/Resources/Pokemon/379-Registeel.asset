@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Registeel
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: 2830abe8b8747e2438bc8e8e2925b033, type: 3}
+  backSprite: {fileID: 21300000, guid: 4d3c7d49bce7c424da08ef3986325a9e, type: 3}
   typeA: 17
   typeB: 0
   learnableMoves: []

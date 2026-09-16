@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Blaziken
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: e68abf77949a0a744835ae284968bb4c, type: 3}
+  backSprite: {fileID: 21300000, guid: cc42fc229bff62845a6c794fce011edb, type: 3}
   typeA: 2
   typeB: 7
   learnableMoves: []

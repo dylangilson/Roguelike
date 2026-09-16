@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Marshtomp
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: 0fdc3a8365d86dc4c8d7f7f830423ac5, type: 3}
+  backSprite: {fileID: 21300000, guid: 379088f500756f44da629ddf1a8f42d1, type: 3}
   typeA: 3
   typeB: 9
   learnableMoves: []

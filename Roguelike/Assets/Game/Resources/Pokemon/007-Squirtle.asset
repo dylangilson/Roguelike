@@ -14,9 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Squirtle
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
-  typeA: 3
+  frontSprite: {fileID: 21300000, guid: e839f5103192b064085a4ad0d9a0cc26, type: 3}
+  backSprite: {fileID: 21300000, guid: 0691cd26b59afc04a89da2b91e2ebe70, type: 3}
   typeB: 13
   learnableMoves: []
   catchRate: 45

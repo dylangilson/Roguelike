@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Nidoran-M
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: cfd00c5898a67394eba01f0bc688b7ed, type: 3}
+  backSprite: {fileID: 21300000, guid: ca48e9b13615f3f44a8c0c48653e9ac6, type: 3}
   typeA: 8
   typeB: 0
   learnableMoves: []

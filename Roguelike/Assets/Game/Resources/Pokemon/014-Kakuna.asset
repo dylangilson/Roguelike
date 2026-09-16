@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Kakuna
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: b043d3a68f915a84788b92b645dd5f40, type: 3}
+  backSprite: {fileID: 21300000, guid: 401f1baaa81562946b8178fdd649bb4b, type: 3}
   typeA: 12
   typeB: 0
   learnableMoves: []

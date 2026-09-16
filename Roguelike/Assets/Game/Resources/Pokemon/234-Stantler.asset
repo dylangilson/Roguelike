@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Stantler
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: 4d0b171ccac93594f8e78c62e0e80c49, type: 3}
+  backSprite: {fileID: 21300000, guid: 42f4950eda557ee468751d0654a3135d, type: 3}
   typeA: 1
   typeB: 11
   learnableMoves: []

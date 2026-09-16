@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Mew
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: 93a9e2d7b820c7642b27f85865a633f0, type: 3}
+  backSprite: {fileID: 21300000, guid: d25022d87e2143142923fd48e101b68f, type: 3}
   typeA: 11
   typeB: 0
   learnableMoves: []

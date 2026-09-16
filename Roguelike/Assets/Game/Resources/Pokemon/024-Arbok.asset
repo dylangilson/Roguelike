@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Arbok
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: fec7a0c4cc03c724bb64435a94796727, type: 3}
+  backSprite: {fileID: 21300000, guid: 2e0c3afcd6f36164da4fd8b13a996526, type: 3}
   typeA: 8
   typeB: 0
   learnableMoves: []

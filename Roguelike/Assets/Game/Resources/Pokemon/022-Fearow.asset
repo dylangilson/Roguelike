@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Fearow
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: 63049011434d4d545bcf8142c9bab25c, type: 3}
+  backSprite: {fileID: 21300000, guid: 38c2e96085928d44aa2d51f581d500ec, type: 3}
   typeA: 10
   typeB: 1
   learnableMoves: []

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Rayquaza
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: 3327a835e5e6ce14daa329845f79c178, type: 3}
+  backSprite: {fileID: 21300000, guid: cff991ef5c7348a44885ece6627bbf47, type: 3}
   typeA: 15
   typeB: 10
   learnableMoves: []

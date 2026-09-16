@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Metang
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: ee7ec087240807e4aab3cc765661e421, type: 3}
+  backSprite: {fileID: 21300000, guid: 6d85097f465febb42ba1db9dc3cdec0f, type: 3}
   typeA: 11
   typeB: 17
   learnableMoves: []

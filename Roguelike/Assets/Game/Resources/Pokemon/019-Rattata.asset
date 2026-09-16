@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Rattata
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: 15fb0f86a5a79124fb90ec6758f3d8aa, type: 3}
+  backSprite: {fileID: 21300000, guid: 6880b83bb8137134f9f00689608b4870, type: 3}
   typeA: 1
   typeB: 0
   learnableMoves: []

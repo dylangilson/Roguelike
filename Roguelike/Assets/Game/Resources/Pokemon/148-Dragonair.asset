@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Dragonair
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: e71dfb9a3d4bcd04f99998403ff8ef32, type: 3}
+  backSprite: {fileID: 21300000, guid: 08c03b0262b83e5469105b41ed1cfef2, type: 3}
   typeA: 15
   typeB: 0
   learnableMoves: []

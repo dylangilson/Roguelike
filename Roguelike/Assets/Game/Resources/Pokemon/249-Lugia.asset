@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Lugia
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: 5c39002f39ab70b408d286a2cc4b706c, type: 3}
+  backSprite: {fileID: 21300000, guid: 341ad2be9e3dd384fbd3b1f41a246577, type: 3}
   typeA: 3
   typeB: 15
   learnableMoves: []

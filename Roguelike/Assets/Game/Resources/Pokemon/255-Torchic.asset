@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Torchic
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: 9ea9121c98c8c714885c4bf8a41771e5, type: 3}
+  backSprite: {fileID: 21300000, guid: 98fd20c42c80a50419bc6420f969639d, type: 3}
   typeA: 2
   typeB: 0
   learnableMoves: []

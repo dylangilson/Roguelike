@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Quilava
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: 65a114a19e32ad349902d042cdd521d0, type: 3}
+  backSprite: {fileID: 21300000, guid: d558d174786ecc047b995294c94cd09b, type: 3}
   typeA: 2
   typeB: 0
   learnableMoves: []

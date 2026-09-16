@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Suicune
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: e6a59d672b32984439e5610f8d4e7dbe, type: 3}
+  backSprite: {fileID: 21300000, guid: d059c77022b0bc046a7b51029c36560b, type: 3}
   typeA: 6
   typeB: 11
   learnableMoves: []

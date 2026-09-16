@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Jolteon
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: 8fa12d8e47f5b594089269df779e4550, type: 3}
+  backSprite: {fileID: 21300000, guid: 6af76da0c1608704bb67c7b072a2b9e9, type: 3}
   typeA: 4
   typeB: 0
   learnableMoves: []

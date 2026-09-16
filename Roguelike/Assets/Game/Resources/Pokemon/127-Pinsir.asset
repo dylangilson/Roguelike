@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Pinsir
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: 9221fe5145c82024f8ca7398c9325207, type: 3}
+  backSprite: {fileID: 21300000, guid: 7bf4947a8a01ca448802d74d3fdbd0a8, type: 3}
   typeA: 12
   typeB: 10
   learnableMoves: []

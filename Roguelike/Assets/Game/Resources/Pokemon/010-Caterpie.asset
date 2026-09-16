@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Caterpie
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: 9100b92c7d9b1cf4f86ac20992cbaae6, type: 3}
+  backSprite: {fileID: 21300000, guid: ac5b6a59d81181242b70e5d055f8979c, type: 3}
   typeA: 12
   typeB: 0
   learnableMoves: []

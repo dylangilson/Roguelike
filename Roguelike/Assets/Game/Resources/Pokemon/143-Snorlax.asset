@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Snorlax
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: 62ca0d9e2f2176d42b5324a83d68f9ec, type: 3}
+  backSprite: {fileID: 21300000, guid: deb0b0bde5bdc374c9f763f35e869b84, type: 3}
   typeA: 1
   typeB: 0
   learnableMoves: []

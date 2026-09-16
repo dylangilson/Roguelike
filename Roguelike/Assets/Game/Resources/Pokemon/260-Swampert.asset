@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Swampert
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: 0b324f331f5fba243a15a8bd3bcac93f, type: 3}
+  backSprite: {fileID: 21300000, guid: 86b09dd041b770146b77d1f7a4789a7b, type: 3}
   typeA: 3
   typeB: 9
   learnableMoves: []

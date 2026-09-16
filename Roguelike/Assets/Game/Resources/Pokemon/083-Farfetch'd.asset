@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Farfetch'd
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: d53c570c9ec790f458e4ef55cbdfe56a, type: 3}
+  backSprite: {fileID: 21300000, guid: 02300efddd458614ba45d0f17d3425f7, type: 3}
   typeA: 10
   typeB: 1
   learnableMoves: []

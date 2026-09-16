@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Dragonite
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: 1ab79a5a7ad52464a888ce7e41b623f5, type: 3}
+  backSprite: {fileID: 21300000, guid: 2d86848831dd078499c67b089848204a, type: 3}
   typeA: 15
   typeB: 10
   learnableMoves: []

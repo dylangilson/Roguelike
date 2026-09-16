@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Bagon
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: b984853a02692764d86997e5dc81d054, type: 3}
+  backSprite: {fileID: 21300000, guid: 0f48313276ec4b4408716d5533a750eb, type: 3}
   typeA: 15
   typeB: 17
   learnableMoves: []

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Croconaw
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: 528a3fe66ac1a2a4380f66a84a2c3716, type: 3}
+  backSprite: {fileID: 21300000, guid: 680941bcbf7a90f48866597887fa94ca, type: 3}
   typeA: 3
   typeB: 0
   learnableMoves: []

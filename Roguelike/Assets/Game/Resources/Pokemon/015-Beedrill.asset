@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Beedril
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: 611184babc9991c44941414597bdd6eb, type: 3}
+  backSprite: {fileID: 21300000, guid: 5aa5575862789414c9642b8d41489932, type: 3}
   typeA: 12
   typeB: 15
   learnableMoves: []

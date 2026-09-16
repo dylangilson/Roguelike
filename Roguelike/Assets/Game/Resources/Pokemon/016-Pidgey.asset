@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Pidgey
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: e0f976fe3eeffdf4a8cbaa0df59f701f, type: 3}
+  backSprite: {fileID: 21300000, guid: 88325ba1d73246d4e9594544169a29c1, type: 3}
   typeA: 10
   typeB: 1
   learnableMoves: []

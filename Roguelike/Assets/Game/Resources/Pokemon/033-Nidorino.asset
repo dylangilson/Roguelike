@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Nidorino
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: c8618830ee4c5654e9e39092cb5d734b, type: 3}
+  backSprite: {fileID: 21300000, guid: ff91133219eaf594cb69be0c125d743a, type: 3}
   typeA: 8
   typeB: 0
   learnableMoves: []

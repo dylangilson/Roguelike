@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Blastoise
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: 7ee0b7d26ccd84f498e4f5eda28be499, type: 3}
+  backSprite: {fileID: 21300000, guid: 25d064fd97985d14ba18e36f2f475c8c, type: 3}
   typeA: 3
   typeB: 13
   learnableMoves: []

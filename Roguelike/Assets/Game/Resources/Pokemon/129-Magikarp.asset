@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Magikarp
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: aac8217789a839c4695730da90ee77dc, type: 3}
+  backSprite: {fileID: 21300000, guid: 53fbdd915043723468dd3188432bd146, type: 3}
   typeA: 3
   typeB: 0
   learnableMoves: []

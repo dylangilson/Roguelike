@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Entei
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: 717e7909b55b4e747ab44153609ea51d, type: 3}
+  backSprite: {fileID: 21300000, guid: ad71a7e75974c3c4dac906946c4f2d43, type: 3}
   typeA: 2
   typeB: 16
   learnableMoves: []

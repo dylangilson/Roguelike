@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Gyarados
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: 2d5047c66daeacc40b48477ff7d7493d, type: 3}
+  backSprite: {fileID: 21300000, guid: 8b7024449b82bef4c9a90ed48c0c3b1a, type: 3}
   typeA: 3
   typeB: 15
   learnableMoves: []

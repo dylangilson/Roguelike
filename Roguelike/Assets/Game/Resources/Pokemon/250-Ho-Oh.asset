@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Ho-Oh
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: 4e032b5319fa44443bdacb08b6bb4fb6, type: 3}
+  backSprite: {fileID: 21300000, guid: 397784bcc9daa74469f3ed92bdd675bc, type: 3}
   typeA: 2
   typeB: 15
   learnableMoves: []

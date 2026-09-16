@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Feraligatr
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: 3ae032a5ced3b2a45ad48990a1d7d2de, type: 3}
+  backSprite: {fileID: 21300000, guid: c0d3a98bc83e61643ae0e991c817cb34, type: 3}
   typeA: 3
   typeB: 16
   learnableMoves: []

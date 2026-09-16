@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Blissey
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: 261249859d92a6e4d81f2872dd001331, type: 3}
+  backSprite: {fileID: 21300000, guid: fa228a772348ec940bcc4f7dedd691fc, type: 3}
   typeA: 1
   typeB: 0
   learnableMoves: []

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Spearow
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: 4eeede95e50ab5c46a062b45e033b9b3, type: 3}
+  backSprite: {fileID: 21300000, guid: 5dba5a5a6c920ef4c8d56898b93c6a19, type: 3}
   typeA: 10
   typeB: 1
   learnableMoves: []

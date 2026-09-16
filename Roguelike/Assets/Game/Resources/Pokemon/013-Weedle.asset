@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Weedle
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: a1b21b3aec9d22842b7bbf0947219db7, type: 3}
+  backSprite: {fileID: 21300000, guid: 78094cca9a868364d84ec239d53ec868, type: 3}
   typeA: 12
   typeB: 0
   learnableMoves: []

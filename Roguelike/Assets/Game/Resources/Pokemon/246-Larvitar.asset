@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Larvitar
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: 4a7aea99ea3ce8943bc1501067e774ff, type: 3}
+  backSprite: {fileID: 21300000, guid: 25c512ee0642a2640996344c271ede91, type: 3}
   typeA: 13
   typeB: 9
   learnableMoves: []

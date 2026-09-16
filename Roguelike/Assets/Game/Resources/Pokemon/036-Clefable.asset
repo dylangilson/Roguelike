@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Clefable
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: c48a1a37bfa2c814588946eeaccdbb57, type: 3}
+  backSprite: {fileID: 21300000, guid: a9a2dd301dafbf64dbe5e5c947340f7e, type: 3}
   typeA: 1
   typeB: 11
   learnableMoves: []

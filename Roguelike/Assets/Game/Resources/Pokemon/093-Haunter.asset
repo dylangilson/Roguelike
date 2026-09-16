@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Haunter
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: c00b7b9f56f5b28409d846a269e81f5f, type: 3}
+  backSprite: {fileID: 21300000, guid: f65544b411d2b794c8c38e0f3badf764, type: 3}
   typeA: 14
   typeB: 8
   learnableMoves: []

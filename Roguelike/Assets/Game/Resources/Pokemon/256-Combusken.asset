@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Combusken
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: 6e332a827a04b0a42b848ffcdb57aaa6, type: 3}
+  backSprite: {fileID: 21300000, guid: 51ceb4cfbcc593e49ac2ab7cc83b33b7, type: 3}
   typeA: 2
   typeB: 7
   learnableMoves: []

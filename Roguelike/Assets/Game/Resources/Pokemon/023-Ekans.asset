@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Ekans
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: e7986fd701ad5774fa2772a2d39bd4d3, type: 3}
+  backSprite: {fileID: 21300000, guid: 894786bf239e70845800cb0209d0caa1, type: 3}
   typeA: 8
   typeB: 0
   learnableMoves: []

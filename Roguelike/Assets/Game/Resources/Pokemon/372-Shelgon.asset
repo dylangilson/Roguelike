@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Shelgon
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: 69a7d3983dcb5884398da93a06805d84, type: 3}
+  backSprite: {fileID: 21300000, guid: 79c45ece6879a3b4bb978f8fe550ab0b, type: 3}
   typeA: 15
   typeB: 17
   learnableMoves: []

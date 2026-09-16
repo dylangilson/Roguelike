@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Magmar
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: f9658e4c3d8f23b4c82530f1f46c3302, type: 3}
+  backSprite: {fileID: 21300000, guid: b9d119adebd3e3444996c26794ce03b4, type: 3}
   typeA: 2
   typeB: 0
   learnableMoves: []

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Celebi
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: 6b07d219eda74e7439eac7601f947bb7, type: 3}
+  backSprite: {fileID: 21300000, guid: 7fd471dce5f3cf94e927c898bb6f82e5, type: 3}
   typeA: 5
   typeB: 11
   learnableMoves: []

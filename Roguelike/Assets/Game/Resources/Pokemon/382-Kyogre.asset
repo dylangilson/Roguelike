@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Kyogre
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: 1cf528806c033814f814d12cdb2aef65, type: 3}
+  backSprite: {fileID: 21300000, guid: 198e7becee0da23469af7d01dacf1401, type: 3}
   typeA: 3
   typeB: 0
   learnableMoves: []

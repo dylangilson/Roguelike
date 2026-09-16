@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Dratini
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: b28936b9b20982248a2f4e96321cd810, type: 3}
+  backSprite: {fileID: 21300000, guid: 31c19caf6cbeab744a71bb49169ac243, type: 3}
   typeA: 15
   typeB: 0
   learnableMoves: []

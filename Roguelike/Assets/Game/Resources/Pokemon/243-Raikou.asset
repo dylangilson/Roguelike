@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Raikou
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: a91b6ba0dc375154ebe1aff7f7814334, type: 3}
+  backSprite: {fileID: 21300000, guid: 582b4bab2db305d4fa4a13e9da34a809, type: 3}
   typeA: 4
   typeB: 17
   learnableMoves: []

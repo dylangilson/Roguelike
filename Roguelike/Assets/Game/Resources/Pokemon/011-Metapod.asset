@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Metapod
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: 13251bbf55c1328429975c650a6a5eed, type: 3}
+  backSprite: {fileID: 21300000, guid: 489743225603c854f9d927becad3c90d, type: 3}
   typeA: 12
   typeB: 0
   learnableMoves: []

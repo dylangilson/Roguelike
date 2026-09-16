@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Groudon
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: 5697556a1cd80db42b98e98735f3346f, type: 3}
+  backSprite: {fileID: 21300000, guid: aeef652e16044904cbaef9ef8b48a05c, type: 3}
   typeA: 2
   typeB: 9
   learnableMoves: []

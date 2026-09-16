@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Nidoking
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: a14790d9d4229854fb910b05c6ea4604, type: 3}
+  backSprite: {fileID: 21300000, guid: 996ee9faf0fa40d4dbd90c45439bc236, type: 3}
   typeA: 8
   typeB: 9
   learnableMoves: []

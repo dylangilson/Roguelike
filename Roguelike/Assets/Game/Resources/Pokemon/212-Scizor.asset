@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Scizor
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: 2adc51714a390c242b131fd55006950c, type: 3}
+  backSprite: {fileID: 21300000, guid: f4cc5098022a46e419d19ae3cc1ca4f1, type: 3}
   typeA: 12
   typeB: 17
   learnableMoves: []

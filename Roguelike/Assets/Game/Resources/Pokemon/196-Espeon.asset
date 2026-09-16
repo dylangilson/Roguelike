@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Espeon
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: bb025d920611a0f4da9116e8950230a3, type: 3}
+  backSprite: {fileID: 21300000, guid: db3c1d0644f2a5e43a018c8da0e7dae5, type: 3}
   typeA: 11
   typeB: 0
   learnableMoves: []

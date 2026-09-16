@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Sandslash
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: 331fc3e2fd331594499bacfcaaf345e9, type: 3}
+  backSprite: {fileID: 21300000, guid: 0ec79d17192557e46b6e06a709e8af14, type: 3}
   typeA: 9
   typeB: 0
   learnableMoves: []

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Gastly
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: d7e5a95276c7b1b4593b1b1bf9f1e213, type: 3}
+  backSprite: {fileID: 21300000, guid: fb8e98f2ef2a8d04b97ba0a87cbefec7, type: 3}
   typeA: 14
   typeB: 8
   learnableMoves: []

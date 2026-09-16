@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Cyndaquil
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: cb95b54b8275b5f4d98059e38e5f21da, type: 3}
+  backSprite: {fileID: 21300000, guid: 627d4377029201146991dae75201d956, type: 3}
   typeA: 2
   typeB: 0
   learnableMoves: []

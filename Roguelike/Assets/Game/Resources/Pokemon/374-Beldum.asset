@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Beldum
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: 5ce9b279b4127d34a987990c3ca097e2, type: 3}
+  backSprite: {fileID: 21300000, guid: 98cfac8da3da8584abb43473987f7853, type: 3}
   typeA: 11
   typeB: 17
   learnableMoves: []

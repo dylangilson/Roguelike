@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Pidgeot
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: 448f26f449716424e81acd75d6d5590e, type: 3}
+  backSprite: {fileID: 21300000, guid: ab92bf6c951b1d84aaf8d8062bf97bfe, type: 3}
   typeA: 10
   typeB: 1
   learnableMoves: []

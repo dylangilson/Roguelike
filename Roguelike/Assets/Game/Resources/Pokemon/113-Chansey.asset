@@ -14,11 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Chansey
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: d1a93af65b1ab2d429e55f226005cd84, type: 3}
+  backSprite: {fileID: 21300000, guid: 17a62337eadfba94fb89224b9da16ceb, type: 3}
   typeA: 1
   typeB: 0
   learnableMoves: []
+  tmMoves: []
+  catchRate: 255
+  expYield: 0
+  growthRate: 0
+  evolutions: []
   hitpoints: 250
   attack: 25
   defence: 55

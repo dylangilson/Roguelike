@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Raticate
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: e250f34e245bea748800e00293898c33, type: 3}
+  backSprite: {fileID: 21300000, guid: f09a71129fcfb354082b05ca3cf8fc21, type: 3}
   typeA: 1
   typeB: 0
   learnableMoves: []

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Mudkip
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: f55efe0a16fc58441817fce6e13b9705, type: 3}
+  backSprite: {fileID: 21300000, guid: 7ad6f5e3654c2bc42aa42b471a709aeb, type: 3}
   typeA: 3
   typeB: 0
   learnableMoves: []

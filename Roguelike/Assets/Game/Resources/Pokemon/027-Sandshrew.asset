@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Sandshrew
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: c0804811e6622414299eb081b37739c8, type: 3}
+  backSprite: {fileID: 21300000, guid: ccbb733a0054c3349b5c07e2e682a78c, type: 3}
   typeA: 9
   typeB: 0
   learnableMoves: []

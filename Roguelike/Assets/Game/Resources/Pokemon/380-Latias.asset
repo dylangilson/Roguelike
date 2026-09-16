@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Latias
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: f250264e9fbdacf4eac5d9c7e4098c87, type: 3}
+  backSprite: {fileID: 21300000, guid: 0f7aefda3c18876408419fa660b87813, type: 3}
   typeA: 11
   typeB: 15
   learnableMoves: []

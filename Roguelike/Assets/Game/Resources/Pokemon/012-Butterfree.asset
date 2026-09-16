@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Butterfree
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: b15b52ec4a46b544eb156d5b697c34cc, type: 3}
+  backSprite: {fileID: 21300000, guid: 3e03d7e1aad94a54dbfb8e804ec21d0b, type: 3}
   typeA: 12
   typeB: 11
   learnableMoves: []

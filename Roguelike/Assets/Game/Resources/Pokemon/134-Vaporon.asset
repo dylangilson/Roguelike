@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Vaporeon
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: 3b2a12ce6a774b04eb39d8bc596c10c3, type: 3}
+  backSprite: {fileID: 21300000, guid: 7106c5e1aa03af640a2e6d2e9ffded2f, type: 3}
   typeA: 3
   typeB: 0
   learnableMoves: []

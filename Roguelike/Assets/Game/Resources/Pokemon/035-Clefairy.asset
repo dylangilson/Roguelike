@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: Clefairy
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: ced9f1a2799d5d24d80317fb00ee9a34, type: 3}
+  backSprite: {fileID: 21300000, guid: 93a77e1dd2bc47043b232fe5637cf7b5, type: 3}
   typeA: 1
   typeB: 11
   learnableMoves: []
