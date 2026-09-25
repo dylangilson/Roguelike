@@ -121,6 +121,14 @@ public class InventoryUI : MonoBehaviour {
     IEnumerator ItemSelected() {
         state = InventoryUIState.BUSY;
         var item = bag.GetItem(selectedItem, selectedCategory);
+
+        if (GameController.Instance.State == GameState.SHOP) {
+            onItemUsed?.Invoke(item);
+
+            state = InventoryUIState.ITEM_SELECTION;
+
+            yield break;
+        }
         
         if (GameController.Instance.State == GameState.BATTLE) {
             // in battle
@@ -137,6 +145,7 @@ public class InventoryUI : MonoBehaviour {
                 yield break;          
             }
         }
+
         if (selectedCategory == (int)ItemCategory.POKEBALLS) {
             StartCoroutine(UseItem());
         } else {

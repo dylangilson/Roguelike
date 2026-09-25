@@ -222,6 +222,8 @@ public class Pokemon {
         CurrentHitpoints = MaxHitpoints;
 
         OnHitpointsChanged?.Invoke();
+
+        CureStatus();
     }
 
     public int Attack {

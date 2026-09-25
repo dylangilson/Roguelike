@@ -15,6 +15,8 @@ MonoBehaviour:
   itemName: Antidote
   description: "Cures a Pok\xE9mon of Poison"
   icon: {fileID: -965487216, guid: cc61bc02c9602de4884e310e84159509, type: 3}
+  price: 100
+  isSellable: 1
   amountHealed: 0
   restoreMaxHitpoints: 0
   powerPointsRecovered: 0

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum GameState { OVERWORLD, BATTLE, DIALOGUE, MENU, PARTY_SCREEN, BAG, CUTSCENE, PAUSED, EVOLUTION }
+public enum GameState { OVERWORLD, BATTLE, DIALOGUE, MENU, PARTY_SCREEN, BAG, CUTSCENE, PAUSED, EVOLUTION, SHOP }
 
 public class GameController : MonoBehaviour {
     [SerializeField] PlayerController playerController;
@@ -66,6 +66,11 @@ public class GameController : MonoBehaviour {
             state = stateBeforeEvolution; 
             };
         menuController.onBack += () => { state = GameState.OVERWORLD; };
+
+        // shop events
+        ShopController.i.OnStart += () => state = GameState.SHOP;
+
+        ShopController.i.OnFinish += () => state = GameState.OVERWORLD;
     }
 
     public void PauseGame(bool pause) {
@@ -174,7 +179,10 @@ public class GameController : MonoBehaviour {
 
                 menuController.OpenMenu(2);
             };
+
             inventoryUI.HandleUpdate(onBack);
+        } else if (state == GameState.SHOP) {
+            ShopController.i.HandleUpdate();
         }
     }
 

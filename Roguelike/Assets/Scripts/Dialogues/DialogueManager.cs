@@ -28,8 +28,9 @@ public class DialogueManager : MonoBehaviour {
     }
 
     // single frame of dialogue
-    public IEnumerator ShowDialogueText(string text, bool waitForInput=true) {
+    public IEnumerator ShowDialogueText(string text, bool waitForInput=true, List<String> choices=null, Action<int> onChoiceSelected=null) {
         OnShowDialogue?.Invoke();
+
         IsShowing = true;
 
         dialogueBox.SetActive(true); // display dialogue box
@@ -38,6 +39,10 @@ public class DialogueManager : MonoBehaviour {
 
         if (waitForInput) {
             yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Space));
+        }
+
+        if (choices != null && choices.Count > 1) {
+            yield return choiceBox.ShowChoices(choices, onChoiceSelected);
         }
 
         CloseDialogue();

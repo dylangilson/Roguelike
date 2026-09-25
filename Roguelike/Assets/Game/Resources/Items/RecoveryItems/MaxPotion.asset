@@ -15,6 +15,8 @@ MonoBehaviour:
   itemName: Max Potion
   description: "Restores All Hitpoints to a Pok\xE9mon"
   icon: {fileID: -1537388845, guid: 35950ae0de763814eb5ce688af979f15, type: 3}
+  price: 100
+  isSellable: 1
   amountHealed: 0
   restoreMaxHitpoints: 1
   powerPointsRecovered: 0

@@ -6,6 +6,8 @@ public class ItemBase : ScriptableObject {
     [SerializeField] string itemName;
     [SerializeField] string description;
     [SerializeField] Sprite icon;
+    [SerializeField] float price;
+    [SerializeField] bool isSellable;
 
     public string ItemName {
         get {
@@ -22,6 +24,18 @@ public class ItemBase : ScriptableObject {
     public Sprite Icon {
         get {
             return icon;
+        }
+    }
+
+    public float Price {
+        get {
+            return price;
+        }
+    }
+
+    public bool IsSellable {
+        get {
+            return isSellable;
         }
     }
 

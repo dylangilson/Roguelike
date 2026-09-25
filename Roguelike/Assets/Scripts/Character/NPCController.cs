@@ -21,12 +21,14 @@ public class NPCController : MonoBehaviour, Interactable, ISavable {
     ItemGiver itemGiver;
     PokemonGiver pokemonGiver;
     Healer healer;
+    Shopkeeper shopkeeper;
 
     private void Awake() {
         character = GetComponent<Character>();
         itemGiver = GetComponent<ItemGiver>();
         pokemonGiver = GetComponent<PokemonGiver>();
         healer = GetComponent<Healer>();
+        shopkeeper = GetComponent<Shopkeeper>();
     }
 
     private void Update() {
@@ -86,6 +88,8 @@ public class NPCController : MonoBehaviour, Interactable, ISavable {
                 }
             } else if (healer != null) {
                 yield return healer.Heal(initiator, dialogue);
+            } else if (shopkeeper != null) {
+                yield return shopkeeper.Trade();
             } else {
                 yield return DialogueManager.Instance.ShowDialogue(dialogue);
             }

@@ -21,3 +21,5 @@ TODOs:
 	- Dialogue Says 'Did not learn {move}' twice if you decline learning it (currently commented out; now it freezes when clicking no)
 	- Why do we keep walking animation during pickup item / dialgogue
 	- Allow cancelling an evolution
+	- Scrolling up in the buy / sell / quit shop menu does not auto select bottom option
+	- Allow ESC key to back you out of shops
