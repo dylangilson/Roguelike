@@ -7,6 +7,7 @@ public enum ShopState { MENU, BUYING, SELLING, BUSY }
 
 public class ShopController : MonoBehaviour {
     [SerializeField] InventoryUI inventoryUI;
+    [SerializeField] WalletUI walletUI;
 
     public event Action OnStart;
     public event Action OnFinish;
@@ -43,6 +44,7 @@ public class ShopController : MonoBehaviour {
         } else if (selectedChoice == 1) {
             // sell
             state = ShopState.SELLING;
+            walletUI.Show();
 
             inventoryUI.gameObject.SetActive(true);
         } else if (selectedChoice == 2) {
@@ -61,6 +63,7 @@ public class ShopController : MonoBehaviour {
 
     void OnBackFromSelling() {
         inventoryUI.gameObject.SetActive(false);
+        walletUI.Close();
 
         StartCoroutine(StartMenuState());
     }
@@ -86,7 +89,7 @@ public class ShopController : MonoBehaviour {
             // yes
             bag.RemoveItem(item);
 
-            // TODO: add selling price of item to player's balance
+            Wallet.i.AddMoney(sellingPrice);
 
             yield return DialogueManager.Instance.ShowDialogueText($"Turned over {item.ItemName} and received {sellingPrice}!");
         }
