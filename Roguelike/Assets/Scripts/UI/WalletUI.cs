@@ -21,6 +21,6 @@ public class WalletUI : MonoBehaviour
     }
 
     public void SetMoneyText() {
-        moneyTxt.text = "$" +  Wallet.i.Money;
+        moneyTxt.text = "¥" +  Wallet.i.Money;
     }
 }

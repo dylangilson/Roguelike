@@ -11,9 +11,11 @@ public class ChoiceBox : MonoBehaviour {
     bool choiceSelected = false;
     List<ChoiceText> choiceTexts;
     int currentChoice;
+    bool cancelled;
 
-    public IEnumerator ShowChoices(List<string> choices, Action<int> onChoiceSelected) {
+    public IEnumerator ShowChoices(List<string> choices, Action<int> onChoiceSelected, Action onCancel=null) {
         choiceSelected = false;
+        cancelled = false;
         currentChoice = 0;
         
         gameObject.SetActive(true);
@@ -24,15 +26,22 @@ public class ChoiceBox : MonoBehaviour {
         }
 
         choiceTexts = new List<ChoiceText>();
+
         foreach (var choice in choices) {
             var choiceTextObject = Instantiate(choiceTextPrefab, transform);
+
             choiceTextObject.TextField.text = choice;
             choiceTexts.Add(choiceTextObject);
         }
 
-        yield return new WaitUntil(() => choiceSelected == true);
+        yield return new WaitUntil(() => choiceSelected || cancelled);
 
-        onChoiceSelected?.Invoke(currentChoice);
+        if (cancelled) {
+            onCancel?.Invoke();
+        } else {
+            onChoiceSelected?.Invoke(currentChoice);
+        }
+        
         gameObject.SetActive(false);
     }
 
@@ -42,10 +51,14 @@ public class ChoiceBox : MonoBehaviour {
         } else if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) {
             currentChoice--;
         }
+
+        if (Input.GetKeyDown(KeyCode.Backspace) || Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.Escape)) {
+            cancelled = true;
+        }
         
         currentChoice = currentChoice % (choiceTexts.Count);
 
-        for (int i = 0; i <choiceTexts.Count; i++) {
+        for (int i = 0; i < choiceTexts.Count; i++) {
             choiceTexts[i].SetSelected(i == currentChoice);
         }
 

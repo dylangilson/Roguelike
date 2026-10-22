@@ -24,11 +24,12 @@ public class DialogueManager : MonoBehaviour {
         dialogueBox.SetActive(false);
 
         IsShowing = false;
+
         OnCloseDialogue?.Invoke();
     }
 
     // single frame of dialogue
-    public IEnumerator ShowDialogueText(string text, bool waitForInput=true, List<String> choices=null, Action<int> onChoiceSelected=null) {
+    public IEnumerator ShowDialogueText(string text, bool waitForInput=true, bool autoClose=true, List<String> choices=null, Action<int> onChoiceSelected=null, Action onCancel=null) {
         OnShowDialogue?.Invoke();
 
         IsShowing = true;
@@ -42,10 +43,12 @@ public class DialogueManager : MonoBehaviour {
         }
 
         if (choices != null && choices.Count > 1) {
-            yield return choiceBox.ShowChoices(choices, onChoiceSelected);
+            yield return choiceBox.ShowChoices(choices, onChoiceSelected, onCancel);
         }
 
-        CloseDialogue();
+        if (autoClose) {
+            CloseDialogue();
+        }
     }
 
     // multiple frames of dialogue

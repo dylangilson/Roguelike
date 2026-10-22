@@ -72,13 +72,25 @@ public class Bag : MonoBehaviour, ISavable {
         OnUpdated?.Invoke();
     }
 
-    public void RemoveItem(ItemBase item) {
+    public int GetItemCount (ItemBase item) {
+        int category = (int)GetCategoryFromItem(item);
+        var currentSlots = GetSlotsByCategory(category);
+        var itemSlot = currentSlots.FirstOrDefault(slot => slot.Item == item);
+
+        if (itemSlot != null) {
+            return itemSlot.Count;
+        }
+
+        return 0;
+    }
+
+    public void RemoveItem(ItemBase item, int countToRemove=1) {
         int category = (int)GetCategoryFromItem(item);
         var currentSlots = GetSlotsByCategory(category);
 
         var slot = currentSlots.First(slot => slot.Item == item);
 
-        slot.Count--;
+        slot.Count -= countToRemove;
 
         if (slot.Count <= 0) {
             currentSlots.Remove(slot);

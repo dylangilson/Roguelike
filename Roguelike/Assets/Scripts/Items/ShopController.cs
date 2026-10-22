@@ -8,6 +8,7 @@ public enum ShopState { MENU, BUYING, SELLING, BUSY }
 public class ShopController : MonoBehaviour {
     [SerializeField] InventoryUI inventoryUI;
     [SerializeField] WalletUI walletUI;
+    [SerializeField] CountSelectorUI countSelectorUI;
 
     public event Action OnStart;
     public event Action OnFinish;
@@ -37,7 +38,8 @@ public class ShopController : MonoBehaviour {
         int selectedChoice = 0;
 
         yield return DialogueManager.Instance.ShowDialogueText("How may I help you?", waitForInput: false, 
-        choices: new List<string>() { "Buy", "Sell", "Quit" }, onChoiceSelected: choiceIndex => selectedChoice = choiceIndex);
+        choices: new List<string>() { "Buy", "Sell", "Quit" }, onChoiceSelected: choiceIndex => selectedChoice = choiceIndex,
+        onCancel: () => OnFinish?.Invoke());
 
         if (selectedChoice == 0) {
             // buy
@@ -80,6 +82,27 @@ public class ShopController : MonoBehaviour {
         }
 
         float sellingPrice = Mathf.Round(item.Price * 0.6f); // 60% of actual price
+        int countToSell = 1;
+        int itemCount = bag.GetItemCount(item);
+
+        bool cancelled = false;
+
+        if (itemCount > 1) {
+            yield return DialogueManager.Instance.ShowDialogueText($"How many would you like to sell?", waitForInput: false, autoClose: false);
+
+            yield return countSelectorUI.ShowSelector(itemCount, sellingPrice, (selectedCount) => countToSell = selectedCount,
+                onCancel: () => cancelled = true);
+
+            DialogueManager.Instance.CloseDialogue();
+
+            if (cancelled) {
+                state = ShopState.SELLING;
+                yield break;
+            }
+        }
+
+        sellingPrice *= countToSell;
+
         int selectedChoice = 0;
 
         yield return DialogueManager.Instance.ShowDialogueText($"I can give {sellingPrice} for that! Would you like to sell?", waitForInput: false, 
@@ -87,7 +110,7 @@ public class ShopController : MonoBehaviour {
 
         if (selectedChoice == 0) {
             // yes
-            bag.RemoveItem(item);
+            bag.RemoveItem(item, countToSell);
 
             Wallet.i.AddMoney(sellingPrice);
 
@@ -95,5 +118,10 @@ public class ShopController : MonoBehaviour {
         }
 
         state = ShopState.SELLING;
+    }
+
+    private void CancelSale() {
+        OnFinish?.Invoke();
+        DialogueManager.Instance.CloseDialogue();
     }
 }
