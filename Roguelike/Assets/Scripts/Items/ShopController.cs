@@ -18,7 +18,6 @@ public class ShopController : MonoBehaviour {
     
     ShopState state;
     Bag bag;
-
     Shopkeeper shopkeeper;
 
     private void Awake() {
@@ -39,17 +38,17 @@ public class ShopController : MonoBehaviour {
     IEnumerator StartMenuState() {
         state = ShopState.MENU;
 
-        int selectedChoice = 0;
+        int selectedChoice = -1;
 
         yield return DialogueManager.Instance.ShowDialogueText("How may I help you?", waitForInput: false, 
-        choices: new List<string>() { "Buy", "Sell", "Quit" }, onChoiceSelected: choiceIndex => selectedChoice = choiceIndex,
-        onCancel: () => OnFinish?.Invoke());
+            choices: new List<string>() { "Buy", "Sell", "Quit" }, onChoiceSelected: choiceIndex => selectedChoice = choiceIndex,
+            onCancel: () => OnFinish?.Invoke());
 
         if (selectedChoice == 0) {
             // buy
             state = ShopState.BUYING;
             walletUI.Show();
-            shopUI.Show(shopkeeper.AvailableItems);
+            shopUI.Show(shopkeeper.AvailableItems, (item) => StartCoroutine(BuyItem(item)), OnBackFromBuying);
         } else if (selectedChoice == 1) {
             // sell
             state = ShopState.SELLING;
@@ -67,8 +66,7 @@ public class ShopController : MonoBehaviour {
     public void HandleUpdate() {
         if (state == ShopState.SELLING) {
             inventoryUI.HandleUpdate(OnBackFromSelling, (selectedItem) => StartCoroutine(SellItem(selectedItem)));
-        }
-        else if (state == ShopState.BUYING) {
+        } else if (state == ShopState.BUYING) {
             shopUI.HandleUpdate();
         }
     }
@@ -115,8 +113,8 @@ public class ShopController : MonoBehaviour {
 
         int selectedChoice = 0;
 
-        yield return DialogueManager.Instance.ShowDialogueText($"I can give {sellingPrice} for that! Would you like to sell?", waitForInput: false, 
-        choices: new List<string>() { "Yes", "No" }, onChoiceSelected: choiceIndex => selectedChoice = choiceIndex);
+        yield return DialogueManager.Instance.ShowDialogueText($"I can give ¥{sellingPrice} for that! Would you like to sell?", waitForInput: false, 
+            choices: new List<string>() { "Yes", "No" }, onChoiceSelected: choiceIndex => selectedChoice = choiceIndex);
 
         if (selectedChoice == 0) {
             // yes
@@ -124,7 +122,7 @@ public class ShopController : MonoBehaviour {
 
             Wallet.i.AddMoney(sellingPrice);
 
-            yield return DialogueManager.Instance.ShowDialogueText($"Turned over {item.ItemName} and received {sellingPrice}!");
+            yield return DialogueManager.Instance.ShowDialogueText($"Turned over {item.ItemName} and received ¥{sellingPrice}!");
         }
 
         state = ShopState.SELLING;
@@ -133,5 +131,46 @@ public class ShopController : MonoBehaviour {
     private void CancelSale() {
         OnFinish?.Invoke();
         DialogueManager.Instance.CloseDialogue();
+    }
+
+    IEnumerator BuyItem(ItemBase item) {
+        state = ShopState.BUSY;
+
+        yield return DialogueManager.Instance.ShowDialogueText("How many would you like to buy?", waitForInput: false, autoClose: false);
+
+        int countToBuy = 1;
+
+        yield return countSelectorUI.ShowSelector(100, item.Price, (selectedCount) => countToBuy = selectedCount);
+
+        DialogueManager.Instance.CloseDialogue();
+
+        float totalPrice = item.Price * countToBuy;
+
+        if (Wallet.i.HasEnoughMoney(totalPrice)) {
+            int selectedChoice = 0;
+
+            yield return DialogueManager.Instance.ShowDialogueText($"That will be ¥{totalPrice}!", waitForInput: false, 
+                choices: new List<string>() { "Yes", "No" }, onChoiceSelected: choiceIndex => selectedChoice = choiceIndex);
+
+            if (selectedChoice == 0) {
+                // yes
+                bag.AddItem(item, countToBuy);
+
+                Wallet.i.TakeMoney(totalPrice);
+
+                yield return DialogueManager.Instance.ShowDialogueText("Thank you for shopping with us!");
+            }
+        } else {
+            yield return DialogueManager.Instance.ShowDialogueText("You don't have enough money!");
+        }
+
+        state = ShopState.BUYING;
+    }
+
+    private void OnBackFromBuying() {
+        shopUI.Close();
+        walletUI.Close();
+
+        StartCoroutine(StartMenuState());
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,9 +14,13 @@ public class ShopUI : MonoBehaviour {
     [SerializeField] Image upArrow;
     [SerializeField] Image downArrow;
 
+    int selectedItem;
+
     List<ItemBase> availableItems;
     List<ItemSlotUI> slotUIlist;
-    int selectedItem;
+    
+    Action<ItemBase> onItemSelected;
+    Action onBack;
     
     RectTransform itemListTransform;
     
@@ -25,11 +30,17 @@ public class ShopUI : MonoBehaviour {
         itemListTransform = itemList.GetComponent<RectTransform>();
     }
 
-    public void Show(List<ItemBase> availableItems) {
+    public void Show(List<ItemBase> availableItems, Action<ItemBase> onItemSelected, Action onBack) {
         this.availableItems = availableItems;
+        this.onItemSelected = onItemSelected;
+        this.onBack = onBack;
         
         gameObject.SetActive(true);
         UpdateItemList();
+    }
+
+    public void Close() {
+        gameObject.SetActive(false);
     }
 
     public void HandleUpdate() {
@@ -45,6 +56,12 @@ public class ShopUI : MonoBehaviour {
 
         if (selectedItem != previousSelection) {
             UpdateItemSelection();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Space)) {
+            onItemSelected?.Invoke(availableItems[selectedItem]);
+        } else if (Input.GetKeyDown(KeyCode.Backspace) || Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.Escape)) {
+            onBack?.Invoke();
         }
     }
 
