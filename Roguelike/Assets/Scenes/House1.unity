@@ -5376,6 +5376,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1961229742392944689, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: movements.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1961229742392944689, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
       propertyPath: dialogue.lines.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -5430,6 +5434,10 @@ PrefabInstance:
     - target: {fileID: 4498286823756440174, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
       propertyPath: uniqueId
       value: 07079634-89ad-4b17-b370-54de94f6ba9f
+      objectReference: {fileID: 0}
+    - target: {fileID: 4608308767259217215, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
+      propertyPath: movementSpeed
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8746050877028995212, guid: 03e3216ee236fc545b181d6e7d08029c, type: 3}
       propertyPath: item

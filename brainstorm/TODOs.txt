@@ -23,3 +23,4 @@ TODOs:
 	- Allow cancelling an evolution
 	- Scrolling up in the buy / sell / quit shop menu does not auto select bottom option
 	- Allow ESC key to back you out of shops
+		- escape key should cancel buy item dialogue, currently it has the same behaviour as spacebar

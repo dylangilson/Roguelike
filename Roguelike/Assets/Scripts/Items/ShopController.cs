@@ -6,6 +6,7 @@ using UnityEngine;
 public enum ShopState { MENU, BUYING, SELLING, BUSY }
 
 public class ShopController : MonoBehaviour {
+    [SerializeField] Vector2 shopCameraOffset;
     [SerializeField] InventoryUI inventoryUI;
     [SerializeField] ShopUI shopUI;
     [SerializeField] WalletUI walletUI;
@@ -46,9 +47,11 @@ public class ShopController : MonoBehaviour {
 
         if (selectedChoice == 0) {
             // buy
-            state = ShopState.BUYING;
+            yield return GameController.Instance.MoveCamera(shopCameraOffset);
             walletUI.Show();
-            shopUI.Show(shopkeeper.AvailableItems, (item) => StartCoroutine(BuyItem(item)), OnBackFromBuying);
+            shopUI.Show(shopkeeper.AvailableItems, (item) => StartCoroutine(BuyItem(item)), () => StartCoroutine(OnBackFromBuying()));
+            
+            state = ShopState.BUYING;
         } else if (selectedChoice == 1) {
             // sell
             state = ShopState.SELLING;
@@ -167,7 +170,8 @@ public class ShopController : MonoBehaviour {
         state = ShopState.BUYING;
     }
 
-    private void OnBackFromBuying() {
+    private IEnumerator OnBackFromBuying() {
+        yield return GameController.Instance.MoveCamera(-shopCameraOffset);
         shopUI.Close();
         walletUI.Close();
 
