@@ -24,3 +24,6 @@ TODOs:
 	- Scrolling up in the buy / sell / quit shop menu does not auto select bottom option
 	- Allow ESC key to back you out of shops
 		- escape key should cancel buy item dialogue, currently it has the same behaviour as spacebar
+	- Add correct music tracks
+	- Fix timing of when audio plays (especially trainer battle)
+	- Trainer battle sending out 2nd pokemon isn't working as intended

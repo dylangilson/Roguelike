@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using System.Linq;
 
 public class Party : MonoBehaviour {
     [SerializeField] List<Pokemon> party;
@@ -44,7 +45,11 @@ public class Party : MonoBehaviour {
         }
     }
 
-    public IEnumerator CheckForEvolutions() {
+    public bool CheckForEvolutions() {
+        return party.Any(pokemon => pokemon.CheckForEvolution() != null);
+    }
+
+    public IEnumerator RunEvolutions() {
         foreach (var pokemon in party) {
             var evolution = pokemon.CheckForEvolution();
 

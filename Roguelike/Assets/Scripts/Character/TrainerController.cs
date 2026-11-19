@@ -9,6 +9,7 @@ public class TrainerController : MonoBehaviour, Interactable, ISavable {
     [SerializeField] Dialogue dialogueAfterBattle;
     [SerializeField] GameObject exclamation;
     [SerializeField] GameObject fov;
+    [SerializeField] AudioClip trainerAppearsClip;
     
     Character character;
     bool defeated = false;
@@ -50,6 +51,8 @@ public class TrainerController : MonoBehaviour, Interactable, ISavable {
 
         // show dialogue
         if (!defeated) {
+            AudioManager.i.PlayMusic(trainerAppearsClip);
+            
             yield return DialogueManager.Instance.ShowDialogue(dialogue);
 
             GameController.Instance.StartTrainerBattle(this);
@@ -59,6 +62,8 @@ public class TrainerController : MonoBehaviour, Interactable, ISavable {
     }
 
     public IEnumerator TriggerTrainerBattle(PlayerController player) {
+        AudioManager.i.PlayMusic(trainerAppearsClip);
+
         // initiate battle
         exclamation.SetActive(true);
         yield return new WaitForSeconds(0.5f);

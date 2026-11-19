@@ -6,8 +6,12 @@ using System.Linq;
 
 public class SceneDetails : MonoBehaviour {
     [SerializeField] List<SceneDetails> connectedScenes;
-    public bool IsLoaded { get; private set; }
+    [SerializeField] AudioClip sceneMusic;
+
     List<SavableEntity> savableEntities;
+
+    public bool IsLoaded { get; private set; }
+    public AudioClip SceneMusic => sceneMusic;
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.tag == "Player") {
@@ -16,14 +20,20 @@ public class SceneDetails : MonoBehaviour {
             LoadScene();
             GameController.Instance.SetCurrentScene(this);
 
+            if (sceneMusic != null) {
+                AudioManager.i.PlayMusic(sceneMusic, fade: true);
+            }
+
             foreach(var scene in connectedScenes) {
                 scene.LoadScene();
             }
 
             // unload scenes
             var previousScene = GameController.Instance.PreviousScene;
+
             if (previousScene != null) {
                 var previousLoadedScenes = GameController.Instance.PreviousScene.connectedScenes;
+
                 foreach (var scene in previousLoadedScenes) {
                     if (!connectedScenes.Contains(scene) && scene != this) {
                         scene.UnloadScene();
@@ -33,7 +43,6 @@ public class SceneDetails : MonoBehaviour {
                 if (!connectedScenes.Contains(previousScene) && previousScene != this) {
                     previousScene.UnloadScene();
                 } 
-                
             }
         }
     }
@@ -59,7 +68,8 @@ public class SceneDetails : MonoBehaviour {
     }
 
     public List<SavableEntity> GetSavableEntitiesInScene() {
-            var currentScene = SceneManager.GetSceneByName(gameObject.name);
-            return FindObjectsOfType<SavableEntity>().Where(x => x.gameObject.scene == currentScene).ToList();      
+        var currentScene = SceneManager.GetSceneByName(gameObject.name);
+
+        return FindObjectsOfType<SavableEntity>().Where(x => x.gameObject.scene == currentScene).ToList();      
     }
 }

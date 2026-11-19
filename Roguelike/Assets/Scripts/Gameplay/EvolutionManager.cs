@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class EvolutionManager : MonoBehaviour {
     [SerializeField] GameObject evolutionUI;
     [SerializeField] Image pokemonImage;
+    [SerializeField] AudioClip evolutionMusic;
 
     public event Action OnStartEvolution;
     public event Action OnCompleteEvolution;
@@ -21,6 +22,8 @@ public class EvolutionManager : MonoBehaviour {
     public IEnumerator Evolve(Pokemon pokemon, Evolution evolution) {
         OnStartEvolution?.Invoke();
         evolutionUI.SetActive(true);
+
+        AudioManager.i.PlayMusic(evolutionMusic);
 
         pokemonImage.sprite = pokemon.Blueprint.FrontSprite;
         yield return DialogueManager.Instance.ShowDialogueText($"{pokemon.Blueprint.PokemonName} is evolving!");

@@ -132,6 +132,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3853798577214317132, guid: 017ad15c70d69fa4e9e25e0cad49f9e9, type: 3}
+      propertyPath: sceneMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 07e9ecfed57eb53438c950e87fb47f15, type: 3}
+    - target: {fileID: 3853798577214317132, guid: 017ad15c70d69fa4e9e25e0cad49f9e9, type: 3}
       propertyPath: connectedScenes.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -315,6 +319,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3853798577214317132, guid: 017ad15c70d69fa4e9e25e0cad49f9e9, type: 3}
+      propertyPath: sceneMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 57451b8f7931bf349af98b4b37d0f017, type: 3}
     - target: {fileID: 3853798577214317132, guid: 017ad15c70d69fa4e9e25e0cad49f9e9, type: 3}
       propertyPath: connectedScenes.Array.size
       value: 3
@@ -534,6 +542,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3853798577214317132, guid: 017ad15c70d69fa4e9e25e0cad49f9e9, type: 3}
+      propertyPath: sceneMusic
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3853798577214317132, guid: 017ad15c70d69fa4e9e25e0cad49f9e9, type: 3}
       propertyPath: connectedScenes.Array.size
       value: 1
@@ -6712,6 +6724,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3853798577214317132, guid: 017ad15c70d69fa4e9e25e0cad49f9e9, type: 3}
+      propertyPath: sceneMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 24e6b9a9fc310394f967c9f85be77113, type: 3}
+    - target: {fileID: 3853798577214317132, guid: 017ad15c70d69fa4e9e25e0cad49f9e9, type: 3}
       propertyPath: connectedScenes.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -6813,6 +6829,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3853798577214317132, guid: 017ad15c70d69fa4e9e25e0cad49f9e9, type: 3}
+      propertyPath: sceneMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 1e563fd7e37aa7d4c8424f2050e5a10f, type: 3}
     - target: {fileID: 3853798577214317132, guid: 017ad15c70d69fa4e9e25e0cad49f9e9, type: 3}
       propertyPath: connectedScenes.Array.size
       value: 4

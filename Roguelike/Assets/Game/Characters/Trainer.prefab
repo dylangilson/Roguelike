@@ -277,6 +277,7 @@ MonoBehaviour:
     - Darnit Ash
   exclamation: {fileID: 6418127996384918169}
   fov: {fileID: 4003240401396298912}
+  trainerAppearsClip: {fileID: 8300000, guid: 61c52f7b0e48f58459246d61113da98f, type: 3}
 --- !u!114 &1776531769122130832
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -63,8 +63,12 @@ public class GameController : MonoBehaviour {
 
         EvolutionManager.i.OnCompleteEvolution += () => { 
             partyScreen.SetPartyData();
+
             state = stateBeforeEvolution; 
-            };
+
+            AudioManager.i.PlayMusic(CurrentScene.SceneMusic, fade: true);
+        };
+
         menuController.onBack += () => { state = GameState.OVERWORLD; };
 
         // shop events
@@ -130,8 +134,13 @@ public class GameController : MonoBehaviour {
         overworldCamera.gameObject.SetActive(true);
 
         var party = playerController.GetComponent<Party>();
+        bool hasEvolutions = party.CheckForEvolutions();
 
-        StartCoroutine(party.CheckForEvolutions());
+        if (hasEvolutions) {
+            StartCoroutine(party.RunEvolutions());
+        } else {
+            AudioManager.i.PlayMusic(CurrentScene.SceneMusic, fade: true);
+        }
     }
 
     private void Update() {

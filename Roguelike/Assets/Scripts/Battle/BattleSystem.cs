@@ -20,6 +20,11 @@ public class BattleSystem : MonoBehaviour {
     [SerializeField] MoveSelectionUI moveSelectionUI;
     [SerializeField] InventoryUI inventoryUI;
 
+    [Header("Audio")]
+    [SerializeField] AudioClip wildBattleMusic;
+    [SerializeField] AudioClip trainerBattleMusic;
+    [SerializeField] AudioClip battleVictoryMusic;
+
     public event Action<bool> OnBattleOver;
     
     BattleState state;
@@ -30,7 +35,7 @@ public class BattleSystem : MonoBehaviour {
     Party playerParty;
     Party trainerParty;
     Pokemon wildPokemon;
-    bool isTrainerbattle = false;
+    bool isTrainerBattle = false;
     PlayerController player;
     TrainerController trainer;
     int runAttempts;
@@ -42,8 +47,10 @@ public class BattleSystem : MonoBehaviour {
         this.playerParty = playerParty;
         this.wildPokemon = wildPokemon;
 
-        isTrainerbattle = false;
+        isTrainerBattle = false;
         player = playerParty.GetComponent<PlayerController>();
+
+        AudioManager.i.PlayMusic(wildBattleMusic);
 
         StartCoroutine(SetupBattle());
     }
@@ -52,9 +59,11 @@ public class BattleSystem : MonoBehaviour {
         this.playerParty = playerParty;
         this.trainerParty = trainerParty;
 
-        isTrainerbattle = true;
+        isTrainerBattle = true;
         player = playerParty.GetComponent<PlayerController>();
         trainer = trainerParty.GetComponent<TrainerController>();
+        
+        AudioManager.i.PlayMusic(trainerBattleMusic);
 
         StartCoroutine(SetupBattle());
     }
@@ -63,7 +72,7 @@ public class BattleSystem : MonoBehaviour {
         playerUnit.Clear();
         enemyUnit.Clear();
 
-        if (!isTrainerbattle) {
+        if (!isTrainerBattle) {
             // wild pokemon
             playerUnit.Setup(playerParty.GetLeadPokemon());
             enemyUnit.Setup(wildPokemon);
@@ -300,7 +309,7 @@ public class BattleSystem : MonoBehaviour {
                 BattleOver(false);
             }
         } else {
-            if (!isTrainerbattle) {
+            if (!isTrainerBattle) {
                 BattleOver(true);
             } else {
                 var nextPokemon = trainerParty.GetLeadPokemon();
@@ -487,9 +496,19 @@ public class BattleSystem : MonoBehaviour {
         yield return new WaitForSeconds(2.0f);
 
         if (!targetUnit.IsPlayerUnit) {
+            bool battleWon = true;
+
+            if (isTrainerBattle) {
+                battleWon = trainerParty.GetLeadPokemon() == null;
+            }
+
+            if (battleWon) {
+                AudioManager.i.PlayMusic(battleVictoryMusic);
+            }
+
             int expYield = targetUnit.Pokemon.Blueprint.ExpYield;
             int enemyLevel = targetUnit.Pokemon.Level;
-            float trainerBonus = (isTrainerbattle) ? 1.5f : 1.0f;
+            float trainerBonus = (isTrainerBattle) ? 1.5f : 1.0f;
 
             int expGain = Mathf.FloorToInt(expYield * enemyLevel * trainerBonus / 7.0f);
 
@@ -831,7 +850,7 @@ public class BattleSystem : MonoBehaviour {
     IEnumerator ThrowPokeball(Pokeball pokeballItem) {
         state = BattleState.BUSY;
         
-        if (isTrainerbattle) {
+        if (isTrainerBattle) {
             yield return dialogueBox.TypeDialogue($"You can't steal another trainer's pokemon!");
             state = BattleState.RUNNING_TURN;
             yield break;
@@ -906,7 +925,7 @@ public class BattleSystem : MonoBehaviour {
     IEnumerator TryToEscape() {
         state = BattleState.BUSY;
 
-        if (isTrainerbattle) {
+        if (isTrainerBattle) {
             yield return dialogueBox.TypeDialogue("You can't run from trainer battles!");
 
             state = BattleState.RUNNING_TURN;
