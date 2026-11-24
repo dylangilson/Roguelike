@@ -36,6 +36,7 @@ public class DialogueManager : MonoBehaviour {
 
         dialogueBox.SetActive(true); // display dialogue box
 
+        AudioManager.i.PlaySfx(AudioID.UI_SELECT);
         yield return TypeDialogue(text); // populate dialogue box
 
         if (waitForInput) {
@@ -62,6 +63,7 @@ public class DialogueManager : MonoBehaviour {
         dialogueBox.SetActive(true); // display dialogue box
 
         foreach (var line in dialogue.Lines) {
+            AudioManager.i.PlaySfx(AudioID.UI_SELECT);
             yield return TypeDialogue(line); // populate dialogue box
 
             yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Space));

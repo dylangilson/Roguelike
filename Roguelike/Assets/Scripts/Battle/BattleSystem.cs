@@ -352,12 +352,14 @@ public class BattleSystem : MonoBehaviour {
         if (checkIfMoveHits(move, source.Pokemon, target.Pokemon)) {
             
             source.PlayAttackAnimation();
+            AudioManager.i.PlaySfx(move.Blueprint.Sound);
 
             foreach (var secondaryEffect in move.Blueprint.SecondaryEffects) {
                 if (secondaryEffect.Target == MoveTarget.FOE) {
                     yield return new WaitForSeconds(1.0f);
 
                     target.PlayHitAnimation();
+                    AudioManager.i.PlaySfx(AudioID.HIT);
                     break;
                 }
             }

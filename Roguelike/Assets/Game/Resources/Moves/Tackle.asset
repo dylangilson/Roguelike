@@ -19,6 +19,7 @@ MonoBehaviour:
   skipAccuracyCheck: 0
   powerPoints: 35
   priorityValue: 0
+  setDamage: 0
   moveCatagory: 1
   effects:
     boosts: []
@@ -26,4 +27,5 @@ MonoBehaviour:
     volatileStatus: 0
   secondaryEffects: []
   target: 0
+  sound: {fileID: 8300000, guid: 9755b9502b2de924fb46e0d9d80f6897, type: 3}
   description: 

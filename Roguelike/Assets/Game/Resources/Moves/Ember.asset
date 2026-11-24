@@ -16,10 +16,16 @@ MonoBehaviour:
   moveType: 2
   power: 45
   accuracy: 100
+  skipAccuracyCheck: 0
   powerPoints: 25
+  priorityValue: 0
+  setDamage: 0
   moveCatagory: 2
   effects:
     boosts: []
     status: 2
+    volatileStatus: 0
+  secondaryEffects: []
   target: 0
+  sound: {fileID: 8300000, guid: a718bca151a1e314ab70852f07995485, type: 3}
   description: 
